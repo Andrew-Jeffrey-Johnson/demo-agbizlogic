@@ -8,7 +8,7 @@ class Parser:
         self.cat_name = cat_name
     
 
-    def remove_empty_columns(self, df, threshold=0.9):
+    def remove_empty_columns(self, df, threshold=0.95):
         column_mask = df.isnull().mean(axis=0) < threshold
         return df.loc[:, column_mask]
 
@@ -45,6 +45,8 @@ class Parser:
         df.insert(0, 'ID', range(0, len(df)))   # create new id column for index
         df.set_index('ID', inplace=True)    # assign new index to the dataframe
 
+        df.iloc[0] = df.iloc[0].str.lower().str.title()
+
         df = self.remove_bad_rows(df, self.cat_name)
         df = self.remove_empty_columns(df)
 
@@ -72,8 +74,8 @@ class Parser:
     # Will break on any other file types
     def get_file(self, file):
         # Reads in the data from a .xlsx (excel) file
-        if file.endswith('.xlsx'):
-            df = pd.read_excel(file, header=None, index_col=0)
+        if file.endswith('.xlsx') or file.endswith('.xls'):
+            df = pd.read_excel(file, header=None)
             return df
 
         # Reads in the data from a CSV file, assumes first 6 lines are garbage and can be skipped.
@@ -124,9 +126,8 @@ class Parser:
                 # print("NONE, CREATING")
                 self.cat_dict[row[self.cat_name]] = []
                 self.cat_dict[row[self.cat_name]].append(row)
-            
-    
-    
+                
+                
     # Print out the dictionary containing all of the lists for each category
     def print_cat_dict(self):
         for i in self.cat_dict.keys():
@@ -134,7 +135,6 @@ class Parser:
                 print(x)
                 print()
             print('='*100)
-
     
     # Returns a list of the category names by grabbing the keys from the cat_dict dictionary
     def get_cat_names(self):

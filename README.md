@@ -4,8 +4,7 @@
 You would need to set up docker and then use the script local-docker.sh.  
 It is easier to run everything locally without using a container. For that the steps are:  
 
--Install python3, pip3, and npm then,  
--run  
+-To install python3, pip3, and npm, run as follows:  
 ```
   pip install -r requirements.txt  (change pip to pip3 if you have both versions of pip installed)  
   npm install  

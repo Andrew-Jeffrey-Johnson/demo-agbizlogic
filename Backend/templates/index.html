@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+<title>Spreadsheet upload set-up questions</title>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Agbiz<i>Logic</i></a>
+    </div>
+</nav>
+<body>
+    <div class="container mt-4">
+        <h2>Spreadsheet upload set-up questions</h2>
+        <div class="container mt-3">
+            <div class="bs-callout bs-callout-warning" id="callout-tables-context-accessibility">
+                <h4>Question1</h4>
+                <div class="alert alert-dismissible alert-info">
+                    <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+                  </div>
+              </div>
+        </div>
+        <div class="container">
+            <div class="bs-callout bs-callout-warning" id="callout-tables-context-accessibility">
+                <h4>Question2</h4>
+                <div class="alert alert-dismissible alert-primary">
+                    <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+                  </div>
+              </div>
+        </div>
+        <div class="container">
+            <div class="bs-callout bs-callout-warning" id="callout-tables-context-accessibility">
+                <h4>Question3</h4>
+                <p>Using color to add meaning to a table row or individual cell only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the visible text in the relevant table row/cell), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
+              </div>
+        </div>
+        <div class="container">
+            <div class="bs-callout bs-callout-warning" id="callout-tables-context-accessibility">
+                <h4>question4</h4>
+                <p>Using color to add meaning to a table row or individual cell only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the visible text in the relevant table row/cell), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
+              </div>
+        </div>
+    
+        <div class="container">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label mt-4"><h4>Category Name</h4></label>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="Category Name" aria-label="Category Name" aria-describedby="button-addon2">
+                            </div>
+                                  
+                        </div>
+                      </div>
+                    
+                </div>
+                <div class="col-md-8">
+                    <form  method = "POST" enctype="multipart/form-data" class="form-horizontal">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="formFile" class="form-label mt-4"><h3>Import CSV File</h3></label>
+                            <input class="form-control" type="file" id="formFile" required="True">
+                        </div>
+                    </form>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="offset-md-10"></div>
+            <div class="col-md-2 mt-3">
+                <form action="/result/" method="post">{% csrf_token%}
+                    <input type="submit" value="Continue" class="btn btn-dark btn-lg mb-4">
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+

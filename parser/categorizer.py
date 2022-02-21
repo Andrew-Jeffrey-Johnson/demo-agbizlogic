@@ -37,12 +37,12 @@ class Categorizer:
         df.reset_index(inplace=True, drop=True)
         Categorizer.train(test_data, df, dictionary)
         
-    def extract_cat_name(self, cat_name, df):        
+    def extract_cat_name(self, cat_name, dictionary):        
         extracted = []
-        for key, data in df.items():
-            for data in df[key]:
+        for key, data in dictionary.items():
+            for data in dictionary[key]:
                 if (pd.isnull(data[cat_name]) == True):
                     data[cat_name] = 'Unknown'
                 extracted.append(data[cat_name])
-        Categorizer.load_train_data(extracted[1:], df)
+        Categorizer.load_train_data(extracted[1:], dictionary)
         

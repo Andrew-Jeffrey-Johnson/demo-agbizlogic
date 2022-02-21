@@ -11,7 +11,8 @@ class Categorizer:
         vectorizer = CountVectorizer(binary=True)
         train_x_vectors = vectorizer.fit_transform(train_x)        
         clf = svm.SVC(kernel='linear')
-        clf.fit(train_x_vectors, train_y)
+        clf.fit(train_x_vectors, train_y)        
+        predicted = [list(clf.predict(vectorizer.transform([data]))) for data in test_data]
  
         categories = []
         for key, data in dictionary.items():
@@ -19,8 +20,7 @@ class Categorizer:
                 if 'Category' not in data:
                     categories.append(data['Tags'])
                 else:
-                    categories.append(data['Category'])
-        predicted = [list(clf.predict(vectorizer.transform([data]))) for data in test_data]    
+                    categories.append(data['Category'])            
         df = pd.DataFrame(list(zip(test_data, categories[1:], np.array(predicted).flatten())), columns=['cat_name','Category','Predicted Category'])
         print("Predicted data:\n",df)
         df.to_csv('predicted_categories.csv')

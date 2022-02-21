@@ -1,45 +1,45 @@
 ,cat_name,Category,Predicted Category
-0,Unknown,Ag Program Payments,Utility
-1,Unknown,Coop Distributions Received,Utility
-2,Unknown,Coop Distributions Received,Utility
-3,Unknown,Crop Insurance Proceeds,Utility
-4,Unknown,Specified Custom Hire Income,Utility
-5,Unknown,Sales of Livestock,Utility
-6,Unknown,Other Income,Utility
-7,Unknown,Sales of Wheat,Utility
-8,Unknown,Sales of Wheat,Utility
-9,Unknown,Sales of Wheat,Utility
-10,Unknown,,Utility
-11,Unknown,,Utility
-12,Unknown,,Utility
-13,Pickup/Truck/ATV Repairs,Car & Truck Expense,Utility
-14,Pickup/Truck/ATV Repairs,Car & Truck Expense,Utility
-15,Pickup/Truck/ATV Repairs,Car & Truck Expense,Utility
-16,Pickup/Truck/ATV Repairs,Car & Truck Expense,Utility
+0,Unknown,Ag Program Payments,Unknown
+1,Unknown,Coop Distributions Received,Unknown
+2,Unknown,Coop Distributions Received,Unknown
+3,Unknown,Crop Insurance Proceeds,Unknown
+4,Unknown,Specified Custom Hire Income,Unknown
+5,Unknown,Sales of Livestock,Unknown
+6,Unknown,Other Income,Unknown
+7,Unknown,Sales of Wheat,Unknown
+8,Unknown,Sales of Wheat,Unknown
+9,Unknown,Sales of Wheat,Unknown
+10,Unknown,,Unknown
+11,Unknown,,Unknown
+12,Unknown,,Unknown
+13,Pickup/Truck/ATV Repairs,Car & Truck Expense,Car & Truck Expense
+14,Pickup/Truck/ATV Repairs,Car & Truck Expense,Car & Truck Expense
+15,Pickup/Truck/ATV Repairs,Car & Truck Expense,Car & Truck Expense
+16,Pickup/Truck/ATV Repairs,Car & Truck Expense,Car & Truck Expense
 17,Trees,Conservation Expenses,Conservation Expenses
 18,Trees,Conservation Expenses,Conservation Expenses
 19,Heifer Purchases,Cost of Goods Sold,Cost of Goods Sold
 20,Custom Hire - Baling Alfalfa Hay,Custom Hire (Machine Work),Custom Hire (Machine Work)
-21,Farm Hired Labor,Employee Benefit Program,Employee Benefit Program
-22,Farm Hired Labor,Employee Benefit Program,Employee Benefit Program
-23,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-24,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-25,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-26,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-27,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-28,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-29,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-30,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-31,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-32,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-33,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-34,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-35,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-36,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-37,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-38,Farm Hired Labor,Labor Hired (less employment credits),Employee Benefit Program
-39,Farm Hired Labor,Pension and Profit-sharing Plan,Employee Benefit Program
-40,Farm Hired Labor,Pension and Profit-sharing Plan,Employee Benefit Program
+21,Farm Hired Labor,Employee Benefit Program,Unknown
+22,Farm Hired Labor,Employee Benefit Program,Unknown
+23,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+24,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+25,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+26,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+27,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+28,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+29,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+30,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+31,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+32,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+33,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+34,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+35,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+36,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+37,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+38,Farm Hired Labor,Labor Hired (less employment credits),Unknown
+39,Farm Hired Labor,Pension and Profit-sharing Plan,Unknown
+40,Farm Hired Labor,Pension and Profit-sharing Plan,Unknown
 41,Ag Chemicals,Chemicals,Chemicals
 42,Ag Chemicals,Chemicals,Chemicals
 43,Ag Chemicals,Chemicals,Chemicals
@@ -55,7 +55,7 @@
 53,Fertilizer,Fertilizers & Lime,Fertilizers & Lime
 54,Fertilizer,Fertilizers & Lime,Fertilizers & Lime
 55,Fertilizer,Fertilizers & Lime,Fertilizers & Lime
-56,Grain Hauliing,Freight & Trucking,Sales of Wheat
+56,Grain Hauliing,Freight & Trucking,Freight & Trucking
 57,Livestock Hauling,Freight & Trucking,Freight & Trucking
 58,Gasoline Fuel Propane & Oil,"Gasoline, Fuel, & Oil",Gasoline Fuel & Oil
 59,Gasoline Fuel Propane & Oil,Gasoline Fuel & Oil,Gasoline Fuel & Oil
@@ -68,23 +68,23 @@
 66,Property Insurance,Insurance (other than health),Insurance (other than health)
 67,Property Insurance,Insurance (other than health),Insurance (other than health)
 68,Crop Insurance,Insurance (other than health),Insurance (other than health)
-69,Loan for Farm,Interest on Loans & Mortgages,Interest on Loans & Mortgages
-70,Loan for Farm,Storage & Warehousing,Interest on Loans & Mortgages
-71,Tractor/Equipment Purchases,Interest on Loans & Mortgages,Interest on Loans & Mortgages
-72,Tractor/Equipment Purchases,L-T Asset Replacement & Section 179 Expenses,Interest on Loans & Mortgages
-73,Tractor/Equipment Purchases,L-T Asset Replacement & Section 179 Expenses,Interest on Loans & Mortgages
+69,Loan for Farm,Interest on Loans & Mortgages,Unknown
+70,Loan for Farm,Storage & Warehousing,Unknown
+71,Tractor/Equipment Purchases,Interest on Loans & Mortgages,Unknown
+72,Tractor/Equipment Purchases,L-T Asset Replacement & Section 179 Expenses,Unknown
+73,Tractor/Equipment Purchases,L-T Asset Replacement & Section 179 Expenses,Unknown
 74,Accountant,Other Expenses: Miscellaneous,Other Expenses: Miscellaneous
 75,Attorney,Other Expenses: Other Miscellaneous,Other Expenses: Other Miscellaneous
 76,Attorney,Other Expenses: Other Miscellaneous,Other Expenses: Other Miscellaneous
 77,Sewer,Other Expenses: Other Miscellaneous,Other Expenses: Other Miscellaneous
 78,Educational Workshops,Other Expenses: Other Miscellaneous,Other Expenses: Other Miscellaneous
 79,Well,Other Expenses: Other Miscellaneous,Other Expenses: Other Miscellaneous
-80,Land,Land & Animal Rent or Lease,Utility
-81,Tractors Equipment Vehicles,Land & Animal Rent or Lease,Car & Truck Expense
-82,Tractor/Equipment Repairs,Repairs & Maintenance,Interest on Loans & Mortgages
-83,Fence Materials,Repairs & Maintenance,Utility
-84,Fence Materials,Supplies,Utility
-85,Buildings,Repairs & Maintenance,Utility
+80,Land,Land & Animal Rent or Lease,Land & Animal Rent or Lease
+81,Tractors Equipment Vehicles,Land & Animal Rent or Lease,Unknown
+82,Tractor/Equipment Repairs,Repairs & Maintenance,Unknown
+83,Fence Materials,Repairs & Maintenance,Unknown
+84,Fence Materials,Supplies,Unknown
+85,Buildings,Repairs & Maintenance,Repairs & Maintenance
 86,Seeds,Seeds & Plants,Seeds & Plants
 87,Seeds,Seeds & Plants,Seeds & Plants
 88,Tools,Supplies,Supplies

@@ -1,5 +1,5 @@
 ## Local Development Setup  
-------------
+-----------
 
 To install Docker Desktop, please see the link attached below:  
 https://docs.google.com/document/d/1sSvnsGRY-rlRf6bp5-9p8FiRZEf3W-tl025m1VHCGr0/edit

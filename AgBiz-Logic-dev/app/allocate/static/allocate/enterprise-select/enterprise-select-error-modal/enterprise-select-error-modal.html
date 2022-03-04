@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div class="modal-content">
+<div class="modal-body">
+  <button type="button" class="btn btn-success pull-right" ng-click="$dismiss()">Close</button></p>
+
+  <h4>
+    You are missing some data. Please fill out the following enterprise(s) to continue:
+  </h4>
+
+  <ul id="needed-values">
+    <li ng-repeat="(key, value) in $ctrl.enterprises" >
+      <span ng-bind=value></span>
+    </li>
+  </ul>
+
+
+
+</div>
+</div>

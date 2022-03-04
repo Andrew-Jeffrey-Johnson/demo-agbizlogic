@@ -1,0 +1,23 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+{% block content %}
+<br>  
+
+  <h3>Import CSV/XLS</h3>
+
+
+<p> Congratulations!  You saved your information!</p>
+
+<a class="btn btn-default" type="button" href="/index/">Leave page</a>
+<a class="next btn btn-success pull-right" type="button" href="/dashboard/">Next</a>
+
+<script>
+
+$('.next').on('click', function(e) {
+   localStorage.clear();
+});
+
+</script>
+
+{% endblock %}

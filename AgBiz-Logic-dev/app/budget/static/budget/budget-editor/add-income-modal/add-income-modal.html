@@ -1,0 +1,190 @@
+<div id="income_modal" class="modal-body">
+  <h4 ng-if="$ctrl.editing == false">Add Income Item</h4>
+  <h4 ng-if="$ctrl.editing == true">Edit Income Item</h4>
+
+  <form name="$ctrl.form">
+    <div class="row">
+      <div class="col-md-12">
+        <label>
+          Name:
+        </label>
+        <input
+          id="name"
+          ng-keypress="$event.keyCode === 13 && $ctrl.save($ctrl.form.$valid)"
+          class="form-control"
+          ng-model="$ctrl.income_item.name"
+          name="name"
+          placeholder="ex. Hay"
+          type="text"
+          maxlength="100"
+          required/>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.name.$valid && $ctrl.form.name.$dirty">
+          Please select a name
+        </span>
+      </div>
+    </div>
+    <div
+      ng-if="$ctrl.income_item.enterprise == 'Livestock'"
+      class="row">
+      <div class="col-md-6">
+        <label>
+          Weight per Unit
+        </label>
+        <div class="input-group">
+          <input
+            id="weight" class="form-control"
+            ng-keypress="$event.keyCode === 13 && $ctrl.save($ctrl.form.$valid)"
+            ng-model="$ctrl.income_item.weight"
+            ng-change="$ctrl.income_item.return_total = $ctrl.income_item.weight * $ctrl.income_item.sale_unit_quantity * $ctrl.income_item.price_per_sale_unit"
+            ng-pattern="/^[0-9]+(\.[0-9]{0,2})?$/"
+            name="weight"
+            placeholder="1"
+            step="0.01"
+            min="0.01"
+            max="9999999999"
+            onfocus="if(this.value == 0)this.value='';"
+            onblur="if(this.value == '')this.value=0;"
+            required>
+          </input>
+          <span
+            class="input-group-addon"
+            ng-bind="$ctrl.income_item.sale_unit | capitalize">
+          </span>
+        </div>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.weight.$valid && $ctrl.form.weight.$dirty">
+          Please enter a positive decimal with up to two decimal places (i.e. 2.40)
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label>
+          Unit Sold by/as:
+        </label>
+        <select
+          id="sale_unit" class="form-control"
+          name="sale_unit"
+          ng-model="$ctrl.income_item.sale_unit"
+          ng-options="option as (option | capitalize) for (key,option) in $ctrl.sale_unit_options | orderBy: option"
+          required>
+          <option value="">Select</option>
+        </select>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.sale_unit.$valid && $ctrl.form.sale_unit.$dirty">
+          Please select a unit
+        </span>
+      </div>
+
+      <div class="col-md-6">
+        <label>
+          Quantity:
+        </label>
+        <div class="input-group">
+          <input
+            ng-keypress="$event.keyCode === 13 && $ctrl.save($ctrl.form.$valid)"
+            class="form-control"
+            ng-model="$ctrl.income_item.sale_unit_quantity"
+            ng-change="$ctrl.income_item.return_total = $ctrl.income_item.weight * $ctrl.income_item.sale_unit_quantity * $ctrl.income_item.price_per_sale_unit"
+            ng-pattern="/^[0-9]+(\.[0-9]{0,2})?$/"
+            name="sale_unit_quantity"
+            type="text"
+            placeholder="0"
+            step="1"
+            min="1"
+            max="9999999999"
+            onfocus="if(this.value == 0)this.value='';"
+            onblur="if(this.value == '')this.value=0;"
+
+            required>
+          <span
+            class="input-group-addon"
+            ng-if="$ctrl.income_item.enterprise != 'Livestock'"
+            ng-bind="$ctrl.income_item.sale_unit | capitalize">
+          </span>
+        </div>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.sale_unit_quantity.$valid && $ctrl.form.sale_unit_quantity.$dirty">
+          Please enter a positive integer
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label>
+          Price per Unit Sold:
+        </label>
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input
+            ng-keypress="$event.keyCode === 13 && $ctrl.save($ctrl.form.$valid)"
+            id="price_per_sale_unit" class="form-control text-right"
+            ng-model="$ctrl.income_item.price_per_sale_unit"
+            ng-change="$ctrl.income_item.return_total = $ctrl.income_item.weight * $ctrl.income_item.sale_unit_quantity * $ctrl.income_item.price_per_sale_unit"
+            ng-pattern="/^[0-9]{0,8}(\.[0-9]{0,2})?$/"
+            name="price_per_sale_unit"
+            placeholder="0"
+            step="0.01"
+            min="1"
+            max="9999999999"
+            onfocus="if(this.value == 0)this.value='';"
+            onblur="if(this.value == '')this.value=0;"
+
+            required>
+          </input>
+        </div>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.price_per_sale_unit.$valid && $ctrl.form.price_per_sale_unit.$dirty">
+          Please enter price per unit sold
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label>
+          Total Value:
+        </label>
+        <b ng-bind="$ctrl.income_item.return_total | currency"></b>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <button
+          class="btn btn-warning"
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+
+      <div class="col-md-2 col-md-offset-7">
+        <button
+          id="saved"
+          class="btn btn-success"
+          type="submit"
+          ng-disabled="$ctrl.form.$invalid"
+          ng-click="$ctrl.save($ctrl.form.$valid)">
+          Save
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,19 @@
+<div>
+    <div class="row row-inventory">
+        <div class="col-md-2">
+            <h4 class="pull-left">Your Scenarios</h4>
+        </div>
+        <div class="col-md-10">
+            <a class="btn btn-success pull-right" href="/scenario/">Scenario Manager</a>
+        </div>
+    </div>
+
+    <div class="row">
+      <manager-list
+        class="col-md-12"
+        item-list="$ctrl.scenario_list"
+        empty-flex="false"
+        show-date="true">
+      </manager-list>
+    </div>
+</div>

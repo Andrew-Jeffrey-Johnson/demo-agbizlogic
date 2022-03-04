@@ -1,0 +1,28 @@
+
+body {
+               
+           
+                background: url(../img/roll1.jpg)  no-repeat center center;
+   
+                background-size: cover;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+h3   { padding-top: 20%;color:white}
+
+footer {
+
+color: white;
+ position:absolute;
+   bottom:0;
+
+}

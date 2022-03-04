@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+  <div id="help_modal" class="pull-right">
+  <button type="button" class="btn btn-danger" ng-click="$dismiss()">&times;</button>
+  </div>
+
+
+  <h3> Variable Help </h3>
+  <!-- <h4> Click on a variable to view its definition. </h4> -->
+  <!--
+  <div id="variable_definitions" class="container" ng-repeat="(variable, definition) in $ctrl.variable_divs">
+     <a data-toggle="collapse" href='#collapse-{{variable}}' role="button" aria-expanded="true" aria-controls="collapse-{{variable}}">
+         -  <span ng-bind="variable"></span>
+     </a>
+     <div class="collapse" id="collapse-{{variable}}">
+       <div class="card card-body">
+         <span ng-bind="definition"></span>
+       </div>
+     </div>
+   </div>
+  -->
+  <div id="table-div" class="table-wrapper-scroll-y my-custom-scrollbar" >
+    <table id="variable-definition-table"class="table table-striped table-bordered mb-0">
+      <thead>
+        <tr>
+          <th scope="col">Climate Variable</th>
+          <th scope="col">Definition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="(key, value) in $ctrl.definitions">
+          <td> <div ng-bind=key> </td>
+          <td> <div ng-bind="$ctrl.definitions[key]"> </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>

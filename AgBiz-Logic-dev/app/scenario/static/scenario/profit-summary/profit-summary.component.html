@@ -1,0 +1,591 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<i><h3 class="content-padding" ng-bind="$ctrl.summary_title"></h3></i>
+<p>You’re now ready to review your profitability of investments based on the
+  information provided. Click on a Plan in the list below to review the Budgets in a particular Plan or to make
+  updates to a Plan’s Discount Rate, Beginning/Ending Investment values,
+  or include the Beginning/Ending Investment values in the cash flow analysis.</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">Name of Scenario</h6>
+  </div>
+  <div class="panel-body">
+    <span ng-bind="$ctrl.scenario.title"></span>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Plan List -->
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <a ui-sref="planManager({scenario: $ctrl.scenario.id})">
+          <b>Plans in this Scenario</b>
+        </a>
+      </div>
+      <div
+        class="flex flex-column"
+        ng-if="$ctrl.scenario !== undefined">
+        <div
+          class="flex flex-column"
+          ng-repeat="plan in $ctrl.plans | orderBy: 'created_date'">
+          <div
+            class="summary-plan-item"
+            ng-click="$ctrl.plan_detail == plan.id ? $ctrl.plan_detail = 0 : $ctrl.plan_detail = plan.id">
+            <b><u>Plan {{$index +1 }} :</u> {{plan.title}}</b>
+            <span id="menuIcon" class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+          </div>
+          <div
+            class="summary-budget-list"
+            uib-collapse="$ctrl.plan_detail != plan.id">
+            <span>Budgets:</span>
+            <div ng-repeat="plan_budget in plan.plan_budgets | orderBy: 'position'">
+              <a
+                ng-bind="(plan_budget.title) + ' (' + (plan_budget.time_value) + ' ' + (plan_budget.time_unit) + ')'"
+                ng-click="$ctrl.editBudget(plan_budget.budget)">
+              </a>
+            </div>
+          </div>
+          <div
+            class="summary-budget-list"
+            uib-collapse="$ctrl.plan_detail != plan.id">
+            <table class="table table-striped">
+              <tr>
+                <td>Discount Rates</td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      name="discount_rate"
+                      class="form-control"
+                      oninput="this.value=this.value.slice(0,this.maxLength)"
+                      maxlength="5"
+                      type="text"
+                      ng-model="plan.discount_rate"
+                      ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+                      onfocus="if(this.value == 0)this.value='';"
+                      onblur="if(this.value == '')this.value=0;" required>
+                      <span class="input-group-addon">
+                        %
+                      </span>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Beginning Investments</td>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      $
+                    </span>
+                    <input
+                      name="beginning_investment"
+                      class="form-control"
+                      type="text"
+                      ng-model="plan.beginning_investment"
+                      ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+                      onfocus="if(this.value == 0)this.value='';"
+                      onblur="if(this.value == '')this.value=0;">
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Ending Investments</td>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      $
+                    </span>
+                    <input
+                      name="ending_investment"
+                      class="form-control"
+                      type="text"
+                      ng-model="plan.ending_investment"
+                      ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+                      onfocus="if(this.value == 0)this.value='';"
+                      onblur="if(this.value == '')this.value=0;">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Use Investment Values</td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      name="use_investment_values"
+                      type="checkbox"
+                      ng-checked="plan.use_investment_values==true"
+                      ng-model="plan.use_investment_values">
+                    </div>
+                </td>
+              </tr>
+            </table>
+            <button class="btn btn-default" ng-click="$ctrl.updatePlanValues(plan)">Update</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      <md-progress-circular
+        class="col-md-offset-5"
+        ng-if="$ctrl.scenario == undefined"
+        md-mode="indeterminate">
+      </md-progress-circular>
+
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <!-- TODO: Move to seperate component -->
+    <!-- Profit Analysis Charts -->
+    <div ng-if="$ctrl.module == 'profit'" ng-show="$ctrl.selected == false">
+        <div class="row chart-row">
+          <!--net_present_value-->
+          <div
+            class="col-md-6 graph-container fade-out"
+            ng-if="$ctrl.results_format == 'graph' &&
+                   $ctrl.scenario !== undefined"
+            ng-show="$ctrl.selected == false"
+            ng-animate="expand">
+            <p class="chart-title">Net Present Value
+              <a class="glyphicon glyphicon-zoom-in"
+                 ng-show="$ctrl.selected==false"
+                 ng-animate="expand"
+                 ng-click="$ctrl.expandChart('net_present_value')"></a>
+            </p>
+            <canvas
+              class="chart chart-bar bar_chart"
+              id="net_present_value"
+              type="{{ $ctrl.chart_data['net_present_value'].chart_type }}"
+              chart-series="$ctrl.chart_data['net_present_value'].series"
+              chart-data="$ctrl.chart_data['net_present_value'].data"
+              chart-scales="true"
+              chart-labels="$ctrl.chart_data['net_present_value'].labels"
+              chart-legend="true"
+              chart-colours="['#FD1F5E','#1EF9A1','#7FFD1F','#68F000']"
+
+              chart-options="$ctrl.net_present_value_options">
+            </canvas>
+            <!--div class="table-container">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Plan</th>
+                    <th style="text-align:right">Net Returns</th>
+                    <th style="text-align:right">{{$ctrl.chart_data["net_present_value"].series[1]}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="plan in $ctrl.plans">
+                    <td>Plan {{$index + 1}}</td>
+                    <td style="text-align:right">{{$ctrl.numberWithCommas(plan.net_returns_with_inflation.toFixed(2))}}</td>
+                    <td ng-if="$ctrl.chart_data['net_present_value'].series[1] == 'Equivalent Annual Annuity'" style="text-align:right">{{$ctrl.numberWithCommas(plan.equivalent_annual_annuity.toFixed(2))}}</td>
+                    <td ng-if="$ctrl.chart_data['net_present_value'].series[1] == 'Net Present Value'" style="text-align:right">{{$ctrl.numberWithCommas(plan.net_present_value.toFixed(2))}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div-->
+          </div>
+
+          <!-- internal_rate_of_return -->
+          <div
+            class="col-md-6 graph-container fade-out"
+            ng-hide="$ctrl.selected==true"
+            ng-if="$ctrl.results_format == 'graph' &&
+                   $ctrl.scenario !== undefined">
+            <p class="chart-title">Internal Rate of Return
+              <a class="glyphicon glyphicon-zoom-in"
+                 ng-show="$ctrl.selected==false"
+                 ng-click="$ctrl.expandChart('internal_rate_of_return')"></a></p>
+            <canvas
+              class="chart chart-bar bar_chart1"
+              id="internal_rate_of_return"
+              type="{{ $ctrl.chart_data['internal_rate_of_return'].chart_type }}"
+              chart-series="$ctrl.chart_data['internal_rate_of_return'].series"
+              chart-data="$ctrl.chart_data['internal_rate_of_return'].data"
+              chart-labels="$ctrl.chart_data['internal_rate_of_return'].labels"
+              chart-legend="true"
+              chart-colours="['#FD1F5E','#1EF9A1','#7FFD1F','#68F000']"
+              chart-options="$ctrl.internal_rate_return_options">
+            </canvas>
+            <!--div class="table-container">
+              <table class="table table-striped">
+                <thead class="irr">
+                  <tr>
+                    <th>Plan</th>
+                    <th  style="text-align:center">Internal Rate of Return</th>
+                  </tr>
+                </thead>
+                <tbody class="irr">
+                  <tr ng-repeat="plan in $ctrl.plans">
+                    <td>Plan {{$index +1}}</td>
+                    <td  style="text-align:center">{{plan.internal_rate_of_return}}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div-->
+          </div>
+        </div>
+        <div class="row chart-row">
+          <!--cash_flow_breakeven-->
+          <div
+            class="col-md-6 graph-container fade-out"
+            ng-hide="$ctrl.selected==true"
+            ng-if="$ctrl.results_format == 'graph' &&
+                   $ctrl.scenario !== undefined">
+            <p class="chart-title">Cash Flow Breakeven
+              <a class="glyphicon glyphicon-zoom-in"
+                 ng-show="$ctrl.selected==false"
+                 ng-click="$ctrl.expandChart('cash_flow_breakeven')"></a></p>
+            <canvas
+              class="chart chart-bar bar_chart_cash_flow_breakeven"
+              id="cash_flow_breakeven"
+              type="{{ $ctrl.chart_data['cash_flow_breakeven'].chart_type }}"
+              chart-series="$ctrl.chart_data['cash_flow_breakeven'].series"
+              chart-data="$ctrl.chart_data['cash_flow_breakeven'].data"
+              chart-labels="$ctrl.chart_data['cash_flow_breakeven'].labels"
+              chart-legend="true"
+              chart-colours="['#FD1F5E','#1EF9A1','#7FFD1F','#68F000']"
+              chart-options="$ctrl.cash_flow_options"
+
+
+
+              >
+            </canvas>
+            <!--div class="table-container">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th colspan="2" style="text-align:center">Year Returns Are Greater Than</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th width="8%">Plan</th>
+                    <th style="text-align:right">Annual Costs</th>
+                    <th style="text-align:right">Total Cost of Previous Years</th>
+                    <th style="text-align:right">Total Cash Costs for Plan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="plan in $ctrl.plans">
+                    <td>Plan {{$index + 1}}</td>
+                    <td style="text-align:right">{{plan.cash_flow_breakeven}}</td>
+                    <td style="text-align:right">{{plan.cash_flow_total_breakeven}}</td>
+                    <td style="text-align:right">${{plan.totalCashCost}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div-->
+          </div>
+          <!--net_returns-->
+          <div
+            class="col-md-6 graph-container fade-out"
+            ng-hide="$ctrl.selected==true"
+            ng-if="$ctrl.results_format == 'graph' &&
+                   $ctrl.scenario !== undefined">
+            <p class="chart-title">Net Returns
+              <a class="glyphicon glyphicon-zoom-in"
+                 ng-show="$ctrl.selected==false"
+                 ng-click="$ctrl.expandChart('net_returns')"></a></p>
+            <canvas
+              class="chart chart-line"
+              id="net_returns"
+              chart-series="$ctrl.chart_data['net_returns'].series"
+              chart-data="$ctrl.chart_data['net_returns'].data"
+              chart-labels="$ctrl.chart_data['net_returns'].labels"
+              chart-legend="true"
+              chart-colours="$ctrl.chart.line_chart_colors"
+              chart-options="$ctrl.internal_rate_return_options"
+                  >
+            </canvas>
+            <!--div class="table-container">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Plan</th>
+                    <th ng-repeat="plan in $ctrl.plans" style="text-align:right"> Plan {{$index + 1}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="period in $ctrl.plans[$ctrl.longestTotalPeriod].net_returns_over_time track by $index">
+                    <th>Period {{period.time_period_position}}</th>
+                    <td ng-repeat="plan in $ctrl.plans">
+                      <div style="text-align:right">
+                          {{$ctrl.numberWithCommas(plan.net_returns_over_time[$parent.$index].net_return.toFixed(2))}}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div-->
+          </div>
+        </div>
+
+        <!-- Loading -->
+        <md-progress-circular
+          class="col-md-offset-6"
+          ng-if="$ctrl.chart_data == undefined"
+          md-mode="indeterminate">
+        </md-progress-circular>
+    </div>
+
+  <!--Expand Charts-->
+    <!--net_present_value-->
+    <div class="row expand-row fade-out"
+         ng-show="$ctrl.selected == true && $ctrl.expand == 'net_present_value'">
+      <div
+        class="graph-expand-container"
+        ng-if="$ctrl.results_format == 'graph' &&
+               $ctrl.scenario !== undefined">
+        <p class="chart-title">Net Present Value
+          <a class="glyphicon glyphicon-zoom-out"
+             ng-click="$ctrl.shrinkChart()"></a></p>
+        <canvas
+          class="chart chart-bar bar_chart"
+          id="net_present_value"
+          type="{{ $ctrl.chart_data['net_present_value'].chart_type }}"
+          chart-series="$ctrl.chart_data['net_present_value'].series"
+          chart-data="$ctrl.chart_data['net_present_value'].data"
+          chart-labels="$ctrl.chart_data['net_present_value'].labels"
+          chart-legend="true"
+          chart-colours="['#FD1F5E','#1EF9A1','#7FFD1F','#68F000']"
+          chart-options="{
+            barValueSpacing: $ctrl.chart.spacing,
+            maintainAspectRatio: false,
+            responsive: true,
+          }">
+        </canvas>
+        <div class="table-expand-container">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th style="text-align:right">Net Returns</th>
+                <th style="text-align:right">{{$ctrl.chart_data["net_present_value"].series[1]}}</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="plan in $ctrl.plans | orderBy: 'created_date'">
+                <td>Plan {{$index + 1}}</td>
+                <td style="text-align:right">{{$ctrl.numberWithCommas(plan.net_returns_with_inflation.toFixed(2))}}</td>
+                <td ng-if="$ctrl.chart_data['net_present_value'].series[1] == 'Equivalent Annual Annuity'" style="text-align:right">{{$ctrl.numberWithCommas(plan.equivalent_annual_annuity.toFixed(2))}}</td>
+                <td ng-if="$ctrl.chart_data['net_present_value'].series[1] == 'Net Present Value'" style="text-align:right">{{$ctrl.numberWithCommas(plan.net_present_value.toFixed(2))}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- internal_rate_of_return -->
+    <div class="row expand-row fade-out"
+         ng-show="$ctrl.selected == true && $ctrl.expand == 'internal_rate_of_return'">
+      <div
+        class="graph-expand-container"
+        ng-if="$ctrl.results_format == 'graph' &&
+               $ctrl.scenario !== undefined">
+        <p class="chart-title">Internal Rate of Return
+          <a class="glyphicon glyphicon-zoom-out"
+             ng-click="$ctrl.shrinkChart()"></a></p>
+        <canvas
+          class="chart chart-bar bar_chart1"
+          id="internal_rate_of_return"
+          type="{{ $ctrl.chart_data['internal_rate_of_return'].chart_type }}"
+          chart-series="$ctrl.chart_data['internal_rate_of_return'].series"
+          chart-data="$ctrl.chart_data['internal_rate_of_return'].data"
+          chart-labels="$ctrl.chart_data['internal_rate_of_return'].labels"
+          chart-legend="true"
+          chart-colours="['#FD1F5E','#1EF9A1','#7FFD1F','#68F000']"
+          chart-options="{
+            barValueSpacing: $ctrl.chart.spacing,
+            maintainAspectRatio: false,
+            responsive: true,
+          }">
+        </canvas>
+        <div class="table-expand-container">
+          <table class="table table-striped">
+            <thead class="irr">
+              <tr>
+                <th>Plan</th>
+                <th  style="text-align:center">Internal Rate of Return</th>
+              </tr>
+            </thead>
+            <tbody class="irr">
+              <tr ng-repeat="plan in $ctrl.plans">
+                <td><a uib-tooltip="{{plan.title}}">Plan {{$index + 1}}</a></td>
+                <td  style="text-align:center">{{plan.internal_rate_of_return}}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+      <!--cash_flow_breakeven-->
+    <div class="row expand-row fade-out"
+         ng-show="$ctrl.selected == true && $ctrl.expand == 'cash_flow_breakeven'">
+      <div
+        class="graph-expand-container"
+        ng-if="$ctrl.results_format == 'graph' &&
+               $ctrl.scenario !== undefined"
+        ng-show="$ctrl.expand == 'cash_flow_breakeven'"
+        ng-animate="expand">
+        <p class="chart-title">Cash Flow Breakeven
+          <a class="glyphicon glyphicon-zoom-out"
+             ng-click="$ctrl.shrinkChart()"></a></p>
+        <canvas
+          class="chart chart-bar bar_chart_cash_flow_breakeven"
+          id="cash_flow_breakeven"
+          type="{{ $ctrl.chart_data['cash_flow_breakeven'].chart_type }}"
+          chart-series="$ctrl.chart_data['cash_flow_breakeven'].series"
+          chart-data="$ctrl.chart_data['cash_flow_breakeven'].data"
+          chart-labels="$ctrl.chart_data['cash_flow_breakeven'].labels"
+          chart-legend="true"
+          chart-colours="['#FD1F5E','#1EF9A1','#7FFD1F','#68F000']"
+          chart-options="{
+            barValueSpacing: $ctrl.chart.spacing,
+            maintainAspectRatio: false,
+            responsive: true,
+        }">
+        </canvas>
+        <div class="table-expand-container">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th colspan="2" style="text-align:center">Year Returns Are Greater Than</th>
+                <th></th>
+              </tr>
+              <tr>
+                <th width="8%">Plan</th>
+                <th style="text-align:right">Annual Costs</th>
+                <th style="text-align:right">Total Cost of Previous Years</th>
+                <th style="text-align:right">Total Cash Costs for Plan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="plan in $ctrl.plans">
+                <td><a uib-tooltip="{{plan.title}}">Plan {{$index + 1}}</a></td>
+                <td style="text-align:right">{{plan.cash_flow_breakeven}}</td>
+                <td style="text-align:right">{{plan.cash_flow_total_breakeven}}</td>
+                <td style="text-align:right">${{plan.totalCashCost}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!--net_returns-->
+    <div class="row expand-row fade-out"
+         ng-show="$ctrl.selected == true && $ctrl.expand =='net_returns'">
+      <div
+        class="graph-expand-container"
+        ng-if="$ctrl.results_format == 'graph' &&
+               $ctrl.scenario !== undefined"
+        ng-show="$ctrl.expand=='net_returns'"
+        ng-animate="expand">
+        <p class="chart-title">Net Returns
+          <a class="glyphicon glyphicon-zoom-out"
+             ng-click="$ctrl.shrinkChart()"></a></p>
+        <canvas
+          class="chart chart-line"
+          id="net_returns"
+          chart-series="$ctrl.chart_data['net_returns'].series"
+          chart-data="$ctrl.chart_data['net_returns'].data"
+          chart-labels="$ctrl.chart_data['net_returns'].labels"
+          chart-legend="true"
+          chart-colours="$ctrl.chart.line_chart_colors"
+          chart-options="{
+            barValueSpacing: $ctrl.chart.spacing,
+            maintainAspectRatio: false,
+            responsive: true,
+          }">
+        </canvas>
+        <div class="table-expand-container">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th ng-repeat="plan in $ctrl.plans" style="text-align:right"> Plan {{$index + 1}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="period in $ctrl.plans[$ctrl.longestTotalPeriod].net_returns_over_time track by $index">
+                <th>Period {{period.time_period_position}}</th>
+                <td ng-repeat="plan in $ctrl.plans">
+                  <div style="text-align:right">
+                      {{$ctrl.numberWithCommas(plan.net_returns_over_time[$parent.$index].net_return.toFixed(2))}}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <!-- TODO: Other module analysis -->
+    <div ng-if="$ctrl.module != 'profit'">
+      <h3>Coming Soon!</h3>
+    </div>
+  </div>
+
+</div>
+<!--Row End-->
+
+<div class="row">
+  <div ng-hide="$ctrl.selected==true">
+    <div class="col-md-1">
+      <button
+        class="btn btn-default"
+        ng-click="$ctrl.back()">
+        Back
+      </button>
+    </div>
+  </div>
+
+  <div ng-hide="$ctrl.edited=='false'">
+    <div ng-hide="$ctrl.selected==true">
+      <div class="col-md-2 pull-right">
+        <button
+          class="btn btn-success"
+          ng-disabled="$ctrl.error"
+          ng-click="$ctrl.back_manager()">
+          Profit Manager
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div ng-hide="$ctrl.selected==true" >
+    <div ng-hide="$ctrl.edited=='true'" class="col-md-1 pull-right">
+      <button
+        class="btn btn-success"
+        ng-disabled="$ctrl.error"
+        ng-click="$ctrl.proceed()">
+        Edit
+      </button>
+    </div>
+  </div>
+
+
+  <div class="col-md-1 pull-right">
+
+<div ng-hide="$ctrl.selected==true">
+    <profit-pdf
+      scenario = "$ctrl.scenario"
+      plans = "$ctrl.plans">
+    </profit-pdf>
+  </div>
+</div>
+
+
+
+</div>

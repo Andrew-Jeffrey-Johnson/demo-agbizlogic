@@ -1,0 +1,347 @@
+<h5>AgBiz Finance Analysis :</h5>
+
+<div>
+<br>
+<button  type="button"style="width: 100%"class="btn btn-success" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h7>Income statement</h7>
+</button>
+
+
+  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+    <h3>Build Your <i>AgBizFinance</i> Analysis</h3>
+    <br />
+
+
+    <br />
+    <!-- <table id="example" class="display nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in $ctrl.scenario.plans">
+                    <td>${{x.title}}</td>
+                    <td>${{x.title}}</td>
+                </tr>
+            </tbody>
+        </table> -->
+
+<div ng-repeat="(key, value) in $ctrl.income_state_list" >
+    <h5>{{value.name}}</h5>
+        <div class="col-xl-1 pull-left">
+          <h4>Income</h4>
+        </div>
+        <div class="col-xl-1 pull-right">
+          <button class="btn btn-default collapse table_1" ng-click="$ctrl.calapse_by_class('table_1')" >Show more</button>
+          <button class="btn btn-default table_1" ng-click="$ctrl.calapse_by_class('table_1')" >Show Less</button>
+        </div>
+        <table class="table table-hover table-bordered">
+          <thead style="background-color: #428bc9; color: white">
+            <tr>
+              <th style="text-align: right;">Year</th>
+              <th ng-repeat="y in value.scenario.plans" style="text-align: right;"><span title="{{y.title}}">plan {{$index + 1}}</span></th>
+              <th style="text-align: right;">{{value.scenario.title}}</th>
+            </tr>
+          </thead>
+            <tbody>
+                <tr ng-repeat="x in value.year track by $index" ng-class="$index > 2 ? 'table_1' : ''">
+                  <td >{{$index}}</td>
+                  <td ng-repeat="y in x">${{y.return_with_inflation | number : 2}}</td>
+                  <td >{{value.total[$index].return_with_inflation | number : 2}}</td>
+                  <!-- <td >{{$ctrl.sum($index)}}</td> -->
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="col-xl-1 pull-left">
+          <h4>Cost</h4>
+        </div>
+        <div class="col-xl-1 pull-right">
+          <button class="btn btn-default collapse table_2" ng-click="$ctrl.calapse_by_class('table_2')" >Show more</button>
+          <button class="btn btn-default table_2" ng-click="$ctrl.calapse_by_class('table_2')" >Show Less</button>
+        </div>
+
+        <table class="table table-hover table-bordered">
+          <thead style="background-color: #428bc9; color: white">
+            <tr>
+              <th style="text-align: right;">Year</th>
+              <th ng-repeat="y in value.scenario.plans" style="text-align: right;"><span title="{{y.title}}">plan {{$index + 1}}</span></th>
+              <th style="text-align: right;">{{value.scenario.title}}</th>
+            </tr>
+          </thead>
+            <tbody>
+                <tr ng-repeat="x in value.year track by $index" ng-class="$index > 2 ? 'table_2' : ''">
+                  <td >{{$index}}</td>
+                  <td ng-repeat="y in x">${{y.cost_with_inflation | number : 2}}</td>
+                  <td >{{value.total[$index].cost_with_inflation | number : 2}}</td>
+                  <!-- <td >{{$ctrl.sum($index)}}</td> -->
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="col-xl-1 pull-left">
+          <h4>Net Return</h4>
+        </div>
+        <div class="col-xl-1 pull-right">
+          <button class="btn btn-default collapse table_3" ng-click="$ctrl.calapse_by_class('table_3')" >Show more</button>
+          <button class="btn btn-default table_3" ng-click="$ctrl.calapse_by_class('table_3')" >Show Less</button>
+        </div>
+
+        <table class="table table-hover table-bordered">
+          <thead style="background-color: #428bc9; color: white">
+            <tr>
+              <th style="text-align: right;">Year</th>
+              <th ng-repeat="y in value.scenario.plans" style="text-align: right;"><span title="{{y.title}}">plan {{$index + 1}}</span></th>
+              <th style="text-align: right;">{{value.scenario.title}}</th>
+            </tr>
+          </thead>
+            <tbody>
+                <tr ng-repeat="x in value.year track by $index" ng-class="$index > 2 ? 'table_3' : ''">
+                  <td >{{$index}}</td>
+                  <td ng-repeat="y in x">${{y.net_return | number : 2}}</td>
+                  <td >{{value.total[$index].net_return | number : 2}}</td>
+                  <!-- <td >{{$ctrl.sum($index)}}</td> -->
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="col-xl-1 pull-left">
+          <h4>Accumulated Net Return</h4>
+        </div>
+        <div class="col-xl-1 pull-right">
+          <button class="btn btn-default collapse table_4" ng-click="$ctrl.calapse_by_class('table_4')" >Show more</button>
+          <button class="btn btn-default table_4" ng-click="$ctrl.calapse_by_class('table_4')" >Show Less</button>
+        </div>
+
+        <table class="table table-hover table-bordered">
+          <thead style="background-color: #428bc9; color: white">
+            <tr>
+              <th style="text-align: right;">Year</th>
+              <th ng-repeat="y in value.scenario.plans" style="text-align: right;"><span title="{{y.title}}">plan {{$index + 1}}</span></th>
+              <th style="text-align: right;">{{$ctrl.scenario.title}}</th>
+            </tr>
+          </thead>
+            <tbody>
+                <tr ng-repeat="x in value.year track by $index" ng-class="$index > 2 ? 'table_4' : ''">
+                  <td >{{$index}}</td>
+                  <td ng-repeat="y in x">${{y.cumulative_net_returns | number : 2}}</td>
+                  <td >{{value.total[$index].cumulative_net_returns | number : 2}}</td>
+                  <!-- <td >{{$ctrl.sum($index)}}</td> -->
+                </tr>
+            </tbody>
+        </table>
+        </div>
+  </div>
+  </div>
+
+<br/>
+<div>
+<button  type="button"style="width: 100%"class="btn btn-success" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapseTwo">
+        <h7>Balance Sheets</h7>
+</button>
+
+
+
+  <div id="collapse3" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div ng-repeat="(key, value) in $ctrl.balance_sheets_list">
+      <h5>{{value.name}}</h5>
+    <div class="container">
+
+
+
+          <table class="table table-hover table-bordered">
+            <thead class="bg-primary" style="border: none">
+              <tr class="noBorder">
+                <th  style="border-right:none">year</th>
+                <th scope="col">0</th>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col">4</th>
+                <th scope="col">5</th>
+                <th scope="col">6</th>
+                <th scope="col">7</th>
+                <th scope="col">8</th>
+                <th scope="col">9</th>
+                <th scope="col">10</th>
+              </tr>
+            </thead>
+
+            <tbody >
+              <tr>
+                <th scope="row" colspan="12" style="background-color:lightgray;">Current Assets</th>
+              </tr>
+              <tr>
+                <th scope="row">Cash & Checking</th>
+                <th scope="row" ng-repeat="(key, value) in value.cash track by key">{{value|number:0}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Accounts Receivable</th>
+
+                <th scope="row" ng-repeat="(key, value) in value.account_receivable track by key">{{$ctrl.account_receivable[key]}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Prepaid Expenses</th>
+                <th scope="row" ng-repeat="(key, value) in value.prepaid_expenses track by key">{{$ctrl.prepaid_expenses[key]}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Cash Investments</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.investment track by key">{{$ctrl.investment[key]}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Marketable Livestock</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.marketable_livestock track by key">{{$ctrl.marketable_livestock[key]}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Stored Crops and Feed</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.stored_crops_and_feed track by key">{{$ctrl.stored_crops_and_feed[key]}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Purchased Feed</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.purchased_feed track by key">{{$ctrl.purchased_feed[key]}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Supplies</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.supplies track by key"> {{$ctrl.supplies[key]}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Other Current Assets</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.other_assets track by key"> {{$ctrl.other_assets[key]}} </th>
+              </tr>
+
+
+              <tr>
+                <th scope="row" colspan="12" style="background-color:lightgray;">Intermediate Assets</th>
+              </tr>
+              <tr>
+                <th scope="row">Vehicles, Machinery</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.short_asset track by key">{{value|number:0}}</th>
+              </tr>
+
+
+
+              <tr>
+                <th scope="row" colspan="12" style="background-color:lightgray;">Long Term Assets</th>
+              </tr>
+
+              <tr>
+                <th scope="row">Real Estate, Land</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.real_estate_land track by key">{{$ctrl.real_estate_land[key]|number:0}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Buildings & Improvements</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.long_asset track by key">{{value|number:0}}</th>
+              </tr>
+
+
+              <tr>
+                <th scope="row" colspan="12" style="background-color:lightgray;">Current Liabilities</th>
+              </tr>
+              <tr>
+                <th scope="row">Accounts Payable</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.accounts_payable track by key"> {{$ctrl.accounts_payable[key]}} </th>
+              </tr>
+              <tr>
+                <th scope="row">Employee Payroll Withholding
+                <th scope="row" ng-repeat="(key, value) in $ctrl.employee_payroll_withholding track by key">{{$ctrl.employee_payroll_withholding[key]}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Income Taxes</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.income_taxes track by key"> {{$ctrl.income_taxes[key]}}</th>
+              </tr>
+              <tr>
+                <th scope="row">Deferred Taxes</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.deferred_taxes track by key"> {{$ctrl.deferred_taxes[key]}} </th>
+              </tr>
+              <tr>
+                <th scope="row">Other Accrued Expenses</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.other_accured_expenses track by key"> {{$ctrl.other_accured_expenses[key]}} </th>
+              </tr>
+              <tr>
+                <th scope="row">Other Current Liabilities</th>
+                <th scope="row" ng-repeat="(key, value) in $ctrl.other_current_liabilites track by key">{{$ctrl.other_current_liabilites[key]}}</th>
+              </tr>
+
+            </tbody>
+          </table>
+    </div>
+    </div>
+
+
+</div>
+</div>
+
+
+<br>
+
+<button  type="button"style="width: 100%"class="btn btn-success" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapseTwo">
+        <h7> Cash Flow </h7>
+</button>
+<div id="collapse4" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+<div ng-repeat="(key, value) in $ctrl.cashflow_list">
+  <h5>{{value.name}}</h5>
+
+    <div class="container">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">year</th>
+            <th scope="col">1</th>
+            <th scope="col">2</th>
+            <th scope="col">3</th>
+            <th scope="col">4</th>
+            <th scope="col">5</th>
+            <th scope="col">6</th>
+            <th scope="col">7</th>
+            <th scope="col">8</th>
+            <th scope="col">9</th>
+            <th scope="col">10</th>
+          </tr>
+        </thead>
+
+        <tbody >
+          <tr>
+              <th colspan="11">income</th>
+            </tr>
+          <tr ng-repeat="(key, value_1) in value.income">
+
+            <th scope="row">{{value_1.name}}</th>
+            <td>{{value_1.year_1}}</td>
+            <td>{{value_1.year_2}}</td>
+            <td>{{value_1.year_3}}</td>
+            <td>{{value_1.year_4}}</td>
+            <td>{{value_1.year_5}}</td>
+            <td>{{value_1.year_6}}</td>
+            <td>{{value_1.year_7}}</td>
+            <td>{{value_1.year_8}}</td>
+            <td>{{value_1.year_9}}</td>
+            <td>{{value_1.year_10}}</td>
+          </tr>
+
+          <tr>
+              <th colspan="11">expense</th>
+          </tr>
+
+          <tr ng-repeat="(key, value2) in value.expense">
+            <th scope="row">{{value2.name}}</th>
+            <td>{{value2.year_1}}</td>
+            <td>{{value2.year_2}}</td>
+            <td>{{value2.year_3}}</td>
+            <td>{{value2.year_4}}</td>
+            <td>{{value2.year_5}}</td>
+            <td>{{value2.year_6}}</td>
+            <td>{{value2.year_7}}</td>
+            <td>{{value2.year_8}}</td>
+            <td>{{value2.year_9}}</td>
+            <td>{{value2.year_10}}</td>
+          </tr>
+
+
+
+          </tbody>
+      </table>
+    </div>
+</div>
+</div>

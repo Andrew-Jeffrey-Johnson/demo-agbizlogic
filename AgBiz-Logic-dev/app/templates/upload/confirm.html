@@ -1,0 +1,231 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+
+{% block content %}
+
+
+
+<div class="container">
+
+
+  <form action="" method="post">
+  {% csrf_token %}
+
+
+
+  {{ wizard.management_form }}
+  {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+      {% for form in wizard.form.forms %}
+          {{ form.as_p }}
+
+
+      {% endfor %}
+
+  {% else %}
+
+
+  {{wizard.form | bootstrap}}
+
+
+{% endif %}
+
+
+
+
+
+<h5 style="text-align:center"> Convert your accounting data to <i>AgBiz Logic</i> </h5>
+
+<p> Confirm the amounts you entered for your income and expenses are correct. If you need to make any changes, click the Back button.
+ </p>
+
+
+<div class="row">
+
+<div class="col-lg-8">
+
+
+    <h6> Income </h6>
+    <table id="income" class="table table-bordered">
+      <thead>
+            <tr>
+                <th>Category</th>
+                <th style="text-align:right">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <h6> Expenses </h6>
+
+    <table id="expenses" class="table table-bordered">
+      <thead>
+            <tr>
+                <th>Category</th>
+                <th style="text-align:right">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+</div> <!--end col-->
+</div> <!--end row-->
+
+ {% if wizard.steps.prev %}
+           <a class="btn btn-default" type="button" href="/income/">Back</a>
+        {% endif %}
+
+ <input type="submit" class="btn pull-right btn-success"  value="Continue" />
+
+
+  </form>
+
+</div>
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+
+    var income_panel = ["#income-panel-1-total", "#income-panel-2-total", "#income-panel-3-total", "#income-panel-4-total", "#income-panel-5-total", "#income-panel-6-total", "#income-panel-7-total", "#income-panel-8-total"]
+
+    var expense_panel = ["#expense-panel-1-total", "#expense-panel-2-total", "#expense-panel-3-total", "#expense-panel-4-total", "#expense-panel-5-total", "#expense-panel-6-total", "#expense-panel-7-total", "#expense-panel-8-total", "#expense-panel-9-total", "#expense-panel-10-total", "#expense-panel-11-total", "#expense-panel-12-total", "#expense-panel-13-total", "#expense-panel-14-total", "#expense-panel-15-total", "#expense-panel-16-total", "#expense-panel-17-total", "#expense-panel-18-total", "#expense-panel-19-total", "#expense-panel-20-total", "#expense-panel-21-total", "#expense-panel-22-total", "#expense-panel-23-total", "#expense-panel-24-total", "#expense-panel-25-total", "#expense-panel-26-total"]
+
+    var label = {"#income-panel-1-total":"Sales of livestock, produce, grains and other products",
+                "#income-panel-2-total":'Cooperative distributions received',
+                "#income-panel-3-total":'Agricultural program payments',
+                "#income-panel-4-total":'Commodity Credit Corporation',
+                "#income-panel-5-total":'Crop insurance proceeds & federal crop disaster payments',
+                "#income-panel-6-total":'Specified custom hire (machine work) income',
+                "#income-panel-7-total":'Other income',
+                "#income-panel-8-total":'Total',
+                "#expense-panel-1-total":'Cost of goods sold',
+                "#expense-panel-2-total":'Car and truck expenses',
+                "#expense-panel-3-total":'Chemicals',
+                "#expense-panel-4-total":'Conservation expenses',
+                "#expense-panel-5-total":'Custom hire (machine work)',
+                "#expense-panel-6-total":'L-T asset replacement and section 179 expense',
+                "#expense-panel-7-total":'Employee benefit programs',
+                "#expense-panel-8-total":'Feed',
+                "#expense-panel-9-total":'Fertilizers and lime',
+                "#expense-panel-10-total":'Freight and trucking',
+                "#expense-panel-11-total":'Gasoline, fuel, and oil',
+                "#expense-panel-12-total":'Insurance (other than health)',
+                "#expense-panel-13-total":'Interest on loans and mortgages',
+                "#expense-panel-14-total":'Labor hired (less employment credits)',
+                "#expense-panel-15-total":'Pension and profit-sharing plans',
+                "#expense-panel-16-total":'Rent and leases: Machinery, equipment and vehicles',
+                "#expense-panel-17-total":'Rent and leases: Land and animals',
+                "#expense-panel-18-total":'Repairs and maintenance',
+                "#expense-panel-19-total":'Seeds and plants',
+                "#expense-panel-20-total":'Storage and warehousing',
+                "#expense-panel-21-total":'Supplies',
+                "#expense-panel-22-total":'Property taxes',
+                "#expense-panel-23-total":'Utilities',
+                "#expense-panel-24-total":'Veterinary, breeding, and medicine',
+                "#expense-panel-25-total":'Other expenses',
+                "#expense-panel-26-total":'Total'}
+                var income_sum = 0
+                var expense_sum = 0
+
+function formatNumber (num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+}
+
+$.each(income_panel , function(i, val) {
+
+      $('#income tr:last').after('<tr><td>'+label[val]+'</td> <td style="text-align:right">$'+formatNumber(JSON.parse(localStorage.getItem(val)))+'</td></tr>');
+      income_sum += parseFloat(JSON.parse(localStorage.getItem(val)))
+      localStorage.setItem("#income-panel-8-total", income_sum.toFixed(2))
+});
+
+
+$.each(expense_panel , function(i, val) {
+
+      $('#expenses tr:last').after('<tr><td>'+label[val]+'</td> <td style="text-align:right">$'+formatNumber(JSON.parse(localStorage.getItem(val)))+'</td></tr>');
+      expense_sum += parseFloat(JSON.parse(localStorage.getItem(val)))
+      localStorage.setItem("#expense-panel-26-total", expense_sum.toFixed(2))
+});
+
+$("form").submit(function (e) {
+
+   var cost = {}
+
+$.each(income_panel , function(i, val) {
+
+      //remove #
+      cost[val.substring(1)] = localStorage.getItem(val);
+
+});
+
+$.each(expense_panel , function(i, val) {
+
+      //remove #
+      cost[val.substring(1)] = localStorage.getItem(val);
+
+});
+
+    var formId = this.id;  // "this" is a reference to the submitted form
+     $.ajaxSetup({
+             beforeSend: function(xhr, settings) {
+                 function getCookie(name) {
+                     var cookieValue = null;
+                     if (document.cookie && document.cookie != '') {
+                         var cookies = document.cookie.split(';');
+                         for (var i = 0; i < cookies.length; i++) {
+                             var cookie = jQuery.trim(cookies[i]);
+                             // Does this cookie string begin with the name we want?
+                         if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                             cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                             break;
+                         }
+                     }
+                 }
+                 return cookieValue;
+                 }
+                 if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                     // Only send the token to relative URLs i.e. locally.
+                     xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                 }
+             }
+            })
+
+
+
+            $.ajax({
+
+
+
+            url: "/draggable/",
+            type: "POST",
+            data: {cost:JSON.stringify(cost)},
+            dataType: 'json',
+            success: function(data) {
+
+              console.log("Success!")
+
+            } //function
+
+            }); //ajax
+
+
+});
+
+</script>
+
+
+
+
+{% endblock %}

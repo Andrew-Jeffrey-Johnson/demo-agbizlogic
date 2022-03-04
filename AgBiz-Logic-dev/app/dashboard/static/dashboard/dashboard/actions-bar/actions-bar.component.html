@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      Quick Actions
+    </h6>
+  </div>
+  <div
+    class="panel-body"
+    uib-collapse="$ctrl.showActions == false">
+    <div class="row">
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        ng-click="$ctrl.go('budget')">
+        Budget Manager
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        ng-click="$ctrl.go('climate')">
+        Climate Scenario Manager
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        ng-click="$ctrl.go('plan')">
+        Plan Manager
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        ng-click="$ctrl.go('scenario')">
+        Scenario Manager
+      </button>
+    </div>
+  </div>
+</div>

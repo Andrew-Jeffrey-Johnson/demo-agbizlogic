@@ -1,0 +1,76 @@
+<div
+  class="form-group panel panel-info"
+  ng-if="$ctrl.items_allowed">
+  <div class="panel-heading">
+    <h5 class="panel-title">Add or Create New Plan</h5>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <select
+          name="plan"
+          class="form-control"
+          ng-options="plan as (plan.full_title)  for plan in $ctrl.optionList"
+          ng-model="$ctrl.new_plan">
+          <option value="">Select Plan</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <button
+          class="btn btn-success"
+          ng-click="$ctrl.onAdd({plan: $ctrl.new_plan})">
+          Add Plan to Scenario
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button
+          class="btn btn-primary"
+          ng-click="$ctrl.onNew()">
+          Create New Plan
+        </button>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <select
+          name="scenario"
+          class="form-control"
+          ng-options="scenario.title for scenario in $ctrl.scenario_list"
+          ng-model="$ctrl.selected_scenario">
+          <option value="">Select Scenario</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <button
+          class="btn btn-success"
+          ng-click="$ctrl.addScenarioPlan()">
+          Copy Plan(s) to Scenario
+        </button>
+      </div>
+    </div>
+      <!-- <div class="col-md-2">
+        <button
+          class="btn btn-primary"
+          ng-click="">
+          Create New
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<br>
+
+<h4>Plans Selected</h4>
+
+<manager-list
+  module="$ctrl.module"
+  item-list="$ctrl.planList"
+  show-notes="$ctrl.showNotes"
+  editable="true"
+  delete-only="true"
+  on-delete="$ctrl.onDelete({item: item})">
+</manager-list>

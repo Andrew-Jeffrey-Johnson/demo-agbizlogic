@@ -1,0 +1,423 @@
+{% extends "wizard.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+ <link rel="stylesheet" href="{% static "css/select2.min.css" %}" />
+
+
+  {% for field in form %}
+    {{field.error}}
+  {% endfor %}
+
+
+
+
+
+<h3>Create University Budget</h3>
+
+<h4>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h4>
+
+
+
+<br>
+
+
+
+
+<div class="form">
+
+    <form action=""  method="post">
+      {% csrf_token %}
+
+
+
+        {{ wizard.management_form}}
+        {% if wizard.form.forms %}
+            {{ wizard.form.management_form}}
+            {% for form in wizard.form.forms %}
+          {{ form.as_p }}
+
+            {% endfor %}
+        {% else %}
+
+        {{ wizard.form }}
+
+          <p id="enterprise"> Enterprise</p>
+          <p><b> Name: </b> {{name}}</p>
+          <p> <b> State: </b> {{state}}</p>
+          <p> <b> Note: </b> {{note}}</p>
+
+
+
+
+
+
+
+
+
+
+
+        <h4>Gross Income</h4>
+        <table id="gross_income" class="table table-bordered">
+        <thead>
+        <tr>
+
+        <th>Crop</th>
+
+        <th style='text-align:right'>Unit Sold by/as</th>
+
+
+        <th style="text-align:right">Price per Unit</th>
+        <th style='text-align:right'>Quantity</th>
+        <th style="text-align:right">Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+
+        <td></td>
+
+        <td style='text-align:right'>{{variety_unit}}</td>
+        <td style="text-align:right">{{price}}</td>
+        <td style='text-align:right'>{{number_of_unit}}</td>
+        <td style="text-align:right">{{total}}</td>
+
+        </tr>
+
+        </tbody>
+        </table>
+
+        <p class="pull-right"> <b>Total Gross Income:</b> {{total}}</p>
+
+
+{% if budget_type == "Detail" %}
+
+    <br>
+
+          <h4>Variable Cash Costs</h4>
+
+          <table id="variable_table" class="table table-bordered">
+            <thead>
+              <tr>
+              <th >Category</th>
+              <th>Sub-Category</th>
+              <th>Item</th>
+              <th style="text-align:right">Quantity</th>
+              <th style="text-align:right">Unit</th>
+              <th style="text-align:right">Price per Unit</th>
+              <th style="text-align:right">Total</th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+
+
+
+
+
+
+
+
+            </table>
+
+
+
+              <div>
+
+
+            <p class="text-right" id="detail_total_var"> <b>Total Variable Costs:</b> $0.00</p>
+            <p class="text-right" id="detail_net_return_after_var"><b>  Net Returns Above after Total:</b> $0.00</p>
+
+
+              </div>
+
+
+
+    <br>
+
+      <h4>Fixed Cash Costs</h4>
+      <table id="fixed_table" class="table table-bordered">
+        <thead>
+        <tr>
+
+        <th>Category</th>
+
+
+        <th style="text-align:right">Quantity</th>
+        <th style="text-align:right">Unit</th>
+        <th style="text-align:right">Price per Unit</th>
+        <th style="text-align:right">Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+
+
+        </tbody>
+
+
+      </table>
+
+      <div>
+
+
+      <p class="text-right" id="detail_total_fixed"> <b>Total Fixed Cash Costs:</b> $0.00</p>
+      <p class="text-right" id="detail_total"> <b>Total Variable and Fixed Cash Costs:</b> $0.00</p>
+      <p class="text-right" id="detail_net_return"><b> Net Returns Above after Total Var. & Fixed Cash Costs:</b>  $0.00</p>
+      <p class="text-right" id="detail_breakeven_price">  <b>Breakeven Price:</b>$0.00</p>
+      <p class="text-right" id="detail_breakeven_yield"> <b> Breakeven Yield:</b> 0.00</p>
+
+
+      </div>
+
+
+
+
+
+{% elif budget_type == "General" %}
+
+          <br>
+
+
+          <h4>Total Variable and Fixed Cash Costs</h4>
+
+        <table id="general_cost_table" class="table table-bordered">
+        <thead>
+        <tr>
+
+        <th>Category</th>
+
+
+        <th style="text-align:right">Quantity</th>
+        <th style="text-align:right">Unit</th>
+        <th style="text-align:right">Price per Unit</th>
+        <th style="text-align:right">Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+
+
+        </tbody>
+      </table>
+
+
+
+      <div>
+
+        <p class="text-right" id="general_total"> <b> $0.00</b></p>
+        <p class="text-right" id="general_net_return"> <b> $0.00</b></p>
+        <p class="text-right" id="general_breakeven_price"> <b> Breakeven Price:$0.00</b></p>
+        <p class="text-right" id="general_breakeven_yield"> <b> Breakeven Yield: 0.00</b></p>
+
+
+
+
+      </div>
+
+
+
+
+{%endif%}  <!-- get budget type -->
+         {% endif %}
+
+
+
+   {% if wizard.steps.prev %}
+   <button name="wizard_goto_step" class="btn btn-default" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+  {% endif %}
+    <a class="btn btn-default" type="button" href="/index/">Leave page</a>
+  <button type="submit" class="btn pull-right btn-success">Continue</button>
+
+
+
+</form>
+
+  </div> <!-- form -->
+
+
+
+<script src="{% static "js/vendor/jquery-1.8.3.js" %}"></script>
+ <script src="{% static "js/accounting.min.js" %}"></script>
+<script>
+
+$("form").submit(function (e) {
+
+
+  var variable_table = localStorage.getItem('variable_table');
+  var fixed_table = localStorage.getItem('fixed_table');
+  var enterprise = localStorage.getItem('current_university_enterprise');
+  var general_cost_table = localStorage.getItem('general_table');
+  //get enterprise
+  console.log(enterprise);
+
+    var formId = this.id;  // "this" is a reference to the submitted form
+     $.ajaxSetup({
+             beforeSend: function(xhr, settings) {
+                 function getCookie(name) {
+                     var cookieValue = null;
+                     if (document.cookie && document.cookie != '') {
+                         var cookies = document.cookie.split(';');
+                         for (var i = 0; i < cookies.length; i++) {
+                             var cookie = jQuery.trim(cookies[i]);
+                             // Does this cookie string begin with the name we want?
+                         if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                             cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                             break;
+                         }
+                     }
+                 }
+                 return cookieValue;
+                 }
+                 if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                     // Only send the token to relative URLs i.e. locally.
+                     xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                 }
+             }
+            })
+
+
+
+            $.ajax({
+
+
+
+            url: "/get_university_budget/", //
+            type: "POST",
+            data: {variable_table:variable_table, general_cost_table:general_cost_table, enterprise:enterprise, fixed_table:fixed_table},
+            dataType: 'json',
+            success: function(data) {
+
+              console.log("Success!")
+
+
+
+            } //function
+
+            }); //ajax
+
+
+
+
+
+});
+
+
+
+
+  var variable_table = JSON.parse(localStorage.getItem('variable_table'));
+  var fixed_table = JSON.parse(localStorage.getItem('fixed_table'));
+
+  var general_cost_table = JSON.parse(localStorage.getItem('general_table'));
+
+
+
+$(variable_table).each(function(index , value) {
+
+
+
+        $('#variable_table > tbody:last').append('<tr> <td>'+value[1]+'</td> <td >'+value[2]+'</td> <td >'+value[3]+'</td> <td style="text-align:right">'+value[4]+'</td> <td style="text-align:right">'+value[5]+'</td>  <td style="text-align:right">'+value[6]+'</td>  <td style="text-align:right">'+value[7]+'</td>  </tr>');
+
+
+
+
+
+
+
+      });
+
+$(fixed_table).each(function(index , value) {
+
+
+
+
+      $('#fixed_table > tbody:last').append('<tr> <td>'+value[1]+'</td> <td style="text-align:right">'+value[2]+'</td> <td style="text-align:right">'+value[3]+'</td> <td style="text-align:right">'+value[4]+'</td> <td style="text-align:right">'+value[5]+'</td>  </tr>');
+
+
+
+
+
+
+      });
+
+$(general_cost_table).each(function(index , value) {
+
+
+
+
+      $('#general_cost_table > tbody:last').append('<tr> <td >'+value[1]+'</td> <td style="text-align:right">'+value[2]+'</td> <td style="text-align:right">'+value[3]+'</td> <td style="text-align:right">'+value[4]+'</td>   <td style="text-align:right">'+value[5]+'</td></tr>');
+
+
+
+
+
+
+      });
+
+    var enterprise = JSON.parse(localStorage.getItem('current_university_enterprise'));
+//gross income table
+      //put this in a function
+
+      removeItem = "--";
+      new_enterprise = jQuery.grep(enterprise, function(value) {
+        return value != removeItem;
+      });
+
+      $("#gross_income tr:last td:eq(0)").text(new_enterprise.slice(2,new_enterprise.length).join(' - '));
+
+      $("#enterprise").html("<b>Enterprise: </b> "+new_enterprise.join(' - '));
+
+      if (JSON.parse(localStorage.getItem("general_breakeven_price"))){
+
+
+    $("#general_total").html("<b>Total Variable and Fixed Cash Costs: </b> "+accounting.formatMoney(JSON.parse(localStorage.getItem("general_total_cost"))));
+    $("#general_net_return").html("<b>Total Gross Income Less Total Variable & Fixed Cash Costs: </b> "+accounting.formatMoney(JSON.parse(localStorage.getItem("general_net_return"))));
+        $("#general_breakeven_price").html("<b>Breakeven Price: </b> "+accounting.formatMoney(JSON.parse(localStorage.getItem("general_breakeven_price"))));
+        $("#general_breakeven_yield").html("<b>Breakeven Yield: </b> "+JSON.parse(localStorage.getItem("general_breakeven_yield")).toFixed(2));
+      }
+
+      if (JSON.parse(localStorage.getItem("breakeven_price"))){
+
+        $("#detail_breakeven_price").html("<b>Breakeven Price: </b> "+accounting.formatMoney(JSON.parse(localStorage.getItem("breakeven_price"))));
+        $("#detail_breakeven_yield").html("<b>Breakeven Yield: </b> "+JSON.parse(localStorage.getItem("breakeven_yield")).toFixed(2));
+
+
+
+
+        $("#detail_total_var").html("<b>Total Variable Costs: </b> "+accounting.formatMoney(JSON.parse(localStorage.getItem("total_variable_cost"))));
+        $("#detail_net_return_after_var").html("<b>Net Returns Above after Total: </b> "+accounting.formatMoney(JSON.parse(localStorage.getItem("net_return_above_total"))));
+    $("#detail_total_fixed").html("<b>Total Fixed Cash Costs: </b> "+accounting.formatMoney(JSON.parse(localStorage.getItem("total_fixed_cash_cost"))));
+
+
+        $("#detail_total").html("<b>Total Variable and Fixed Cash Costs: </b> "+accounting.formatMoney(JSON.parse(localStorage.getItem("total_var_and_fixed"))));
+        $("#detail_net_return").html("<b>Total Gross Income Less Total Var. & Fixed Cash Costs: </b> "+accounting.formatMoney(JSON.parse(localStorage.getItem("total_var_and_fixed_after_return"))));
+
+
+
+
+
+
+
+
+
+
+
+      }
+</script>
+
+
+
+
+{% endblock %}

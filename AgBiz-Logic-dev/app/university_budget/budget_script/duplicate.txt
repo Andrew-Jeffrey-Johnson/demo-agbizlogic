@@ -1,0 +1,103 @@
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 146
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1460
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1461
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1462
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1463
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1464
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1465
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1466
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1467
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1468
+    }, 
+    {
+        "fields": {
+--
+            "unit_quantity": 1
+        }, 
+        "model": "university_budget.universitycostitem", 
+        "pk": 1469
+    }, 
+    {
+        "fields": {
+--
+            "sale_unit_quantity": 0
+        }, 
+        "model": "university_budget.UniversityIncomeItem", 
+        "pk": 146
+    }, 
+    {
+        "fields": {
+--
+            "title": "Hazelnuts, Standard-Density, Estab. Year 3, Willamette Valley, Oregon"
+        }, 
+        "model": "university_budget.universitybudget", 
+        "pk": 146
+    }, 
+    {
+        "fields": {

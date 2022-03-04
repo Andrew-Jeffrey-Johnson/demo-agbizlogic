@@ -1,0 +1,218 @@
+{
+  "expenses_goods": {
+    "name": "expenses_goods",
+    "label": "Cost of goods sold",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_car": {
+    "name": "expenses_car",
+    "label": "Car and truck expenses",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_chemicals": {
+    "name": "expenses_chemicals",
+    "label": "Chemicals",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_conservation": {
+    "name": "expenses_conservation",
+    "label": "Conservation expenses",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_custom_hire": {
+    "name": "expenses_custom_hire",
+    "label": "Custom hire",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_depreciation": {
+    "name": "expenses_depreciation",
+    "label": "L-T asset replacement and section 179 expense",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_employee_benefit": {
+    "name": "expenses_employee_benefit",
+    "label": "Employee benefit programs",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_feed": {
+    "name": "expenses_feed",
+    "label": "Feed",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_fertilizers": {
+    "name": "expenses_fertilizers",
+    "label": "Fertilizers and lime",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_freight": {
+    "name": "expenses_freight",
+    "label": "Freight and trucking",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_gasoline": {
+    "name": "expenses_gasoline",
+    "label": "Gasoline, fuel and oil",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_insurance": {
+    "name": "expenses_insurance",
+    "label": "Insurance (other than health)",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_interest_mortgages": {
+    "name": "expenses_interest_mortgages",
+    "label": "Interest on loans and mortgages",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_labor": {
+    "name": "expenses_labor",
+    "label": "Labor hired (less employment credits)",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_pension": {
+    "name": "expenses_pension",
+    "label": "Pension and profit-sharing plans",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_property_taxes": {
+    "name": "expenses_property_taxes",
+    "label": "Property taxes",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_machinery_rent": {
+    "name": "expenses_machinery_rent",
+    "label": "Rent and leases: Machinery, equipment and vehicles",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_land_rent": {
+    "name": "expenses_land_rent",
+    "label": "Rent and leases: Land and animals",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_repairs": {
+    "name": "expenses_repairs",
+    "label": "Repairs and maintenance",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_seeds": {
+    "name": "expenses_seeds",
+    "label": "Seeds and plants",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_storage": {
+    "name": "expenses_storage",
+    "label": "Storage and warehousing",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_supplies": {
+    "name": "expenses_supplies",
+    "label": "Supplies",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_utilities": {
+    "name": "expenses_utilities",
+    "label": "Utilities",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_veterinary": {
+    "name": "expenses_veterinary",
+    "label": "Veterinary, breeding, and medicine",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_other_1": {
+    "name": "expenses_other_1",
+    "label": "Other expenses",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_other_2": {
+    "name": "expenses_other_2",
+    "label": "Other expenses",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_other_3": {
+    "name": "expenses_other_3",
+    "label": "Other expenses",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_other_4": {
+    "name": "expenses_other_4",
+    "label": "Other expenses",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_other_5": {
+    "name": "expenses_other_5",
+    "label": "Other expenses",
+    "type": "expense",
+    "total": 0
+  },
+  "expenses_other_6": {
+    "name": "expenses_other_6",
+    "label": "Other expenses",
+    "type": "expense",
+    "total": 0
+  },
+  "income_sales": {
+    "name": "income_sales",
+    "label": "Sales of livestock, produce, grains and other products",
+    "type": "income",
+    "total": 0
+  },
+  "income_cooperative": {
+    "name": "income_cooperative",
+    "label": "Cooperative distributions received",
+    "type": "income",
+    "total": 0
+  },
+  "income_agriculture_programs": {
+    "name": "income_agriculture_programs",
+    "label": "Agricultural program payments",
+    "type": "income",
+    "total": 0
+  },
+  "income_insurance": {
+    "name": "income_insurance",
+    "label": "Crop insurance proceeds and federal crop disaster payments",
+    "type": "income",
+    "total": 0
+  },
+  "income_custom_hire": {
+    "name": "income_custom_hire",
+    "label": "Custom hire income",
+    "type": "income",
+    "total": 0
+  },
+  "income_other": {
+    "name": "income_other",
+    "label": "Other income",
+    "type": "income",
+    "total": 0
+  }
+}

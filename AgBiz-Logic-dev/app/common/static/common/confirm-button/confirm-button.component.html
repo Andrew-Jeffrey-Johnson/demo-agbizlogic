@@ -1,0 +1,45 @@
+<div
+  class="col-md-2"
+  style="display: flex; justify-content: space-between;">
+  <div
+    style="width: 100px;"
+    ng-if="$ctrl.confirm == false">
+    <button
+      class="btn btn-danger"
+      ng-class="{
+        'btn-danger': $ctrl.type == 'danger',
+        'btn-success': $ctrl.type == 'success',
+        'btn-primary': $ctrl.type == 'primary',
+      }"
+      uib-tooltip="{$ $ctrl.message $}"
+      tooltip-placement="top-left"
+      ng-disabled="$ctrl.disabled"
+      ng-click="$ctrl.confirm = true">
+      <span ng-bind="$ctrl.label"></span>
+    </button>
+  </div>
+
+  <div
+    style="width: 100px;"
+    ng-if="$ctrl.confirm == true">
+    <button
+      style="width: 100%"
+      class="btn btn-warning"
+      ng-click="$ctrl.confirm = false">
+      Cancel
+    </button>
+  </div>
+
+  <div
+    style="width: 100px;"
+    ng-if="$ctrl.confirm == true">
+    <button
+      style="width: 100%; margin-left: 10px;"
+      class="btn btn-danger"
+      uib-tooltip="{$ $ctrl.message $}"
+      ng-click="$ctrl.onConfirm()">
+      Confirm
+    </button>
+  </div>
+
+</div>

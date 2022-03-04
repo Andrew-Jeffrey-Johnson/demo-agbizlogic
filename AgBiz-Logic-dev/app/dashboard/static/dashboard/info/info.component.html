@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4>Welcome back, <span ng-bind="$ctrl.user.username"></span></h4>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        Thank you for choosing <i>AgBiz Logic</i> as your primary tool to manage your investment decisions. You now
+        have access to the most advanced planning and decision tools available, anywhere, on any internet-connected
+        device.
+        <b>Let's get to work.</b>
+      </div>
+
+      <div class="col-md-6">
+        <div class="list-group">
+          <div class="list-group-item">
+            <div class="row">
+              <i class="col-md-12">Did you know?</i>
+            </div>
+            <div class="row">
+              <span
+                class="col-md-12"
+                ng-bind="$ctrl.random_fact">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

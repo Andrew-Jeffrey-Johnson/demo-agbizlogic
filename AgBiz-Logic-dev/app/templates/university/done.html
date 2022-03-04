@@ -1,0 +1,27 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+{% block content %}
+
+    <ol class="progtrckr" data-progtrckr-steps="5">
+    <li class="progtrckr-done">Account Information</li>
+    <li class="progtrckr-done">Business Information</li>
+    <li class="progtrckr-done">Enterprise</li>
+    <li class="progtrckr-todo">Asset</li>
+    <li class="progtrckr-todo">Liabilities</li>
+</ol> 
+  
+
+  <h2>Your Business Enterprise Summary</h2>
+
+
+<p> Congratulations!  You have created an account and provided us the necessary business information.  
+
+This information was automatically saved.  However, in subsequent screens you will be required to save your information by selecting the Save buttons or prompted when exiting the site.
+</p>
+
+<a href="/enterprise/" data-role="button">Add More Enterprises</a> 
+   
+
+  
+{% endblock %}

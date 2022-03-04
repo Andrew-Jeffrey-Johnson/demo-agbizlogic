@@ -1,0 +1,180 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3
+      class="panel-title"
+      ng-bind="$ctrl.modal_title">
+    </h3>
+
+  </div>
+<div class="panel-body">
+<pre ng-if="$ctrl.validate" style='text-align:center'>Please fill in all fields </pre>
+ <div class="row">
+  <h6 class="col-md-12"><b>New Budget Creator</b></h6>
+
+</div>
+
+  <!-- Title -->
+<form name=newBudgetForm>
+<div class="row">
+  <label
+    class="col-md-3">
+    Enter Budget Name:
+  </label>
+  <div class="col-md-8">
+    <input
+      class="form-control"
+      type="text"
+      name="budgetTitle"
+      placeholder="Enter Name..."
+      ng-model="$ctrl.budget.title"
+      ng-change="$ctrl.Validate()">
+    </input>
+    <span class="error" ng-show="newBudgetForm.budgetTitle.$touched && !$ctrl.budget.title.length" style="color:red;">Required</span>
+    <span class="error" ng-show="$ctrl.budget.title.length && $ctrl.duplicateBudgetTitle" style="color:red;">Duplicated Name</span>
+  </div>
+</div>
+
+<!-- Enterprise -->
+<div class="row">
+  <label
+    class="col-md-3">
+    By Enterprise:
+  </label>
+  <div class="col-md-8">
+    <select
+      class="form-control"
+      ng-model="$ctrl.search.enterprise"
+      ng-change="$ctrl.Validate()"
+      ng-options="enterprise.value as enterprise.label for enterprise in $ctrl.enterprise_list">
+    </select>
+  </div>
+</div>
+<form>
+
+  <div class="row">
+      <label class="col-md-3">
+        <span>{$ $ctrl.commodities[$ctrl.search.enterprise].label $}</span>
+      </label>
+        <div class="col-md-8">
+      <select
+        class="form-control"
+        ng-change="$ctrl.Validate()"
+        ng-model="$ctrl.enterprise.category_1"
+        ng-show="$ctrl.search.enterprise"
+        ng-options="category_1.name for category_1 in $ctrl.commodities[$ctrl.search.enterprise].category_1 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+    </div>
+
+  <div
+      class="row"
+      ng-show="$ctrl.enterprise.category_1 && $ctrl.enterprise.category_1.category_2.length > 0">
+      <label class="col-md-3">
+        <span>{$ $ctrl.enterprise.category_1.label $}</span>
+      </label>
+      <div class="col-md-8">
+      <select
+        class="form-control" id="select_category_2"
+        ng-change="$ctrl.Validate()"
+        ng-model="$ctrl.enterprise.category_2"
+        ng-options="category_2.name for category_2 in $ctrl.enterprise.category_1.category_2 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+    </div>
+
+  <div class="row">
+      <label class="col-md-3">
+        <span>{$ $ctrl.enterprise.category_2.label $}</span>
+      </label>
+      <div class="col-md-8">
+      <select
+        class="form-control" id="select_category_3"
+        ng-change="$ctrl.Validate()"
+        ng-model="$ctrl.enterprise.category_3"
+        ng-show="$ctrl.enterprise.category_2 && $ctrl.enterprise.category_2.category_3.length"
+        ng-options="category_3.name for category_3 in $ctrl.enterprise.category_2.category_3 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+    </div>
+
+
+    <div class="row">
+      <label class="col-md-3">
+        <span >{$ $ctrl.enterprise.category_3.label $}</span>
+      </label>
+      <div class="col-md-8">
+      <select
+        class="col-md-4" id="select_category_4"
+        ng-change="$ctrl.Validate()"
+        ng-model="$ctrl.enterprise.category_4"
+        ng-show="$ctrl.enterprise.category_3 && $ctrl.enterprise.category_3.category_4.length"
+        ng-options="category_4.name for category_4 in $ctrl.enterprise.category_3.category_4 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+    </div>
+
+    <div class="row">
+      <label class="col-md-3">
+        <span >{$ $ctrl.enterprise.category_4.label $}</span>
+      </label>
+      <div class="col-md-8">
+      <select
+        class="form-control" id="select_category_5"
+        ng-change="$ctrl.Validate()"
+        ng-model="$ctrl.enterprise.category_5"
+        ng-show="$ctrl.enterprise.category_4 && $ctrl.enterprise.category_4.category_5.length"
+        ng-options="category_5.name for category_5 in $ctrl.enterprise.category_4.category_5 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+    </div>
+
+     <div class="row">
+      <label class="col-md-3">
+        <span>{$ $ctrl.commodities[$ctrl.search.enterprise].market_label $}</span>
+      </label>
+      <div class="col-md-8">
+      <select
+        class="form-control" id="select_market"
+        ng-change="$ctrl.Validate()"
+        ng-model="$ctrl.enterprise.market"
+        ng-show="$ctrl.search.enterprise"
+        ng-options="market.name for market in $ctrl.commodities[$ctrl.search.enterprise].markets | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6">
+        <button
+          class="btn btn-warning"
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button
+          class="btn btn-success pull-right"
+          ng-click="$ctrl.addNewBudget()"
+          ng-disabled="$ctrl.validate"
+          >
+          Add New Budget
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>

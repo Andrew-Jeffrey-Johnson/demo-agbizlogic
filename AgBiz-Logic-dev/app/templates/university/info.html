@@ -1,0 +1,57 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+{% block content %}
+
+  <div class="hidden-xs hidden-sm">
+  <ol class="progtrckr" data-progtrckr-steps="5">
+    <li class="progtrckr-done">Account Information</li>
+    <li class="progtrckr-done">Business Information</li>
+    <li class="progtrckr-on">Enterprise</li>
+    <li class="progtrckr-todo">Asset</li>
+    <li class="progtrckr-todo">Liabilities</li>
+  </div>
+</ol> 
+
+<br> 
+
+<p>Before you can proceed to the Schedule F portion, you will need to first include all the enterprises you have. You are not required to include the type, commodity, gear type/class or variety of your enterprise.
+</p>
+
+ <div class="form">
+  <form action="" method="post">{% csrf_token %}
+
+<table>
+
+  {{ wizard.management_form  }}
+  {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+      {% for form in wizard.form.forms %}
+          {{ form | bootstrap}}
+
+      {% endfor %}
+  {% else %}
+      {{ wizard.form | bootstrap }}
+  {% endif %}
+  </table>
+ 
+   {% if wizard.steps.prev %}
+   <button name="wizard_goto_step" class="btn btn-primary" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+ 
+ 
+  {% endif %}
+  
+  <button type="submit" class="btn pull-right btn-success">Continue</button>
+  
+  <a class="btn btn-primary" type="button" href="/index/">Leave page</a>
+
+
+
+    
+  </form>
+
+</div>
+
+  
+  
+{% endblock %}

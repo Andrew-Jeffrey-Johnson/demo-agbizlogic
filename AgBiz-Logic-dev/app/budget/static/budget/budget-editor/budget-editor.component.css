@@ -1,0 +1,65 @@
+#fixedButtonWidth {
+  width: 90px !important;
+}
+
+.input-addon-button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    border-color: #1abc9c;
+}
+
+.budget-unit-input {
+    color: #34495e !important;
+}
+
+.budget-unit-input:hover {
+    cursor: pointer;
+    border-color: #1abc9c;
+}
+
+.editor-button {
+    margin: 10px;
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.modal-dialog{
+    width: 80%;
+}
+
+.modal-content{
+    padding: 20px;
+}
+
+#modal-form-btn{
+    width: 100%;
+    padding: 0px 0px;
+}
+
+#modal-form-text{
+    padding: 0px 50px;
+}
+
+.panel-heading{
+    padding:2px 15px;
+}
+
+input.ng-invalid {
+  border-color: red;
+}
+
+input.ng-invalid-required {
+  border-color: red;
+}
+
+select.ng-invalid {
+  border-color: red;
+}
+
+select.ng-invalid-required {
+  border-color: red;
+}

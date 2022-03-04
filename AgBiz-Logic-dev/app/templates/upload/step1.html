@@ -1,0 +1,163 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+{%load static%}
+
+<style>
+  .modal-dialog {
+      position: relative;
+      overflow-y: auto;
+      width: 80%;
+      height: 95%;
+  }
+</style>
+
+{% block content %}
+  <div class="container">
+
+    <br>
+    {% for field in form %}
+      {{field.error}}
+
+    {% endfor %}
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Example CSV/XLS</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-4">
+                <p>Transaction Sheet</p>
+                <img src="{% static "img/xls_1.PNG" %}" class="img-responsive">
+              </div>
+              <div class="col-lg-4">
+                <p>Profit and Loss</p>
+                <img src="{% static "img/xls_2.PNG" %}" class="img-responsive">
+              </div>
+              <div class="col-lg-4">
+                <p>Vendor Expenses</p>
+                <img src="{% static "img/vendor_expenses.PNG" %}" class="img-responsive">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="category" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Income/Expense Categories</h4>
+          </div>
+
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                FARM INCOME
+                <ul>
+                  <li>Sales of livestock, produce, grains and other products</li>
+                  <li>Cooperative distributions received</li>
+                  <li>Agricultural program payments</li>
+                  <li>Commodity Credit Corporation</li>
+                  <li>Crop insurance proceeds & federal crop disaster payments</li>
+                  <li>Specified custom hire (machine work) income</li>
+                  <li>Other income</li>
+                </ul>
+              </div>
+
+              <div class="col-lg-6">
+                FARM EXPENSES
+                <ul>
+                  <li>Cost of goods sold</li>
+                  <li>Car and truck expenses</li>
+                  <li>Chemicals</li>
+                  <li>Conservation expenses</li>
+                  <li>Custom hire (machine work)</li>
+                  <li>L-T asset replacement and section 179 expense</li>
+                  <li>Employee benefits programs
+                  <li>Feed</li>
+                  <li>Fertilizers and lime</li>
+                  <li>Freight and trucking</li>
+                  <li>Gasoline, fuel, and oil</li>
+                  <li>Insurance (other than health)</li>
+                  <li>Interest on loans and mortgages</li>
+                  <li>Labor hired (less employment credits)</li>
+                  <li>Pension and profit-sharing plans</li>
+                  <li>Rent and leases: Machinery, equipment and vehicles</li>
+                  <li>Rent and leases: Land and animals</li>
+                  <li>Repairs and maintenance</li>
+                  <li>Seeds and plants</li>
+                  <li>Storage and warehousing</li>
+                  <li>Supplies</li>
+                  <li>Property taxes</li>
+                  <li>Utilities</li>
+                  <li>Veterinary, breeding, and medicine</li>
+                  <li>Other expenses </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <form action=""  enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+
+      {{ wizard.management_form }}
+      {% if wizard.form.forms %}
+          {{ wizard.form.management_form }}
+          {% for form in wizard.form.forms %}
+              {{ form }}
+          {% endfor %}
+      {% else %}
+
+        <h5 style="text-align:center"> Import data from your accounting system or spreadsheet </h5>
+
+        <p><i>AgBiz Logic</i> allows you to import your income and expense data in a CSV or XLS file. Click <a data-toggle="modal" data-target="#myModal">here</a>  to see examples of acceptable file formats. For optimum results, ensure your document is in compliance with one of these formats. You can also create a file utilizing one of these templates: <a href={% static "download/expenses.xls" %}> Transaction Sheet </a> <a href={% static "download/profit_loss.xls" %}>, Profit and Loss </a> or <a href={% static "download/vendor_report.xls" %} download> Vendor Report </a>.</p>
+
+        <p> <b> Upload a CSV/XLS file </b> </p>
+
+        {{wizard.form}}
+
+        <p> When you have successfully loaded your file into <i>AgBiz Logic</i>, click the Continue button to categorize your income and expenses into <a data-toggle="modal" data-target="#category"><i>AgBiz Logic</i> standardized categories.</a>  </p>
+
+      {% endif %}
+
+      <a class="btn btn-default" type="button" href="/income/">Back</a>
+
+      <input type="submit" class="btn pull-right btn-success"  value="Continue" />
+
+    </form>
+  </div>
+
+
+  <script src="{% static "js/bootstrap.file-input.js" %}"></script>
+  <script>
+    $('input[type=file]').bootstrapFileInput();
+
+    $('form').on('submit', function(e) {
+       localStorage.clear();
+    });
+  </script>
+
+{% endblock %}

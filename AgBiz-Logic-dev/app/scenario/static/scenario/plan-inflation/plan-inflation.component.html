@@ -1,0 +1,209 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<div class="content-padding">
+  <h3>Inflation Rates</h3>
+  <p>Now you can designate annual inflation rates for your income and expense
+    items in this Plan. You can apply the same rate to all items in all Budgets,
+     apply the same rate to all items in each individual Budget, or enter a
+     separate rate for each item individually.</p>
+  <h4 ng-bind="$ctrl.plan.title"></h4>
+</div>
+
+
+
+<div ng-if="$ctrl.current_plan_budget.position == 0" class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Apply the same inflation rate to all Budgets in this Plan</h4>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <form
+        name="$ctrl.form">
+        <div style="float:left; margin-left:5px; margin-top:20px"> Apply </div>
+        <div style="">
+          <div class="input-group" style="float:left; width:250px; margin-left:10px;">
+            <input
+              name="inflation_rate_all"
+              class="form-control input-number"
+              type="number"
+              maxlength="3"
+              ng-model="$ctrl.inflation_rate_all_income"
+              ng-pattern="/^[-]{0,1}[0-9]{1,2}(\.[0-9]{1})?$/"
+              onfocus="if(this.value === 0)this.value='';"
+              onblur="if(this.value === '')this.value=0;">
+            <span class="input-group-addon">%</span>
+          </div>
+          <div style="float:left; margin-left:10px; margin-top:20px"> to all income items and </div>
+          <div class="input-group" style="float:left; width:250px; margin-left:10px">
+            <input
+              name="inflation_rate_all"
+              class="form-control input-number"
+              type="number"
+              maxlength="3"
+              ng-model="$ctrl.inflation_rate_all_expense"
+              ng-pattern="/^[-]{0,1}[0-9]{1,2}(\.[0-9]{1})?$/"
+              onfocus="if(this.value === 0)this.value='';"
+              onblur="if(this.value === '')this.value=0;">
+            <span class="input-group-addon">%</span>
+          </div>
+
+          <div style="float:left; margin-left:10px; margin-top:20px"> to all expense items in this Plan </div>
+
+          <span
+            class="help-block help-block-invalid"
+            ng-show="!$ctrl.form.inflation_rate_all.$valid && $ctrl.form.inflation_rate_all.$dirty">
+              <span ng-if="$ctrl.form.inflation_rate_all.$error.pattern">
+                Please enter a percentage with 1 decimal place (ex. 20.0)
+              </span>
+            </span>
+            <div style="float:left; margin-left:10px; margin-top:20px">
+              <button
+                class="btn btn-primary"
+                ng-click="$ctrl.setAllmodal($ctrl.inflation_rate_all_income, $ctrl.inflation_rate_all_expense)"
+                ng-disabled="!$ctrl.form.inflation_rate_all.$valid">
+                Apply to All
+              </button>
+            </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="">
+  <h4 ng-cloak>Period <span ng-bind="$ctrl.current_plan_budget.position + 1"></span>: <span ng-bind="$ctrl.current_plan_budget.title"></span></h4>
+</div>
+<div class="panel-heading" style="background-color:rgb(51, 122, 183); color:rgb(255, 255, 255);">
+  <h4>Apply inflation rates to the items in the budget:</h4>
+</div>
+
+<div style="margin-top:10px;">
+  <!-- Income/Expenses tabs -->
+  <ul class="nav nav-tabs">
+    <li
+      ng-class="{
+       'nav-tab': true,
+       'active': $ctrl.budget_item_type == 'income',
+      }"
+      ng-click="$ctrl.budget_item_type = 'income'">
+      <a>Income</a>
+    </li>
+    <li
+      ng-class="{
+         'nav-tab': true,
+         'active': $ctrl.budget_item_type == 'expense',
+      }"
+      ng-click="$ctrl.budget_item_type = 'expense'">
+      <a>Expenses</a>
+    </li>
+  </ul>
+
+  <div ng-style="{'opacity': $ctrl.progress < 100 || $ctrl.current_plan_budget == undefined ? '0.5' : '1.0'}"
+    class="panel panel-primary container-fluid">
+    <div class="panel-heading flex">
+      <span class="flex-2">Inflation Rates</span>
+      <span class="flex-2"></span>
+      <span class="flex-6"></span>
+    </div>
+
+    <div class="panel-body">
+
+      <form
+        name="$ctrl.form2">
+
+      <div class="" style="display: flex;">
+        <div style="line-height: 42px;">Apply an annual inflation rate to all <span ng-bind="$ctrl.budget_item_type"></span> items in this budget:</div>
+        <div class="input-group" style="width: 10%; padding-top: 0; margin-left: 10px;">
+          <input
+            name="apply_all"
+            class="form-control input-number"
+            type="number"
+            maxlength="3"
+            ng-model="$ctrl.inflation_rate_all"
+            ng-pattern="/^[-]{0,1}[0-9]{1,2}(\.[0-9]{1})?$/"
+            onfocus="if(this.value === 0)this.value='';"
+            onblur="if(this.value === '')this.value=0;">
+          <span class="input-group-addon">%</span>
+        </div>
+        <button
+          style="margin-left: 10px"
+          class="btn btn-primary"
+          ng-click="$ctrl.setAllInflationRates($ctrl.budget_item_type, $ctrl.inflation_rate_all)"
+          ng-disabled="!$ctrl.form2.apply_all.$valid">
+          Apply to all <span ng-bind="$ctrl.budget_item_type"></span> items
+        </button>
+      </div>
+
+      </form>
+
+      <div style="margin: 40px 0" class="">-OR-</div>
+
+      <div class="" style="display: flex; height: 42px; margin-bottom: 40px">
+        <div style="line-height: 42px" class="">Enter an annual inflation rate for each <span ng-bind="$ctrl.budget_item_type"></span> item separately:</div>
+        <button
+          ng-if="$ctrl.budget_item_type === 'expense'"
+          style="margin-left: 10px"
+          class="btn btn-primary"
+          ng-click="$ctrl.setDefaultExpenseInflationRates($ctrl.default_value)">
+          Apply default inflation rates
+        </button>
+      </div>
+
+      <!-- Income items -->
+      <div ng-show="$ctrl.budget_item_type === 'income'">
+        <inflation-item
+          class="list-item"
+          ng-repeat="item in $ctrl.current_plan_budget.income_item_inflation_rates | orderObjectBy:'name':false"
+          item="item"
+          on-change="$ctrl.updateBudgetItemInflationRate(item)">
+        </inflation-item>
+      </div>
+
+      <!-- Cost items -->
+      <div ng-show="$ctrl.budget_item_type === 'expense'">
+        <inflation-item
+          class="list-item"
+          ng-repeat="item in $ctrl.current_plan_budget.cost_item_inflation_rates | orderObjectBy:'name':false"
+          item="item"
+          on-change="$ctrl.updateBudgetItemInflationRate(item)">
+        </inflation-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-disabled="$ctrl.error"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.previousBudget()">
+      Previous
+    </button>
+  </div>
+
+</div>

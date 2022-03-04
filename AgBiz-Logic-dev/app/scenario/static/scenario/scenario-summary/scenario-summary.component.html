@@ -1,0 +1,116 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<div class="content-padding">
+  <h5>
+    Scenario Summary - <span ng-bind="$ctrl.scenario.title"></span>
+  </h5>
+  <p>Highlight a Plan in the list below to view the Budgets inside that Plan</p>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h5 class="panel-title">Notes</h5>
+  </div>
+  <div class="panel-body">
+    <span ng-bind="$ctrl.scenario.notes"></span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Plans  <div ng-if="$ctrl.notes!=null&&$ctrl.notes!=[]"> Notes:{{$ctrl.notes}} </div>
+      </div>
+      <div class="panel-body  fixed-panel">
+        <div class="list-group">
+          <div ng-if="!$ctrl.plans"class="loader"></div>
+          <div
+            class="row list-group-item summary-budget-item"
+            ng-repeat="plans in $ctrl.plans track by $index"
+            ng-click="$ctrl.loadBudget(plans)">
+              {{$index+1}} : {{plans.title}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Budget
+      </div>
+      <div class="panel-body">
+          <div class="list-group">
+            <div
+              class="row list-group-item summary-budget-item"
+              ng-repeat="budgets in $ctrl.budget_list  track by $index">
+              {{$index+1}}: {{budgets}}
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="col-md-2 pull-right">
+    <button
+      ng-disabled="$ctrl.scenario.plans.length > 5"
+      uib-tooltip="Create a Profit scenario with this data"
+      class="btn btn-success"
+      ng-click="$ctrl.proceed('profit')">
+      Proceed to <i>AgBizProfit</i>
+    </button>
+  </div>
+
+  <div class="col-md-2 pull-right">
+    <button
+      uib-tooltip="Create a Finance scenario with this data"
+      class="btn btn-success"
+      ng-click="$ctrl.proceed('finance')">
+      Proceed to <i>AgBizFinance</i>
+    </button>
+  </div>
+
+  <div class="col-md-1 pull-right" ng-if="$ctrl.edited!=='true'">
+    <button
+      ng-if="$ctrl.edited!=='true'&& $ctrl.plans"
+      class="btn btn-success"
+      ng-click="$ctrl.proceed('edit')">
+      Edit
+    </button>
+  </div>
+  <div class="col-md-2 pull-right">
+    <button
+      ng-if="$ctrl.edited=='true'"
+      class="btn btn-success"
+      ng-click="$ctrl.proceed('save')">
+      Save and Finish
+    </button>
+  </div>
+</div>

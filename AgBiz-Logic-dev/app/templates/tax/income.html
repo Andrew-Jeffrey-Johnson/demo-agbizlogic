@@ -1,0 +1,139 @@
+{% extends "wizard.html" %}
+{% load static %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+  {% for field in form %}
+    {{field.error}}
+
+  {% endfor %}
+
+<style>
+.center_div{
+    margin: 0 auto;
+    width:80% /* value of your choice which suits your alignment */
+}
+
+label{
+
+  font-size: 18px;
+
+}
+.row{
+    padding-top: 18px;
+}
+
+</style>
+
+  <form action="" method="post">
+  {% csrf_token %}
+  <table>
+
+<h3>Enter information from your Schedule F (Form 1040)</h3>
+
+<h4>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h4>
+
+
+
+<p>Please use your recent or most relevant Schedule F tax information to fill out the following fields.
+<br>
+Enter data from: <b> Part I: Farm Income - Cash Method.</b></p>
+
+
+
+
+
+{% if wizard.form.errors %}
+<div id="myAlert" class="alert alert-warning">
+        <a href="#" class="close" data-hide="alert">&times;</a>
+        <strong>Warning!</strong> Your <strong>Gross Income</strong> field cannot be empty!
+    </div>
+
+{% endif %}
+
+
+
+  {{ wizard.management_form }}
+  {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+      {% for form in wizard.form.forms %}
+          {{ form.as_p | bootstrap}}
+
+
+      {% endfor %}
+  {% else %}
+
+
+  {% for field in wizard.form %}
+
+   <div class="row center_div">
+     {% if field.errors %}<div class="form-group has-error">{% endif %}
+      <label class="row-xs-12 col-md-4" for={{field.id_for_label}}>{{ field.label }}</label>
+
+      <div class="col-xs-12 col-md-4">
+
+       <div class="input-group">
+
+          <span class="input-group-addon">$</span>
+                {{field|attr:'class:form-control'}}
+          <span class="input-group-addon">.00</span>
+
+
+
+        </div>
+   <span class="help-block ">{% if field.errors %} <b>{{ field.errors|striptags }}</b> {%endif %}</span>
+
+    </div>
+
+
+
+      </div>
+            {% if field.errors %}</div>{% endif %}
+    </div>
+  {% endfor %}
+
+
+  </table>
+
+{% endif %}
+  <br>
+    <button type="submit" title="We recommend that you verify the gross income value matches that on your Schedule F." data-toggle="tooltip" class="btn pull-right btn-success">Continue</button>
+
+     {% if wizard.steps.prev %}
+           <button name="wizard_goto_step" class="btn btn-default" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+        {% endif %}
+
+
+  </form>
+
+<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.18.0.css" type="text/css" media="screen">
+
+
+<script type="text/javascript" src="{% static "js/add-commas-number.js" %}"></script>
+<script>
+var total = 0;
+$('#id_step2-line_3_b, #id_step2-line_4_b').keyup(function(){
+
+    total = total + parseInt(removeCommas(this.value));
+
+  });
+
+</script>
+
+<!--
+<script type="text/javascript" src="http://code.jquery.com/qunit/qunit-1.18.0.js"></script>
+  <script src="{% static "js/test/tests.js" %}"></script>
+
+<div class="container">
+
+<h1 id="qunit-header">QUnit Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+</div>
+  -->
+{% endblock %}

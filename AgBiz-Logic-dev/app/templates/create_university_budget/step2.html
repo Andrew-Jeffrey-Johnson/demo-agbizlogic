@@ -1,0 +1,88 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+
+{% block content %}
+
+
+
+
+  {% for field in form %}
+    {{field.error}}
+  {% endfor %}
+
+
+<h3>Create University Budget: Crop Enterprise Gross Income</h3>
+
+<h4>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h4>
+
+
+  <div class="form">
+
+    <form action=""  method="post">
+      {% csrf_token %}
+
+
+
+
+        {{ wizard.management_form}}
+        {% if wizard.form.forms %}
+            {{ wizard.form.management_form}}
+            {% for form in wizard.form.forms %}
+          {{ form }}
+
+            {% endfor %}
+        {% else %}
+
+
+        {{ wizard.form | bootstrap}}
+
+
+
+
+
+
+
+
+        {% endif %}
+
+
+
+   {% if wizard.steps.prev %}
+   <button name="wizard_goto_step" class="btn btn-default" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+
+
+
+  {% endif %}
+        <a class="btn btn-default" type="button" href="/index/">Leave page</a>
+  <button type="submit" class="btn pull-right btn-success">Continue</button>
+
+
+
+
+    </form>
+
+  </div>
+
+
+
+
+
+<script src="{% static "js/vendor/jquery-1.8.3.js" %}"></script>  
+
+<script>
+  $( '.select' ).removeAttr( 'class' );
+  $( "select").attr( 'class' , 'form-control');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

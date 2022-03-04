@@ -1,0 +1,162 @@
+﻿<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<div class="row">
+  <span
+    class="col-md-12 error"
+    ng-bind="$ctrl.request_error">
+  </span>
+</div>
+
+<h4>Allocate your enterprise information</h4>
+
+<div class="panel panel-default"  style="position: relative">
+  <div class="panel-heading">
+    <h6 class="panel-title">Enterprise Allocation</h6>
+  </div>
+  <div class="panel-body">
+    Previously you allocated your <span ng-bind="$ctrl.statement_type | lowercase"></span> at the business level.
+    Now you need to allocate those values at the commodity level.
+    <br>
+    Note: Allocation at the enterprise level must be 100%, which means the remainder must be $0 for all categories.
+  </div>
+</div>
+
+<div class="col-md-12">
+  <a class="glyphicon glyphicon-question-sign"></a>
+  <a uib-tooltip="After entering data in one of the boxes, press the tab key to skip to the next box">
+    Pro Tip: Press the Tab key to move to the next input box quickly
+  </a>
+</div>
+
+<ul class="nav nav-tabs">
+  <li
+    ng-repeat="business in $ctrl.business_data_list | orderBy: 'business_type'"
+    ng-class="{
+      'nav-tab': true,
+      'active': $ctrl.current_business == business,
+    }">
+    <a ng-click="$ctrl.selectCurrent(business)"><span ng-bind="business.business_type"></span></a>
+  </li>
+</ul>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h5 ng-bind="$ctrl.statement_type"></h5>
+  </div>
+  <div class="panel-body">
+
+    <div class="row">
+      <span class="col-md-2">
+        <b>Category</b>
+      </span>
+      <span class="col-md-1">
+        <b>Total</b>
+      </span>
+      <div
+        class="col-md-1"
+        ng-repeat="enterprise in $ctrl.enterprise_data_list[$ctrl.current_business.business_type] | orderBy: 'category_2'">
+        <b><span
+            ng-if="enterprise.category_3"
+            ng-bind="enterprise.category_2 + ' - ' + enterprise.category_3">
+        </span></b>
+        <b><span
+            ng-if="!enterprise.category_3"
+            ng-bind="enterprise.category_2">
+        </span></b>
+        <a
+          class="glyphicon glyphicon-question-sign"
+          ng-if="enterprise.category_3"
+          uib-tooltip="Full name: {$ enterprise.enterprise $} - {$ enterprise.category_1 $} - {$ enterprise.category_2 $} - {$ enterprise.category_3 $} - {$ enterprise.market $}">
+        </a>
+        <a
+          class="glyphicon glyphicon-question-sign"
+          ng-if="!enterprise.category_3"
+          uib-tooltip="Full name: {$ enterprise.enterprise $} - {$ enterprise.category_1 $} - {$ enterprise.category_2 $} - {$ enterprise.market $}">
+        </a>
+      </div>
+      <span class="col-md-1">
+        <b>Remainder</b>
+        <a
+          class="glyphicon glyphicon-question-sign"
+          uib-tooltip="Allocation at the enterprise level must be complete, which means the Remainder should be $0 for all categories">
+        </a>
+      </span>
+      <span
+        class="col-md-1"
+        style="text-align: left;">
+        <b>% or $</b>
+        <a
+          class="glyphicon glyphicon-question-sign"
+          uib-tooltip="You can enter your {{$ctrl.statement_type | lowercase}} as currency ($) or as a percentage (%). Click on the button to toggle between the two.">
+        </a>
+      </span>
+    </div>
+
+    <!-- Income -->
+    <div
+      ng-if="$ctrl.statement_type == 'Income'"
+      class="allocate-container">
+      <div
+        ng-repeat="business in $ctrl.business_data_list track by business.business_type"
+        ng-show="$ctrl.current_business.business_type == business.business_type">
+        <allocate-item
+          ng-repeat="category in $ctrl.gold_standard_categories[business.business_type] | orderObjectBy:'label':false track by $index"
+          ng-show="category.type == 'income'&&category.total!=0"
+
+          ng-style="{
+            'background': $index % 2 == 0 ? '#f5f5f5' : '#fff'
+          }"
+          source="category"
+          targets="$ctrl.enterprise_data_list[business.business_type]"
+          business="business.business_type"
+          on-change="$ctrl.updateData(targets, status)">
+        </allocate-item>
+      </div>
+    </div>
+
+    <!-- Expenses -->
+    <div
+      ng-if="$ctrl.statement_type == 'Expenses'"
+      class="allocate-container">
+      <div
+        ng-repeat="business in $ctrl.business_data_list track by business.business_type"
+        ng-show="$ctrl.current_business.business_type == business.business_type">
+        <allocate-item
+          ng-repeat="category in $ctrl.gold_standard_categories[business.business_type] | orderObjectBy:'label':false track by $index"
+          ng-show="((category.type == 'expense' && category.name.indexOf('expenses_other') == -1) ||
+                 (category.name.indexOf('expenses_other') != -1 && category.total > 0))&&category.total!=0"
+          source="category"
+          targets="$ctrl.enterprise_data_list[business.business_type]"
+          business="business.business_type"
+          on-change="$ctrl.updateData(targets, status)">
+        </allocate-item>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="col-md-2 pull-right">
+    <button
+      class="btn btn-success pull-right"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

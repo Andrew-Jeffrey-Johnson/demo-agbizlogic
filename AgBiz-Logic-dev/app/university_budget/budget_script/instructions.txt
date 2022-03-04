@@ -1,0 +1,16 @@
+Prerequisites:
+
+1- Excel files has to be inside the budget script folder
+2- Excel files need to have either Livestock or Crops in it’s title
+3- The format need to be the same. if it changed then the script need to be updated
+4- University Models need to be mirgrated to the database
+
+Instructions:
+
+1- command to run script: ./bash_script
+2- after creating the json files need to delete the university_budget from database and migrate it again
+3- go back to the main folder where manage.py is.
+4- commands to upload the data: 
+	
+ python3 manage.py loaddata university_budget/budget_script/University_budget_for_Crops.json
+ python3 manage.py loaddata university_budget/budget_script/University_budget_for_Livestock.json

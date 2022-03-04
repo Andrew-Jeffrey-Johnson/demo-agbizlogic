@@ -1,0 +1,138 @@
+<form
+  name="$ctrl.form"
+  class="modal-body">
+  <h4>Change Budget Unit</h4>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      <b>Current: <span ng-bind="$ctrl.farm_unit_quantity | number"></span> <span ng-bind="$ctrl.farm_unit"></span></b>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>
+        New Budget Unit:
+        <a
+          class="glyphicon glyphicon-question-sign"
+          uib-tooltip="You can select a new unit to convert to, or leave it the same and increase/decrease the number
+                       of units.">
+        </a>
+      </label>
+      <select
+        class="form-control"
+        name="new_farm_unit"
+        ng-model="$ctrl.new_farm_unit"
+        ng-options="unit as (unit | capitalize) for unit in $ctrl.farm_unit_options | orderBy:unit"
+        ng-change="$ctrl.new_farm_unit == $ctrl.farm_unit ? $ctrl.is_new_unit = false : $ctrl.is_new_unit = true">
+      </select>
+    </div>
+
+    <div
+      ng-if="$ctrl.is_new_unit == false"
+      class="col-md-6">
+      <label>
+        New Quantity:
+        <a
+          class="glyphicon glyphicon-question-sign"
+          uib-tooltip="This will increase the budget unit quantity and keep the same price per unit for every income/cost
+                       item in the budget.">
+        </a>
+      </label>
+      <input
+        class="form-control"
+        name="new_farm_unit_quantity"
+        placeholder="1.00"
+        ng-model="$ctrl.new_farm_unit_quantity"
+        required>
+      <span
+        class="error-text"
+        ng-show="$ctrl.form.new_farm_unit_quantity.$touched && $ctrl.form.new_farm_unit_quantity.$invalid">
+        Please enter a positive number with up to 2 decimal places (ex. 1.75)
+      </span>
+    </div>
+
+    <div
+      ng-if="$ctrl.is_new_unit == true"
+      class="col-md-6">
+      <label>
+        This new unit is:
+      </label>
+      <br>
+      <div class="btn-group col-md-12">
+        <label
+          class="btn btn-primary"
+          name="scale_type_smaller"
+          uib-btn-radio="'smaller'"
+          ng-model="$ctrl.scale_type"
+          ng-click="$ctrl.smaller_unit = $ctrl.new_farm_unit; $ctrl.larger_unit = $ctrl.farm_unit;">
+          Smaller
+        </label>
+        <label
+          class="btn btn-primary"
+          name="scale_type_larger"
+          uib-btn-radio="'larger'"
+          ng-model="$ctrl.scale_type"
+          ng-click="$ctrl.smaller_unit = $ctrl.farm_unit; $ctrl.larger_unit = $ctrl.new_farm_unit;">
+          Larger
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div
+    class="row"
+    ng-if="$ctrl.is_new_unit == true && $ctrl.scale_type !== undefined">
+    <div class="col-md-6">
+      <label>
+        Number of <span ng-bind="$ctrl.smaller_unit"></span> in 1 <span ng-bind="$ctrl.larger_unit"></span>:
+      </label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          name="scale_factor"
+          placeholder="1.00"
+          ng-model="$ctrl.scale_factor"
+          required>
+        <span
+          class="input-group-addon"
+          ng-bind="$ctrl.smaller_unit">
+        </span>
+      </div>
+      <span
+        class="error-text"
+        ng-show="$ctrl.form.scale_factor.$touched && $ctrl.form.scale_factor.$invalid">
+        Please enter a positive number with up to 2 decimal places (ex. 1.75)
+      </span>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-2 pull-left">
+      <button
+        class="btn btn-default"
+        ng-click="$ctrl.cancel()">
+        Cancel
+      </button>
+    </div>
+
+    <confirm-button
+      class="pull-right"
+      label="'Save'"
+      message="'This will affect the price per unit for every income/cost item in the budget.'"
+      type="'success'"
+      disabled="(!$ctrl.is_new_unit && $ctrl.form.new_farm_unit_quantity.$invalid) ||
+                ($ctrl.is_new_unit && ($ctrl.scale_type === undefined || $ctrl.form.scale_factor.$invalid))"
+      on-confirm="$ctrl.save()">
+    </confirm-button>
+  </div>
+
+</form>

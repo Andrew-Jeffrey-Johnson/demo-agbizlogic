@@ -1,0 +1,99 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h4>Climate Variable Selection</h4>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">Variable Selection</h6>
+  </div>
+  <div class="panel-body">
+    <b ng-bind="$ctrl.climate_budget.title"></b> yields and/or product quality are the factors most likely
+    to be affected by climate change. Select the <b ng-bind="$ctrl.num_required_variables"></b> most important
+    climate variables you think will impact these factors.
+  </div>
+</div>
+
+<br>
+
+<div
+  class="form-group row"
+  ng-if="$ctrl.climate_budget.climate_factors.length < $ctrl.num_required_variables">
+  <label for="select-factor" class="col-md-2">
+    Add New Variable:
+  </label>
+
+  <div class="col-md-4">
+    <select
+      id="select-factor" class="form-control"
+      ng-model="$ctrl.new_factor"
+      ng-options="option as option for option in $ctrl.variable_options">
+      <option value="">Select</option>
+    </select>
+  </div>
+
+  <div class="col-md-3">
+    <button
+      id="add-factor"
+      class="btn btn-success"
+      ng-disabled="$ctrl.new_factor==='Select' || $ctrl.new_factor === undefined || $ctrl.new_factor.length === 0"
+      ng-click="$ctrl.addFactor()">
+      Add
+    </button>
+
+    <button
+      id="view-variable-help-modal"
+      class="btn btn-success"
+      ng-click="$ctrl.viewClimateVariableSelectHelp()">
+      Variable Help
+    </button>
+  </div>
+</div>
+
+<div
+  class="panel panel-primary"
+  style="height: 350px;max-height: 350px;">
+  <div class="panel-heading">
+    <h5 class="panel-title">Selected Variables</h5>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <tr
+        class="climate-fade"
+        ng-repeat="factor in $ctrl.climate_budget.climate_factors">
+        <td ng-bind="factor.name"></td>
+        <td>
+          <button
+            class="btn btn-danger pull-right"
+            ng-click="$ctrl.removeFactor(factor)">
+            Remove
+          </button>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-disabled="$ctrl.climate_budget.climate_factors.length < $ctrl.num_required_variables"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

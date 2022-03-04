@@ -1,0 +1,62 @@
+<div class="panel-group" ng-show="$ctrl.check==true">
+  <div class="panel panel-default">
+    <div class="panel-heading">Print Cash Flow PDF</div>
+    <div class="panel-body">
+      <cash-flow-pdf
+      style="padding: 10px 0;"
+      statements="$ctrl.pdf_data_cashflow">
+    </cash-flow-pdf>
+  </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Print Balance Sheet PDF</div>
+    <div class="panel-body">
+      <balance-sheet-pdf
+        style="padding: 10px 0;"
+        statements="$ctrl.pdf_data_balance_sheet">
+      </balance-sheet-pdf>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Print Income Statement PDF</div>
+    <div class="panel-body">
+      <income-statement-pdf
+      style="padding: 10px 0;"
+      statements="$ctrl.pdf_data_income_statement">
+    </income-statement-pdf>
+  </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Print Financial Ratios PDF</div>
+    <div class="panel-body">
+      <finance-ratios-pdf
+        style="padding: 10px 0;"
+        statements="$ctrl.pdf_data_finance_ratios">
+      </finance-ratios-pdf>
+  </div>
+  </div>
+
+</div>
+<div ng-show="$ctrl.check==false">
+  Please complete the Finance entire process before using PDF button
+</div>
+
+<br>
+
+
+<div class="row">
+  <!-- <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.skip()">
+      Cancel
+    </button>
+  </div> -->
+  <div class="col-md-2 pull-right">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Close
+    </button>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h3 class="content-padding" ng-if="$ctrl.module!='finance'">Scenario: {{$ctrl.scenario.title}}</h3>
+<h3 style="text-align:center" ng-if="$ctrl.module=='finance'">Build Your <i>AgBizFinance</i> Analysis</h3>
+<div ng-if="$ctrl.module=='finance'">
+  <finance-step-indicator
+    step="1"
+    steps="$ctrl.steps">
+  </finance-step-indicator>
+
+  <div ng-if="$ctrl.new === 'new'">
+    <h4>Create Scenario</h4>
+  </div>
+
+  <div ng-if="$ctrl.new !== 'new'">
+    <h4>View/Edit Scenario: <span ng-bind="$ctrl.scenario.title"></span></h4>
+  </div>
+
+</div>
+<div ng-if="$ctrl.plans.length == 0">
+  To create a new Scenario, give it a name, add descriptive notes, then add or
+  create up to <span ng-bind="$ctrl.max_plans"></span> new Plans derived
+  from your existing list of Budgets and/or the <i>AgBiz Logic</i> library of university
+  and industry Budgets.
+</div>
+
+<div ng-if="$ctrl.plans.length > 0">
+  Rename this Scenario then click on the Continue button to proceed with building your <i>AgBizFinance</i> analysis.
+</div>
+
+<form name="$ctrl.form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        Please fill out the following information about this Scenario
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8" id="scenatio_title">
+          <label>Name of Scenario:</label>
+          <input
+            name="name" class="form-control" type="text"
+            ng-model="$ctrl.scenario.title"
+            ng-blur="$ctrl.updateScenario()"
+            ng-change="$ctrl.validateScenarioTitle()"
+            maxlength="91"
+            placeholder="Name of Scenario"
+            onfocus="if(this.value == 'New Scenario')this.value='';"
+            required>
+          </input>
+          <span class="error" ng-show="$ctrl.form.name.$touched && $ctrl.form.name.$error.notempty" style="color:red;">Required</span>
+          <span class="error" ng-show="$ctrl.form.name.$touched && $ctrl.form.name.$error.unique" style="color:red;">Duplicated Name</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <label>Notes for this Scenario:</label>
+          <textarea
+            class="form-control"
+            ng-model="$ctrl.scenario.notes"
+            ng-blur="$ctrl.updateScenario()"
+            maxlength="1000"
+            placeholder="Notes on Scenario">
+          </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<div ng-if="$ctrl.new!='manager'">
+  <h4 ng-if="$ctrl.plans.length < $ctrl.max_plans">Select Plans for this Scenario</h4>
+  <p>A Plan is a sequence of Budgets representative of a series of future net returns for the life of an investment.</p>
+
+  <plan-select
+    module="$ctrl.module"
+    option-list="$ctrl.plan_list"
+    plan-list="$ctrl.plans"
+    item-limit="$ctrl.max_plans"
+    editable="false"
+    on-add="$ctrl.addPlan(plan)"
+    on-delete="$ctrl.removePlan(item)"
+    on-new="$ctrl.newPlan()">
+  </plan-select>
+
+  <br>
+</div>
+
+<div class="row">
+  <div  ng-if="$ctrl.new !== 'new'" class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Previous
+    </button>
+  </div>
+  <confirm-button
+    ng-if="$ctrl.new === 'new'"
+    label="'Delete'"
+    message="'This will delete the current scenario and all edited plans'"
+    on-confirm="$ctrl.cancel()">
+  </confirm-button>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-disabled="$ctrl.form.$invalid || $ctrl.plans.length == 0 || $ctrl.plans.length > $ctrl.max_plans"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

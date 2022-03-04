@@ -1,0 +1,45 @@
+.word-style{
+    float: left;
+}
+
+.chevron-btn {
+    font-size:12px;
+    color:black;
+    background-color: #337ab7;
+    border:#337ab7;
+    float: left;
+    margin-top: 6px;
+    margin-left: 9px;
+}
+
+.go-left{
+    margin-left: -13px;
+}
+
+.manager-list-item {
+	padding: 5px 15px;
+}
+.manager-list-item:hover {
+    background: rgb(230, 234, 242) !important;
+}
+
+.manager-list-panel-small {
+	padding-left: 0;
+	padding-right: 0;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.manager-list-panel-medium {
+	padding-left: 0;
+	padding-right: 0;
+    height: 350px;
+    overflow-y: scroll;
+}
+
+.manager-list-panel-large {
+	padding-left: 0;
+	padding-right: 0;
+    height: 500px;
+    overflow-y: scroll;
+}

@@ -1,0 +1,198 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h4>Allocate your enterprise information</h4>
+
+Follow the prompts to specify your enterprises, assigning attributes such as Type, Class, and Commodity. <br>
+You can add up to seven of each enterprise by using the "Add" button.
+<br>
+
+<div
+  class="panel panel-default"
+  ng-show="$ctrl.allowed_enterprises.length == 0">
+  <div class="panel-heading">
+    <h4 class="panel-title">Reached the limit of enterprises to add </h4>
+  </div>
+</div>
+
+<div
+  class="panel panel-default"
+  ng-show="$ctrl.allowed_enterprises.length > 0">
+  <div class="panel-heading">
+    <h4 class="panel-title">Choose your enterprise</h4>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <label class="col-md-3">
+        <span class="pull-right">Select an Enterprise</span>
+      </label>
+      <select
+        class="col-md-4"
+        ng-model="$ctrl.enterprise.enterprise"
+        ng-options="enterprise.business_type as enterprise.business_type for enterprise in $ctrl.allowed_enterprises | orderBy: 'business_type'">
+        <option value="">Select</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label class="col-md-3">
+        <span class="pull-right">{$ $ctrl.commodities[$ctrl.enterprise.enterprise].label $}</span>
+      </label>
+      <select
+        class="col-md-4"
+        ng-model="$ctrl.enterprise.category_1"
+        ng-show="$ctrl.enterprise.enterprise"
+        ng-options="category_1.name for category_1 in $ctrl.commodities[$ctrl.enterprise.enterprise].category_1 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+
+    <div
+      class="row"
+      ng-show="$ctrl.enterprise.category_1 && $ctrl.enterprise.category_1.category_2.length > 0">
+      <label class="col-md-3">
+        <span class="pull-right">{$ $ctrl.enterprise.category_1.label $}</span>
+      </label>
+      <select
+        class="col-md-4" id="select_category_2"
+        ng-model="$ctrl.enterprise.category_2"
+        ng-options="category_2.name for category_2 in $ctrl.enterprise.category_1.category_2 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label class="col-md-3">
+        <span class="pull-right">{$ $ctrl.enterprise.category_2.label $}</span>
+      </label>
+      <select
+        class="col-md-4" id="select_category_3"
+        ng-model="$ctrl.enterprise.category_3"
+        ng-show="$ctrl.enterprise.category_2 && $ctrl.enterprise.category_2.category_3.length"
+        ng-options="category_3.name for category_3 in $ctrl.enterprise.category_2.category_3 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label class="col-md-3">
+        <span class="pull-right">{$ $ctrl.enterprise.category_3.label $}</span>
+      </label>
+      <select
+        class="col-md-4" id="select_category_4"
+        ng-model="$ctrl.enterprise.category_4"
+        ng-show="$ctrl.enterprise.category_3 && $ctrl.enterprise.category_3.category_4.length"
+        ng-options="category_4.name for category_4 in $ctrl.enterprise.category_3.category_4 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label class="col-md-3">
+        <span class="pull-right">{$ $ctrl.enterprise.category_4.label $}</span>
+      </label>
+      <select
+        class="col-md-4" id="select_category_5"
+        ng-model="$ctrl.enterprise.category_5"
+        ng-show="$ctrl.enterprise.category_4 && $ctrl.enterprise.category_4.category_5.length"
+        ng-options="category_5.name for category_5 in $ctrl.enterprise.category_4.category_5 | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label class="col-md-3">
+        <span class="pull-right">{$ $ctrl.commodities[$ctrl.enterprise.enterprise].market_label $}</span>
+      </label>
+      <select
+        class="col-md-4" id="select_market"
+        ng-model="$ctrl.enterprise.market"
+        ng-show="$ctrl.enterprise.enterprise"
+        ng-options="market.name for market in $ctrl.commodities[$ctrl.enterprise.enterprise].markets | orderBy: 'name'">
+        <option value="">-Select-</option>
+      </select>
+    </div>
+
+    <div class="row col-md-3 pull-right">
+      <button
+        class="btn btn-success"
+        ng-click="$ctrl.addEnterpriseData()"
+        ng-disabled="($ctrl.enterprise.category_1.category_2.length > 0 && !$ctrl.enterprise.category_2) ||
+                      !$ctrl.enterprise.market">
+        Add
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div class="row col-md-12">
+  <h4>Your enterprises so far:</h4>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="row">
+        <span class="col-md-2">Enterprise</span>
+        <span class="col-md-2">Enterprise Type</span>
+        <span class="col-md-2">Production/Commodity Type</span>
+        <span class="col-md-2">Class</span>
+        <span class="col-md-2">Market</span>
+        <span class="col-md-2">Actions</span>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div
+        ng-repeat="enterprise in $ctrl.enterprise_data_list"
+        class="row">
+        <hr class="item-divider">
+        <span class="col-md-2">{$ enterprise.enterprise $}</span>
+        <span class="col-md-2">{$ enterprise.category_1 $}</span>
+        <span class="col-md-2">{$ enterprise.category_2 $}</span>
+        <span
+          class="col-md-2"
+          ng-if="enterprise.category_3 == '' ">
+          N/A
+        </span>
+        <span
+          class="col-md-2"
+          ng-if="enterprise.category_3">
+          {$ enterprise.category_3 $}
+        </span>
+        <span class="col-md-2">{$ enterprise.market $}</span>
+        <span class="col-md-2 action">
+          <button
+            class="btn btn-list btn-danger"
+            ng-click="$ctrl.removeEnterpriseData(enterprise)">
+            Delete
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="col-md-2 pull-right">
+    <button
+      class="btn btn-success pull-right"
+      ng-disabled="!($ctrl.enterprise_data_list.length > 0)"
+      ng-click="$ctrl.saveEnterprises()">
+      Continue
+    </button>
+  </div>
+</div>

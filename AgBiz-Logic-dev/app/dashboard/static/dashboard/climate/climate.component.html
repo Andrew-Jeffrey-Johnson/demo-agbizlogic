@@ -1,0 +1,51 @@
+<div ng-class="$ctrl.css_classes">
+  <div class="panel-heading">
+    <h4>
+      <a
+        class="panel-link"
+        href="/climate/">
+        <i>AgBizClimate</i>
+      </a>
+    </h4>
+  </div>
+  <div
+    class="panel-body"
+    ng-if="$ctrl.is_inactive">
+    Coming Soon!
+  </div>
+  <div
+    class="panel-body"
+    ng-if="!$ctrl.is_inactive">
+    <div class="row">
+      <span class="col-md-12">
+        Use your Budgets to analyze potential future impacts of climate change on net returns for your enterprises.
+      </span>
+    </div>
+
+    <hr></hr>
+
+    <!-- Most recent scenario chart -->
+    <div ng-if="$ctrl.most_recent_scenario !== undefined">
+      <div
+        class="row">
+        <b class="col-md-12">
+          Recently modified:
+          <a
+            href="/climate/#/summary?scenario={$ $ctrl.most_recent_scenario.id $}"
+            ng-bind="$ctrl.most_recent_scenario.title">
+          </a>
+        </b>
+      </div>
+      <div class="row">
+        <canvas
+          id="bar" class="chart chart-bar"
+          chart-series="$ctrl.chart_data['net_returns'].series"
+          chart-data="$ctrl.chart_data['net_returns'].data"
+          chart-labels="$ctrl.chart_data['net_returns'].labels"
+          chart-legend="true">
+        </canvas>
+      </div>
+    </div>
+
+  </div>
+</div>

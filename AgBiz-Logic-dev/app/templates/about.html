@@ -1,0 +1,455 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>AgBiz Logic</title>
+        <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.ico" %}"/>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" media="screen" href="{% static "css/bootstrap.min.css" %}" />
+
+
+
+
+        <!--<link rel="stylesheet" href="{% static "css/bootstrap-theme.min.css" %}" />-->
+
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+      <link href="{% static "css/flat-ui.css" %}" rel="stylesheet">
+
+  <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="{% static "css/about.css" %}" />
+
+        <script src="{% static "js/vendor/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+         <span class="sr-only">Toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+      </button>
+
+        {% if user.is_authenticated %}
+         <a class="navbar-brand" rel="home" href="/dashboard/" style='"Lato","Helvetica Neue",sans-serif;font-size: 22px;  font-weight: 700;'>
+      <img style="max-width:30px; margin-top: -7px; margin-right: 3px;" src="{% static "img/icon.png" %}"> <i>AgBiz Logic</i>&#0153</a>
+        {% else %}
+         <a class="navbar-brand" rel="home" href="/index/" style='"Lato","Helvetica Neue",sans-serif;font-size: 22px;  font-weight: 700;'>
+      <img style="max-width:30px; margin-top: -7px; margin-right: 3px;" src="{% static "img/icon.png" %}"> <i>AgBiz Logic</i>&#0153</a>
+        {% endif %}"{% static "img/icon.png" %}"> <i>AgBiz Logic</i>&#0153
+      </div>
+
+
+
+
+        <div class="collapse navbar-collapse">
+    {% if user.is_authenticated %}
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false"> {{user.username}} <span class="caret"></span></a>
+            <ul class="dropdown-menu first_dropdown">
+              <li> <a class="dropdown-item" href="/index/#bottom" style="color: #e1e4e7;">Contact Us</a> </li>
+              <li> <a class="dropdown-item" href="/resources/" style="color: #e1e4e7;">Resources</a> </li>
+              <li class="dropdown-submenu"> <a tabindex="-1" class="dropdown-toggle" href="/profile_setting/" style="color: #e1e4e7;">Account Settings</a>
+              </li>
+              <li><a href="/logout/" style="color: #e1e4e7;">Logout</a></li>
+            </ul>
+        </li>
+      </ul>
+
+
+    {% else %}
+
+    <ul class="nav navbar-nav navbar-right">
+
+   <li> <a href="/index/#bottom">Contact Us</a> </li>
+
+      <li>    <form action="#"><a href="/login/" class="btn btn-success navbar-btn">Log in</a>   </form> </li>
+       <li> <form action="#"><a href="/account/" class="btn btn-success navbar-btn">Sign up</a> </form>  </li>
+       <li> <a href="/resources/">Resources</a> </li>
+
+
+ </ul>
+
+
+
+       {% endif %}
+
+
+          </div><!--/.navbar-collapse -->
+
+          </div><!--/.navbar-header -->
+
+    </div><!--/.container -->
+
+ </div>
+
+<div class="home-img">
+    <div class="intro-message">
+        <h1><i>AgBiz Logic™</i></h1>
+        <h3> Cutting-edge decision tools to help grow your business. </h3>
+        <br>
+
+    </div>
+</div><!-- .carousel -->
+<!--end bg-carousel-->
+
+
+<a name="top"></a>
+<div class="container">
+
+
+  <div class="row">
+  <div class="btn-group btn-group-justified">
+      <a href="#logic" class="btn btn-default" role="button"> <i> AgBiz Logic™</i> </a>
+      <a href="#profit" class="btn btn-default" role="button"> <i> AgBizProfit™</i> </a>
+      <a href="#lease" class="btn btn-default" role="button"> <i> AgBizLease™</i> </a>
+      <a href="#finance" class="btn btn-default" role="button"> <i> AgBizFinance™</i> </a>
+      <a href="#environment" class="btn btn-default" role="button"> <i> AgBizEnvironment™</i> </a>
+      <a href="#climate" class="btn btn-default" role="button"> <i> AgBizClimate™</i> </a>
+    </div>
+
+
+
+  </div>
+  <br>
+  <a name="logic"></a>
+  <div class="row">
+
+      <div class="text-center" >
+        <h1 class="featurette-heading">Personalize Your Account</h1>
+
+      </div>
+      <div class="text-img-wrapper">
+          <div class="img-right">
+                    <img src="{% static "img/account-example.png" %}" alt="placeholder" class="featurette-image img-responsive">
+                </div>
+
+            <div class="text-left">
+          <p class="lead">Create a unique account for your business, where you’ll manage income, expenses, assets, and liabilities for each of your business enterprises.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+    <div class="text-center" >
+        <h1 class="featurette-heading">Assemble Your Data</h1>
+        <p class="lead">Import your data from existing accounting systems, or manually allocate from your own records. All of your data will be stored securely and privately for your own personal use. </p>
+      </div>
+    <div class="img-center">
+        <img src="{% static "img/dataflow.png" %}" alt="placeholder" class="featurette-image img-responsive">
+    </div>
+
+    </div>
+
+    <hr>
+    <div class="text-center"><a href="#top">Back to top</a></div>
+
+    <div class="row">
+    <div class="text-cen">
+      <h1 class="featurette-heading">Create and Manage Budgets</h1>
+    </div>
+
+    <div class="text-img-wrapper">
+      <div class="img-right">
+                      <img src="{% static "img/budget-example.png" %}" alt="placeholder" class="featurette-image img-responsive">
+                  </div>
+
+      <div class="text-left">
+                <p class="lead">Create and manage budgets to track the performance of your enterprises. With complete and detailed budgets, <i>AgBiz Logic</i> will help you quickly pinpoint areas for improvement as well as where you are performing well. </p>
+          </div>
+
+    </div>
+
+
+
+
+    </div>
+
+    <hr>
+  <div class="text-center"><a href="#top">Back to top</a></div>
+  <a name="profit"></a>
+  <div class="row">
+
+    <div class="text-center" >
+        <h1 class="featurette-heading"><i>AgBizProfit™</i></h1>
+
+      </div>
+        <p class="lead"><i>AgBizProfit</i> is a capital investment tool that evaluates an array of short-, medium-, and long-term investments.  These investments may include planting long-term perennial timber, tree fruit, nut and vine crops; evaluating annual crops, cropping systems or livestock enterprises; implementing technologies; and adopting conservation practices.</p>
+        <p class="lead"><i>AgBizProfit</i> uses previously generated enterprise budgets to establish a base from which you can analyze potential investments. All assumptions in these budgets such as prices received, yields obtained, or costs and inflation rates can be readily changed. Once the appropriate budgets have been selected and modified, you’re ready to run an <i>AgBizProfit</i> scenario report. Each scenario consists of one to five individual plans that can be compared to each other simultaneously.  What follows is a partial list of applicable scenarios:</p>
+        <ul class="lead">
+          <li class="solid">Growing a new crop, modifying a cropping system or livestock enterprise</li>
+          <li class="empty">Purchasing or leasing new technologies, machinery or equipment</li>
+          <li class="empty">Modifying a production practice that could change yields, increase returns or affect input costs (such as a new fertilizer or chemical product, pruning technique, fabric cloth to control weeds, irrigation management, or increase fruit color)</li>
+      <li class="empty">Changing irrigation systems, purchasing a more efficient pump, or incorporating deficit irrigation</li>
+      <li class="empty">Adding value to a current crop or livestock enterprise that results in a higher
+
+price but perhaps with increased costs</li>
+      <li class="empty">Changing market channels or strategies in livestock production</li>
+        </ul>
+        <p class="lead"><i>AgBizProfit</i> uses the economic concepts of net present value, annual equivalence, and internal rate of return to analyze the potential profitability of a given investment. Projected annual net returns are discounted back to their present value to be compared with other plans within each scenario.  Each plan can be discounted with its own discount rate, beginning and ending investment values.</p>
+
+
+        <div class="img-center">
+        <img src="{% static "img/profit-graph.png" %}" alt="placeholder" class="featurette-image img-responsive">
+    </div>
+
+    </div>
+
+    <hr>
+    <div class="text-center"><a href="#top">Back to top</a></div>
+    <a name="lease"></a>
+  <div class="row">
+
+
+      <div class="text-center" >
+        <h1 class="featurette-heading"><i>AgBizLease™</i></h1>
+      </div>
+      <div class="text-left" >
+        <p class="lead"><i>AgBizLease</i> is designed to help agricultural producers establish equitable short- and long-run crop leases. <i>AgBizLease</i> calculates two types of leases – crop share percentage and annual cash rent payment. The basis for which <i>AgBizLease</i> calculates these leases is the Net Present Value (NPV) of total costs paid by either the tenant or landowner. In each lease type, the more a tenant or landowner contributes to total costs over the length of the lease, the higher the percentage share of the crop return or cash rent payment.  In a cash rent lease, the annual cash rent payment is calculated in two ways – the landowner’s required cash rent payment and the tenant’s ability to pay.</p>
+
+        <p class="lead"><i>AgBizLease</i> uses previously generated enterprise budgets to establish a base from which tenants and landowners can establish equitable lease arrangements for annual and perennial crops. All assumptions in these budgets such as prices received, yields obtained, or costs and inflation rates can be readily changed. Once the appropriate budgets have been selected and modified, you’re ready to run an <i>AgBizLease</i> scenario report. Each scenario consists of one to five individual plans that can be compared to each other simultaneously.  What follows is a partial list of applicable scenarios: </p>
+
+        <ul class="lead">
+          <li class="solid">Crop-share or annual cash rent payment in crop production</li>
+          <li class="empty">Livestock-shares or annual cash rent payment in livestock production</li>
+          <li class="empty">Shares of a product or annual cash rent payment in a value added business</li>
+        </ul>
+        <p class="lead"><i>AgBizLease</i> uses the economic concepts of net present value to analyze an equitable crop share or cash rent lease for a tenant and landowner. Projected annual net returns are discounted back to their present value to be compared with other lease plans within each scenario.  Each plan can be discounted with its own discount rate, beginning and ending investment values.</p>
+    </div>
+
+      <div class="img-center">
+        <img src="{% static "img/lease-graph.png" %}" alt="placeholder" class="featurette-image img-responsive">
+    </div>
+
+    </div>
+
+    <hr>
+    <div class="text-center"><a href="#top">Back to top</a></div>
+      <a name="finance"></a>
+  <div class="row">
+  <div class="text-center" >
+        <h1 class="featurette-heading"><i>AgBizFinance™</i></h1>
+
+      </div>
+  <div class="text-left" >
+        <p class="lead"><i>AgBizFinance</i> is designed to help agricultural producers make investment decisions based on financial liquidity, solvency, profitability, and efficiency of the farm or ranch business. After an <i>AgBizFinance</i> analysis has been created, investments in technology, conservation practices, value-added processes, or changes to cropping systems or livestock enterprises can be added to or deleted from the current farm and ranch operation. Changes to a business’ financial ratios and performance measures will also be calculated. </p>
+
+        <p class="lead"><i>AgBizFinance</i> allows you to create your own scenarios or use existing scenarios from <i>AgBizProfit</i> and <i>AgBizLease</i> as the foundation for annual returns and cash costs for each business enterprise. By inserting asset and liability information, <i>AgBizFinance</i> generates 19 financial ratios and performance measures. All assumptions in these scenarios are created specifically for the farm or ranch operations.</p>
+
+
+        <p class="lead"><i>AgBizFinance</i> generates reports with tables and graphs to assist in your investment decisions. The following is annual and pro-forma information generated from this program: </p>
+        <ul class="lead">
+          <li>Annual cash flow</li>
+          <li>Annual income statement</li>
+        <li>Annual balance sheet</li>
+        <li>10-year pro-forma cash flow by enterprise</li>
+        <li>10-year pro-forma cash flow statement</li>
+        <li>10-year pro-forma income statement</li>
+        <li>10-year pro-forma balance sheet</li>
+        </ul>
+
+
+        <div class="img-center">
+          <img src="{% static "img/finance-graph.png" %}" alt="placeholder" class="featurette-image img-responsive">
+      </div>
+
+
+
+
+    </div>
+   </div>
+
+    <hr>
+    <div class="text-center"><a href="#top">Back to top</a></div>
+    <a name="environment"></a>
+    <div class="row">
+    <div class="text-center" >
+
+        <h1 class="featurette-heading"><i>AgBizEnvironment™</i></h1>
+      </div>
+      <div class="text-left" >
+        <p class="lead"><i>AgBizEnvironment</i> utilizes various components to measure and track environmental aspects of crop and livestock production. Aspects include pesticide, herbicide, fertilizer, and energy use, as well as tillage and land management practices. Combined with other <i>AgBiz Logic</i> tools, users can compare environmental, economic and financial tradeoffs.</p>
+    <p class="lead"> An example of a component utilized by <i>AgBizEnvironment</i> is the Environmental Impact Quotient (EIQ) developed by Cornell University. The EIQ measures the effect of various pesticides and herbicides on consumers, workers, and ecosystems.</p>
+    <p class="lead">Learn more about EIQ and other <i>AgBizEnvironment</i> components when you sign up for <i>AgBiz Logic.</i></p>
+
+
+
+
+
+    </div>
+    </div>
+
+       <div class="img-center">
+          <img src="{% static "img/environment-graph.png" %}" alt="placeholder" class="featurette-image img-responsive">
+    </div>
+
+    <hr>
+    <div class="text-center"><a href="#top">Back to top</a></div>
+    <a name="climate"></a>
+    <div class="row">
+    <div class="text-center" >
+
+        <h1 class="featurette-heading"><i>AgBizClimate™</i></h1>
+      </div>
+      <div class="text-left" >
+        <p class="lead"><i>AgBizClimate</i> uses downscaled farm-level information to project yield and production inputs that change over time due to climate change.  These yield changes are the impetus for producer-generated adjustments in input use, management and technology adoption that may lessen the negative impacts or take advantage of positive opportunities.</p>
+    <p class="lead"> <i>AgBizClimate</i> delivers essential information about climate change to farmers and land managers. By using data unique to their specific farming operations, professionals can develop management pathways that best fit their operations under a changing climate. Additionally, the application helps the user understand how decisions about new programs, management options and technologies or varieties may impact their net returns and livelihoods.</p>
+    <p class="lead">Through the use of <i>AgBizClimate</i> farmers can compare changes in their specific farm-level economic costs and returns associated with on-farm actions in response to climate change and/or policy and price changes. <i>AgBizClimate</i> summarizes the climate information that is available for the farmer’s specific area, then demonstrates through powerful graphics how this downscaled information could impact the economic costs and returns the farmer is likely to face over the next 20-30 years. </p>
+
+    </div>
+    </div>
+
+       <div class="img-center">
+          <img src="{% static "img/climate_change.png" %}" alt="placeholder" class="featurette-image img-responsive">
+    </div>
+    </div>
+
+
+
+    <hr>
+    <a name="logic"></a>
+  <div class="row">
+
+      <div class="text-center" >
+        <h1 class="featurette-heading">The <i>AgBiz Logic™</i> Platform</h1>
+
+      </div>
+     <div class="text-img-wrapper">
+          <div class="img-center">
+                    <img src="{% static "img/logic_platform.png" %}" alt="placeholder" class="featurette-image img-responsive">
+                </div>
+
+
+      </div>
+
+    </div>
+
+    <hr>
+    <div class="text-center"><a href="#top">Back to top</a></div>
+  <!--
+    <div class="row">
+
+      <div class="img-cen2">
+        <img src="{% static "img/graph-example.png" %}" alt="placeholder" class="featurette-image img-responsive">
+    </div>
+
+    <div class="text-cen" >
+        <h2 class="featurette-heading">Benchmark yourself against others</h2>
+        <p class="lead">By opting into the benchmark program, you can anonously compare your operation to similar operations either locally, regionally, or nationally. Track your progress and find new avenues for improvement and growth.  </p>
+      </div>
+
+  <hr>
+  -->
+
+    <div class="row">
+      <div class="icon">
+        <img src="{% static "img/icon.png" %}" alt="placeholder" class="featurette-image img-responsive">
+      </div>
+      {% if not user.is_authenticated %}
+      <div class="text-center" >
+        <h3 class="featurette-heading">Sign up or log in to <i>AgBiz Logic™</i> for free. </h3>
+        <p class="lead"> Start enhancing your business management today.</p>
+        <a class="btn btn-primary" type="button" href="/account/">Sign up</a>
+        <a class="btn btn-primary" type="button" href="/login/">Log in</a>
+      </div>
+      {% else %}
+      <div class="text-center" >
+        <h3 class="featurette-heading">Visit your <i>AgBiz Logic™</i> dashboard</h3>
+        <p class="lead"> Start enhancing your business management today.</p>
+        <a class="btn btn-primary" type="button" href="/dashboard/">Dashboard</a>
+      </div>
+      {% endif %}
+
+
+
+    </div>
+
+
+</div> <!--- container -->
+
+
+
+      <footer>
+
+  <div class="container">
+
+
+
+     <div class="container">
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <p class="copyright text-muted small">Copyright &copy; <script>document.write(new Date().getFullYear())</script> <i>AgBiz Logic</i>. All Rights Reserved.</p>
+            </div>
+        </div>
+           </div>
+
+
+
+
+
+</div> <!-- /container -->
+</footer>
+
+</body>
+
+<script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+<script>window.jQuery || document.write('<script src="{% static "jquery/dist/jquery.min.js" %}"><\/script>')</script>
+<script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+.dropdown-menu li:hover > ul.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    background-color: #34495e;
+    top:0;
+    left:100%;
+    margin-top:-1px;
+}
+
+#dropdown-menu li:hover {
+  background-color: #16a085
+}
+
+.dropdown:hover .first_dropdown {
+    background-color: #34495e;
+    display: block;
+    margin-top:0px;
+ }
+
+ .first_dropdown li:hover {
+   background-color: #16a085
+ }
+
+</style>
+
+</html>

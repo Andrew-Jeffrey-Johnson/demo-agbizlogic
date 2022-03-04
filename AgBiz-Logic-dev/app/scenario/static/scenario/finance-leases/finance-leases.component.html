@@ -1,0 +1,98 @@
+<h3 class="text-center">Your Current Financial Information</h3>
+
+<finance-step-indicator
+  step="3"
+  steps="$ctrl.steps">
+</finance-step-indicator>
+
+<h4>Current Capital Leases</h4>
+
+<p>All current leases with a multi-year payment plan, excluding land leases, should be recorded here.
+  These leases will show in all of your <i>AgBizFinance</i> scenarios with any remaining annual payments.</p>
+
+<div class="row">
+  <div class="col-md-9" >
+  </div>
+  <div class="col-md-2">
+    <button
+      class="btn btn-default pull-right"
+      ng-click="$ctrl.addTransaction()">
+      Add New Current Lease
+    </button>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+    <!-- <div class="panel panel-default" ng-repeat="(key, value) in $ctrl.current_lease_list | groupBy: 'asset_type'"> -->
+      <div>
+        <!-- <div class="panel-heading" style="background-color: #428bca;">
+            <a data-toggle="collapse" data-parent="#accordion" ng-attr-href="#{{$index}}" style="color: white;">{{key}}</a>
+        </div> -->
+        <div ng-attr-id="{{$index}}" class="panel-collapse collapse in">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <!--<th style="text-align: right;">Loan Amount</th>-->
+                <th style="text-align: right;">Annual Payment</th>
+                <th style="text-align: right;">Years Before Lease Expires</th>
+                <th style="text-align: right;">Type of Asset</th>
+
+                <!--<th style="text-align: right;">Years before Loan Matures</th>
+                <th style="text-align: right;">Type of Assets</th>
+                <th style="text-align: right;">Action</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in $ctrl.current_lease_list  | orderBy:'financed_through'">
+                <td>{{item.financed_through}}</td>
+              <!--  <td style="text-align: right;">${{item.loan_amount}}</td>-->
+                <td style="text-align: right;">{{item.annual_payment | currency}}</td>
+                <td style="text-align: right;">{{item.years_before_leases_expired}}</td>
+                <td style="text-align: right;">{{item.asset_class}}</td>
+
+                <td style="text-align: right;">
+                  <div>
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="$ctrl.edit(item)"></span>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="$ctrl.remove(item.id)"></span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading -->
+<!--md-progress-circular
+  class="col-md-offset-5"
+  style="margin-top: 40px"
+  ng-if="$ctrl.scenario === undefined"
+  md-mode="indeterminate">
+</md-progress-circular-->
+
+<br />
+<br />
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Previous
+    </button>
+  </div>
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Next
+    </button>
+  </div>
+</div>

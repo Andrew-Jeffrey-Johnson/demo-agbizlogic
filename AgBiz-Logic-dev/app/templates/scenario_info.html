@@ -1,0 +1,34 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+{% block content %}
+<br>
+  <div class="hidden-xs hidden-sm">
+  <ol class="progtrckr" data-progtrckr-steps="5">
+    <li class="progtrckr-done">Account Information</li>
+    <li class="progtrckr-done">Business Information</li>
+    <li class="progtrckr-on">Business Enterprises</li>
+    <li class="progtrckr-todo">Business Assets</li>
+    <li class="progtrckr-todo">Business Liabilities</li>
+</ol>
+  </div>
+<br>
+
+
+<p>You selected: <b>{{info}}</b></p>
+
+<p>We first need to build a scenario to compare the profitability of your particular situation.   An example of what a scenario may look like is below. Notice that you can compare two scenarios at one time, the multiple years of present values and net present value, and net returns, costs, annual net returns and accumulated returns for each scenario.  To provide you with these details for an accurate analysis we need to load or build cost and return budgets that reflect those of your business.
+</p>
+
+<img src="{% static "img/return.jpg" %}" class="img-responsive" alt="Cinque Terre">
+
+  <a class="btn btn-success pull-right" type="button" href="/income/" />Continue</a>
+
+  <a class="btn btn-default" type="button" href="/select_scenario/">Back</a>
+ <a class="btn btn-default" type="button" href="/index/">Leave Page</a>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+/*#card {
+  max-height: 478.45px;
+  min-height: 478.45px;
+}*/
+
+#panel-body {
+  max-height: 372px;
+  overflow-y: scroll;
+}
+
+.scenario-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.panel.footer {
+}

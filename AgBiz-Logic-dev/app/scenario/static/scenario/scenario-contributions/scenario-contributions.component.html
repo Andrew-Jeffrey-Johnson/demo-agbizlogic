@@ -1,0 +1,96 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h3><i>AgBizLease Scenario</i></h3>
+<h6 ng-bind="$ctrl.scenario.title"></h6>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4
+      class="panel-title"
+      ng-bind="($ctrl.role | capitalize ) + '\'s contributions'">
+    </h4>
+  </div>
+  <div class="panel-body">
+    Provide a rate that will discount future net returns to today's value for the life of this invesment.
+    Also provide the beginning and ending investment value of the assets used in each plan. Once you complete this
+    information you can run an <i>AgBizProfit</i> analysis.
+  </div>
+</div>
+
+<div class="panel panel-primary container-fluid">
+  <div class="panel-heading flex">
+    <span
+      class="flex-3"
+      style="margin: 0 5px;">
+      Plan Title
+    </span>
+    <span class="flex-1">
+      Discount Rate
+    </span>
+    <span
+      class="flex-1"
+      style="margin: 0 5px;">
+      Beginning investment value of land investment
+    </span>
+    <span class="flex-1">
+      Annual rate of land appreciation
+    </span>
+    <span
+      class="flex-1"
+      style="margin: 0 5px;">
+      Annual rate of return on investment in the land
+    </span>
+    <span
+      class="flex-1"
+      style="margin: 0 5px;">
+      Beginning value of capital investments
+    </span>
+    <span
+      class="flex-1"
+      style="margin: 0 5px;">
+      Ending value of capital investments
+    </span>
+    <span
+      class="flex-1"
+      style="margin: 0 5px;">
+      Inflation rate
+    </span>
+  </div>
+  <div class="panel-body">
+    <contribution-item
+      ng-repeat="plan in $ctrl.plans track by $index"
+      ng-style="{
+        'background': $index % 2 == 0 ? '#f5f5f5' : '#fff'
+      }"
+      plan="plan"
+      on-change="$ctrl.updatePlan(plan_id, discount_rate, beginning_land, appreciation, roi, beginning_capital, ending_capital, inflation_rate)">
+    </contribution-item>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-disabled="$ctrl.is_error == true"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

@@ -1,0 +1,588 @@
+<h3>Accrual Adjustments to Income Statement</h3>
+
+<p>The beginning balance sheet provides default values for revenues and expenses that can be adjusted to
+accurately project profits each year. Enter the expected/anticipated change in dollar value from the previous year
+for each time period. These adjustments will automatically be included in proforma balance sheets and income
+statements.</p>
+
+        <table class="table table-hover table-bordered">
+          <thead class="bg-primary" style="border: none">
+            <tr class="noBorder">
+              <th  style="border-right:none">Year</th>
+              <th scope="col">0</th>
+              <th scope="col">1</th>
+              <th scope="col">2</th>
+              <th scope="col">3</th>
+              <th scope="col">4</th>
+              <th scope="col">5</th>
+              <th scope="col">6</th>
+              <th scope="col">7</th>
+              <th scope="col">8</th>
+              <th scope="col">9</th>
+              <th scope="col">10</th>
+            </tr>
+          </thead>
+
+
+
+          <tbody >
+            <tr>
+              <th scope="row" colspan="12" style="background-color:lightgray;">Current Assets</th>
+            </tr>
+
+            <tr>
+              <th scope="row">Change in Accounts Receivable</th>
+              <th scope="row">{{$ctrl.account_receivable[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.account_receivable track by key" ng-if="$index > 0"><div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.account_receivable[key]">
+              </div></th>
+            </tr>
+
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Accounts Receivable</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.account_receivable) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <th scope="row">Change in Prepaid Expenses</th>
+              <th scope="row">{{$ctrl.prepaid_expenses[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.prepaid_expenses track by key" ng-if="$index > 0"><div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.prepaid_expenses[key]">
+              </div></th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Prepaid Expenses</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.prepaid_expenses) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+            <tr>
+              <th scope="row">Change in Cash Investments</th>
+              <th scope="row">{{$ctrl.investment[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.investment track by key" ng-if="$index > 0"><div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.investment[key]">
+              </div></th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Cash Investments</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.investment) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+            <tr>
+              <th scope="row">Change in Marketable Livestock</th>
+              <th scope="row">{{$ctrl.marketable_livestock[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.marketable_livestock track by key" ng-if="$index > 0"><div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.marketable_livestock[key]">
+              </div></th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Marketable Livestock</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.marketable_livestock) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+            <tr>
+              <th scope="row">Change in Stored Crops and Feed</th>
+              <th scope="row">{{$ctrl.stored_crops_and_feed[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.stored_crops_and_feed track by key" ng-if="$index > 0"><div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.stored_crops_and_feed[key]">
+              </div></th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Stored Crops and Feed</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.stored_crops_and_feed) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+            <tr>
+              <th scope="row">Change in Purchased Feed</th>
+              <th scope="row">{{$ctrl.purchased_feed[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.purchased_feed track by key" ng-if="$index > 0"><div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.purchased_feed[key]">
+              </div></th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Purchased Feed</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.purchased_feed) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+            <tr>
+              <th scope="row">Change in Supplies</th>
+              <th scope="row">{{$ctrl.supplies[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.supplies track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.supplies[key]">
+              </div></th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Supplies</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.supplies) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+            <tr>
+              <th scope="row">Change in Other Current Assets</th>
+              <th scope="row">{{$ctrl.other_assets[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.other_assets track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.other_assets[key]">
+              </div> </th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Other Current Assets</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.other_assets) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+
+
+
+
+            <tr>
+              <th scope="row" colspan="12" style="background-color:lightgray;">Intermediate Assets</th>
+            </tr>
+
+            <!-- new  need build database-->
+            <tr>
+              <th scope="row">Change in Market Value of all Intermediate Assets</th>
+              <th scope="row">{{$ctrl.market_value_of_all_intermediate_assets[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.market_value_of_all_intermediate_assets track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.market_value_of_all_intermediate_assets[key]">
+              </div> </th>
+            </tr>
+
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Market Value of all Intermediate Assets</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.market_value_of_all_intermediate_assets) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+            <!-- new end -->
+
+            <!-- new  need -->
+            <tr>
+              <th scope="row">Change in Book Value of all Intermediate and Long-Term Assets</th>
+              <th scope="row">{{0}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.book_value_of_all_intermediate_and_long_term_assets track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.book_value_of_all_intermediate_and_long_term_assets[key]">
+              </div> </th>
+            </tr>
+
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Book Value of all Intermediate and Long-Term Assets</th>
+              <!-- <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.a1ccounts_payable) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th> -->
+            </tr>
+            <!-- new end -->
+
+
+
+            <tr>
+              <th scope="row">Change in Contracts and Notes Receivable</th>
+              <th scope="row">{{$ctrl.contracts_and_notes_receivable[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.contracts_and_notes_receivable track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.contracts_and_notes_receivable[key]">
+              </div> </th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Contracts and Notes Receivable</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.contracts_and_notes_receivable) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+            <!-- new  -->
+            <tr>
+              <th scope="row">Change in Investments in Cooperatives</th>
+              <th scope="row">{{$ctrl.investments_in_cooperatives[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.investments_in_cooperatives track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.investments_in_cooperatives[key]">
+              </div> </th>
+            </tr>
+
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Investments in Cooperatives</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.investments_in_cooperatives) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+            <!-- new end -->
+
+            <!-- new  -->
+            <tr>
+              <th scope="row">Change in Other Intermediate Assets</th>
+              <th scope="row">{{$ctrl.other_intermediate_assets[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.other_intermediate_assets track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.other_intermediate_assets[key]">
+              </div> </th>
+            </tr>
+
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Other Intermediate Assets</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.other_intermediate_assets) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+            <!-- new end -->
+
+            <tr>
+              <th scope="row" colspan="12" style="background-color:lightgray;">Long-Term Asset</th>
+            </tr>
+
+            <!-- new  -->
+            <tr>
+              <th scope="row">Change in Other Long-Term Assets</th>
+              <th scope="row">{{$ctrl.other_long_term_assets[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.other_long_term_assets track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.other_long_term_assets[key]">
+              </div> </th>
+            </tr>
+
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Other Long-Term Assets</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.other_long_term_assets) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+            <!-- new end -->
+
+            <tr>
+              <th scope="row" colspan="12" style="background-color:lightgray;">Current Liabilities</th>
+            </tr>
+
+            <!-- remove -->
+            <tr>
+              <th scope="row">Change in Accounts Payable</th>
+              <th scope="row">{{$ctrl.accounts_payable[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.accounts_payable track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.accounts_payable[key]">
+              </div> </th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Accounts Payable</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.accounts_payable) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+            <!-- remove end -->
+
+            <!-- Rename “Valorem Taxes” to “Real Estate and Other Taxes” -->
+            <tr>
+              <th scope="row">Changge in Real Estate and Other Taxes</th>
+              <th scope="row">{{$ctrl.valorem_taxes[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.valorem_taxes track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.valorem_taxes[key]">
+              </div> </th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Real Estate and Other Taxes</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.valorem_taxes) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+            <!-- Rename “Valorem Taxes” to “Real Estate and Other Taxes” -->
+
+            <tr>
+              <th scope="row">Change in Employee Payroll Withholding
+              <th scope="row">{{$ctrl.employee_payroll_withholding[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.employee_payroll_withholding track by key" ng-if="$index > 0"><div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.employee_payroll_withholding[key]">
+              </div></th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Employee Payroll Withholding</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.employee_payroll_withholding) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+            <!-- <tr>
+              <th scope="row">Change in Income Taxes</th>
+              <th scope="row">{{$ctrl.income_taxes[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.income_taxes track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.income_taxes[key]">
+              </div></th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Income Taxes</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.income_taxes) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+
+            <tr>
+              <th scope="row">Change in Deferred Taxes</th>
+              <th scope="row">{{$ctrl.deferred_taxes[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.deferred_taxes track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.deferred_taxes[key]">
+              </div> </th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Deferred Taxes</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.deferred_taxes) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr> -->
+
+
+
+            <tr>
+              <th scope="row">Change in Other Accrued Expenses</th>
+              <th scope="row">{{$ctrl.other_accured_expenses[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.other_accured_expenses track by key" ng-if="$index > 0"> <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  style="border-radius: 8px"
+                  ng-model="$ctrl.other_accured_expenses[key]">
+              </div> </th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Other Accrued Expenses</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.other_accured_expenses) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+            <!-- Rename “Other Current Liabilities” to “Other Liabilities” -->
+            <tr>
+              <th scope="row">Change in Other Liabilities</th>
+              <th scope="row">{{$ctrl.other_current_liabilites[0]}}</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.other_current_liabilites track by key" ng-if="$index > 0"><div class="input-group">
+                <input
+                  class="form-control"
+                  style="border-radius: 8px"
+                  type="number"
+                  ng-model="$ctrl.other_current_liabilites[key]">
+              </div></th>
+            </tr>
+            <tr class="bg-info" style="border: none">
+              <th scope="row">Calculated Other Liabilities</th>
+              <th scope="row" ng-repeat="(key, value) in $ctrl.get_total($ctrl.other_current_liabilites) track by key">
+                <div ng-if ="value >= 0">
+                {{value}}
+                </div>
+                <div ng-if ="value < 0" style="color: red">
+                 add at least {{0-value}}
+                </div>
+              </th>
+            </tr>
+            <!-- Rename “Other Current Liabilities” to “Other Liabilities” -->
+          </tbody>
+        </table>
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
+  </div>
+</div>
+
+<br />
+<br />
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Previous
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Save
+    </button>
+  </div>

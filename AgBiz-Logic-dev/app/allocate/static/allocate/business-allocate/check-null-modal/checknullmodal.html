@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <span
+        class="col-md-12">
+        You have unallocated business enterprise income and expenses, these unallocated dollars will be added to a Whole Farm Budget. If this is what you would like, please continue.
+        <span ng-if="$ctrl.statement === 'Expenses'">
+          <br><br><b>Are you sure you are finished with this step? You will not be able to come back.</b>
+        </span>
+
+      </span>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-2">
+        <button
+          class="btn btn-warning"
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+
+      <div class="col-md-2 col-md-offset-7">
+        <button
+          class="btn btn-success"
+          ng-click="$ctrl.submit()">
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

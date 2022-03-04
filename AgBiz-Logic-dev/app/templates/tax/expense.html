@@ -1,0 +1,193 @@
+{% extends "wizard.html" %}
+{% load static %}
+
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+
+  {% for field in form %}
+    {{field.error}}
+
+  {% endfor %}
+
+
+
+
+
+
+
+ <script src="{% static "js/vendor/jquery-1.8.3.js" %}"></script>
+   <script src="{% static "js/jquery.poshytip.js" %}"></script>
+
+
+<link href="{% static "css/tip-yellowsimple.css" %}" rel="stylesheet"/>
+<script type="text/javascript" src="{% static "js/add-commas-number.js" %}"></script>
+
+
+<script src="{% static "js/jquery-editable-poshytip.min.js" %}"></script>
+<link href="{% static "css/jquery-editable.css" %}" rel="stylesheet"/>
+<script src="{% static "js/editable.js" %}"></script>
+
+
+
+</script>
+
+<style type="text/css" />
+.row{
+    padding-top: 10px
+}
+
+</style>
+  <form action="" method="post">
+  {% csrf_token %}
+  <table>
+
+<h3>Enter information from your Schedule F (Form 1040)</h3>
+
+<h4>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h4>
+
+
+
+<p>Next, enter data from: <b> Part II: Farm Expenses - Cash and Accrual Method.</b></p>
+
+<br>
+
+{% if wizard.form.errors %}
+<div id="myAlert" class="alert alert-warning">
+        <a href="#" class="close" data-hide="alert">&times;</a>
+        <strong>Warning!</strong> Your <strong>Total Expense</strong> field cannot be empty!
+    </div>
+
+{% endif %}
+
+  {{ wizard.management_form }}
+  {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+      {% for form in wizard.form.forms %}
+          {{ form.as_p }}
+
+
+      {% endfor %}
+  {% else %}
+
+    <div class="col-md-6 form-group">
+
+   {% for field in wizard.form %}
+
+
+     {% if forloop.counter < 15 %}
+
+
+
+
+        <div class="row">
+          {% if field.errors %}<div class="form-group has-error">{% endif %}
+         <label class="row-xs-12 col-md-6" for={{field.id_for_label}}>{{ field.label }}:</label>
+           <div class="row-xs-12 col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+
+                    {{ field|attr:'class:form-control'}}
+
+                  <span class="input-group-addon">.00</span>
+
+                </div> <!--- end input group -->
+            </div> <!--- end col -->
+
+          <span class="help-block" style="text-align: center;">{% if field.errors %} <b>{{ field.errors|striptags }}</b> {%endif %}</span>
+
+           {% if field.errors %}</div>{% endif %}
+       </div> <!-- end row -->
+
+
+
+      {% endif %}
+  {% endfor %}
+
+    </div>
+
+
+
+
+
+  <div class="col-md-6 form-group">
+
+   {% for field in wizard.form %}
+     {% if forloop.counter >= 15 and forloop.counter < 32%}
+
+
+           <div class="row">
+          {% if field.errors %}<div class="form-group has-error">{% endif %}
+           <label class="row-xs-12 col-md-6" for={{field.id_for_label}}>{{ field.label }}:</label>
+             <div class="row-xs-12 col-md-6">
+            <div class="input-group">
+            <span class="input-group-addon">$</span>
+
+            {{ field|attr:'class:form-control'}}
+
+          <span class="input-group-addon">.00</span>
+
+               </div>
+                <span class="help-block ">{% if field.errors %} <b> {{ field.errors|striptags }} </b> {% endif %}</span>
+              </div>
+
+
+           {% if field.errors %}</div>{% endif %}
+         </div>
+
+
+
+
+
+
+
+
+      {% endif %}
+
+      {% if forloop.counter >= 32%}
+
+      {{field}}
+
+      {%endif%}
+  {% endfor %}
+
+  {% endif %}
+
+
+
+
+   </div>
+
+
+
+   <br>
+
+
+
+
+
+
+
+    <button type="submit" title="We recommend that you verify the total expenses value matches that on your Schedule F." data-toggle="tooltip" class="btn pull-right btn-success">Continue</button>
+     {% if wizard.steps.prev %}
+           <button name="wizard_next_step" class="btn btn-default" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+        {% endif %}
+
+
+
+
+
+
+
+
+
+  </form>
+
+
+
+
+
+
+{% endblock %}

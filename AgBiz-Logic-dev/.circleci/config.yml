@@ -1,0 +1,98 @@
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+    - checkout_code
+    - install_dependencies:
+        requires:
+          - checkout_code
+#    - python_test:
+#        requires:
+#          - install_dependencies
+    - npm_test:
+        requires:
+          - install_dependencies
+
+version: 2
+jobs:
+
+  #  pull repository: AgBiz-Logic
+  checkout_code:
+    docker:
+      - image: circleci/python:3.6.9-stretch-node-browsers
+    working_directory: ~/AgBiz-Logic
+    steps:
+      - checkout
+      - save_cache:
+          key: testing-v2-repo-{{ .Branch }}-{{ .Revision }}
+          paths: ~/AgBiz-Logic
+
+  #  install dependencies and save cache
+  install_dependencies:
+    docker:
+      - image: circleci/python:3.6.9-stretch-node-browsers
+    working_directory: ~/AgBiz-Logic
+    steps:
+      - restore_cache:
+          key: testing-v2-repo-{{ .Branch }}-{{ .Revision }}
+      - restore_cache:
+          key: testing-v2-deps-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          name: Build Up Environment
+          command: |
+            virtualenv ~/AgBiz-Logic/venv
+            . ~/AgBiz-Logic/venv/bin/activate
+            pip install -r requirements.txt
+            npm install
+      - save_cache:
+          key: testing-v2-deps-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - ".cache/pip"
+            - "venv"
+            - "node_modules"
+      - run:
+          name: Get Short Term Data
+          command: |
+            ./getShortTermData.sh
+      - save_cache:
+          key: testing-v2-short-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - "app/shortTermData"
+
+  #  python3 test
+  # python_test:
+  #   docker:
+  #     - image: circleci/python:3.6.9-stretch-node-browsers
+  #   working_directory: ~/AgBiz-Logic
+  #   steps:
+  #     - restore_cache:
+  #         key: testing-v2-repo-{{ .Branch }}-{{ .Revision }}
+  #     - restore_cache:
+  #         key: testing-v2-deps-{{ .Branch }}-{{ checksum "requirements.txt" }}
+  #     - restore_cache:
+  #         key: testing-v2-short-{{ .Branch }}-{{ .Revision }}
+  #     - run:
+  #         name: Project Test
+  #         command: |
+  #           virtualenv ~/AgBiz-Logic/venv
+  #           . ~/AgBiz-Logic/venv/bin/activate
+  #           cd app && python3 manage.py test
+
+  #  npm test
+  npm_test:
+    docker:
+      - image: circleci/python:3.6.9-stretch-node-browsers
+    working_directory: ~/AgBiz-Logic
+    steps:
+      - restore_cache:
+          key: testing-v2-repo-{{ .Branch }}-{{ .Revision }}
+      - restore_cache:
+          key: testing-v2-deps-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - restore_cache:
+          key: testing-v2-short-{{ .Branch }}-{{ .Revision }}
+      - run:
+          name: Project Test
+          command: |
+            virtualenv ~/AgBiz-Logic/venv
+            . ~/AgBiz-Logic/venv/bin/activate
+            cd app && npm test

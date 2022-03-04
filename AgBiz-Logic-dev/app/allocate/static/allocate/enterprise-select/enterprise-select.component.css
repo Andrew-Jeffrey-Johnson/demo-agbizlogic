@@ -1,0 +1,18 @@
+.select {
+  cursor: pointer;
+  line-height: 28px;
+  font-size: 18px;
+  padding-left: 8px;
+  padding-right: 20px;
+
+}
+
+.enterprise-list-item .action {
+    top: -8px;
+}
+
+.btn-success[disabled] {
+    border-color: #cacfd2;
+    background-color: #cacfd2;
+    color: #ffffff;
+}

@@ -1,0 +1,223 @@
+$(document).ready(function(){
+
+	$(function(){
+	    $("[data-hide]").on("click", function(){
+		$(this).closest("." + $(this).attr("data-hide")).hide();
+	    });
+	});
+	$('#myAlert').hide();
+
+	CheckAllocatedValue('line_10', 'number_10', 'whole_farm_8', 'unit_8');
+	CheckAllocatedValue('line_11', 'number_11', 'whole_farm_9', 'unit_9');
+	CheckAllocatedValue('line_12', 'number_12', 'whole_farm_10', 'unit_10');
+	CheckAllocatedValue('line_13', 'number_13', 'whole_farm_11', 'unit_11');
+    	CheckAllocatedValue('line_14', 'number_14', 'whole_farm_12', 'unit_12');
+	CheckAllocatedValue('line_15', 'number_15', 'whole_farm_13', 'unit_13');
+    	CheckAllocatedValue('line_16', 'number_16', 'whole_farm_14', 'unit_14'); 
+	CheckAllocatedValue('line_17', 'number_17', 'whole_farm_15', 'unit_15');
+	CheckAllocatedValue('line_18', 'number_18', 'whole_farm_16', 'unit_16');
+	CheckAllocatedValue('line_19', 'number_19', 'whole_farm_17', 'unit_17');
+	CheckAllocatedValue('line_20', 'number_20', 'whole_farm_18', 'unit_18');
+    	CheckAllocatedValue('line_21_a', 'number_21_a', 'whole_farm_19', 'unit_19');
+	CheckAllocatedValue('line_21_b', 'number_21_b', 'whole_farm_20', 'unit_20');
+   	CheckAllocatedValue('line_22', 'number_22', 'whole_farm_21', 'unit_21');
+	CheckAllocatedValue('line_23', 'number_23', 'whole_farm_22', 'unit_22');
+	CheckAllocatedValue('line_24_a', 'number_24_a', 'whole_farm_23', 'unit_23');
+	CheckAllocatedValue('line_24_b', 'number_24_b', 'whole_farm_24', 'unit_24');
+	CheckAllocatedValue('line_25', 'number_25', 'whole_farm_25', 'unit_25');
+    	CheckAllocatedValue('line_26', 'number_26', 'whole_farm_26', 'unit_26');
+	CheckAllocatedValue('line_27', 'number_27', 'whole_farm_27', 'unit_27');
+    	CheckAllocatedValue('line_28', 'number_28', 'whole_farm_28', 'unit_28');   
+	CheckAllocatedValue('line_29', 'number_29', 'whole_farm_29', 'unit_29');
+	CheckAllocatedValue('line_30', 'number_30', 'whole_farm_30', 'unit_30');
+	CheckAllocatedValue('line_31', 'number_31', 'whole_farm_31', 'unit_31');
+	CheckAllocatedValue('line_32_a', 'number_32_a', 'whole_farm_32', 'unit_32');
+    	CheckAllocatedValue('line_32_b', 'number_32_b', 'whole_farm_33', 'unit_33');
+	CheckAllocatedValue('line_32_c', 'number_32_c', 'whole_farm_34', 'unit_34');
+    	CheckAllocatedValue('line_32_d', 'number_32_d', 'whole_farm_35', 'unit_35');    
+	CheckAllocatedValue('line_32_e', 'number_32_e', 'whole_farm_36', 'unit_36');
+	CheckAllocatedValue('line_32_f', 'number_32_f', 'whole_farm_37', 'unit_37');
+ 
+ 	
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    function CheckAllocatedValue(name, str, farm, unit){
+
+		//str is the textbox with the number already
+
+		var list = [];
+		var select_list = [];
+		var line_value = 0;
+		var whole_farm;
+		var selected_unit;
+		
+		var regexString = '(step\\d+\\-' + str + '$)'; //regex string for line html name
+		var regex = new RegExp(regexString);
+
+		var farmString = '(step\\d+\\-' + farm + '$)';
+		var farmRegex = new RegExp(farmString);
+
+		var unitString = '(step\\d+\\-' + unit + '$)';
+		var unitRegex = new RegExp(unitString);
+
+		var inputs = document.getElementsByTagName("input");
+		var select = document.getElementsByTagName("select");
+
+	
+		
+		//get the unit drop down and find the corresponding one
+		for (var i = 0; i < select.length; i++){
+			if (select[i].name.match(unitRegex)){
+
+				//get select object
+				
+				select_list = document.getElementById(select[i].id);
+				
+				selected_unit = select[i].value; //get inital value
+				//console.log(selected_unit);
+
+				
+				select_list.addEventListener("change", function() {
+		
+					//if changed reread the select value
+					selected_unit = select_list.value;
+
+					for(var i = 0; i < inputs.length; i++) {
+
+
+
+						 if(inputs[i].name.indexOf(name) > -1) {
+							inputs[i].value = "";
+
+						 }	
+
+
+
+					}
+
+
+				}); //end eventlistener
+
+		
+				
+
+			} //end if
+
+
+		} //end for
+
+
+		
+		//get new value if user selects a new unit
+	
+
+		
+		
+		for(var i = 0; i < inputs.length; i++) {
+		    if(inputs[i].name.indexOf(name) > -1) {
+			    list.push(document.getElementById(inputs[i].id));
+
+		    }
+
+		    if (inputs[i].name.match(regex)){
+
+			    line_value = inputs[i].value;
+		
+		
+		    }
+
+		
+
+		    if (inputs[i].name.match(farmRegex)){
+
+			    console.log(inputs[i]);
+			    whole_farm = inputs[i];
+               
+		    }
+		}
+
+
+		for (var i = 0; i < list.length; i++){
+
+			list[i].addEventListener("keyup", function(){
+
+			
+				    var total = 0;
+
+				    if (selected_unit == "A"){
+					    for (var i = 0; i < list.length; i++){
+
+
+						
+	
+						if (list[i].value == ""){
+		
+							
+							total = total + 0;
+						}else{
+
+	
+					    		total = total + parseInt(list[i].value.replace(/\,/g,''));
+			
+						        }
+					    }
+					 
+
+					    if (total > line_value){
+	
+						$('#myAlert').show();
+		
+					    }
+	
+					    whole_farm.value = line_value - total;
+				
+				    }else if (selected_unit == "B"){
+
+						for (var i = 0; i < list.length; i++){
+	
+							if (list[i].value == ""){
+		
+			
+								total = total + 0;
+							}else{
+	
+						    		total = total + parseInt(list[i],value.replace(/\,/g,''));
+			
+							}
+						    }
+						 
+
+						    if (total > 100){
+	
+							$('#myAlert').show();
+		
+						    }
+					
+					whole_farm.value = line_value - (line_value * (total / 100)) ;
+					}
+			
+				});
+		}//end for
+
+				    
+	}//function end
+
+
+	 
+		
+	
+	
+	    
+	
+	
+
+	
+});
+

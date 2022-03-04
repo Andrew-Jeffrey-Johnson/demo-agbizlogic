@@ -1,0 +1,12 @@
+
+<div class="steps-form">
+  <div class="steps-row setup-panel">
+      <div class="steps-step" ng-click="$ctrl.goto($index)" ng-repeat="step in $ctrl.steps">
+          <a type="button" ng-if="$ctrl.step <= $index+1" class="btn btn-circle">{{$index+1}}</a>
+          <p ng-if="$ctrl.step <= $index+1" ng-bind="$ctrl.steps[$index]"></p>
+
+          <a type="button" ng-if="$ctrl.step > $index+1" class="btn btn-circle-checked">{{$index+1}}</a>
+          <p ng-if="$ctrl.step > $index+1" class="checked"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{$ctrl.steps[$index]}}</p>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,191 @@
+<div class="panel panel-primary container-fluid">
+  <div class="panel-heading flex">
+
+    <!--Title-->
+    <b ng-if="$ctrl.emptyFlex == true && $ctrl.showType == false" class="flex-4">
+      <div class="word-style">Title</div>
+      <div class="chevron-btn" ng-click="toggle = !toggle">
+        <span class="fa fa-chevron-up" ng-show="toggle" ng-click="$ctrl.filter_name_up()"></span>
+        <span class="fa fa-chevron-down" ng-hide="toggle" ng-click="$ctrl.filter_name_down()" ></span>
+      </div>
+    </b>
+
+    <b ng-if="$ctrl.emptyFlex == true && $ctrl.showType == true" class="flex-3">
+      <div class="word-style">Title</div>
+      <div class="chevron-btn" ng-click="toggle = !toggle">
+        <span class="fa fa-chevron-up" ng-show="toggle" ng-click="$ctrl.filter_name_up()"></span>
+        <span class="fa fa-chevron-down" ng-hide="toggle" ng-click="$ctrl.filter_name_down()" ></span>
+      </div>
+    </b>
+
+    <b ng-if="$ctrl.emptyFlex == false" class="flex-2">
+      <div class="word-style">Title</div>
+      <div class="chevron-btn" ng-click="toggle = !toggle">
+        <span class="fa fa-chevron-up" ng-show="toggle" ng-click="$ctrl.filter_name_up()"></span>
+        <span class="fa fa-chevron-down" ng-hide="toggle" ng-click="$ctrl.filter_name_down()" ></span>
+      </div>
+    </b>
+
+    <!--Note-->
+    <!--<b-->
+      <!--ng-if="$ctrl.emptyFlex == true && $ctrl.showType == false"-->
+      <!--class="flex-4">-->
+      <!--Notes-->
+    <!--</b>-->
+
+    <!--<b-->
+      <!--ng-if="$ctrl.emptyFlex == true && $ctrl.showType == true"-->
+      <!--class="flex-3">-->
+      <!--Notes-->
+    <!--</b>-->
+
+    <!--<b-->
+      <!--ng-if="$ctrl.emptyFlex == false"-->
+      <!--class="flex-2">-->
+      <!--Notes-->
+    <!--</b>-->
+
+    <b
+      style="text-align: center;"
+      class="flex-1">
+      Notes
+    </b>
+
+    <!--Scenario-->
+    <b
+      ng-if="$ctrl.module=='finance' && $ctrl.emptyFlex == true"
+      class="flex-4">
+      Scenario
+    </b>
+
+    <!--Unit-->
+    <b
+      ng-if="$ctrl.module=='finance' && $ctrl.emptyFlex == true"
+      class="flex-3">
+      Unit
+    </b>
+
+    <!--Create Date-->
+    <!--<b-->
+      <!--ng-if="$ctrl.showDate == true && $ctrl.emptyFlex == true"-->
+      <!--class="flex-1">-->
+      <!--<div style="float: right;">-->
+        <!--<div class="word-style">Created</div>-->
+        <!--<div class="chevron-btn" ng-click="created_toggle = !created_toggle">-->
+          <!--<span class="fa fa-chevron-up" ng-show="created_toggle" ng-click="$ctrl.filter_created_date_up()"></span>-->
+          <!--<span class="fa fa-chevron-down" ng-hide="created_toggle" ng-click="$ctrl.filter_created_date_down()"></span>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</b>-->
+
+    <b
+      style="text-align: right;"
+      ng-if="$ctrl.showDate == true"
+      class="flex-1">
+      <div style="display: inline-block; vertical-align: middle;">
+        <div class="word-style">Created</div>
+        <div class="chevron-btn" ng-click="created_toggle = !created_toggle">
+          <span class="fa fa-chevron-up" ng-show="created_toggle" ng-click="$ctrl.filter_created_date_up()"></span>
+          <span class="fa fa-chevron-down" ng-hide="created_toggle" ng-click="$ctrl.filter_created_date_down()"></span>
+        </div>
+      </div>
+    </b>
+
+    <!--Modified Date-->
+    <b
+      style="z-index: 9"
+      ng-if="$ctrl.showDate == true && $ctrl.emptyFlex == true"
+      class="flex-2">
+      <div style="float: right;">
+        <div class="word-style">Last Modified</div>
+        <div class="chevron-btn" ng-click="modified_toggle = !modified_toggle">
+          <span class="fa fa-chevron-up" ng-show="modified_toggle" ng-click="$ctrl.filter_modified_date_up()"></span>
+          <span class="fa fa-chevron-down" ng-hide="modified_toggle" ng-click="$ctrl.filter_modified_date_down()" ></span>
+        </div>
+      </div>
+    </b>
+
+    <b
+      ng-if="$ctrl.showDate == true && $ctrl.emptyFlex == false"
+      class="flex-1">
+      <div style="float: right;">
+        <div class="word-style">Last Modified</div>
+        <div class="chevron-btn" ng-click="modified_toggle = !modified_toggle">
+          <span class="fa fa-chevron-up" ng-show="modified_toggle" ng-click="$ctrl.filter_modified_date_up()"></span>
+          <span class="fa fa-chevron-down" ng-hide="modified_toggle" ng-click="$ctrl.filter_modified_date_down()" ></span>
+        </div>
+      </div>
+    </b>
+
+    <!--<b-->
+      <!--style="text-align: right;"-->
+      <!--ng-if="$ctrl.showDate == true && $ctrl.emptyFlex == false"-->
+      <!--class="flex-1">-->
+      <!--<div style="display: inline-block; vertical-align: middle;">-->
+        <!--<div class="word-style">Last Modified</div>-->
+        <!--<div class="chevron-btn" ng-click="modified_toggle = !modified_toggle">-->
+          <!--<span class="fa fa-chevron-up" ng-show="modified_toggle" ng-click="$ctrl.filter_modified_date_up()"></span>-->
+          <!--<span class="fa fa-chevron-down" ng-hide="modified_toggle" ng-click="$ctrl.filter_modified_date_down()" ></span>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</b>-->
+
+    <b
+      style="text-align: center;"
+      ng-if="$ctrl.showType == true"
+      class="flex-2">
+      Projection Type
+    </b>
+    <b
+      style="text-align: center;"
+      ng-if="$ctrl.type == true"
+      class="flex-2">
+      Type
+    </b>
+    <b ng-if="$ctrl.emptyFlex == true" class="flex-3"></b>
+  </div>
+
+  <!-- Loading -->
+  <md-progress-circular
+    class="col-md-offset-5"
+    style="margin-top: 40px"
+    ng-if="$ctrl.itemList === undefined"
+    md-mode="indeterminate">
+  </md-progress-circular>
+
+  <div
+    ng-class="{
+      'panel-body': true,
+      'manager-list-panel-small': $ctrl.height == 'small',
+      'manager-list-panel-medium': $ctrl.height == 'medium',
+      'manager-list-panel-large': $ctrl.height == 'large'
+    }">
+    <div class="flex flex-column">
+      <manager-list-item
+        class="manager-list-item flex animate-fade"
+        ng-repeat="item in $ctrl.itemList| orderBy:'$index'"
+        ng-style="{
+          'background': $index % 2 == 0 ? '#f5f5f5' : '#fff'
+        }"
+        module="$ctrl.module"
+        item="item"
+        on-delete="$ctrl.onDelete({item: item})"
+        editable="$ctrl.editable"
+        type="$ctrl.type"
+        shortcutpdf="$ctrl.shortcutpdf"
+        ordered="$ctrl.ordered"
+        on-shift-up="$ctrl.onShiftUp({item: item})"
+        on-shift-down="$ctrl.onShiftDown({item: item})"
+        show-notes="$ctrl.showNotes"
+        show-date="$ctrl.showDate"
+        on-edit="$ctrl.onEdit({item: item})"
+        custom-button-text="$ctrl.customButtonText"
+        on-custom-button="$ctrl.onCustomButton({item: item})"
+        button-disabled="$ctrl.buttonDisabled"
+        show-type="$ctrl.showType"
+        empty-flex="$ctrl.emptyFlex"
+        delete-only="$ctrl.deleteOnly">
+      </manager-list-item>
+    </div>
+  </div>
+</div>

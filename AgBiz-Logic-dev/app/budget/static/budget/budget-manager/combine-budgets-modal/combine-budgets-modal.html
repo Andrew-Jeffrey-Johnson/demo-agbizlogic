@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Select which budgets you would like to combine into a new budget</h3>
+  </div>
+  <div class="panel-body">
+    <budget-select
+      item-list="$ctrl.combine_budget_list"
+      option-list="$ctrl.budget_list"
+      item-limit="2"
+      editable="false"
+      show-notes="false"
+      on-delete="$ctrl.removeBudgetToCombine(item)"
+      on-add="$ctrl.addBudgetToCombine(item)">
+    </budget-select>
+
+    <div class="row">
+      <div class="col-md-6">
+        <button
+          class="btn btn-warning"
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button
+          class="btn btn-success pull-right"
+          ng-click="$ctrl.addNewBudget()">
+          Combine Selected Budgets
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.btn-info.active {
+    border-style: solid;
+    border-color: rgb(38,104,168);
+    border-width: 2px;
+    padding-left: 13px;
+    padding-left: 13px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}

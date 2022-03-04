@@ -1,0 +1,269 @@
+<hr class="item-divider">
+<form
+  class="flex"
+  name="$ctrl.form">
+  <span
+    class="flex-3"
+    ng-bind="$ctrl.plan.title">
+  </span>
+
+  <div
+    class="flex-1 flex-column"
+    style="margin: 0 5px;">
+    <div>
+      <div class="input-group">
+        <input
+          name="discount_rate"
+          class="form-control"
+          type="number"
+          maxlength="3"
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_land: $ctrl.beginning_land,
+            appreciation: $ctrl.appreciation,
+            roi: $ctrl.roi,
+            beginning_capital: $ctrl.beginning_capital,
+            ending_capital: $ctrl.ending_capital,
+            inflation_rate: $ctrl.inflation_rate
+          })"
+          ng-model="$ctrl.discount_rate"
+          ng-pattern="/^[0-9]{1,2}(\.[0-9]{1})?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+        <span class="input-group-addon">
+          %
+        </span>
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.discount_rate.$valid && $ctrl.form.discount_rate.$dirty">
+      Please enter a positive percentage with 1 decimal place (ex. 20.0)
+    </span>
+  </div>
+
+  <div
+    class="flex-1 flex-column"
+    style="margin: 0 5px;">
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon">
+          $
+        </span>
+        <input
+          name="beginning_land"
+          class="form-control"
+          type="text"
+          comma-number-input
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_land: $ctrl.beginning_land,
+            appreciation: $ctrl.appreciation,
+            roi: $ctrl.roi,
+            beginning_capital: $ctrl.beginning_capital,
+            ending_capital: $ctrl.ending_capital,
+            inflation_rate: $ctrl.inflation_rate
+          })"
+          ng-model="$ctrl.beginning_land"
+          ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.beginning_land.$valid && $ctrl.form.beginning_land.$dirty">
+      Please enter a positive currency value (ex. $200.00)
+    </span>
+  </div>
+
+  <div
+    class="flex-1 flex-column"
+    style="margin: 0 5px;">
+    <div>
+      <div class="input-group">
+        <input
+          name="appreciation"
+          class="form-control"
+          type="number"
+          maxlength="3"
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_land: $ctrl.beginning_land,
+            appreciation: $ctrl.appreciation,
+            roi: $ctrl.roi,
+            beginning_capital: $ctrl.beginning_capital,
+            ending_capital: $ctrl.ending_capital,
+            inflation_rate: $ctrl.inflation_rate
+          })"
+          ng-model="$ctrl.appreciation"
+          ng-pattern="/^[0-9]{1,2}(\.[0-9]{1})?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+        <span class="input-group-addon">
+          %
+        </span>
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.appreciation.$valid && $ctrl.form.appreciation.$dirty">
+      Please enter a positive percentage with 1 decimal place (ex. 20.0)
+    </span>
+  </div>
+
+  <div
+    class="flex-1 flex-column"
+    style="margin: 0 5px;">
+    <div>
+      <div class="input-group">
+        <input
+          name="roi"
+          class="form-control"
+          type="number"
+          maxlength="3"
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_land: $ctrl.beginning_land,
+            appreciation: $ctrl.appreciation,
+            roi: $ctrl.roi,
+            beginning_capital: $ctrl.beginning_capital,
+            ending_capital: $ctrl.ending_capital,
+            inflation_rate: $ctrl.inflation_rate
+          })"
+          ng-model="$ctrl.roi"
+          ng-pattern="/^[0-9]{1,2}(\.[0-9]{1})?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+        <span class="input-group-addon">
+          %
+        </span>
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.roi.$valid && $ctrl.form.roi.$dirty">
+      Please enter a positive percentage with 1 decimal place (ex. 20.0)
+    </span>
+  </div>
+
+  <div
+    class="flex-1 flex-column"
+    style="margin: 0 5px;">
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon">
+          $
+        </span>
+        <input
+          name="beginning_capital"
+          class="form-control"
+          type="text"
+          comma-number-input
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_land: $ctrl.beginning_land,
+            appreciation: $ctrl.appreciation,
+            roi: $ctrl.roi,
+            beginning_capital: $ctrl.beginning_capital,
+            ending_capital: $ctrl.ending_capital,
+            inflation_rate: $ctrl.inflation_rate
+          })"
+          ng-model="$ctrl.beginning_capital"
+          ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.beginning_capital.$valid && $ctrl.form.beginning_capital.$dirty">
+      Please enter a positive currency value (ex. $200.00)
+    </span>
+  </div>
+
+  <div
+    class="flex-1 flex-column"
+    style="margin: 0 5px;">
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon">
+          $
+        </span>
+        <input
+          name="ending_capital"
+          class="form-control"
+          type="text"
+          comma-number-input
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_land: $ctrl.beginning_land,
+            appreciation: $ctrl.appreciation,
+            roi: $ctrl.roi,
+            beginning_capital: $ctrl.beginning_capital,
+            ending_capital: $ctrl.ending_capital,
+            inflation_rate: $ctrl.inflation_rate
+          })"
+          ng-model="$ctrl.ending_capital"
+          ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.ending_capital.$valid && $ctrl.form.ending_capital.$dirty">
+      Please enter a positive currency value (ex. $200.00)
+    </span>
+  </div>
+
+  <div
+    class="flex-1 flex-column"
+    style="margin: 0 5px;">
+    <div>
+      <div class="input-group">
+        <input
+          name="inflation_rate"
+          class="form-control"
+          type="number"
+          maxlength="3"
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_land: $ctrl.beginning_land,
+            appreciation: $ctrl.appreciation,
+            roi: $ctrl.roi,
+            beginning_capital: $ctrl.beginning_capital,
+            ending_capital: $ctrl.ending_capital,
+            inflation_rate: $ctrl.inflation_rate
+          })"
+          ng-model="$ctrl.inflation_rate"
+          ng-pattern="/^[0-9]{1,2}(\.[0-9]{1})?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+        <span class="input-group-addon">
+          %
+        </span>
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.inflation_rate.$valid && $ctrl.form.inflation_rate.$dirty">
+      Please enter a positive percentage with 1 decimal place (ex. 20.0)
+    </span>
+  </div>
+
+</form>

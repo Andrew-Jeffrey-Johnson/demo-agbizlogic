@@ -1,0 +1,58 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+{% block content %}
+
+
+  <ol class="progtrckr" data-progtrckr-steps="5">
+    <li class="progtrckr-done">Account Information</li>
+    <li class="progtrckr-done">Business Information</li>
+    <li class="progtrckr-on">Enterprise</li>
+    <li class="progtrckr-todo">Asset</li>
+    <li class="progtrckr-todo">Liabilities</li>
+</ol> 
+
+<br> 
+
+<p><b>Use existing university enterprise budgets.</b></p>
+
+<p>Based on the enterprises, type and commodities you selected we have queried the available budgets in AgBiz Logic™.  Please select the budgets that best reflect your returns and costs for your business.  You may need to modify returns and costs.
+</p>
+
+ <div class="form">
+  <form action="" method="post">{% csrf_token %}
+
+<table>
+
+  {{ wizard.management_form  }}
+  {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+      {% for form in wizard.form.forms %}
+          {{ form | bootstrap}}
+
+      {% endfor %}
+  {% else %}
+      {{ wizard.form | bootstrap }}
+  {% endif %}
+  </table>
+ 
+   {% if wizard.steps.prev %}
+   <button name="wizard_goto_step" class="btn btn-primary" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+ 
+ 
+  {% endif %}
+  
+  <button type="submit" class="btn pull-right btn-success">Continue</button>
+  
+  <a class="btn btn-primary" type="button" href="/index/">Leave page</a>
+
+
+
+    
+  </form>
+
+</div>
+
+  
+  
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "wizard.html" %}
+
+
+{% block content %}
+
+  
+ <div class="container">
+  <div class="hidden-xs hidden-sm">
+    <br>
+  <ol class="progtrckr" data-progtrckr-steps="5">
+    <li class="progtrckr-done">Account Information</li>
+    <li class="progtrckr-done">Business Information</li>
+    <li class="progtrckr-on">Business Enterprise</li>
+    <li class="progtrckr-todo">Business Assets</li>
+    <li class="progtrckr-todo">Business Liabilities</li>
+   </ol>
+  </div>
+<br>
+</div> 
+
+
+
+ <div class="form">
+  <form action="" method="post">{% csrf_token %}
+
+<table>
+
+ 
+<p> AgBiz Logic will help you gather and store information for later use with AgTools. First we want to know what is it that you would like to do with the AgTools programs.  Please choose one of the potential applications to get started.  You can return to this page for other applications later. </p>
+
+
+   <br>
+
+<tbody><tr><th><label for="id_choice_0">Compare the profitability of:</label></th><td><ul id="id_choice">
+<li><label class="radio"><input id="id_choice_0" name="choice" value="Growing a new crop, modifying a cropping system or livestock enterprise" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> Growing a new crop, modifying a cropping system or livestock enterprise</label></li>
+  <li><label class="radio"><input id="id_choice_1" name="choice" value="Purchasing or leasing new technologies, machinery or equipment" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> Purchasing or leasing new technologies, machinery or equipment</label></li>
+  <li><label class="radio"><input id="id_choice_2" name="choice" value="Modifying a production practice that could change yields, increase returns or affect input costs (such as a new fertilizer or chemical product, pruning technique, fabric cloth to control weeds, irrigation management, or increase fruit color)" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> Modifying a production practice that could change yields, increase returns or affect input costs (such as a new fertilizer or chemical product, pruning technique, fabric cloth to control weeds, irrigation management, or increase fruit color)</label></li>
+  <li><label class="radio"><input id="id_choice_3" name="choice" value="Changing irrigation systems, purchasing a more efficient pump, or incorporating deficit irrigation" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>Changing irrigation systems, purchasing a more efficient pump, or incorporating deficit irrigation</label></li>
+  <li><label class="radio"><input id="id_choice_4" name="choice" value="Adding value to a current crop or livestock enterprise that results in a higher price but perhaps with increased costs" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> Adding value to a current crop or livestock enterprise that results in a higher price but perhaps with increased costs</label></li>
+  <li><label class="radio"><input id="id_choice_5" name="choice" value="Changing market channels or strategies in livestock production" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> Changing market channels or strategies in livestock production</label></li>
+  <li><label class="radio"><input id="id_choice_6" name="choice" value="Building and/or maintaining long-term assets for value-added processing, such as a winery" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> Building and/or maintaining long-term assets for value-added processing, such as a winery</label></li>
+  <li><label class="radio"><input id="id_choice_7" name="choice" value="Leasing additional land or pasture to increase production, capacity or efficiencies" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> Leasing additional land or pasture to increase production, capacity or efficiencies</label></li>
+  <li><label class="radio"><input id="id_choice_8" name="choice" value="Modifying an existing building to decrease labor, increase production or gain efficiencies in your enterprises" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> Modifying an existing building to decrease labor, increase production or gain efficiencies in your enterprises</label></li>
+  
+    <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
+  <tr><th><label for="id_choice_9">Establish equitable leases for a:</label></th><td><ul id="id_choice">
+
+  <li><label class="radio"><input id="id_choice_9" name="choice" value="Crop-share or annual cash rent payment in crop production" data-toggle="radio" class="custom-radio" type="radio">  <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>Crop-share or annual cash rent payment in crop production</label></li>
+  <li><label class="radio"><input id="id_choice_10" name="choice" value="Livestock-shares or annual cash rent payment in livestock production" data-toggle="radio" class="custom-radio" type="radio"> <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> Livestock-shares or annual cash rent payment in livestock production</label></li>
+  <li><label class="radio"><input id="id_choice_11" name="choice" value="Shares of a product or annual cash rent payment in a value added business" data-toggle="radio" class="custom-radio" type="radio">  <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>Shares of a product or annual cash rent payment in a value added business</label></li>
+  
+  <tr><th><label for="id_choice_12" class="other_fix">Other:</label></th><td><ul id="id_choice">
+
+    <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
+
+<li><label class="radio"><input id="id_choice_12" name="choice" value="The above options are nice but I would like to build my own scenario" data-toggle="radio" class="custom-radio" type="radio">  <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span> The above options are nice but I would like to build my own scenario</label></li>
+
+
+
+
+</ul></td></tr>
+
+
+
+  </tbody>
+
+  </table>
+ 
+ <br>
+  
+  <button type="submit" class="btn pull-right btn-success">Continue</button>
+  
+  <a class="btn btn-default" type="button" href="/index/">Leave Page</a>
+
+
+
+    
+  </form>
+
+</div>
+
+
+  
+
+
+
+
+
+ 
+{% endblock %}

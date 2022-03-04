@@ -1,0 +1,32 @@
+.nav-tab {
+  cursor: pointer;
+}
+
+.page-arrow {
+  cursor: pointer;
+}
+
+.list-item {
+  margin: 0;
+}
+
+.nav-tabs > li > a {
+  color: #787d82;
+}
+
+/*.nav-tabs > li > a {*/
+  /*background: rgb(233, 233, 233);*/
+  /*border-color: rgb(233, 233, 233);*/
+  /*color: black;*/
+/*}*/
+
+.nav-tabs > li > a:hover {
+  color: black;
+  background: transparent;
+  border-color: transparent;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+  border: 3px solid rgb(51, 122, 183);
+  border-bottom: none;
+}

@@ -1,0 +1,170 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+h3 {
+    margin-top: 0px;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+/* Disable textarea resize */
+textarea {
+    resize: none;
+}
+
+/* Panels */
+.panel-heading h4 {
+    margin: 0px;
+}
+
+.panel-heading a {
+    color: white;
+}
+
+.panel-heading a:hover {
+    color: #90e3d3;
+}
+
+.panel {
+    padding: 0;
+}
+
+/* Horizontal line with less margin */
+.item-divider-summary {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Progress bar */
+.progress {
+    z-index: 99999;
+}
+
+.progress-bar {
+    z-index: 99999;
+}
+
+/* Component container */
+.component-container {
+    height: 0px;
+}
+
+/* State change animations */
+
+.ui-view-container {
+    position: relative;
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+[ui-view].ng-enter {
+    opacity: 0;
+    animation: fade-in 0.3s linear;
+}
+
+[ui-view].ng-enter-active {
+    opacity: 1;
+    animation: fade-in 0.3s linear;
+}
+
+[ui-view].ng-leave {
+    opacity: 1;
+    animation: fade-out 0.3s linear;
+}
+
+[ui-view].ng-leave-active {
+    opacity: 0;
+    animation: fade-out 0.3s linear;
+}
+
+/* Fading animations */
+
+.animate-fade.ng-enter {
+    animation: fade-in 0.2s linear;
+}
+
+.animate-fade.ng-enter-active {
+    opacity: 1;
+}
+
+.animate-fade.ng-leave {
+    animation: fade-out 0.2s linear;
+}
+
+.animate-fade.ng-leave-active {
+    opacity: 0;
+}
+
+.animate-fade.ng-move {
+    animation: fade-out 0.2s linear;
+}
+
+.animate-fade.ng-move-active {
+    opacity: 1;
+}
+
+@-moz-keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Error messages */
+.help-block {
+    font-size: 14px;
+}
+
+.help-block.help-block-invalid {
+    color: red;
+}
+
+/* Action bar */
+.action-bar-btn {
+    margin: 0px 10px;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.row-inventory {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center !important;
+}
+
+.row-inventory:before, .row-inventory:after {
+    display: none !important;
+}
+
+.main-monitor {
+    margin-left: auto !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-top: 51px;
+    float: none;
+}

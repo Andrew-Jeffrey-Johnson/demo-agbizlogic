@@ -1,0 +1,89 @@
+<<<<<<< HEAD
+﻿.col-md-1 {
+    text-align: right;
+}
+
+.overallocated {
+  color: red;
+}
+.error {
+  color: red;
+}
+
+.valid {
+  color: green;
+}
+
+.underallocated {
+  color: blue;
+}
+
+.allocate-item-input {
+  padding-left: 0;
+  padding-right: 2px;
+}
+
+.input-currency {
+  padding: 5px;
+  text-align: right;
+}
+
+.input-percentage {
+    padding: 5px;
+    text-align: right;
+}
+
+/* Hide number input arrows */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+=======
+.col-md-1 {
+    text-align: right;
+}
+
+.overallocated {
+  color: red;
+}
+.error {
+  color: red;
+}
+
+.valid {
+  color: green;
+}
+
+.underallocated {
+  color: blue;
+}
+
+.allocate-item-input {
+  padding-left: 0;
+  padding-right: 2px;
+}
+
+.input-currency {
+  padding: 5px;
+  text-align: right;
+}
+
+.input-percentage {
+    padding: 5px;
+    text-align: right;
+}
+
+/* Hide number input arrows */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+>>>>>>> dev

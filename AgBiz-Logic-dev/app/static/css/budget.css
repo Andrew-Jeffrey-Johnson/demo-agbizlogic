@@ -1,0 +1,44 @@
+
+input[class=price] {
+   text-align: right;
+   padding-right: 2px;
+   }
+
+
+
+tr.category{
+  text-align: left;
+
+
+}
+
+th.currency{
+  text-align: right;
+
+
+}
+
+
+td.price{
+  text-align: right;
+
+
+}
+
+th.category {
+
+	width: 30px;
+}
+
+
+
+th.checkbox_delete{
+  width: 4px;
+
+
+}
+
+th.currency {
+  
+    width: 2rem;
+}

@@ -1,0 +1,24 @@
+<div ng-class="$ctrl.css_classes">
+  <div class="panel-heading">
+    <h4>
+      <a ng-class="{
+        'panel-link-inactive': $ctrl.is_inactive,
+        'panel-link': true,
+      }">
+        <i>AgBizFinance</i>
+      </a>
+    </h4>
+  </div>
+  <div
+    class="panel-body"
+    ng-if="$ctrl.is_inactive">
+    Coming Soon!
+  </div>
+  <div
+    class="panel-body"
+    ng-if="!$ctrl.is_inactive">
+    <div class="row">
+
+    </div>
+  </div>
+</div>

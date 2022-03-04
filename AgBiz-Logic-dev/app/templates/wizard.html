@@ -1,0 +1,185 @@
+
+{% load staticfiles %}
+
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>AgBiz Logic</title>
+  <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.ico" %}"/>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" media="screen" href="{% static "css/bootstrap.min.css" %}" />
+
+  <style>
+  body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+
+  .other_fix {
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 0px;
+  }
+
+  .dollar_and_input {
+    display: flex;
+    align-items: center;
+  }
+
+  .dollar_and_input > input {
+    min-width: 1px; /* this is needed on firefox for some reason */
+    margin-left: 5px;
+  }
+
+  </style>
+
+  <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css" />
+
+
+  <link href="{% static "css/flat-ui.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "css/main.css" %}" />
+
+  <script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+  <script src="{% static "js/vendor/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
+</head>
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        {% if user.is_authenticated %}
+        <a class="navbar-brand" rel="home" href="/dashboard/" style="'Nobile', Helvetica, Arial, sans-serif;font-size: 21px;">
+        {% else %}
+        <a class="navbar-brand" rel="home" href="/index/" style="'Nobile', Helvetica, Arial, sans-serif;font-size: 21px;">
+          {% endif %}
+          <img style="max-width:30px; margin-top: -7px;"
+          src="{% static "img/icon.png" %}"> <i>AgBiz Logic</i>&#0153
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        {% if user.is_authenticated %}
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false"> {{user.username}} <span class="caret"></span></a>
+              <ul class="dropdown-menu first_dropdown">
+                <li> <a class="dropdown-item" href="/index/#bottom" style="color: #e1e4e7;">Contact Us</a> </li>
+                <li> <a class="dropdown-item" href="/resources/" style="color: #e1e4e7;">Resources</a> </li>
+                <li class="dropdown-submenu"> <a tabindex="-1" class="dropdown-toggle" href="/profile_setting/" style="color: #e1e4e7;">Account Settings</a>
+                </li>
+                <li><a href="/logout/" style="color: #e1e4e7;">Logout</a></li>
+              </ul>
+          </li>
+        </ul>
+
+        {% else %}
+
+        <form method="post" class="navbar-form navbar-right" action="{% url 'django.contrib.auth.views.login' %}" role="form">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" placeholder="Username" name="username" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <input type="password" placeholder="Password" name="password" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-success">Log in</button>
+          <a class="btn btn-primary" type="button" href="/account/">Sign up</a>
+        </form>
+
+
+
+        {% endif %}
+
+
+      </div><!--/.navbar-collapse -->
+
+    </div> <!-- header -->
+
+
+
+  </div>
+  <div class="container">
+
+
+    {% block content %}
+
+
+    {% endblock %}
+
+
+  </div> <!-- /container -->
+
+
+  <footer>
+   <div class="container">
+    <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> <i>AgBiz Logic</i>. All Rights Reserved.</p>
+  </div> <!-- /container -->
+</footer>
+
+<script src="{% static "angular/angular.min.js" %}"></script>
+<script src="{% static "angular-ui-router/release/angular-ui-router.min.js" %}"></script>
+<script src="{% static "angular-animate/angular-animate.min.js" %}"></script>
+<script src="{% static "angular-filter/dist/angular-filter.min.js" %}"></script>
+<script src="{% static "angular-aria/angular-aria.min.js" %}"></script>
+<script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+<style>
+
+
+.dropdown-menu li:hover > ul.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    background-color: #34495e;
+    top:0;
+    left:100%;
+    margin-top:-1px;
+}
+
+#dropdown-menu li:hover {
+  background-color: #16a085
+}
+
+.dropdown:hover .first_dropdown {
+    background-color: #34495e;
+    display: block;
+    margin-top:3px;
+ }
+
+ .first_dropdown li:hover {
+   background-color: #16a085
+ }
+
+</style>
+</body>
+</html>

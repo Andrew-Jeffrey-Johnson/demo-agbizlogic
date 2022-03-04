@@ -1,0 +1,593 @@
+{% extends "wizard.html" %}
+
+{% load bootstrap %}
+
+
+{% block content %}
+
+
+  {% for field in form %}
+    {{field.error}}
+  {% endfor %}
+<div class="container">
+
+<h3>Create University Budget</h3>
+
+<h4>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h4>
+
+</div>
+
+
+
+
+<style>
+  .row {
+    border: 1px solid;
+    border-color: gray;
+      padding-bottom: 1em;
+      padding-left: 1em;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  div.floating-menu {position:fixed;width:300px;z-index:200; right: 1%; top: 40%;}
+  div.floating-menu a, div.floating-menu p {display:block;margin:0 0.5em;}
+</style>
+
+
+<div class="bs-example">
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Success!</strong> You successfully added an item!
+    </div>
+</div>
+
+<!-- add variable popup  -->
+<div class="modal fade" id="add_var_cost" tabindex="-1" role="dialog" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ><span>&times;</span></button>
+        <h4 class="modal-title" id="ModalLabelVar">Add a Variable Cost Item</h4>
+      </div>
+      <div class="modal-body" data-test="10">
+
+      <form>
+       <div class="form-group">
+
+      <label for="category">Select a category:</label>
+      <select class="form-control" id="category">
+
+      {% for item in choice %}
+         <option value="{{item}}"> {{item}} </option>
+
+      {% endfor %}
+
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label for="sub_category">Select a sub-category:</label>
+      <select class="form-control" name="sub_category" id="sub_category">
+
+        {% for item in category %}
+              <option value="{{item}}"> {{item}} </option>
+
+         {% endfor %}
+
+      </select>
+    </div>
+
+      <div class="form-group">
+      <label for="item">Select an item:</label>
+      <select class="form-control" name="item" id="item">
+
+         <option> -- </option>
+
+
+      </select>
+    </div>
+
+        <div class="form-group">
+      <label for="unit">Unit:</label>
+      <select class="form-control" name="unit" id="unit">
+
+         <option> lb N </option>
+         <option> lb </option>
+         <option> oz </option>
+         <option> pint </option>
+         <option> fl oz </option>
+         <option> acre </option>
+         <option> ton </option>
+         <option> hrs </option>
+         <option> gal </option>
+         <option> pct </option>
+
+
+      </select>
+    </div>
+
+      <div class="form-group">
+      <label for="quantity">Quantity per Unit:</label>
+      <input type="text" id="quantity" class="form-control">
+    </div>
+
+
+
+      <label for="price">Price per Unit:</label>
+      <div class="input-group">
+       <span class="input-group-addon">$</span>
+      <input type="text" id="price" class="form-control">
+    </div>
+
+
+
+
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="add_var_dialog btn btn-primary"  data-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div> <!-- modal -->
+
+<!-- add fixed popup  -->
+<div class="modal fade" id="add_gold_standard" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+        <h4 class="modal-title" id="ModalLabelFixed">Add a Cost Category</h4>
+      </div>
+      <div class="modal-body" data-variety="10">
+
+      <form>
+       <div class="form-group">
+
+      <label for="gold_standard">Select a category:</label>
+      <select class="form-control" id="gold_standard">
+
+
+        <option value="expense-1">Cost of Goods Sold
+        <option value="expense-2">Car and truck expenses
+        <option value="expense-3">Chemicals
+        <option value="expense-4">Conservation expenses
+        <option value="expense-5">Custom hire (machine work)</option>
+        <option value="expense-6">L-T asset replacement and section 179 expense</option>
+        <option value="expense-7">Employee benefit programs </option>
+        <option value="expense-8">Feed</option>
+        <option value="expense-9">Fertilizers and lime</option>
+        <option value="expense-10">Freight and trucking</option>
+        <option value="expense-11">Gasoline, fuel, and oil</option>
+        <option value="expense-12">Insurance (other than health)</option>
+        <option value="expense-13">Interest on loans and mortgages</option>
+        <option value="expense-14">Labor hired (less employment credits)</option>
+        <option value="expense-15">Pension and profit-sharing plans</option>
+        <option value="expense-16">Rent and leases: Machinery, equipment and vehicles</option>
+        <option value="expense-17">Rent and leases: Land and animals</option>
+        <option value="expense-18">Repairs and maintenance</option>
+        <option value="expense-19">Seeds and plants</option>
+        <option value="expense-20">Storage and warehousing</option>
+        <option value="expense-21">Supplies</option>
+        <option value="expense-22">Property taxes</option>
+        <option value="expense-23">Utilities</option>
+        <option value="expense-24">Veterinary, breeding, and medicine</option>
+        <option value="expense-25">Other expenses</option>
+
+
+
+      </select>
+    </div>
+
+        <div class="form-group">
+      <label for="gold_standard_unit">Unit:</label>
+      <select class="form-control" name="gold_standard_unit" id="gold_standard_unit">
+
+         <option> lb N </option>
+         <option> lb </option>
+         <option> oz </option>
+         <option> pint </option>
+         <option> fl oz </option>
+         <option> acre </option>
+         <option> ton </option>
+         <option> hrs </option>
+         <option> gal </option>
+         <option> pct </option>
+
+
+      </select>
+    </div>
+
+      <div class="form-group">
+      <label for="gold_standard_quantity">Quantity per Unit:</label>
+      <input type="text" id="gold_standard_quantity" class="form-control">
+    </div>
+
+
+
+    <label for="gold_standard_price">Price per Unit:</label>
+      <div class="input-group">
+
+       <span class="input-group-addon">$</span>
+      <input type="text" id="gold_standard_price" class="form-control">
+    </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="gold_standard_dialog btn btn-primary"  data-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div> <!-- modal -->
+
+<div class="modal fade" id="add_fixed_cost" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+        <h4 class="modal-title" id="ModalLabelFixed">Add a Fix Cost Item</h4>
+      </div>
+      <div class="modal-body" data-variety="10">
+
+      <form>
+       <div class="form-group">
+
+      <label for="fixed_category">Select a category:</label>
+      <select class="form-control" id="fixed_category">
+
+        <option> Land Rent </option>
+        <option> Machine Rent </option>
+        <option> Liability Insurance </option>
+        <option> Long Term Assets </option>
+        <option> Property Insurance </option>
+        <option> Property Taxes </option>
+        <option> Investment Repairs </option>
+        <option> Office Expenses </option>
+        <option> Professional Services </option>
+        <option> Other </option>
+
+
+
+      </select>
+    </div>
+
+      <div class="form-group">
+      <label for="fixed_unit">Unit:</label>
+      <select class="form-control" name="fixed_unit" id="fixed_unit">
+
+         <option> lb N </option>
+         <option> lb </option>
+         <option> oz </option>
+         <option> pint </option>
+         <option> fl oz </option>
+         <option> acre </option>
+         <option> ton </option>
+         <option> hrs </option>
+         <option> gal </option>
+         <option> pct </option>
+
+
+      </select>
+    </div>
+
+      <div class="form-group">
+      <label for="fixed_quantity">Quantity per Unit:</label>
+      <input type="text" id="fixed_quantity" class="form-control">
+    </div>
+
+
+
+    <label for="fixed_price">Price per Unit:</label>
+      <div class="input-group">
+
+       <span class="input-group-addon">$</span>
+      <input type="text" id="fixed_price" class="form-control">
+    </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="add_fixed_dialog btn btn-primary"  data-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div> <!-- modal -->
+
+<div class="form">
+
+    <form action=""  method="post">
+      {% csrf_token %}
+
+
+
+        {{ wizard.management_form}}
+        {% if wizard.form.forms %}
+            {{ wizard.form.management_form}}
+            {% for form in wizard.form.forms %}
+
+
+
+          {{ form.as_p }}
+
+            {% endfor %}
+        {% else %}
+
+
+
+
+
+
+        <div class="container">
+          <h4 id="enterprise"><b>Enterprise:</b> Crop</h4>
+        {{ wizard.form | bootstrap}}
+
+
+
+
+
+
+        <h4>Gross Income</h4>
+        <table id="gross_income" class="table table-bordered">
+        <thead>
+        <tr>
+
+        <th>Crop</th>
+        <th style='text-align:right'>Quantity</th>
+        <th style='text-align:right'>Unit Sold by/as</th>
+        <th style="text-align:right">Price per Unit</th>
+
+        <th style="text-align:right">Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+
+        <td></td>
+
+        <td style='text-align:right'>{{number_of_unit}}</td>
+        <td style='text-align:right'>{{variety_unit}}</td>
+        <td style="text-align:right">{{price}}</td>
+
+        <td style="text-align:right">{{total}}</td>
+
+        </tr>
+
+        </tbody>
+        </table>
+        <div class="pull-right">
+        <table>
+
+        <tr>
+        <td style="padding-right:50px;  padding-bottom: 20px;"> <b> Total Gross Income:  </b> </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="{{total}}" disabled></td>
+        </tr>
+
+        </table>
+        </div>
+
+
+          </div>
+
+  {% if budget_type == "General" %}
+        <div class="container">
+          <h4>Total Variable and Fixed Cash Costs</h4>
+
+        <table id="general_cost_table" class="table table-bordered">
+        <thead>
+        <tr>
+        <td><input type="checkbox" class="delete_all"></td>
+        <th>Category</th>
+
+
+        <th style='text-align:right'>Quantity</th>
+        <th style='text-align:right'>Unit</th>
+        <th style="text-align:right">Price per Unit</th>
+        <th style="text-align:right">Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+
+
+        </tbody>
+      </table>
+
+
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add_gold_standard">Add a Cost Category</button>
+        <button type="button" class="delete_general_cost btn btn-default">Delete Selected</button>
+        </div>
+        <br>
+
+
+
+          <div class="container">
+            <div class="pull-right">
+
+          <table>
+
+
+          <tr>
+          <td style="padding-right:50px;  padding-bottom: 20px;"> <b>Total Variable & Fixed Cash Costs: </b> </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="$0.00" id="general_total_cost" disabled> </td>
+          </tr>
+
+          <tr>
+          <td style="padding-right:50px;  padding-bottom: 20px;"> <b> Total Gross Income Less Total Var. & Fixed Cash Costs</b>: </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="$0.00" id="general_net_return" disabled> </td>
+          </tr>
+
+
+
+          <tr>
+          <td style="padding-right:50px;  padding-bottom: 20px;">  <b> Breakeven Price: </b> </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="$0.00" id="general_breakeven_price" disabled> </td>
+          </tr>
+
+          <tr>
+          <td style="padding-right:50px;  padding-bottom: 20px;">  <b> Breakeven Yield: </b> </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="0.00" id="general_breakeven_yield" disabled> </td>
+          </tr>
+
+          </table>
+
+          </div>
+          </div>
+
+
+
+
+
+
+
+{%else%}
+        <div class="container">
+          <h4>Variable Cash Costs</h4>
+
+          <table id="variable_table" class="table table-bordered">
+            <thead>
+              <tr>
+              <td><input type="checkbox" class="delete_all"></td>
+              <th >Category</th>
+              <th>Sub-Category</th>
+              <th>Item</th>
+              <th style="text-align:right">Quantity</th>
+              <th>Unit</th>
+              <th style="text-align:right">Price per Unit</th>
+              <th style="text-align:right">Total</th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            </table>
+
+
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add_var_cost">Add Variable Cash Cost</button>
+          <button type="button" class="delete_variable_cost btn btn-default">Delete Selected</button>
+        </div>
+        <br>
+      <div class="container">
+
+          <div class="pull-right">
+        <table>
+
+        <tr>
+        <td style="padding-right:50px;  padding-bottom: 20px;"> <b>Total Variable Cash Costs:  </b> </td> <td style="padding-bottom: 20px;"> <input type="text" class="price" value="$0.00" id="total_variable_cash_cost" disabled> </td>
+        </tr>
+
+        <tr>
+        <td style="padding-right:50px;  padding-bottom: 20px;"> <b>Total Gross Income Less Total Variable Cash Costs:  </b> </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="$0.00" id="net_return_above_total"disabled> </td>
+        </tr>
+
+        </table>
+        </div>
+      </div>
+
+      <div class="container">
+      <h4>Fixed Cash Costs</h4>
+      <table id="fixed_table" class="table table-bordered">
+        <thead>
+        <tr>
+        <td><input type="checkbox" class="delete_all"></td>
+        <th>Category</th>
+
+
+        <th style="text-align:right">Quantity</th>
+        <th>Unit</th>
+        <th style="text-align:right">Price per Unit</th>
+        <th style="text-align:right">Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+
+
+        </tbody>
+      </table>
+
+
+
+
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add_fixed_cost">Add Fixed Cash Cost</button>
+      <button type="button" class="delete_fixed_cost btn btn-default">Delete Selected</button>
+      </div>
+
+
+
+      <br>
+          <div class="container">
+          <div class="pull-right">
+
+          <table>
+          <tr>
+          <td style="padding-right:50px;  padding-bottom: 20px;"> <b>Total Fixed Cash Costs:  </b> </td> <td style="padding-bottom: 20px;"> <input type="text" class="price" value="$0.00" id="total_fixed_cash_cost" disabled> </td>
+          </tr>
+
+          <tr>
+          <td style="padding-right:50px;  padding-bottom: 20px;"> <b>Total Variable & Fixed Cash Costs: </b> </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="$0.00" id="total_var_and_fixed" disabled> </td>
+          </tr>
+
+          <tr>
+          <td style="padding-right:50px;  padding-bottom: 20px;"> <b> Total Gross Income Less Total Variable & Fixed Cash Costs</b>: </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="$0.00" id="total_var_and_fixed_after_return" disabled> </td>
+          </tr>
+
+          <tr>
+          <td style="padding-right:50px;  padding-bottom: 20px;">  <b> Breakeven Price: </b> </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="$0.00" id="breakeven_price" disabled> </td>
+          </tr>
+
+          <tr>
+          <td style="padding-right:50px;  padding-bottom: 20px;">  <b> Breakeven Yield: </b> </td> <td style="padding-bottom: 20px;">  <input type="text" class="price" value="0.00" id="breakeven_yield" disabled> </td>
+          </tr>
+
+          </table>
+          </div>
+          </div>
+    {%endif%} <!-- end if for budget -->
+           {% endif %}
+
+           <br>
+
+   {% if wizard.steps.prev %}
+   <button name="wizard_goto_step" class="btn btn-default" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+  {% endif %}
+    <a class="btn btn-default" type="button" href="/index/">Leave page</a>
+  <button type="submit" class="btn pull-right btn-success">Continue</button>
+
+
+</form>
+
+  </div> <!-- form -->
+
+
+<script src="{% static "js/vendor/jquery-1.8.3.js" %}"></script>
+<link rel="stylesheet" href="{% static "css/budget.css" %}" />
+<script type="text/javascript" src="{% static "js/jquery.chained.remote.min.js" %}"></script>
+<script src="{% static "js/create-university-budget.js" %}"></script>
+ <script src="{% static "js/jquery.currency.js" %}"></script>
+ <script src="{% static "js/accounting.min.js" %}"></script>
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+#!/bin/bash
+: '
+WHAT THIS SCRIPT DOES:
+	Moves the data from the university budget excel files
+	into a JSON file for the database to read in.
+'
+
+
+File="University_budget_for_State_Regions.json"
+ParentFile="parent_budget.txt"
+if [ -e $File ];
+then
+	rm $File
+fi
+
+if [ -e $ParentFile ];
+then
+	rm $ParentFile
+fi
+
+
+
+for f in *.xlsx
+do
+	echo "file:" ${f##*/}
+	python3 excellToJson.py "$f"
+done
+mv University_budget_for_State_Regions.json ../../common/static/common/json
+
+cd ../ers_script
+python3 excelToJson.py
+cd ../budget_script
+if [ -e $ParentFile ];
+then
+	rm $ParentFile
+fi

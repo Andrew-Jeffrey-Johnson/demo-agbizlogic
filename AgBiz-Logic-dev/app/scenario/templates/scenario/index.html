@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <base href="/">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>AgBiz Scenario</title>
+    <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.ico" %}"/>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Dependencies -->
+    {% if view.environment == 'local' %}
+      <!-- AngularJS and additional modules -->
+      <script src="{% static "angular/angular.js" %}"></script>
+      <script src="{% static "angular-ui-router/release/angular-ui-router.js" %}"></script>
+      <script src="{% static "angular-animate/angular-animate.js" %}"></script>
+      <script src="{% static "angular-aria/angular-aria.js" %}"></script>
+
+      <!-- jQuery (needed for Bootstrap) -->
+      <script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+
+      <!-- Angular-Filter -->
+      <script src="{% static "angular-filter/dist/angular-filter.min.js" %}"></script>
+
+      <!-- Angular Chart.js -->
+      <script src="{% static "chart.js/dist/Chart.min.js" %}"></script>
+      <script src="{% static "angular-chart.js/dist/angular-chart.js" %}"></script>
+
+      <!-- Angular Material -->
+      <script src="{% static "angular-material/angular-material.js" %}"></script>
+      <link rel="stylesheet" href="{% static "angular-material/angular-material.css" %}"></script>
+
+      <!-- Bootstrap -->
+      <script src="{% static "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" %}"></script>
+      <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+      <link rel="stylesheet" media="screen" href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" />
+      <link rel="stylesheet" href="{% static "flat-ui/css/flat-ui.css" %}" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    {% else %}
+      <!-- AngularJS and additional modules -->
+      <script src="{% static "angular/angular.min.js" %}"></script>
+      <script src="{% static "angular-ui-router/release/angular-ui-router.min.js" %}"></script>
+      <script src="{% static "angular-animate/angular-animate.min.js" %}"></script>
+      <script src="{% static "angular-aria/angular-aria.min.js" %}"></script>
+
+      <!-- jQuery (needed for Bootstrap) -->
+      <script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+
+      <!-- Angular-Filter -->
+      <script src="{% static "angular-filter/dist/angular-filter.min.js" %}"></script>
+
+      <!-- Angular Chart.js -->
+      <script src="{% static "chart.js/dist/Chart.min.js" %}"></script>
+      <script src="{% static "angular-chart.js/dist/angular-chart.js" %}"></script>
+
+      <link rel="stylesheet" href="{% static "angular-chart.js/dist/angular-chart.min.css" %}" />
+
+      <!-- Angular Material -->
+      <script src="{% static "angular-material/angular-material.min.js" %}"></script>
+      <link rel="stylesheet" href="{% static "angular-material/angular-material.min.css" %}"></script>
+
+      <!-- Bootstrap -->
+      <script src="{% static "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" %}"></script>
+      <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+      <link rel="stylesheet" media="screen" href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" />
+      <link rel="stylesheet" href="{% static "flat-ui/css/flat-ui.css" %}" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    {% endif %}
+
+    <!-- Modules -->
+    <script src="{% static "scenario/scenario.module.js" %}"></script>
+    <script src="{% static "common/common.module.js" %}"></script>
+    <script src="{% static "budget/budget.module.js" %}"></script>
+
+    <!-- Module-level styles -->
+    <link rel="stylesheet" href="{% static "common/styles/styles.css" %}" />
+    <link rel="stylesheet" href="{% static "common/styles/flex.css" %}" />
+
+    <!-- Services -->
+    <script src="{% static "budget/services/budget/budget.service.js" %}"></script>
+    <script src="{% static "common/services/common/common.service.js" %}"></script>
+    <script src="{% static "common/services/modal/modal.service.js" %}"></script>
+    <script src="{% static "common/services/error/error.service.js" %}"></script>
+    <script src="{% static "scenario/services/scenario/scenario.service.js" %}"></script>
+    <script src="{% static "common/services/config/config.service.js" %}"></script>
+
+    <!-- Manager List -->
+    <script src="{% static "common/manager/manager-list/manager-list.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/manager/manager-list/manager-list.component.css" %}" />
+
+    <!-- Manager List Item -->
+    <script src="{% static "common/manager/manager-list-item/manager-list-item.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/manager/manager-list-item/manager-list-item.component.css" %}" />
+
+    <!-- Filters -->
+    <script src="{% static "common/filters/capitalize.filter.js" %}"></script>
+    <script src="{% static "common/filters/singular.filter.js" %}"></script>
+
+    <!-- Budget Search -->
+    <script src="{% static "common/budget-search/budget-search.component.js" %}"></script>
+
+    <!-- Scenario Search -->
+    <script src="{% static "common/scenario-search/scenario-search.component.js" %}"></script>
+
+    <!-- Plan Search -->
+    <script src="{% static "common/plan-search/plan-search.component.js" %}"></script>
+
+    <!-- Budget Select -->
+    <script src="{% static "common/budget-select/budget-select.component.js" %}"></script>
+
+    <!-- Budget Editor -->
+    <script src="{% static "budget/budget-editor/budget-editor.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "budget/budget-editor/budget-editor.component.css" %}">
+    <script src="{% static "budget/budget-editor/add-cost-modal/AddCostModalController.js" %}"></script>
+    <script src="{% static "budget/budget-editor/add-income-modal/AddIncomeModalController.js" %}"></script>
+    <script src="{% static "budget/budget-editor/budget-unit-modal/BudgetUnitModalController.js" %}"></script>
+
+    <!-- Directives -->
+    <script src="{% static "common/directives/comma-number-input.directive.js" %}"></script>
+
+    <!-- Constants -->
+    <script src="{% static "common/constants/line-chart-colors.constant.js" %}"></script>
+    <script src="{% static "common/constants/crop-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/crop-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/wholefarm-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/wholefarm-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/nursery-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/nursery-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/livestock-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/livestock-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/time-units.constant.js" %}"></script>
+
+    <!-- Navbar -->
+    <script src="{% static "common/navbar/navbar.component.js" %}"></script>
+    <script src="{% static "common/navbar/contact-modal/ContactModalController.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/navbar/navbar.css" %}" />
+
+    <!-- Confirm Button -->
+    <script src="{% static "common/confirm-button/confirm-button.component.js" %}"></script>
+
+    <!-- Plan Select -->
+    <script src="{% static "scenario/plan-select/plan-select.component.js" %}"></script>
+
+    <!-- Plan Manager -->
+    <script src="{% static "scenario/plan-manager/plan-manager.component.js" %}"></script>
+
+
+    <!-- Plan Creation -->
+    <script src="{% static "scenario/plan-create/plan-create.component.js" %}"></script>
+
+    <!-- Plan Time Period -->
+    <script src="{% static "scenario/plan-time-period/plan-time-period.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/plan-time-period/plan-time-period.component.css" %}" />
+
+    <!-- Plan Inflation -->
+    <script src="{% static "scenario/plan-inflation/plan-inflation.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/plan-inflation/plan-inflation.component.css" %}" />
+
+    <!-- Plan Inflation Item -->
+    <script src="{% static "scenario/plan-inflation/inflation-item/inflation-item.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/plan-inflation/inflation-item/inflation-item.component.css" %}" />
+
+    <!-- Plan Total Space -->
+    <script src="{% static "scenario/plan-total-space/plan-total-space.component.js" %}"></script>
+
+    <!-- Plan Space Item -->
+    <script src="{% static "scenario/plan-space-item/plan-space-item.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/plan-space-item/plan-space-item.component.css" %}" />
+
+    <!-- Plan Summary -->
+    <script src="{% static "scenario/plan-summary/plan-summary.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/plan-summary/plan-summary.component.css" %}" />
+
+    <!-- Plan Sensitive Analysis -->
+    <script src="{% static "scenario/plan-sensitive-analysis/plan-sensitive-analysis.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/plan-sensitive-analysis/plan-sensitive-analysis.component.css" %}" />
+
+    <!-- Plan Sensitivity Summary -->
+    <script src="{% static "scenario/plan-sensitivity-summary/plan-sensitivity-summary.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/plan-sensitivity-summary/plan-sensitivity-summary.component.css" %}" />
+
+    <!-- Copy Plan Modal -->
+    <script src="{% static "scenario/plan-manager/copy-plan-modal/CopyPlanModalController.js" %}"></script>
+
+    <!-- Scenario Manager -->
+    <script src="{% static "scenario/scenario-manager/scenario-manager.component.js" %}"></script>
+
+    <!-- Copy Scenario Modal -->
+    <script src="{% static "scenario/scenario-manager/copy-scenario-modal/CopyScenarioModalController.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/scenario-manager/copy-scenario-modal/copy-scenario-modal.css" %}" />
+
+    <!-- Scenario Create -->
+    <script src="{% static "scenario/scenario-create/scenario-create.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/scenario-create/scenario-create.component.css" %}" />
+
+    <!-- Scenario Discount Rate -->
+    <script src="{% static "scenario/scenario-discount-rate/scenario-discount-rate.component.js" %}"></script>
+    <script src="{% static "scenario/scenario-discount-rate/discount-item/discount-item.component.js" %}"></script>
+
+    <!-- Scenario Contributions -->
+    <script src="{% static "scenario/scenario-contributions/scenario-contributions.component.js" %}"></script>
+    <script src="{% static "scenario/scenario-contributions/contribution-item/contribution-item.component.js" %}"></script>
+
+    <!-- Scenario Summary -->
+    <script src="{% static "scenario/scenario-summary/scenario-summary.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/scenario-summary/scenario-summary.component.css" %}" />
+
+    <!-- Finance Step Indicator -->
+    <script src="{% static "scenario/finance-step-indicator/finance-step-indicator.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/finance-step-indicator/finance-step-indicator.component.css" %}" />
+
+    <!-- Finance Analysis-->
+    <script src="{% static "scenario/finance-analysis/finance-analysis.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/finance-analysis/finance-analysis.component.css" %}" />
+
+    <!-- Accrual Adjustments Modal -->
+    <script src="{% static "scenario/scenario-manager/accrual-adjustments-modal/AccrualAdjustmentsModalController.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/scenario-manager/accrual-adjustments-modal/accrual-adjustments-modal.css" %}" />
+
+    <!-- Finance Income Statment-->
+    <script src="{% static "scenario/finance-income-statment/finance-income-statment.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/finance-income-statment/finance-income-statment.component.css" %}" />
+
+    <!-- Finance Unit Adjustment-->
+    <script src="{% static "scenario/finance-analysis/farm-unit-adjustment/farm-unit-adjustment.component.js" %}"></script>
+    <script src="{% static "scenario/profit-summary/profit-summary.component.js" %}"></script>
+
+    <!--Finance Setup Modal-->
+    <script src="{% static "scenario/scenario-manager/finance-setup-modal/FinanceSetupModalController.js" %}"></script>
+
+    <!--Scenario Setup Modal-->
+    <script src="{% static "scenario/scenario-manager/scenario-setup-modal/ScenarioSetupModalController.js" %}"></script>
+
+    <!--Scenario shortcut pdf Modal-->
+    <script src="{% static "scenario/scenario-manager/shortcut-pdf-modal/ShortCutModalController.js" %}"></script>
+
+    <!-- Add Finance Scenario-->
+    <script src="{% static "scenario/finance-analysis/addFinanceScenario/addFinanceScenario.component.js" %}"></script>
+
+    <!-- Finance Balance Sheet -->
+    <script src="{% static "scenario/finance-balance-sheet/finance-balance-sheet.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/finance-balance-sheet/finance-balance-sheet.component.css" %}" />
+    <script src="{% static "scenario/finance-balance-sheet-year/finance-balance-sheet-year.js" %}"></script>
+
+    <!-- Finance Loans -->
+    <script src="{% static "scenario/finance-loans/finance-loans.component.js" %}"></script>
+
+    <!-- Finance Leases -->
+    <script src="{% static "scenario/finance-leases/finance-leases.component.js" %}"></script>
+
+    <!-- Finance Fmaily Withdraw -->
+    <script src="{% static "scenario/finance-distributions/finance-distributions.component.js" %}"></script>
+
+    <!-- Finance Depreciation -->
+    <script src="{% static "scenario/finance-depreciation/finance-depreciation.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/finance-depreciation/finance-depreciation.component.css" %}" />
+
+
+    <script src="{% static "scenario/abc/abc.js" %}"></script>
+
+
+    <!-- Add Transaction -->
+    <script src="{% static "scenario/finance-loans/add-transaction/add-transaction.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/finance-loans/add-transaction/add-transaction.component.css" %}" />
+
+    <script src="{% static "scenario/finance-transactions/add-transaction/add-transaction.component.js" %}"></script>
+
+    <!-- Finance Transaction -->
+    <script src="{% static "scenario/finance-transactions/finance-transactions.component.js" %}"></script>
+
+    <!-- Finance Inflation -->
+    <script src="{% static "scenario/finance-inflation/finance-inflation.component.js" %}"></script>
+
+    <!-- Finance summary> -->
+    <script src="{% static "scenario/finance-summary/finance-summary.component.js" %}"></script>
+
+    <!-- Finance Current -->
+    <script src="{% static "scenario/finance-current-summary/finance-current-summary.component.js" %}"></script>
+
+    <script src="{% static "scenario/finance-accrual-adjustments/finance-accrual-adjustments.component.js" %}"></script>
+
+    <script src="{% static "scenario/finance-first-review/finance-first-review.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/finance-first-review/finance-first-review.css" %}" />
+
+    <script src="{% static "scenario/finance-ratios/finance-ratios.js" %}"></script>
+    <link rel="stylesheet" href="{% static "scenario/finance-ratios/finance-ratios.css" %}" />
+
+    <!-- Datatables for Finance Income Statment -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <!-- PDF Make -->
+    <script src="{% static "pdfmake/build/pdfmake.min.js" %}"></script>
+    <script src="{% static "pdfmake/build/vfs_fonts.js" %}"></script>
+
+    <!-- Generate income-statement-pdf -->
+    <script src="{% static "common/income-statement-pdf/income-statement-pdf.component.js" %}"></script>
+
+    <!-- Generate Financial Ratios PDf -->
+    <script src="{% static "common/finance-ratios-pdf/finance-ratios-pdf.component.js" %}"></script>
+
+    <!-- Generate Balance Sheet Review PDF -->
+    <script src="{% static "common/balance-sheet-pdf/balance-sheet-pdf.component.js" %}"></script>
+
+    <!-- Generate cash-flow-pdf -->
+    <script src="{% static "common/cash-flow-pdf/cash-flow-pdf.component.js" %}"></script>
+
+
+
+    <!-- Generate PDF -->
+    <script src="{% static "common/profit-pdf/profit-pdf.component.js" %}"></script>
+
+    <!--Sidebar-->
+    <script src="{% static "common/sidebar/sidebar.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/sidebar/sidebar.component.css" %}"/>
+
+    <!--index.html-->
+    <script type="text/javascript" src="{% static "common/index/index.js" %}"></script>
+
+    <!--Routing-->
+    <script src="{% static "scenario/routing/scenario-routing.config.js" %}"></script>
+
+    <!-- FIXME: Move to REST API endpoint -->
+    <script>
+      window.__config = {
+        environment: "{{ view.environment }}",
+      };
+    </script>
+
+  </head>
+  <body>
+
+    <div ng-app="scenarioModule">
+      <nav>
+        <navbar></navbar>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row">
+          <sidebar></sidebar>
+          <div id="main" role="main" class="col-md-10 main-monitor">
+            <div class="ui-view-container">
+              <div ui-view>Loading...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

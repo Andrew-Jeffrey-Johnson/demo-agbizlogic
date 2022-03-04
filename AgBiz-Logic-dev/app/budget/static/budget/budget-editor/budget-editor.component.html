@@ -1,0 +1,688 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h4 ng-bind="$ctrl.budget.title"></h4>
+
+<form name="$ctrl.form">
+  <div class="panel panel-default">
+    <div class="panel-heading" >
+      <div class="row">
+        <div class="col-md-4">
+      <h3 class="panel-title">Please fill out the following information about this budget</h3>
+        </div>
+          <button ng-click="$ctrl.viewBudgetFormHelp()" class="btn btn-primary btn-sm" style="float:right">Budget Help</button>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <label for="budget_title">
+            Budget Name:
+          </label>
+          <input
+            class="form-control"
+            type="text"
+            name="budgetTitle"
+            ng-model="$ctrl.budget.title"
+            ng-change="$ctrl.validateBudgetTitle()"
+            ng-blur="$ctrl.updateBudget()"
+            required>
+            <span class="error" ng-show="$ctrl.form.budgetTitle.$touched && !$ctrl.budget.title.length" style="color:red;">Required</span>
+            <span class="error" ng-show="$ctrl.budget.title.length && $ctrl.form.budgetTitle.$invalid" style="color:red;">Duplicated Name</span>
+          </input>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label for="budget_state">
+            State:
+          </label>
+          <select
+            class="form-control"
+            name="budgetState"
+            ng-model="$ctrl.budget.state"
+            ng-change="$ctrl.validateBudgetState()"
+            ng-options="region.abbreviation as region.state for region in $ctrl.region_data"
+            ng-blur="$ctrl.updateBudget()"
+            required>
+
+            <option value="">Select</option>
+          </select>
+          <span class="error" ng-show="!$ctrl.budget.state.length && !$ctrl.form.budgetTitle.$invalid" style="color:red;">Required</span>
+        </div>
+        <div class="col-md-4">
+          <label for="budget_region">
+            County:
+          </label>
+          <select
+            class="form-control"
+            ng-model="$ctrl.budget.region"
+            ng-options="county as county for county in $ctrl.setCountyOptions($ctrl.budget.state, $ctrl.budget.region)"
+            ng-blur="$ctrl.updateBudget()"
+            required>
+            <option value="">Select</option>
+          </select>
+          <span class="error" ng-show="!$ctrl.budget.region.length && !$ctrl.form.budgetState.$invalid" style="color:red;">Required</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <label>
+            Budget Unit:
+          </label>
+          <div class="input-group">
+            <input
+              class="form-control budget-unit-input"
+              type="number"
+              name="$ctrl.budget.farm_unit_quantity"
+              placeholder="0.00"
+              ng-model="$ctrl.budget.farm_unit_quantity"
+              ng-click="$ctrl.changeBudgetUnit($ctrl.budget)"
+              ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+              step="0.01"
+              readonly>
+            <span
+              class="input-group-addon input-addon-button"
+              ng-bind="$ctrl.budget.farm_unit | capitalize"
+              ng-click="$ctrl.changeBudgetUnit($ctrl.budget)">
+            </span>
+  	        <span
+              class="input-group-addon input-addon-button"
+              ng-click="$ctrl.viewBudgetHelp()">
+  	          Help
+            </span>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <label>
+            Market:
+          </label>
+          <div class="input-group">
+            <select
+              class="form-control budget-unit-input"
+              ng-model="$ctrl.budget.market"
+              ng-options="market for market in $ctrl.market"
+              ng-blur="$ctrl.updateBudget()">
+              <option value="">Select</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label for="budget_time_unit">
+            Length of Time for this Budget:
+            <a
+              class="glyphicon glyphicon-question-sign"
+              uib-tooltip="Select the length of time (i.e. year(s), months, weeks, days) for this budget's
+                            production cycle. A production cycle usually begins after the previous crop's
+                            harvest and spans through this crop's harvest.">
+            </a>
+          </label>
+          <select
+            class="form-control"
+            ng-model="$ctrl.budget.time_unit"
+            ng-options="unit as (unit | capitalize) for unit in $ctrl.time_units"
+            ng-blur="$ctrl.updateBudget()">
+            <option value="">Select</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="budget_time_value">
+            Time Periods for this Budget:
+            <a
+              class="glyphicon glyphicon-question-sign"
+              uib-tooltip="Select the number of time periods for this budget (e.g. 1 year, 6 months,
+                            3 weeks, 120 days).">
+            </a>
+          </label>
+          <input
+            class="form-control"
+            type="text"
+            comma-number-input
+            ng-model="$ctrl.budget.time_value"
+            ng-blur="$ctrl.updateBudget()">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <label for="budget_notes">
+            Notes:
+          </label>
+          <textarea
+            id="budget_notes" class="form-control"
+            maxlength="1000"
+            ng-model="$ctrl.budget.notes"
+            ng-blur="$ctrl.updateBudget()">
+          </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<br>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h6 class="no-margin">Income</h6>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <th>Gross Return</th>
+      <th ng-if="$ctrl.budget.enterprise == 'Livestock'">Weight per Unit</th>
+      <th>Unit Sold by/as</th>
+      <th class="text-right">Quantity Sold</th>
+      <th class="text-right">Price per Unit Sold</th>
+      <th class="text-right">Total Value</th>
+      <th></th>
+      <th></th>
+      <tr ng-repeat="item in $ctrl.budget.income_items | orderBy:'name'">
+        <td ng-bind="item.name"></td>
+        <td
+          ng-if="item.enterprise == 'Livestock'"
+          ng-bind="item.weight">
+        </td>
+        <td ng-bind="item.sale_unit | capitalize"></td>
+        <td
+          class="text-right"
+          ng-bind="item.sale_unit_quantity | number : 2">
+        </td>
+        <td
+          class="text-right"
+          ng-bind="item.price_per_sale_unit | currency">
+        </td>
+        <td
+          class="text-right"
+          ng-bind="item.return_total | currency">
+        </td>
+        <td>
+          <div
+            ng-if="$ctrl.item_edit !== item"
+            style="height: 40px; align-self: center;"
+            class="flex-3 flex flex-end">
+            <button
+              class="btn btn-success"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.editIncome(item)">
+              Edit
+            </button>
+            <button
+              class="btn btn-danger"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.confirm_income = true;
+                        $ctrl.item_edit = item;">
+              Remove
+            </button>
+          </div>
+
+          <!-- Buttons after clicking 'delete' -->
+          <div
+            ng-if="$ctrl.confirm_income == true && $ctrl.item_edit === item"
+            style="height: 40px; align-self: center;"
+            class="flex-2 flex flex-end">
+            <button
+              class="btn btn-danger"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.removeItem('income', item);
+                        $ctrl.confirm_income = false;
+                        $ctrl.item_edit = ''">
+              Confirm
+            </button>
+            <button
+              class="btn btn-warning"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.confirm_income = false;
+                        $ctrl.item_edit = ''">
+              Cancel
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Total Gross Returns</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td ng-if="$ctrl.budget.enterprise == 'Livestock'"></td>
+        <td class="text-right">
+          <b ng-bind="$ctrl.budget.total_gross_returns | currency"></b>
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.newIncome()">
+      Add New
+    </button>
+  </div>
+</div>
+
+<br>
+
+<div
+  class="panel panel-primary">
+  <div class="panel-heading">
+    <h6 class="no-margin">General Cash Costs</h6>
+  </div>
+  <div class="panel-body">
+    <table
+      class="table table-striped"
+      ng-show="$ctrl.is_cost_general">
+      <th>Name</th>
+      <th>Unit</th>
+      <th class="text-right">Quantity</th>
+      <th class="text-right">Price per Unit</th>
+      <th class="text-right">Total Cost</th>
+      <th></th>
+      <th>
+        <a
+          class="glyphicon glyphicon-question-sign"
+          uib-tooltip="You may break down and itemize a total cost to category and sub-category
+                        for specific cost items. A variable cost is an expense that changes with
+                        the level of production (e.g. workers paid a piece rate which increases or
+                        decreases total wages based on yield) or impacts another expense (changing
+                        the number of pesticide applications that can impact machinery labor and
+                        repair costs).">
+        </a>
+      </th>
+      <th>
+        <a
+          class="glyphicon glyphicon-question-sign"
+          uib-tooltip="You may break down and itemize a total cost to a sub-category for specific
+                        cost items. A fixed cash cost is an expense that does not change or impact
+                        the level of production (e.g. property taxes and insurance).">
+        </a>
+      </th>
+      <th></th>
+      <tr ng-repeat="general_cost_item in $ctrl.budget.cost_items | filter : {cost_type: 'general'} | orderBy : 'name'">
+        <td ng-bind="general_cost_item.name"></td>
+        <td ng-bind="general_cost_item.farm_unit | capitalize"></td>
+        <td
+          class="text-right"
+          ng-bind="general_cost_item.unit_quantity">
+        </td>
+        <td
+          class="text-right"
+          ng-bind="general_cost_item.cost_per_unit | currency">
+        </td>
+        <td
+          class="text-right"
+          ng-bind="general_cost_item.cost_total | currency">
+        </td>
+        <td></td>
+        <td>
+          <button
+            ng-if="general_cost_item.gold_standard_category.variable_sub_categories.length > 0"
+            class="btn btn-success"
+            ng-click="$ctrl.newCost('variable', general_cost_item)">
+            Add Variable Cost
+          </button>
+        </td>
+        <td>
+          <button
+            ng-if="general_cost_item.gold_standard_category.fixed_sub_categories.length > 0"
+            class="btn btn-success"
+            ng-click="$ctrl.newCost('fixed', general_cost_item)">
+            Add Fixed Cash Cost
+          </button>
+        </td>
+        <td>
+          <div
+            ng-if="$ctrl.item_edit !== general_cost_item"
+            style="height: 40px; align-self: center;"
+            class="flex-3 flex flex-end">
+            <button
+              class="btn btn-success"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.editGeneralCost(general_cost_item)">
+              Edit
+            </button>
+            <button
+              class="btn btn-danger"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.confirm_GeneralCost = true; $ctrl.item_edit = general_cost_item;">
+              Remove
+            </button>
+          </div>
+
+          <!-- Buttons after clicking 'delete' -->
+          <div
+            ng-if="$ctrl.confirm_GeneralCost == true && $ctrl.item_edit === general_cost_item"
+            style="height: 40px; align-self: center;"
+            class="flex-2 flex flex-end">
+            <button
+              class="btn btn-danger"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.removeItem('general', general_cost_item);
+                        $ctrl.confirm_GeneralCost = false;
+                        $ctrl.item_edit = ''">
+              Confirm
+            </button>
+            <button
+              class="btn btn-warning"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.confirm_GeneralCost = false;
+                        $ctrl.item_edit = ''">
+              Cancel
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Total General Costs</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="text-right"><b ng-bind="$ctrl.budget.total_general_costs | currency"></b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <button
+      id="new-general" class="btn btn-success"
+      ng-click="$ctrl.newGeneralCost()">
+      Add General Cost
+    </button>
+  </div>
+</div>
+
+<div
+  class="panel panel-primary"
+  ng-if="$ctrl.is_cost_variable">
+  <div class="panel-heading">
+    <h6 class="no-margin">Variable Costs</h6>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <th>Parent Category</th>
+      <th>Category</th>
+      <th>Sub-Category</th>
+      <th>Name</th>
+      <th>Unit</th>
+      <th class="text-right">Quantity</th>
+      <th class="text-right">Price per Unit</th>
+      <th class="text-right">Total Cost</th>
+      <th></th>
+      <th></th>
+      <tr ng-repeat="variable_cost_item in $ctrl.budget.cost_items | filter : {cost_type: 'variable'}">
+        <td ng-bind="variable_cost_item.parent_category"></td>
+        <td ng-bind="variable_cost_item.category"></td>
+        <td ng-bind="variable_cost_item.sub_category"></td>
+        <td ng-bind="variable_cost_item.name"></td>
+        <td ng-bind="variable_cost_item.unit | capitalize"></td>
+        <td
+          class="text-right"
+          ng-bind="variable_cost_item.unit_quantity">
+        </td>
+        <td
+          class="text-right"
+          ng-bind="variable_cost_item.cost_per_unit | currency">
+        </td>
+        <td
+          class="text-right"
+          ng-bind="variable_cost_item.cost_total | currency">
+        </td>
+        <td>
+          <div
+            ng-if="$ctrl.item_edit !== variable_cost_item"
+            style="height: 40px; align-self: center;"
+            class="flex-3 flex flex-end">
+            <button
+              class="btn btn-success"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.editCost(variable_cost_item)">
+              Edit
+            </button>
+            <button
+              class="btn btn-danger"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.confirm_variableCost = true; $ctrl.item_edit = variable_cost_item;">
+              Remove
+            </button>
+          </div>
+
+          <!-- Buttons after clicking 'delete' -->
+          <div
+            ng-if="$ctrl.confirm_variableCost == true && $ctrl.item_edit === variable_cost_item"
+            style="height: 40px; align-self: center;"
+            class="flex-2 flex flex-end">
+            <button
+              class="btn btn-danger"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.removeItem('variable', variable_cost_item);
+                        $ctrl.confirm_variableCost = false;
+                        $ctrl.item_edit = ''">
+              Confirm
+            </button>
+            <button
+              class="btn btn-warning"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.confirm_variableCost = false;
+                        $ctrl.item_edit = ''">
+              Cancel
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Total Variable Costs</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="text-right">
+          <b ng-bind="$ctrl.budget.total_variable_costs | currency"></b>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+  <div
+  class="panel panel-primary"
+  ng-if="$ctrl.is_cost_fixed">
+  <div class="panel-heading">
+    <h6 class="no-margin">Fixed Cash Costs</h6>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <th>Parent Category</th>
+      <th>Sub-Category</th>
+      <th>Name</th>
+      <th>Unit Sold by/as</th>
+      <th class="text-right">Quantity</th>
+      <th class="text-right">Price per Unit</th>
+      <th class="text-right">Total Cost</th>
+      <th></th>
+      <th></th>
+      <tr ng-repeat="fixed_cost_item in $ctrl.budget.cost_items | filter: {cost_type: 'fixed'}">
+        <td ng-bind="fixed_cost_item.parent_category"></td>
+        <td ng-bind="fixed_cost_item.sub_category"></td>
+        <td ng-bind="fixed_cost_item.name"></td>
+        <td ng-bind="fixed_cost_item.unit | capitalize"></td>
+        <td
+          class="text-right"
+          ng-bind="fixed_cost_item.unit_quantity">
+        </td>
+        <td
+          class="text-right"
+          ng-bind="fixed_cost_item.cost_per_unit | currency">
+        </td>
+        <td
+          class="text-right"
+          ng-bind="fixed_cost_item.cost_total | currency">
+        </td>
+        <td>
+          <div
+            ng-if="$ctrl.item_edit !== fixed_cost_item"
+            style="height: 40px; align-self: center;"
+            class="flex-3 flex flex-end">
+            <button
+              class="btn btn-success"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.editCost(fixed_cost_item)">
+              Edit
+            </button>
+            <button
+              class="btn btn-danger"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.confirm_fixedCost = true;
+                        $ctrl.item_edit = fixed_cost_item">
+              Remove
+            </button>
+          </div>
+
+          <!-- Buttons after clicking 'delete' -->
+          <div
+            ng-if="$ctrl.confirm_fixedCost == true && $ctrl.item_edit === fixed_cost_item"
+            style="height: 40px; align-self: center;"
+            class="flex-2 flex flex-end">
+            <button
+              class="btn btn-danger"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.removeItem('fixed', fixed_cost_item);
+                        $ctrl.confirm_fixedCost = false;
+                        $ctrl.item_edit = fixed_cost_item">
+              Confirm
+            </button>
+            <button
+              class="btn btn-warning"
+              id="fixedButtonWidth"
+              ng-click="$ctrl.confirm_fixedCost = false;
+                        $ctrl.item_edit = fixed_cost_item">
+              Cancel
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><b>Total Fixed Cash Costs</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="text-right"><b ng-bind="$ctrl.budget.total_fixed_costs | currency"></b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h6 class="no-margin">Totals</h6>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <tr>
+        <td id="budget_total_gross_returns">
+          <b>Total Gross Returns</b>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="text-right">
+          <b ng-bind="$ctrl.budget.total_gross_returns | currency"></b>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="budget_total_costs">
+          <b>Total Costs</b>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td
+          class="text-right"
+          style="color: red;">
+          <b ng-bind="$ctrl.budget.total_costs | currency"></b>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="budget_profit">
+          <b>Net Returns (income minus costs)</b>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="text-right">
+          <b ng-bind="$ctrl.budget.profit | currency"></b>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div style="display: flex; justify-content: flex-end;">
+  <button
+    class="btn btn-success editor-button"
+    ng-disabled="$ctrl.form.$invalid"
+    ng-click="$ctrl.save()"
+    uib-tooltip="Save budget">
+    Save
+  </button>
+  <budget-pdf
+    ng-hide="$ctrl.form.$invalid"
+    style="padding: 10px 0;"
+    budget="$ctrl.budget">
+  </budget-pdf>
+  <button
+    ng-if="$ctrl.discardable == true"
+    class="btn btn-danger editor-button"
+    ng-click="$ctrl.discard()"
+    uib-tooltip="Discard all changes">
+    Cancel
+  </button>
+</div>

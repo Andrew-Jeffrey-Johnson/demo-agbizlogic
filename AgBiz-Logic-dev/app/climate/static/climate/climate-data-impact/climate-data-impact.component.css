@@ -1,0 +1,13 @@
+
+.tab {
+    height: 100px;
+}
+
+.chart-container {
+    height: 500px;
+}
+
+.chart-pad {
+    padding: 30px;
+    height: auto;
+}

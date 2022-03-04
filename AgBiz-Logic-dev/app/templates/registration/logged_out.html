@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}AgBiz Logic{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}" />
+{% endblock %}
+
+{% block content %}
+
+<br>
+  <h1> You have logged out </h1>
+
+<br>
+
+<script>
+
+localStorage.clear();
+
+</script>
+{% endblock %}

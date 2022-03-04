@@ -1,0 +1,90 @@
+<div class="row">
+  <h6 class="col-md-12"><b>Search</b></h6>
+</div>
+
+<!-- Title -->
+<div class="row">
+  <label
+    class="col-md-3">
+    By Title:
+  </label>
+  <div class="col-md-8">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Filter by..."
+      ng-model="$ctrl.search.title"
+      ng-change="$ctrl.filtered_budget_list = ($ctrl.budgetList | filter:{title: $ctrl.search.title, enterprise: $ctrl.search.enterprise})">
+    </input>
+  </div>
+</div>
+
+<!-- Enterprise -->
+<div class="row">
+  <label
+    class="col-md-3">
+    By Enterprise:
+  </label>
+  <div class="col-md-8">
+    <select
+      class="form-control"
+      ng-model="$ctrl.search.enterprise"
+      ng-change="$ctrl.filtered_budget_list = ($ctrl.budgetList | filter:{title: $ctrl.search.title, enterprise: $ctrl.search.enterprise})"
+      ng-options="enterprise.value as enterprise.label for enterprise in $ctrl.enterprise_list">
+  </select>
+  </div>
+</div>
+
+<!-- State -->
+<div class="row">
+  <label
+    class="col-md-3">
+    By State:
+  </label>
+  <div class="col-md-8">
+    <select
+      class="form-control"
+      ng-model="$ctrl.search.state"
+      ng-change="$ctrl.onRegionChange();$ctrl.filtered_budget_list = ($ctrl.budgetList | filter:{title: $ctrl.search.title, enterprise: $ctrl.search.enterprise, state: $ctrl.search.state})"
+      ng-options="state as state for state in $ctrl.us_state_list">
+      <option value="">Select</option>
+    </select>
+  </div>
+</div>
+
+<!-- Region -->
+<div
+  class="row"
+  ng-show="$ctrl.search.state">
+  <label
+    class="col-md-3">
+    By County/Region:
+  </label>
+  <div class="col-md-8">
+    <select
+      class="form-control"
+      ng-model="$ctrl.search.region"
+      ng-change="$ctrl.filtered_budget_list = ($ctrl.budgetList |filter:{title: $ctrl.search.title, enterprise: $ctrl.search.enterprise, state: $ctrl.search.state, region : $ctrl.search.region})"
+      ng-options="region as region for region in $ctrl.region_list | orderBy:''">
+      <option value="">Select</option>
+    </select>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <label
+    class="col-md-3">
+    Choose Budget:
+  </label>
+  <div class="col-md-8">
+    <select
+      class="form-control"
+      ng-model="$ctrl.budget"
+      ng-change="$ctrl.onSelect({budget: $ctrl.budget})"
+      ng-options="budget.title for budget in $ctrl.filtered_budget_list | orderBy: 'title'">
+      <option value="">Select</option>
+    </select>
+  </div>
+</div>

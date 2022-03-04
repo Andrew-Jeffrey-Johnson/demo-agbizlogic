@@ -1,0 +1,387 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% load staticfiles %}
+
+{% block content %}
+<br>
+<div class="hidden-xs hidden-sm">
+
+</div>
+
+  <div class="container">
+  <h3><i>AgBiz Logic</i>&#0153; Resources</h3>
+  <br />
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#home">Publications and White Papers</a></li>
+    <li><a href="#menu1">Presentations</a></li>
+    <li><a href="#menu2">Case Studies</a></li>
+    <li><a href="#menu3">Student Course Materials</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h4>Publications and White Papers</h4>
+      <p> <a href="{% static "resources/publications/National Grape Research Alliance The True Cost of Mechanization.pdf" %}" target="_blank">National Grape Research Alliance The True Cost of Mechanization</a></p>
+      <p> <a href="{% static "resources/publications/Negotiating New Lease Arrangements with the Transition to Direct Seed Intensive Cropping Systems.pdf" %}" target="_blank">Negotiating New Lease Arrangements with the Transition to Direct Seed Intensive Cropping Systems</a></p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h4>Presentations</h4>
+      <p> <a href="{% static "resources/presentations/Establishing Economic and Financial Benchmarks for Mechanizing NW Vineyards 2020 Winegrowers Conference.pdf" %}" target="_blank">Establishing Economic and Financial Benchmarks for Mechanizing NW Vineyards 2020 Winegrowers Conference, Kennewick, WA on March 5, 2020</a></p>
+      <p> <a href="{% static "resources/presentations/Key Financial Ratios and Performance Measures to Mechanize Vineyards.pdf" %}" target="_blank">Economics of Vineyard Mechanization Summer Vineyard Mechanization Workshop, Salem, Oregon July 11, 2019</a></p>
+      <p> <a href="{% static "resources/presentations/Establishing Equitable Leases for Hazelnuts, AgBiz Logic Academy, August 2017.pdf" %}" target="_blank">Establishing Equitable Leases for Hazelnuts, AgBiz Logic Academy, August 2017</a></p>
+      <p> <a href="{% static "resources/presentations/Establishing and Producing High and Ultra High Density Cherries - Mid-Columbia Cherry Day; Feb 2017.pdf" %}" target="_blank">Establishing and Producing High and Ultra High Density Cherries - Mid-Columbia Cherry Day; Feb 2017</a></p>
+      <p> <a href="{% static "resources/presentations/Making Money in the Sweet Cherry Business, What's Stopping You_ - Mid-Columbia Cherry Day; Feb 2017.pdf" %}" target="_blank">Making Money in the Sweet Cherry Business, What's Stopping You_ - Mid-Columbia Cherry Day; Feb 2017</a></p>
+      <p> <a href="{% static "resources/presentations/Cost and Returns of Establishing and Growing Hazelnuts - Oregon Hort Meetings; Jan 2017.pdf" %}" target="_blank">Cost and Returns of Establishing and Growing Hazelnuts - Oregon Hort Meetings; Jan 2017</a></p>
+      <p> <a href="{% static "resources/presentations/Costs and Benefits - Will Higher Density Make More Dollars - 71st Annual Lake Chelan Hort Meeting; Jan 2017.pdf" %}" target="_blank">Costs and Benefits - Will Higher Density Make More Dollars - 71st Annual Lake Chelan Hort Meeting; Jan 2017</a></p>
+      <p> <a href="{% static "resources/presentations/Using ABL to Make Management Decisions - NC WA Stone Fruit Day; Jan 2017.pdf" %}" target="_blank">Using ABL to Make Management Decisions - NC WA Stone Fruit Day; Jan 2017</a></p>
+      <p> <a href="{% static "resources/presentations/Replacing Labor with Capital - An AgBiz Logic Case Study_ WA State Hort Meetings 2015.pdf" %}" target="_blank">Replacing Labor with Capital - An AgBiz Logic Case Study: WA State Hort Meetings 2015</a></p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h4>Case Studies</h4>
+      <p>Coming soon!</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+
+      <div id="accordion" role="tablist" aria-multiselectable="">
+      <div class="card">
+        <div class="card-header" role="tab" id="headingOne">
+            <button  id="modal-form-btn" style="width: 100%" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+             <h7> Week 1, Course Overview </h7>
+            </button>
+        </div>
+
+        <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="card-block">
+            <p> <a href="{% static "resources/course_material/AEC465_565 Syllabus Fall 2018.pdf" %}" target="_blank">1. AEC465_565 Course Syllabus </a></p>
+            <p> <a href="{% static "resources/course_material/Measuring and Analyzing Farm Financial Performance EC-712-W.pdf" %}" target="_blank">2. Measuring and Analyzing Farm Financial Performance</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" role="tab" id="headingTwo">
+          <h5 class="mb-0">
+            <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <h7>Week 2, Lecture 1</h7>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="card-block">
+            <p> <a href="{% static "resources/course_material/BM3TeachingNotesandResources.pdf" %}" target="_blank">1. Ruby Ward's curriculum</a></p>
+            <p> <a href="{% static "resources/course_material/IN-Small-Farms-Conf_farm-records_2013.pdf" %}" target="_blank">2. Alan Miller's PowerPoint slides</a></p>
+            <p> <a href="{% static "resources/course_material/AGEC-302web2016.pdf" %}" target="_blank">3. Information Systems for Oklahoma Farmers – AGEC-302 </a></p>
+            <p> <a href="{% static "resources/course_material/Establishing and Using a Farm Financial Record-Keeping System PB1540 .pdf" %}" target="_blank">4. Establishing and Using a Farm Financial Record-Keeping System </a></p>
+          </div>
+      </div>
+    </div>
+        <div class="card">
+        <div class="card-header" role="tab" id="headingTwo">
+          <h5 class="mb-0">
+            <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+              <h7>Week 2, Lecture 2</h7>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="card-block">
+            <p> <a href="{% static "resources/course_material/AGEC-752web2017-2.pdf" %}" target="_blank">1. Developing a Balance Sheet – AGEC-752 </a> </p>
+            <p> <a href="{% static "resources/course_material/AGEC-791web2013.pdf" %}" target="_blank">2. Schedule of Assets – AGEC-791 </a></p>
+            <p> <a href="{% static "resources/course_material/fdd021216.pdf" %}" target="_blank">3. Accelerated Depreciation and Machinery Purchases </a></p>
+            <p> <a href="{% static "resources/course_material/AGEC-939web2014.pdf" %}" target="_blank">4. Deferred Taxes – AGEC-939 </a></p>
+            <p> <a href="{% static "resources/course_material/fdd190517.pdf" %}" target="_blank">5. The Deferred Tax Monster </a> </p>
+
+          </div>
+        </div>
+      </div>
+        <div class="card">
+        <div class="card-header" role="tab" id="headingTwo">
+          <h5 class="mb-0">
+            <button id="modal-form-btn" class="btn btn-info" style="width: 100%"data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+             <h7> Week 3, In-Class Exercise #1 Balance Sheet </h7>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="card-block">
+            <p> <a href="{% static "resources/course_material/MF2358.pdf" %}" target="_blank">1. Computation of Deferred Tax Liability - An Example </a></p>
+          </div>
+        </div>
+      </div>
+        <div class="card">
+        <div class="card-header" role="tab" id="headingTwo">
+          <h5 class="mb-0">
+            <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
+              <h7>Week 3, Lecture 3</h7>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="card-block">
+            <p> <a href="{% static "resources/course_material/AGEC-753web2017-2.pdf" %}" target="_blank">1. Developing an Income Statement – AGEC-753 </a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+      <div class="card-header" role="tab" id="headingTwo">
+        <h5 class="mb-0">
+          <button id="modal-form-btn" style="width: 100%" class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseSix1" aria-expanded="false" aria-controls="collapseTwo">
+            <h7>Week 4, In-Class Exercise #2 Cash-Based Income Statement</h7>
+          </button>
+        </h5>
+      </div>
+      <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="card-block">
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapseTwo">
+          <h7>Week 4, Lecture 4</h7>
+        </button>
+      </h5>
+    </div>
+    <div id="collapse7" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-block">
+        <p> <a href="{% static "resources/course_material/c3-14.pdf" %}" target="_blank">1. Understanding Cash Flow Analysis </a></p>
+        <p> <a href="{% static "resources/course_material/c3-60.pdf" %}" target="_blank">2. Building Equity in Your Farm </a></p>
+        <p> <a href="{% static "resources/course_material/equity.pdf" %}" target="_blank">3. How do Farmers Build Wealth?</a></p>
+        <p> <a href="{% static "resources/course_material/AGEC-938web2013.pdf" %}" target="_blank">4. Owner Equity Section – AGEC-938 </a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+  <div class="card-header" role="tab" id="headingTwo">
+    <h5 class="mb-0">
+      <button id="modal-form-btn" style="width: 100%" class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseWeek51" aria-expanded="false" aria-controls="collapseTwo">
+        <h7>Week 5, In-Class Exercise #3 Create Statement of Owner's Equity & Cash FLow Statement</h7>
+      </button>
+    </h5>
+  </div>
+  <div id="collapseWeek5" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="card-block">
+
+    </div>
+  </div>
+</div>
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 5, Lecture 5</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapse8" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+        <p> <a href="{% static "resources/course_material/Preparing-a-Projected-Cash-Flow-Statement_Miller_2014.pdf" %}" target="_blank">1. Preparing a Projected Cash Flow Statement</a></p>
+        <p> <a href="{% static "resources/course_material/AGEC-751web2017-2.pdf" %}" target="_blank">2. Developing a Cash Flow Plan – AGEC-751</a></p>
+        <p> <a href="{% static "resources/course_material/mf275.pdf" %}" target="_blank">3. Cash Flow Projection for Operating Loan Determination </a></p>
+        <p> <a href="{% static "resources/course_material/Budgeting for Agricultural Decision Making.pdf" %}" target="_blank">4. Budgeting for Agricultural Decision Making </a></p>
+        <p> <a href="{% static "resources/course_material/AGEC-139web.pdf" %}" target="_blank">5.      Budgets: Their Use in Farm Management</a></p>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseWeek66" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 6, Lecture 6</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseWeek66" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+    <p> <a href="{% static "resources/course_material/A FARMER'S GUIDE TO AGRICULTURAL CREDIT.pdf" %}" target="_blank">1. A Farmer's Guide to Agricultural Credit </a></p>
+    <p> <a href="{% static "resources/course_material/mf288.pdf" %}" target="_blank">2. How much debt can a farm carry? </a></p>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapsefg1" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 6, Thursday, Exam #1</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseWeek7" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 7, Lecture 7</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseWeek7" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+    <a href="{% static "resources/course_material/FE93900.pdf" %}" target="_blank">1. Are Profit and Profitability the Same Thing? </a></p>
+    <a href="{% static "resources/course_material/AGEC-790web2013.pdf" %}" target="_blank">2. Evaluating Financial Performance and Position </a></p>
+    <a href="{% static "resources/course_material/FarmFinanceScorecard.pdf" %}" target="_blank">3. Farm Financial Scorecard </a></p>
+
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseWeek7c1" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 7, Thursday, Case Study</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseWeek7c" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseSi4]" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 8, In-Class Exercise #4 Measuring Performance</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseWeek8" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 8, Lecture 8</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseWeek8" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+    <a href="{% static "resources/course_material/Linking the financial statements.pdf" %}" target="_blank">1. Linking the Financial Statements </a></p>
+    <a href="{% static "resources/course_material/EC-712-W.pdf" %}" target="_blank">2. Measuring and Analyzing Farm Financial Performance </a></p>
+    <a href="{% static "resources/course_material/Analysis6.pdf" %}" target="_blank">3. Ratio Analysis:A Look Among the Numbers </a></p>
+
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseWeek9c1" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 9, Case Study Submission</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseWeek9c" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+
+  </div>
+</div>
+</div>
+
+
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseWeek9" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 9, Lecture 9</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseWeek9" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+    <a href="{% static "resources/course_material/333_Barnard.pdf" %}" target="_blank">1. Farm Enterprise Analysis: Has It Lost Its Usefulness? </a></p>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseWeek101" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 10, Lecture 10</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseWeek10" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+
+  </div>
+</div>
+</div>
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseWeek11" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 11, Lecture 11</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseWeek11" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+    <a href="{% static "resources/course_material/Cost and Revenue Considerations_0.pdf" %}" target="_blank">1. Cost and Revenue Considerations in Farm Management Decision-making </a></p>
+    <a href="{% static "resources/course_material/nrcs143_009248.pdf" %}" target="_blank">2. Chapter 9 - Joint Costs, General Farm Overhead and Rights to Produce </a></p>
+  </div>
+</div>
+</div>
+<div class="card">
+<div class="card-header" role="tab" id="headingTwo">
+  <h5 class="mb-0">
+    <button id="modal-form-btn" style="width: 100%"class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseTwo">
+      <h7>Week 11, Thursday, Course Overview and Recap</h7>
+    </button>
+  </h5>
+</div>
+<div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="card-block">
+
+  </div>
+</div>
+</div>
+
+
+
+</div>
+
+
+</div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+});
+</script>
+{% endblock %}

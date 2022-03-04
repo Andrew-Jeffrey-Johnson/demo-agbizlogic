@@ -1,0 +1,67 @@
+<div class="modal-body">
+  <div>
+    <h5>
+      Plan Sensitivity Summary - <span ng-bind="$ctrl.plan_title"></span>
+    </h5>
+    <p>Plan Sensitivity Summary</p>
+  </div>
+
+  <div>
+    <table class="table table-striped">
+      <tr>
+        <th></th>
+        <th style="text-align: right;">Before</th>
+        <th style="text-align: right;">After</th>
+        <th style="text-align: right;">Diff ($)</th>
+      </tr>
+      <tr>
+        <th>Income</th>
+        <td align="right">$<span ng-bind="$ctrl.total_income_before.toFixed(2)"></span></td>
+        <td align="right">$<span ng-bind="$ctrl.total_income_after.toFixed(2)"></span></td>
+        <td align="right">
+          <span class="glyphicon glyphicon-arrow-down red" ng-show="$ctrl.total_income_diff_neg"></span>
+          <span class="glyphicon glyphicon-arrow-up" style="color:blue" ng-show="!$ctrl.total_income_diff_neg"></span>
+          $<span ng-bind="$ctrl.total_income_diff.toFixed(2)"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>Total Cost</th>
+        <td align="right">$<span ng-bind="$ctrl.total_cost_before.toFixed(2)"></span></td>
+        <td align="right">$<span ng-bind="$ctrl.total_cost_after.toFixed(2)"></span></td>
+        <td align="right">
+          <span class="glyphicon glyphicon-arrow-down red" ng-show="$ctrl.total_cost_diff_neg"></span>
+          <span class="glyphicon glyphicon-arrow-up" style="color:blue" ng-show="!$ctrl.total_cost_diff_neg"></span>
+          $<span ng-bind="$ctrl.total_cost_diff.toFixed(2)"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>Net Returns</th>
+        <td align="right">$<span ng-bind="$ctrl.net_returns_before.toFixed(2)"></span></td>
+        <td align="right">$<span ng-bind="$ctrl.net_returns_after.toFixed(2)"></span></td>
+        <td align="right">
+          <span class="glyphicon glyphicon-arrow-down red" ng-show="$ctrl.net_returns_diff_neg"></span>
+          <span class="glyphicon glyphicon-arrow-up" style="color:blue" ng-show="!$ctrl.net_returns_diff_neg"></span>
+          $<span ng-bind="$ctrl.net_returns_diff.toFixed(2)"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1">
+      <button
+        class="btn btn-default"
+        ng-click="$ctrl.back()">
+        Back
+      </button>
+    </div>
+
+    <div class="col-md-2 pull-right">
+      <button
+        class="btn btn-success"
+        ng-click="$ctrl.gotoPlanManager()">
+        Plan Manager
+      </button>
+    </div>
+  </div>
+</div>

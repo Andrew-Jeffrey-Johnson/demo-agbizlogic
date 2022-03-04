@@ -1,0 +1,66 @@
+/* State change animations */
+
+.ui-view-container {
+  position: relative;
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  -webkit-transition:all 0.3s ease-in-out;
+  -moz-transition:all 0.3s ease-in-out;
+  -o-transition:all 0.3s ease-in-out;
+  transition:all 0.3s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+  animation: fade-in 0.3s linear;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+  animation: fade-in 0.3s linear;
+}
+
+[ui-view].ng-leave {
+  opacity: 1;
+  animation: fade-out 0.3s linear;
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
+  animation: fade-out 0.3s linear;
+}
+
+
+/* Fading animations */
+
+.animate-fade.ng-enter {
+  animation: fade-in 0.2s linear;
+}
+.animate-fade.ng-enter-active {
+    opacity: 1;
+}
+.animate-fade.ng-leave {
+  animation: fade-out 0.2s linear;
+}
+.animate-fade.ng-leave-active {
+    opacity: 0;
+}
+.animate-fade.ng-move {
+	animation: fade-out 0.2s linear;
+}
+.animate-fade.ng-move-active {
+	opacity: 1;
+}
+
+@-moz-keyframes fade-in {
+    from    { opacity:0; }
+    to      { opacity:1; }
+}
+@-moz-keyframes fade-out {
+    from    { opacity:1; }
+    to      { opacity:0; }
+}

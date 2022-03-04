@@ -1,0 +1,100 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+{% block content %}
+
+ 
+  {% for field in form %}
+    {{field.error}}
+
+  {% endfor %}
+  
+ <div class="container">
+  <div class="hidden-xs hidden-sm">
+    <br>
+  <ol class="progtrckr" data-progtrckr-steps="5">
+    <li class="progtrckr-done">Account Information</li>
+    <li class="progtrckr-done">Business Information</li>
+    <li class="progtrckr-on">Business Enterprises</li>
+    <li class="progtrckr-todo">Business Assets</li>
+    <li class="progtrckr-todo">Business Liabilities</li>
+   </ol>
+</div>
+ <br>
+</div> 
+
+
+<h2> Your budget data has been successfully saved! </h2>
+
+
+
+ <div class="form">
+  <form action="" method="post">{% csrf_token %}
+
+  
+  
+ <br>
+
+   {% if wizard.steps.prev %}
+   
+   <button name="wizard_goto_step" class="btn btn-primary" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+ 
+ 
+  {% endif %}
+
+    <a class="btn btn-default" type="button" href="/create_university_budget/">Create More Budgets</a>
+
+    <a class="btn btn-success pull-right" type="button" href="/dashboard/">Exit</a>
+
+  
+
+
+
+
+    
+  </form>
+
+</div>
+  
+<style type="text/css" />
+  
+  .glyphicon-ok {
+    font-size: 50px;
+}
+
+</style>
+<script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+<script> 
+ 
+
+localStorage.removeItem('general_breakeven_price');
+localStorage.removeItem('general_breakeven_yield');
+localStorage.removeItem('general_table');
+localStorage.removeItem('general_net_return');
+localStorage.removeItem('general_total_cost');
+localStorage.removeItem('current_university_enterprise');
+
+
+localStorage.removeItem('variable_table');
+localStorage.removeItem('total_variable_cost');
+localStorage.removeItem('net_return_above_total');
+localStorage.removeItem('total_var_and_fixed');
+localStorage.removeItem('total_var_and_fixed_after_return');
+localStorage.removeItem('current_university_enterprise');
+
+localStorage.removeItem('breakeven_yield');
+localStorage.removeItem('breakeven_price');
+localStorage.removeItem('fixed_table');
+localStorage.removeItem('total_fixed_cash_cost');
+
+
+
+
+</script>
+  
+{% endblock %}
+
+
+
+
+

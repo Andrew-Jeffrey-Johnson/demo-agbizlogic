@@ -1,0 +1,54 @@
+.sidenav {
+  z-index: 9999;
+  position: absolute;
+  transition:all 0.5s ease-in-out;
+  width: 300px;
+  left: 10px;
+  top: -20px;
+}
+
+.sidenav.ng-hide {
+  left: -300px;
+  display: block !important;
+}
+
+.sidenav .list-group-item {
+  transition: all 0.5s ease;
+  background: #34495e;
+  color: white;
+}
+.sidenav .list-group-item:hover {
+  transform: translate(5px, 0px);
+  color: #34495e;
+}
+
+.sidenav-options {
+  height: 100%;
+  background: #34495e;
+  padding: 0;
+  margin: 0;
+}
+
+.component-container {
+  padding: 0px;
+  margin: 0px;
+}
+
+.sidenav-toggle {
+  position: relative;
+  top: -60px;
+  width: 50px;
+  background-color: #34495e;
+  border: none;
+  cursor:pointer;
+  outline:none;
+  color: white;
+  z-index: 9999;
+}
+
+.sidebar-footer {
+  font-size: 10px;
+  bottom: 0;
+  position: absolute;;
+  color: white;
+}

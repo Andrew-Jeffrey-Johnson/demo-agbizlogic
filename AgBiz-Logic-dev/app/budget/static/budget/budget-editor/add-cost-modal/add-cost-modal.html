@@ -1,0 +1,286 @@
+<div class="modal-body">
+  <h8 ng-bind="$ctrl.cost_item.parent_category"></h8>
+
+  <h4>
+    <span ng-if="$ctrl.editing == true">
+      Edit
+    </span>
+    <span ng-if="$ctrl.editing == false">
+      Add
+    </span>
+    <span ng-if="$ctrl.cost_item.cost_type == 'fixed'">
+      Fixed Cash
+    </span>
+    <span
+      ng-if="$ctrl.cost_item.cost_type != 'fixed'"
+      ng-bind="$ctrl.cost_item.cost_type | capitalize">
+    </span>
+    Cost item
+  </h4>
+
+  <div ng-if="$ctrl.cost_item.cost_type !== 'general' && $ctrl.cost_item.gold_standard_category">
+    Remaining amount for this sub-category:
+    <b
+      ng-bind="($ctrl.total - $ctrl.cost_item.cost_total) | currency"
+      ng-style="{'color': $ctrl.parent_cost_total - $ctrl.cost_item.cost_total > 0 ? 'black' : 'red'}">
+    </b>
+  </div>
+
+  <form name="$ctrl.form">
+
+    <div class="row">
+      <div
+        class="col-md-12"
+        ng-if="$ctrl.cost_item.cost_type == 'variable'">
+        <label>
+          Category:
+        </label>
+        <select
+          class="form-control"
+          name="category"
+          ng-options="category as category for category in $ctrl.cost_categories"
+          ng-model="$ctrl.cost_item.category"
+          required>
+          <option value="">Select</option>
+        </select>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.category.$valid && $ctrl.form.category.$dirty">
+          Please select a category
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div
+        class="col-md-12"
+        ng-if="$ctrl.cost_item.cost_type != 'general'">
+        <label for="sub_category">
+          Sub-category:
+        </label>
+
+        <!-- Fixed Cost -->
+        <select
+          ng-if="$ctrl.cost_item.cost_type == 'fixed'"
+          class="form-control"
+          name="sub_category"
+          ng-model="$ctrl.cost_item.sub_category"
+          ng-options="sub_category.name for sub_category in $ctrl.cost_item.gold_standard_category.fixed_sub_categories | orderBy: 'name'"
+          required>
+          <option value="">Select</option>
+        </select>
+
+        <!-- Variable Cost -->
+        <select
+          ng-if="$ctrl.cost_item.cost_type == 'variable'"
+          id="sub-category" class="form-control"
+          name="sub_category"
+          ng-model="$ctrl.cost_item.sub_category"
+          ng-options="sub_category.name for sub_category in $ctrl.cost_item.gold_standard_category.variable_sub_categories | orderBy: 'name'"
+          required>
+          <option value="">Select</option>
+        </select>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.sub_category.$valid && $ctrl.form.sub_category.$dirty">
+          Please select a sub-category
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label>
+          Name:
+        </label>
+
+        <!-- Fixed/Variable Cost -->
+        <select
+          ng-if="$ctrl.cost_item.cost_type != 'general'"
+          class="form-control"
+          maxlength="100"
+          name="name"
+          ng-model="$ctrl.cost_item.name"
+          ng-options="item.name as item.name for item in $ctrl.cost_item.sub_category.items | orderBy: 'name'"
+          required>
+          <option value="">Selectprice</option>
+        </select>
+
+
+        <!-- General Cost -->
+        <select
+          ng-if="$ctrl.cost_item.cost_type == 'general' && $ctrl.editing == false"
+          class="form-control"
+          ng-model="$ctrl.cost_item.name"
+          ng-options="item.name as item.name for item in $ctrl.budget_cost_data | orderBy: 'name'"
+          name="name"
+          maxlength="100"
+          required>
+          <option value="">Select</option>
+        </select>
+        <label ng-if ="$ctrl.cost_item.name=='Other Expenses'"">
+          Sub name:
+        </label>
+        <input
+          ng-if ="$ctrl.cost_item.name=='Other Expenses'"
+          class="form-control"
+          ng-model="$ctrl.sub_name"
+          type="text"
+          required>
+
+
+        <span
+          ng-if="$ctrl.cost_item.cost_type =='general' && $ctrl.editing == true"
+          class="form-control"
+          ng-bind="$ctrl.cost_item.name">
+        </span>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.name.$valid && $ctrl.form.name.$dirty">
+          Please select a name
+        </span>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div
+        class="col-md-6"
+        ng-if="$ctrl.cost_item.cost_type != 'general'">
+        <label>
+          Unit:
+        </label>
+        <select
+          class="form-control"
+          ng-model="$ctrl.cost_item.unit"
+          ng-options="unit as unit for unit in $ctrl.cost_item.sub_category.units"
+          name="unit"
+          maxlength="100"
+          required>
+          <option value="">Select</option>
+        </select>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.unit.$valid && $ctrl.form.unit.$dirty">
+          Please select a unit
+        </span>
+      </div>
+
+      <div class="col-md-6">
+        <label>
+          Quantity:
+        </label>
+        <div class="input-group">
+          <input
+            ng-keypress="$event.keyCode === 13 && $ctrl.save($ctrl.form.$valid)"
+            class="form-control"
+            name="unit_quantity"
+            ng-model="$ctrl.cost_item.unit_quantity"
+            ng-init="$ctrl.cost_item.unit_quantity='1'"
+            ng-change="$ctrl.getTotal($ctrl.cost_item.unit_quantity, $ctrl.cost_item.cost_per_unit)"
+            ng-pattern="/^[0-9]{0,8}(\.[0-9]{0,2})?$/"
+            onfocus="if(this.value === 0)this.value='';"
+            onblur="if(this.value === '')this.value=0;"
+            type="text"
+            required>
+          <span
+            class="input-group-addon"
+            ng-bind="$ctrl.cost_item.unit | capitalize">
+          </span>
+        </div>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.unit_quantity.$valid && $ctrl.form.unit_quantity.$dirty">
+          <span ng-if="$ctrl.form.unit_quantity.$error.pattern">
+            Please enter a positive number with up to 2 decimal places
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label>
+          Price per Unit:
+        </label>
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input
+            ng-keypress="$event.keyCode === 13 && $ctrl.save($ctrl.form.$valid)"
+            class="form-control text-right"
+            ng-model="$ctrl.cost_item.cost_per_unit"
+            ng-change="$ctrl.getTotal($ctrl.cost_item.unit_quantity, $ctrl.cost_item.cost_per_unit)"
+            ng-pattern="/^[0-9]{0,8}(\.[0-9]{0,2})?$/"
+            onfocus="if(this.value === 0)this.value='';"
+            onblur="if(this.value === '')this.value=0;"
+            name="cost_per_unit"
+            type="text"
+            required>
+        </div>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.cost_per_unit.$valid && $ctrl.form.cost_per_unit.$dirty">
+          <span ng-if="$ctrl.form.cost_per_unit.$error.pattern">
+            Please enter a positive number with up to 2 decimal places
+          </span>
+        </span>
+      </div>
+
+      <div class="col-md-6">
+        <label>
+          Total Cost:
+        </label>
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input
+            ng-keypress="$event.keyCode === 13 && $ctrl.save($ctrl.form.$valid)"
+            class="form-control text-right"
+            style="color: #34495e;"
+            ng-model="$ctrl.cost_item.cost_total"
+            ng-pattern="/^[0-9]{0,8}(\.[0-9]{0,2})?$/"
+            onfocus="if(this.value === 0)this.value='';"
+            onblur="if(this.value === '')this.value=0;"
+            name="cost_total"
+            type="text"
+            readonly>
+        </div>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.cost_total.$valid && $ctrl.form.cost_total.$dirty">
+          <span ng-if="$ctrl.form.cost_total.$error.pattern">
+            Please enter a positive number with up to 2 decimal places
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-2">
+        <button
+          class="btn btn-warning"
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+
+      <div class="col-md-2 col-md-offset-7">
+        <button
+          class="btn btn-success"
+          type="submit"
+          ng-disabled="$ctrl.form.$invalid"
+          ng-click="$ctrl.save($ctrl.form.$valid)">
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

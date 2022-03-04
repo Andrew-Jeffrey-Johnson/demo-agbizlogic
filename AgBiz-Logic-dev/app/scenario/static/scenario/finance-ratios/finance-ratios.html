@@ -1,0 +1,179 @@
+<h3 class="text-center">Build Your <i>AgBizFinance</i> Analysis</h3>
+
+<finance-step-indicator
+  step="4"
+  steps=$ctrl.steps_2>
+</finance-step-indicator>
+<br />
+
+<h4>Financial Ratios Review</h4>
+
+<table class="table table-sm  table-bordered table-striped table-hover bottommargin="0" style="width:80%">
+  <thead class="thead-dark">
+    <tr >
+        <th style="text-align: left; background-color:lightgrey;" Colspan="4">Liquidity</th>
+    </tr>
+  </thead>
+
+  <thead>
+    <tr>
+      <th style="text-align:right">Year</th>
+      <th>Current Ratio</th>
+      <th>Working Capital</th>
+      <th>Working Capital to Gross Revenues</th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <tr ng-repeat="x in $ctrl.years track by $index">
+      <td style="text-align:right">{{x}}</td>
+      <td style="text-align: right">{{$ctrl.current_ratio[x-1]}}</td>
+      <td style="text-align: right">{{$ctrl.working_capital[x-1] |currency:$:0}}</td>
+      <td style="text-align: right">{{$ctrl.working_to_rev[x-1] |currency:$:0}}</td>
+    </tr>
+
+  </tbody>
+
+  <br />
+
+  <thead class="thead-dark">
+    <tr >
+        <th style="text-align: left; background-color:lightgrey;" Colspan="4">Solvency</th>
+    </tr>
+  </thead>
+
+  <thead>
+    <tr>
+      <th style="text-align:right">Year</th>
+      <th>Debt/Asset Ratio</th>
+      <th>Equity/Asset Ratio</th>
+      <th>Debt/Equity Ratio</th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <tr ng-repeat="x in $ctrl.years track by $index">
+      <td style="text-align:right">{{x}}</td>
+      <td style="text-align: right">{{$ctrl.debt_asset[x-1] }}</td>
+      <td style="text-align: right">{{$ctrl.equity_assest[x-1] }}</td>
+      <td style="text-align: right">{{$ctrl.debt_asset[x-1]}}</td>
+    </tr>
+
+  </tbody>
+
+  <thead class="thead-dark">
+    <tr >
+        <th style="text-align: left; background-color:lightgrey;" Colspan="6">Profitability</th>
+    </tr>
+  </thead>
+
+  <thead>
+    <tr>
+      <th style="text-align:right">Year</th>
+      <th>Rate of Return on Assets</th>
+      <th>Rate of Return on Equity</th>
+      <th>Operating Profit Margin</th>
+      <th>Net Income</th>
+      <th>EBITDA</th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <tr ng-repeat="x in $ctrl.years track by $index">
+      <td style="text-align: right">{{x}}</td>
+      <td style="text-align: right">{{$ctrl.rate_return_asset[x-1] }}</td>
+      <td style="text-align: right">{{$ctrl.rate_return_equity[x-1] }}</td>
+      <td style="text-align: right">{{$ctrl.operating_profit_margin[x-1] }}</td>
+      <td style="text-align: right">{{$ctrl.net_income[x-1] |currency:$:0}}</td>
+      <td style="text-align: right">{{$ctrl.ebitda[x-1] |currency:$:0}}</td>
+    </tr>
+
+  </tbody>
+
+  <thead class="thead-dark">
+    <tr >
+        <th style="text-align: left; background-color:lightgrey;" Colspan="6">Repayment Capacity</th>
+    </tr>
+  </thead>
+
+  <thead>
+    <tr>
+      <th style="text-align:right">Year</th>
+      <th>Capital Debt Repayment Capacity</th>
+      <th>Capital Debt Repayment Margin</th>
+      <th>Replacement Margin</th>
+      <th>Term Debt & Capital Lease Coverage Ratio</th>
+      <th>Replacement Margin Coverage Ratio</th>
+
+    </tr>
+  </thead>
+
+  <tbody >
+    <tr ng-repeat="x in $ctrl.years track by $index">
+      <td style="text-align:right">{{x}}</td>
+      <td style="text-align: right">{{$ctrl.debt_capacity[x-1] |currency:$:0}}</td>
+      <td style="text-align: right">{{$ctrl.dept_margin[x-1] |currency:$:0}}</td>
+      <td style="text-align: right">{{$ctrl.replacement_margin[x-1] |currency:$:0}}</td>
+      <td style="text-align: right">{{$ctrl.term_debt_ratio[x-1]}}</td>
+      <td style="text-align: right">{{$ctrl.replacement_margin_ratio[x-1]}}</td>
+    </tr>
+
+  </tbody>
+
+  <thead class="thead-dark">
+    <tr >
+        <th style="text-align: left; background-color:lightgrey;" Colspan="6">Efficiency</th>
+    </tr>
+  </thead>
+
+  <thead>
+    <tr>
+      <th style="text-align:right">Year</th>
+      <th>Asset Turnover Ratio</th>
+      <th>Operating Expense Ratio</th>
+      <th>Depreciation Expense Ratio</th>
+      <th>Interest Expense Ratio</th>
+      <th>Net Income from Operations Ratio</th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <tr ng-repeat="x in $ctrl.years track by $index">
+      <td style="text-align:right">{{x}}</td>
+      <td style="text-align: right">{{$ctrl.asset_turnover[x-1] }}</td>
+      <td style="text-align: right">{{$ctrl.operating_expense_ratio[x-1] }}</td>
+      <td style="text-align: right">{{$ctrl.depreciation_expense_ratio[x-1] }}</td>
+      <td style="text-align: right">{{$ctrl.interest_expense_ratio[x-1] }}</td>
+      <td style="text-align: right">{{$ctrl.net_farm_ratio[x-1] }}</td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+<br />
+
+<div class="row" >
+  <div class="col-xl-1 btn pull-left">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Previous
+    </button>
+  </div>
+  <div class="col-xl-1 btn pull-right">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Next
+    </button>
+  </div>
+
+  <div class="btn pull-right">
+  <finance-ratios-pdf
+    style="padding: 10px 0;"
+    statements="$ctrl.pdf_data">
+  </finance-ratios-pdf>
+  </div>
+
+</div>

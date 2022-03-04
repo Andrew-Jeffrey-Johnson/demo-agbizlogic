@@ -1,0 +1,111 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h4 class="content-padding" ng-bind="$ctrl.plan.title"></h4>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Plan Time Period</h4>
+  </div>
+  <div class="panel-body">
+    The Budgets you selected in this Plan may have different time periods when returns are
+    received or cost items occur. Based on the shortest time period of your Budgets, your Plan will
+    be on a <b><span ng-bind="$ctrl.plan.time_period_unit"></span></b> basis.
+    Click on + or - to duplicate or remove a Budget and time period.
+  </div>
+</div>
+
+<div
+  ng-style="{'opacity': $ctrl.progress < 100 || $ctrl.plan == undefined ? '0.5' : '1'}"
+  class="panel panel-primary container-fluid">
+  <div class="panel-heading flex">
+    <span class="col-md-8"><b>Budget Title</b></span>
+    <span class="col-md-2"><b>Time Duration</b></span>
+    <span class="col-md-1"><b>Time Period</b></span>
+    <span class="col-md-1"><b>Actions</b></span>
+  </div>
+
+  <div class="panel-body">
+    <!-- Loading -->
+    <md-progress-circular
+      class="col-md-offset-5"
+      ng-if="$ctrl.plan == undefined || $ctrl.progress < 100"
+      md-mode="indeterminate">
+    </md-progress-circular>
+
+    <div ng-if="$ctrl.plan != undefined">
+      <div
+        class="row"
+        ng-repeat="plan_budget in $ctrl.plan.plan_budgets | orderBy: 'position' track by $index"
+        ng-style="{
+          'background': $index % 2 == 0 ? '#f5f5f5' : '#fff',
+          'padding': '10px 0px',
+        }">
+        <div
+          class="col-md-8"
+          ng-bind="plan_budget.title">
+        </div>
+        <div
+          class="col-md-1"
+          ng-bind="plan_budget.time_value">
+        </div>
+        <div
+          class="col-md-1"
+          ng-bind="plan_budget.time_unit">
+        </div>
+        <div
+          class="col-md-1"
+          ng-bind="plan_budget.time_period_position">
+        </div>
+        <div class="col-md-1">
+          <i
+            class="glyphicon glyphicon-plus clickable green"
+            ng-click="$ctrl.duplicatePlanBudget(plan_budget)"
+            uib-tooltip="Create duplicate budget starting after this one">
+          </i>
+          <i
+            class="glyphicon glyphicon-minus clickable red"
+            ng-click="$ctrl.removePlanBudget(plan_budget)"
+            uib-tooltip="Remove budget from plan">
+          </i>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-10">
+          <b>Total:</b>
+        </div>
+        <div class="col-md-1">
+          <b><span ng-bind="$ctrl.plan.time_period_value"></span> <span ng-bind="$ctrl.plan.time_period_unit"></span>(s)</b>
+        </div>
+        <div class="col-md-10"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<h3 class="text-center">Your Current Financial Information</h3>
+
+<finance-step-indicator
+  step="1"
+  steps="$ctrl.steps">
+</finance-step-indicator>
+
+<h4>Beginning Balance Sheet</h4>
+
+<p>Here is your beginning balance sheet, which represents the current financial state of your operation.
+  This data will be used as a starting point, Year 0, for all of your <i>AgBizFinance</i> scenarios.
+  You can return to this page to edit or update your data at any time by clicking the "Edit Financial Info" button on the <i>AgBizFinance</i> dashboard.</p>
+
+
+
+
+<!-- Loading -->
+<md-progress-circular
+  class="col-md-offset-5"
+  style="margin-top: 40px"
+  ng-if=""
+  md-mode="indeterminate">
+</md-progress-circular>
+
+<div class="container-fluid">
+  <table class="table table-striped table-balance-sheet text-right">
+    <tbody ng-repeat="(key, vals) in $ctrl.beginningYearForm">
+      <tr>
+        <th>{{key}}</th>
+        <td></td>
+      </tr>
+      <tr ng-repeat="item in vals">
+        <td>{{item}}</td>
+        <td class="input">
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="0.00"
+                   ng-model="$ctrl.beginning_balance_sheet[$ctrl.itemAttributeMap(item)]"
+                   ng-blur="$ctrl.update_BalanceSheet($ctrl.beginning_balance_sheet)">
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-primary"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Next
+    </button>
+  </div>
+</div>

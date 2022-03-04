@@ -1,0 +1,65 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+  {% for field in form %}
+    {{field.error}}
+
+  {% endfor %}
+
+    <link rel="stylesheet" href="{% static "css/select2.min.css" %}" />
+<h3> Add a University Budget </h3>
+<h4>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h4>
+ <div class="form">
+  <form action="" method="post">{% csrf_token %}
+
+
+
+
+
+
+  {{ wizard.management_form  }}
+  {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+      {% for form in wizard.form.forms %}
+          {{ form }}
+
+      {% endfor %}
+  {% else %}
+        {% crispy wizard.form %}
+  {% endif %}
+ <br>
+
+   {% if wizard.steps.prev %}
+
+   <button name="wizard_goto_step" class="btn btn-primary" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+
+
+  {% endif %}
+
+  <button type="submit" class="btn pull-right btn-success">Continue</button>
+
+   <a class="btn btn-default" type="button" href="/income/">Back</a>
+
+
+
+
+  </form>
+
+</div>
+
+
+
+<script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+
+<script type="text/javascript" src="{% static "js/jquery.chained.remote.min.js" %}"></script>
+
+<script src="{% static "js/select2.min.js" %}"></script>
+
+<script src="{% static "js/select-enterprise-university.js" %}"></script>
+
+
+{% endblock %}

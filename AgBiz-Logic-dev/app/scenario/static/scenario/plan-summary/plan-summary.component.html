@@ -1,0 +1,196 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<div class="content-padding">
+  <h5>
+    Plan Summary - <span ng-bind="$ctrl.plan.full_title"></span>
+  </h5>
+  <p>Highlight a Plan Budget in the list below to review the space allocation
+    and inflation rates you assigned.</p>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h5 class="panel-title">Notes</h5>
+  </div>
+  <div class="panel-body">
+    <span ng-bind="$ctrl.plan.notes"></span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Plan Budgets
+      </div>
+      <md-progress-circular
+        class="col-md-offset-5"
+        ng-if="$ctrl.plan == undefined"
+        md-mode="indeterminate">
+      </md-progress-circular>
+      <div class="panel-body  fixed-panel">
+        <div class="list-group">
+          <div
+            class="row list-group-item summary-budget-item"
+            ng-repeat="plan_budget in $ctrl.plan.plan_budgets | orderBy: 'time_period_position'"
+            ng-click="$ctrl.loadBudget(plan_budget)">
+            <span
+              class="col-md-12"
+              ng-bind="(plan_budget.time_period_position) + ': ' + (plan_budget.title) + ' (' + (plan_budget.time_value) + ' ' + (plan_budget.time_unit) + ')'">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-7">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Space
+      </div>
+      <div class="panel-body">
+
+        <div>
+          <div class="row">
+            <b class="col-md-4">Space Available</b>
+            <b class="col-md-3">Space Used</b>
+            <b class="col-md-3">Unit</b>
+          </div>
+          <hr class="item-divider">
+          <div
+            class="row">
+            <span
+              class="col-md-5"
+              ng-bind="$ctrl.current_plan_budget.total_space_available">
+            </span>
+            <span
+              class="col-md-3"
+              ng-bind="$ctrl.current_plan_budget.total_space_used">
+            </span>
+            <span
+              class="col-md-3"
+              ng-bind="$ctrl.current_plan_budget.space_units">
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Income/Expense Items
+      </div>
+      <div class="panel-body">
+
+        <!-- Income items -->
+        <div>
+          <div class="row">
+            <b class="col-md-4">Income Item</b>
+            <b class="col-md-3">Total($)</b>
+            <b class="col-md-2">Inflation Rate</b>
+            <b class="col-md-3">Compounded Inflation Rate</b>
+          </div>
+          <hr class="item-divider">
+          <div
+            class="row"
+            ng-repeat="income_item in $ctrl.current_budget.income_items | orderBy: 'name'">
+            <span
+              class="col-md-4"
+              ng-bind="income_item.name">
+            </span>
+            <span
+              class="col-md-3"
+              style="text-align:right"
+              ng-bind="income_item.return_total/$ctrl.current_plan_budget.total_space_used | number : 2" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01">
+            </span>
+            <span
+              class="col-md-2"
+              ng-bind="income_item.inflation_rate + '%'">
+            </span>
+            <span
+              class="col-md-3"
+              ng-bind="(income_item.compound_inflation_rate| number : 2)+'%' ">
+            </span>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Cost items -->
+        <div>
+          <div class="row">
+            <b class="col-md-4">Cost Item</b>
+            <b class="col-md-3">Total($)</b>
+            <b class="col-md-2">Inflation Rate</b>
+            <b class="col-md-3">Compounded Inflation Rate</b>
+          </div>
+          <hr class="item-divider">
+          <div
+            class="row"
+            ng-repeat="cost_item in $ctrl.current_budget.cost_items | orderBy: 'name'">
+            <span
+              class="col-md-4"
+              ng-bind="cost_item.name">
+            </span>
+            <span
+              class="col-md-3"
+              style="text-align:right"
+              ng-bind="cost_item.cost_total/$ctrl.current_plan_budget.total_space_used | number : 2" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01">
+            </span>
+            <span
+              class="col-md-2"
+              ng-bind="cost_item.inflation_rate + '%'">
+            </span>
+            <div
+              class="col-md-3"
+              ng-bind="(cost_item.compound_inflation_rate| number : 2)+'%'">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="col-md-1 pull-right" ng-if="$ctrl.edited!=='true'">
+    <button
+      ng-if="$ctrl.edited!=='true'"
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Edit
+    </button>
+    </div>
+    <div class="col-md-2 pull-right">
+    <button
+      ng-if="$ctrl.edited=='true'"
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Save and Finish
+    </button>
+  </div>
+</div>

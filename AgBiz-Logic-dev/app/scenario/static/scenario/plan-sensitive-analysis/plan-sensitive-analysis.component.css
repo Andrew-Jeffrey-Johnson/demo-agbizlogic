@@ -1,0 +1,49 @@
+.glyphicon-remove-circle {
+  color: red;
+}
+
+.modal-dialog{
+  width:1000px;
+}
+
+.form-control {
+  width: 70%;
+}
+
+#group-gap {
+  padding-top: 3%;
+}
+
+.input-group {
+  padding-top: 1%;
+  width: 100%;
+}
+
+.btn-success {
+  width: 100%;
+}
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.chart-title {
+  padding-top: 5%;
+}
+
+.table-borderless > tbody > tr > th,
+.table-borderless > tbody > tr > td {
+  vertical-align: middle;
+}

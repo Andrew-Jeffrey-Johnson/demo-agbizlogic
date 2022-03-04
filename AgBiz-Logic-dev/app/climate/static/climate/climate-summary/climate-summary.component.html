@@ -1,0 +1,172 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h3>Summary</h3>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 ng-bind="$ctrl.climate_scenario.title"></h4>
+  </div>
+  <div class="panel-body">
+    <div
+      ng-bind="$ctrl.climate_scenario.notes"
+      ng-if="$ctrl.climate_scenario.notes">
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading container-fluid">
+    <div class="col-md-10">
+      <h4>Budgets in <i>AgBizClimate</i> Scenario</h4>
+    </div>
+    <a
+      class="pull-right"
+      ng-click="$ctrl.is_collapsed = !$ctrl.is_collapsed">
+      <span ng-show="$ctrl.is_collapsed">Show</span>
+      <span ng-show="!$ctrl.is_collapsed">Hide</span>
+    </a>
+  </div>
+  <div uib-collapse="$ctrl.is_collapsed">
+    <div class="panel-body">
+      <div class="row">
+        <b class="col-md-6">Title</b>
+        <b class="col-md-2 text-right">
+          Impact %
+          <a
+            class="glyphicon glyphicon-question-sign"
+            uib-tooltip="Your estimated changes due to the {{$ctrl.climate_scenario_length_text}}" >
+          </a>
+        </b>
+        <b class="col-md-2 text-right">Net Returns</b>
+        <b class="col-md-2 text-center">Change in Net Returns</b>
+      </div>
+
+      <hr class="item-divider">
+
+      <div
+        class="row"
+        ng-style="{
+          background: $index % 2 == 0 ? '#f5f5f5' : '#fffff',
+          'border-bottom-style':$index % 2 ==0? 'null':'solid',
+          'border-color': '#8c8c8c',
+          'border-width': '2px'
+        }"
+        ng-repeat="climate_budget in (ordered_budgets = ($ctrl.climate_scenario.climate_budgets | orderBy: 'position')) track by $index">
+        <span
+          class="col-md-6"
+
+          ng-style="{
+            'border-bottom-style':$index % 2 ==0? 'null':''
+          }"
+
+          ng-bind="climate_budget.title">
+        </span>
+        <span
+          class="col-md-2 text-right"
+          ng-if="!climate_budget.is_original"
+
+          ng-bind="(climate_budget.user_estimate) + '%'">
+        </span>
+
+        <span
+          ng-class="{'col-md-4': climate_budget.is_original,
+                    'col-md-2': !climate_budget.is_original,
+                    'text-right': true}"
+
+
+          ng-bind="climate_budget.net_returns | currency : '$' : 0">
+        </span>
+        <span
+          ng-if="!climate_budget.is_original"
+          ng-class="{'col-md-4': climate_budget.is_original,
+                    'col-md-2': !climate_budget.is_original,
+                    'text-right': true}"
+
+          ng-bind="climate_budget.change_net_returns | currency : '$' : 0">
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading col-md-12">
+    <div class="col-md-8">
+      <h4 ng-show="$ctrl.chart_type=='net_returns'">Net Returns</h4>
+    </div>
+  </div>
+  <div class="panel-body">
+    <!-- Net Returns Graph -->
+    <div
+      class="col-md-11 climate-fade"
+      ng-if="$ctrl.chart_type=='net_returns'">
+      <canvas
+        id="bar"
+        height="400"
+        class="chart chart-bar"
+        chart-series="$ctrl.chart_data['net_returns'].series"
+        chart-data="$ctrl.chart_data['net_returns'].data"
+        chart-labels="$ctrl.chart_data['net_returns'].labels"
+        chart-options="$ctrl.options">
+      </canvas>
+    </div>
+
+    <!-- Total Yields Graph -->
+    <div
+      class="col-md-10 climate-fade"
+      ng-if="$ctrl.chart_type=='total_yields'">
+      <canvas
+        id="bar" class="chart chart-bar"
+        chart-series="$ctrl.chart_data['total_yields'].series"
+        chart-data="$ctrl.chart_data['total_yields'].data"
+        chart-labels="$ctrl.chart_data['total_yields'].labels"
+        chart-legend="true"
+        chart-options="$ctrl.options">
+      </canvas>
+    </div>
+  </div>
+</div>
+
+<div style="display: flex; margin: 10px 0; width: 100%;">
+  <div class="flex-1">
+    <button
+      style="display: none;"
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="flex-8"></div>
+
+  <div class="flex-1">
+    <button
+      class="btn btn-primary"
+      ng-click="$ctrl.save()">
+      Save Budgets
+    </button>
+  </div>
+
+  <div class="flex-1">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.generatePdf()">
+      PDF
+    </button>
+  </div>
+
+  <div class="flex-1">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Climate Manager
+    </button>
+  </div>
+</div>

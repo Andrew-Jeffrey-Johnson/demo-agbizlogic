@@ -1,0 +1,65 @@
+This is the project file structure for each Django app/module in the AgBiz Logic application. Each app/module has only
+one template which serves as the entry point where the Angular client application is loaded and run. The Angular client
+consumes the RESTful API built in the 'views' directory. All HTML is rendered client-side, allowing complete separation
+of the RESTful API backend and the UI. The Angular application is built using components; each component has an
+associated JavaScript, HTML, and optional CSS file, as well as a view object file which is used for end-to-end tests
+with Protractor.
+
+
+moduleName/
+|____fixtures/
+|    |____test_data.json
+|
+|____templates/
+|     |____moduleName/
+|         |____index.html
+|
+|____static/
+|    |____moduleName/
+|         |____some-component/
+|         |    |____some-component.component.spec.js
+|         |    |____some-component.component.js|html|css
+|         |    |____some-component.view-object.js
+|         |
+|         |____another-component/
+|         |    |____another-component.component.spec.js
+|         |    |____another-component.component.js|html|css
+|         |    |____another-component.view-object.js
+|         |
+|         |____services/
+|         |    |____someDataFactory.js
+|         |    |____someDataFactory.spec.js
+|         |
+|         |____testing-mocks/
+|         |    |____someDataFactoryMock.js
+|         |
+|         |____styles/
+|         |    |____styles.css/
+|         |
+|         |____json/
+|         |    |____data.json
+|         |
+|         |____e2e-tests/
+|         |    |____moduleName.scenarios.js
+|         |
+|         |____app.js
+|
+|____tests/
+|    |____functional_tests/
+|    |    |____functional_tests.py
+|    |
+|    |____unit_tests/
+|         |____test_some_viewset.py
+|         |____test_some_view.py
+|         |____test_models.py
+|
+|____admin.py
+|____models.py
+|____serializers.py
+|____urls.py
+|____views/
+|    |______init__.py
+|    |____some_viewset.py
+|    |____some_view.py
+|
+|______init__.py

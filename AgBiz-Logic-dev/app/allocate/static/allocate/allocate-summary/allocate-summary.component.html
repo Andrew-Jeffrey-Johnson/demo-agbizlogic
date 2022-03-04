@@ -1,0 +1,176 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+<h3>Allocate your enterprise information</h3>
+
+<h4>Summary</h4>
+
+Confirm the numbers you entered for your enterprises are correct.  If you need to make any changes, click the "Back" button.
+
+<br><br>
+
+<ul class="nav nav-tabs">
+  <li
+    ng-repeat="business in $ctrl.business_data_list"
+    ng-class="{
+      'nav-tab': true,
+      'active': $ctrl.current_business == business.business_type,
+    }"
+    ng-click="$ctrl.current_business = business.business_type">
+    <a ng-bind="business.business_type"></a>
+  </li>
+</ul>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="btn-group">
+      <button
+        class="btn btn-info"
+        ng-class="{
+          'active': $ctrl.statement_type == 'Income',
+        }"
+        ng-click="$ctrl.changeStatement()">
+        <h6 class="btn-text-large">Income</h6>
+      </button>
+      <button
+        class="btn btn-info"
+        ng-class="{
+          'active': $ctrl.statement_type == 'Expenses',
+        }"
+        ng-click="$ctrl.changeStatement()">
+        <h6 class="btn-text-large">Expenses</h6>
+      </button>
+    </div>
+  </div>
+  <div class="panel-body">
+
+    <div class="row">
+      <span class="col-md-2"><b>Category</b></span>
+      <div
+        class="col-md-1"
+        ng-repeat="enterprise in $ctrl.enterprise_data_list | orderBy: ['category_2', 'category_3']"
+        ng-if="enterprise.enterprise == $ctrl.current_business">
+        <b><span
+            ng-if="enterprise.category_3"
+            ng-bind="enterprise.category_2 + ' - ' + enterprise.category_3">
+        </span></b>
+        <b><span
+            ng-if="!enterprise.category_3"
+            ng-bind="enterprise.category_2">
+        </span></b>
+      </div>
+      <span class="col-md-1"><b>Total</b></span>
+
+    </div>
+
+    <!-- Income -->
+    <div ng-if="$ctrl.statement_type == 'Income'">
+      <div
+        ng-repeat="business in $ctrl.business_data_list track by business.business_type"
+        ng-show="$ctrl.current_business == business.business_type">
+        <div
+          class="row"
+          ng-repeat="category in $ctrl.gold_standard_categories | orderObjectBy:'label':false track by $index"
+          ng-if="category.type == 'income'">
+          <hr class="item-divider-summary" />
+          <span
+            class="col-md-2"
+            ng-bind="category.label">
+          </span>
+          <span
+            class="col-md-1 text-right"
+            ng-repeat="enterprise in $ctrl.enterprise_data_list | orderBy: ['category_2', 'category_3'] "
+            ng-if="enterprise.enterprise == business.business_type"
+            ng-bind="enterprise[category.name] | currency: USD$:0">
+          </span>
+          <span class="col-md-1 text-right">
+            <b ng-bind="business[category.name] | currency: USD$:0"></b>
+          </span>
+        </div>
+
+        <div class="row">
+          <hr></hr>
+          <span class="col-md-2">
+            <b>Total <span ng-bind="$ctrl.current_business"></span> Income</b>
+          </span>
+          <span
+            class="col-md-1 text-right"
+            ng-repeat="enterprise in $ctrl.enterprise_data_list | orderBy: ['category_2', 'category_3']"
+            ng-if="enterprise.enterprise == business.business_type">
+            <b ng-bind="enterprise.total_income | currency: USD$:0"></b>
+          </span>
+          <span class="col-md-1 text-right">
+            <b ng-bind="$ctrl.totalIncome($ctrl.current_business) | currency: USD$:0"></b>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expenses -->
+    <div ng-show="$ctrl.statement_type == 'Expenses'">
+      <div
+        ng-repeat="business in $ctrl.business_data_list track by business.business_type"
+        ng-show="$ctrl.current_business == business.business_type">
+        <div
+          class="row"
+          ng-repeat="category in $ctrl.gold_standard_categories | orderObjectBy:'label':false track by $index"
+          ng-if="(category.type == 'expense' && category.name.indexOf('expenses_other') == -1) ||
+                 (category.name.indexOf('expenses_other') != -1 && business[category.name] > 0)">
+          <hr class="item-divider-summary" />
+          <span
+            class="col-md-2"
+            ng-bind="category.label">
+          </span>
+          <span
+            class="col-md-1 text-right"
+            ng-repeat="enterprise in $ctrl.enterprise_data_list | orderBy: ['category_2', 'category_3']"
+            ng-if="enterprise.enterprise == business.business_type"
+            ng-bind="enterprise[category.name] | currency: USD$:0">
+          </span>
+          <span class="col-md-1 text-right">
+            <b ng-bind="business[category.name] | currency: USD$:0"></b>
+          </span>
+        </div>
+
+        <div class="row">
+          <hr></hr>
+          <span class="col-md-2">
+            <b>Total <span ng-bind="$ctrl.current_business"></span> Expenses</b>
+          </span>
+          <span
+            class="col-md-1 text-right"
+            ng-repeat="enterprise in $ctrl.enterprise_data_list | orderBy: ['category_2', 'category_3']"
+            ng-if="enterprise.enterprise == business.business_type">
+            <b ng-bind="enterprise.total_expenses | currency: USD$:0"></b>
+          </span>
+          <span class="col-md-1 text-right">
+            <b ng-bind="$ctrl.totalExpenses($ctrl.current_business) | currency: USD$:0"></b>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

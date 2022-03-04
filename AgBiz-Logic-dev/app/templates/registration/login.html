@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+
+{% block title %}AgBiz Logic{% endblock %}
+
+{% block content %}
+
+ 
+
+  <div class="form">
+  <form role="form" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+  {% csrf_token %}
+  
+  {{ form | bootstrap }}
+  
+  {% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  
+  
+        
+        <button id="login-button" type="submit" class="btn btn-success">Log In</button>
+      </form>
+  </div>
+  
+  
+
+{% endblock %}

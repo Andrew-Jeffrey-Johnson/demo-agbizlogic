@@ -1,0 +1,210 @@
+
+<h4 style="display:inline;" ng-if="$ctrl.operation=='edit'">Edit</h4>
+<h4 style="display:inline;" ng-if="$ctrl.operation=='new'">Add</h4>
+<h4 style="display:inline;" ng-if="$ctrl.transaction_type=='future_transaction'"> a New Transaction</h4>
+<h4 style="display:inline;" ng-if="$ctrl.transaction_type=='leases'"> a Current Lease</h4>
+<h4 style="display:inline;" ng-if="$ctrl.transaction_type=='loans'"> a Current Capital Loan</h4>
+
+
+<br />
+
+<!-- <ul class="nav nav-tabs col-md-10 col-md-offset-1">
+  <li class="active">
+    <a href="#loans" data-toggle="tab">Loans</a>
+	</li>
+	<!-- <li>
+    <a href="#leases" data-toggle="tab">Leases</a>
+	</li> -->
+<!-- </ul> -->
+
+<div class="tab-content">
+  <div class="tab-pane active" id="loans">
+    <form class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="table-responsive">
+          <table class="table table-borderless">
+              <tr>
+                <td>Describe Transaction</td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      ng-model="$ctrl.transaction.transaction_description">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Loan Amount</td>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input
+                      name="loan_amount"
+                      class="form-control"
+                      type="text"
+                      placeholder="0.00"
+                      ng-model="$ctrl.transaction.loan_amount"
+                      ng-change="ngchanged($ctrl.transaction.loan_amount)"
+                      ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d{1,2})?$/"
+                      onfocus="if(this.value == 0)this.value='';"
+                      onblur="if(this.value == '')this.value=0; if(this.validity.valid ){this.value = parseFloat(this.value).toFixed(2)};">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Interest Rate </td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      class="form-control text-right"
+                      type="text"
+                      placeholder="0.00"
+                      ng-model="$ctrl.transaction.interest_rate"
+                      ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d{1,2})?$/"
+                      onfocus="if(this.value == 0)this.value='';"
+                      onblur="if(this.value == '')this.value=0; if(this.validity.valid ){this.value = parseFloat(this.value).toFixed(2)};">
+                    <span class="input-group-addon">%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Loan Repayment Term
+                  <a
+                    class="glyphicon glyphicon-question-sign"
+                    uib-tooltip="Agreed upon number of years to repay the loan">
+                  </a>
+                </td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      class="form-control text-right"
+                      type="number"
+                      placeholder="0"
+                      ng-model="$ctrl.transaction.years_of_loan"
+                      onfocus="if(this.value == 0)this.value='';"
+                      onblur="if(this.value == '')this.value=0; if(this.validity.valid ){this.value = parseInt(this.value)};">
+
+                      <span class="input-group-addon">Year(s)</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Years before Loan Matures
+                  <a
+                    class="glyphicon glyphicon-question-sign"
+                    uib-tooltip="Number of years remaining to repay the loan in full">
+                  </a>
+                </td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      class="form-control text-right"
+                      type="number"
+                      placeholder="0"
+                      ng-model="$ctrl.transaction.years_before_loan_matures"
+                      onfocus="if(this.value == 0)this.value='';"
+                      onblur="if(this.value == '')this.value=0; if(this.validity.valid ){this.value = parseInt(this.value)};">
+                      <span class="input-group-addon">Year(s)</span>
+                  </div>
+                </td>
+              </tr>
+          </table>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Asset Class</h3>
+            </div>
+            <div class="panel-body">
+              <div class="radio_group">
+                <label class="assets-option">
+                  <input type="radio" ng-model="$ctrl.transaction.asset_type" value="Intermediate Assets" class="assets-option-input">
+                  Intermediate Assets
+                </label><br />
+                <label>
+                  <input type="radio" ng-model="$ctrl.transaction.asset_type" value="Facilities and Other Improvements">
+                  Long Term Assets - Facilities and Other Improvements
+                </label><br />
+                <label>
+                  <input type="radio" ng-model="$ctrl.transaction.asset_type" value="Real Estate">
+                  Long Term Assets - Real Estate
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- <div class="tab-pane" id="leases">
+    <form class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="table-responsive">
+          <table class="table table-borderless">
+              <tr>
+                <td>Describe Transaction</td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      ng-model="$ctrl.transaction.financed_through">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Annual Payment</td>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input
+                      class="form-control"
+                      type="number"
+                      ng-model="$ctrl.transaction.annual_payment">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Years Before Leases Expired</td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      type="number"
+                      ng-model="$ctrl.transaction.year_of_lease">
+                    <span class="input-group-addon">Year(s)</span>
+                  </div>
+                </td>
+              </tr>
+          </table>
+        </div>
+      </div>
+    </form>
+  </div> -->
+</div>
+<br />
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-primary"
+      ng-click="$ctrl.cancel()">
+      Cancel
+    </button>
+  </div>
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success "
+      style="width: 110%;"
+      ng-click="$ctrl.proceed()"
+      ng-if="$ctrl.operation=='new'">
+       Add
+    </button>
+    <button
+      class="btn btn-success"
+      style="width: 110%;"
+      ng-click="$ctrl.proceed()"
+      ng-if="$ctrl.operation=='edit'">
+      Save
+    </button>
+  </div>
+</div>

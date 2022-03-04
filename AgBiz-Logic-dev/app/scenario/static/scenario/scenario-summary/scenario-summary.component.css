@@ -1,0 +1,91 @@
+.summary-budget-list {
+  padding: 0 5px;
+}
+
+.summary-plan-item {
+  width: 100%;
+  padding: 10px;
+  transition: all 0.2s ease;
+}
+
+.summary-plan-item:hover {
+  background: #83bef0;
+  cursor: pointer;
+}
+
+.chart-container {
+  height: 300px;
+  width: 500px;
+}
+
+.graph-container {
+  height: 300px;
+}
+
+.graph-expand-container {
+  height: 600px;
+}
+
+.table-container {
+  height: 150px;
+  overflow-y:scroll;
+}
+
+.table-expand-container {
+  height: 300px;
+  overflow-y:scroll;
+}
+
+.chart-row {
+  height: 400px;
+}
+
+.expand-row {
+  height: 950px
+}
+
+#menuIcon{
+ float: right;
+}
+
+.chart-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.fade-out.ng-hide {
+  opacity: 0;
+}
+
+.fade-out.ng-hide-add, .fade-out.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+.loader {
+  position: absolute;
+  border: 7px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 7px solid #3498db;
+  width: 35px;
+  height: 35px;
+  -webkit-animation: spin 1s infinite; /* Safari */
+  animation: spin 1s infinite;
+
+}
+.ng-animate.no-animate {
+    transition: 0s none;
+    -webkit-transition: 0s none;
+    animation: 0s none;
+    -webkit-animation: 0s none;
+}
+
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(3deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,104 @@
+<hr>
+
+<div class="row">
+  <span
+    class="col-md-2"
+    style="padding-right: 0px"
+    ng-bind="$ctrl.source.label">
+  </span>
+
+  <span
+    class="col-md-1 text-right"
+    style="padding-left: 0px; padding-right: 4px;"
+    ng-bind="$ctrl.source.total | currency:USD$:0">
+  </span>
+
+  <div
+    class="col-md-1 allocate-item-input"
+    ng-repeat="target in $ctrl.targets">
+    <div
+      class="input-group"
+      ng-show="$ctrl.method == 'currency'">
+      <span
+        class="input-group-addon"
+        style="padding: 4px 6px">
+        $
+      </span>
+      <input
+        type="text"
+        maxlength="11"
+        class="form-control input-currency"
+        onfocus="if(this.value == 0)this.value='';"
+        onblur="if(this.value == '')this.value=0;"
+        ng-show="$ctrl.method == 'currency'"
+        ng-model="target.currency"
+        ng-change="$ctrl.recalculateFor('percentage')">
+      </input>
+    </div>
+    <div
+      class="input-group"
+      ng-show="$ctrl.method == 'percentage'">
+      <input
+        type="text"
+        class="form-control input-percentage"
+        onfocus="if(this.value == 0)this.value='';"
+        onblur="if(this.value == '')this.value=0;"
+        maxlength="3"
+        ng-model="target.percentage"
+        ng-change="$ctrl.recalculateFor('currency')">
+      </input>
+      <span
+        class="input-group-addon"
+        style="padding: 4px 6px">
+        %
+      </span>
+    </div>
+  </div>
+
+  <div class="col-md-1 text-right" >
+    <span
+      class="overallocated"
+      ng-show="$ctrl.remainder.status == 'overallocated'">
+      Over!
+    </span>
+    <span
+      class="error"
+      ng-show="$ctrl.remainder.status == 'error'">
+      Error!
+    </span>
+    <span
+      ng-class="{
+        'overallocated': $ctrl.remainder.status == 'overallocated',
+        'underallocated': $ctrl.remainder.status == 'underallocated',
+        'valid': $ctrl.remainder.status == 'valid'
+      }"
+      ng-show="$ctrl.remainder.status != 'overallocated'"
+      ng-bind="$ctrl.remainder.value | currency:USD$:0">
+    </span>
+  </div>
+
+  <div
+    class="col-md-2"
+    ng-show="$ctrl.method == 'currency'">
+    <button
+      class="btn btn-primary"
+      tabindex="-1"
+      ng-click="$ctrl.method = 'percentage'"
+      uib-tooltip="Click to allocate using percentage of total">
+      %
+    </button>
+  </div>
+
+  <div
+    class="col-md-2"
+    ng-show="$ctrl.method == 'percentage'">
+    <button
+      class="btn btn-primary"
+      tabindex="-1"
+      ng-click="$ctrl.method = 'currency'"
+      uib-tooltip="Click to allocate using currency value">
+      $
+    </button>
+  </div>
+
+</div>

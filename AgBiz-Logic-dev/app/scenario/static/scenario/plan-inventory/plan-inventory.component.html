@@ -1,0 +1,16 @@
+<div>
+    <div class="row row-inventory">
+        <div class="col-md-2">
+            <h4 class="pull-left">Your Plans</h4>
+        </div>
+        <div class="col-md-10">
+            <a class="btn btn-success pull-right" href="/scenario/#/plan-manager?module=plan">Plan Manager</a>
+        </div>
+    </div>
+
+    <manager-list
+      item-list="$ctrl.plan_list"
+      empty-flex="false"
+      show-date="true"
+    </manager-list>
+</div>

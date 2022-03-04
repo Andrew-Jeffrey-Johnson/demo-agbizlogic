@@ -1,0 +1,83 @@
+[
+    {
+        "region": [
+            "San Joaquin Valley South",
+            "Sacramento Valley/San Joaquin Valley North",
+            "Sacramento Valley/Northern Delta",
+            "Sacramento/San Joaquin/Intermountain",
+            "Intermountain",
+            "San Joaquin Valley North",
+            "Sacramento Valley",
+            "Central Coast",
+            "South Coast",
+            "San Joaquin Valley",
+            "North Coast ",
+            "North Coast",
+            "Sierra Nevada Foothills",
+            "Sacramento Valley/San Joaquin Valley",
+            "Oxnard Plain"
+        ],
+        "state": "CA"
+    },
+    {
+        "region": [
+            "Northern",
+            "Southcentral",
+            "Southeastern",
+            "Southeastern Dryland",
+            "Southwestern"
+        ],
+        "state": "ID"
+    },
+    {
+        "region": [
+            "East Central",
+            "South East",
+            "South RRV",
+            "North RRV",
+            "South Central",
+            "North East",
+            "North Central",
+            "North West",
+            "South West"
+        ],
+        "state": "ND"
+    },
+    {
+        "region": [
+            "Willamette Valley",
+            "North Central",
+            "Eastern",
+            "South Central",
+            "Klamath Basin Area",
+            "Christmas Valley Area",
+            "South Western",
+            "Central"
+        ],
+        "state": "OR"
+    },
+    {
+        "region": [
+            "Willamette Valley"
+        ],
+        "state": "OR"
+    },
+    {
+        "region": [
+            "Eastern Washington"
+        ],
+        "state": "WA"
+    },
+    {
+        "region": [
+            "Columbia Basin",
+            null,
+            "Eastern",
+            "Western",
+            "Yakima Valley",
+            "North Central",
+            "PNW"
+        ],
+        "state": "WA"
+    }
+]

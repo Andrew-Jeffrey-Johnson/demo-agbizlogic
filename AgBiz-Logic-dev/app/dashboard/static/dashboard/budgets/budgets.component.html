@@ -1,0 +1,37 @@
+<div ng-class="$ctrl.css_classes">
+  <div class="panel-heading">
+    <h4>
+      <a
+        class="panel-link"
+        href="/budget/">
+        Budget Manager
+      </a>
+    </h4>
+  </div>
+  <div
+    class="panel-body"
+    ng-if="$ctrl.is_inactive">
+    Coming Soon!
+  </div>
+  <div
+    class="panel-body"
+    ng-if="!$ctrl.is_inactive">
+    <div class="row">
+      <span class="col-md-12">
+        Manage the collection of enterprise Budgets you either generated from your business
+        data or downloaded from the <i>AgBiz Logic</i> library of university and industry Budgets.
+        These Budgets will be used to build Plans and Scenarios, the building blocks for the
+        <i>AgBiz Logic</i> decision tools.
+    </div>
+
+    <hr></hr>
+
+    <div class="row">
+      <a
+        class="col-md-12"
+        href="/budget/#/budget-manager?view-university-budgets=true">
+        Explore University Budgets
+      </a>
+    </div>
+  </div>
+</div>

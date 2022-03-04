@@ -1,0 +1,155 @@
+<div>
+  <h5>
+    Plan Sensitivity Analysis - <span ng-bind="$ctrl.plan.title"></span>
+  </h5>
+  <p>Sensitivity Analysis</p>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#income_content" data-toggle="tab">Income Items</a></li>
+      <li>               <a href="#cost_content" data-toggle="tab">Cost Items</a></li>
+    </ul>
+
+
+    <div class="tab-content">
+    	<div class="tab-pane fade in active" id="income_content">
+        <div class="col-md-6">
+          <p class="chart-title">Total Income: ${{$ctrl.total_income}}</p>
+            <canvas class="chart chart-doughnut"
+                    chart-data="$ctrl.income_chart_data"
+                    chart-labels="$ctrl.income_chart_labels"
+                    chart-options="$ctrl.chart_options"
+                    chart-colors="$ctrl.chart_colors">
+            </canvas>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-borderless">
+            <tr>
+              <th></th>
+              <th>Item</th>
+              <th style="text-align: right;">Quantity</th>
+              <th style="text-align: right;">Price</th>
+              <th style="width: 100px; text-align: right;">Adjust</th>
+              <th>
+                <div class="col-md-12">
+                  <!--<label style="font-weight: bold;">Adjust</label>-->
+                  <div class="btn-group">
+                    <label
+                      class="btn btn-primary"
+                      uib-btn-radio="'price'"
+                      ng-model="$ctrl.radio_option"
+                      ng-click="$ctrl.radio_option='price';">
+                      Price
+                    </label>
+                    <label
+                      class="btn btn-primary"
+                      uib-btn-radio="'quantity'"
+                      ng-model="$ctrl.radio_option"
+                      ng-click="$ctrl.radio_option='quantity';">
+                      Quantity
+                    </label>
+                  </div>
+                </form>
+              </th>
+              <!--th>After</th-->
+            </tr>
+            <tr ng-repeat="(item, info) in $ctrl.incomeItems_dic">
+              <td><span class="dot" style="background-color: {{$ctrl.chart_colors[$index]}};"></span></td>
+              <td>{{ item }}</td>
+              <td align="right">{{ info.adjusted_quantity }}</td>
+              <td align="right">$<span ng-bind="info.adjusted_value"></span></td>
+              <td>
+                <form class="form-inline">
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      type="number"
+                      ng-model="info.adjustPersentage"
+                      ng-change="$ctrl.calculation('income', item, info.adjustPersentage)">
+                    <span class="input-group-addon">%</span>
+                    <div role="alert">
+                      <span class="error" ng-show="info.adjustPersentage < -100.00">
+                       Can not smaller than -100%!</span>
+                    </div>
+                  </div>
+                </form>
+              </td>
+              <!--td>$<span ng-bind="$ctrl.incomeItems_dic[item].adjusted_value"></span></td-->
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    	<div class="tab-pane fade" id="cost_content">
+        <div class="col-md-6">
+          <p class="chart-title">Total Cost: ${{$ctrl.total_cost}}</p>
+          <canvas class="chart chart-doughnut"
+                  chart-data="$ctrl.outcome_chart_data"
+                  chart-labels="$ctrl.outcome_chart_labels"
+                  chart-colors="$ctrl.chart_colors"
+                  chart-options="$ctrl.chart_options">
+          </canvas>
+        </div>
+
+        <div class="col-md-6">
+            <table class="table table-borderless">
+              <tr>
+                <th></th>
+                <th>Item</th>
+                <th style="text-align: right;">Before ($)</th>
+                <th style="width: 100px; text-align: right;">Adjust (%)</th>
+                <th style="text-align: right;">After ($)</th>
+              </tr>
+              <tr ng-repeat="(item, info) in $ctrl.costItems_dic">
+                <td><span class="dot" style="background-color: {{$ctrl.chart_colors[$index]}};"></span></span></td>
+                <td>{{ item }}</td>
+                <td align="right">${{info.cost_total}}</td>
+                <td align="right">
+                  <form class="form-inline">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        type="number"
+                        ng-model="info.adjustPersentage"
+                        ng-change="$ctrl.calculation('cost', item, info.adjustPersentage)">
+                      <div class="input-group-addon">%</div>
+                      <div role="alert">
+                        <span class="error" ng-show="info.adjustPersentage < -100.00">
+                         Can not smaller than -100%!</span>
+                      </div>
+                    </div>
+                  </form>
+                </td>
+                <td align="right">$<span ng-bind="$ctrl.costItems_dic[item].adjusted_value"></span></td>
+              </tr>
+            </table>
+          </div>
+
+    	</div>
+    </div>
+
+  </div>
+</div>
+
+
+<div style="display: flex; margin: 10px 0; width: 100%;">
+  <div class="flex-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="flex-9"></div>
+
+  <div class="flex-1">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Save and See Summary
+    </button>
+  </div>
+</div>

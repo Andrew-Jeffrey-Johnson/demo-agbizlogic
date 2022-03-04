@@ -1,0 +1,451 @@
+[
+	{
+		"model": "allocate.BusinessData",
+		"pk": 1,
+		"fields": {
+			"user": 1,
+			"business_type": "Crop",
+
+			"income_sales": 2000,
+			"income_other": 200,
+
+			"expenses_chemicals": 200,
+			"expenses_gasoline": 200,
+			"expenses_labor": 200
+		}
+	},
+	{
+		"model": "allocate.BusinessData",
+		"pk": 2,
+		"fields": {
+			"user": 1,
+			"business_type": "Livestock",
+
+			"income_sales": 3000,
+
+			"expenses_feed": 300
+		}
+	},
+	{
+		"model": "allocate.EnterpriseData",
+		"pk": 1,
+		"fields": {
+			"user": 1,
+			"enterprise": "Livestock",
+			"category_1": "Beef Cattle",
+			"category_2": "Weaning",
+			"market": "GMO",
+
+			"income_sales": 2000,
+
+			"expenses_feed": 200
+		}
+	},
+	{
+		"model": "allocate.EnterpriseData",
+		"pk": 2,
+		"fields": {
+			"user": 1,
+			"enterprise": "Crop",
+			"category_1": "Cereal Grains",
+			"category_2": "Wheat",
+			"category_3": "Soft White Winter",
+			"market": "GMO",
+
+			"income_sales": 1000,
+			"income_other": 100,
+
+			"expenses_chemicals": 100,
+			"expenses_gasoline": 100,
+			"expenses_labor": 100
+		}
+	},
+	{
+		"model": "allocate.EnterpriseData",
+		"pk": 3,
+		"fields": {
+			"user": 1,
+			"enterprise": "Crop",
+			"category_1": "Cereal Grains",
+			"category_2": "Barley",
+			"market": "GMO",
+
+			"income_sales": 500,
+
+			"expenses_chemicals": 50,
+			"expenses_gasoline": 50,
+			"expenses_labor": 50
+		}
+	},
+	{
+		"fields": {
+			"modified_date": "2016-05-24T05:11:10.902Z",
+			"descriptor1": "Cereal Grains",
+			"farm_unit_quantity": 1,
+			"title": "Cereal Grains - Wheat - Soft White Winter",
+			"descriptor2": "Wheat",
+			"descriptor3": "Soft White Winter",
+			"notes": "Enter notes here",
+			"created_date": "2016-05-24T05:11:10.902Z",
+			"descriptor6": "",
+			"descriptor4": "",
+			"descriptor5": "",
+			"farm_unit": "Acre",
+			"state": "OR",
+			"user": 1,
+			"enterprise": "Crop",
+			"region": "",
+			"market": "GMO",
+			"time_unit": "Month",
+      		"time_value": 10
+		},
+		"model": "budget.budget",
+		"pk": 999
+	},
+	{
+		"fields": {
+			"modified_date": "2016-05-24T05:11:11.487Z",
+			"descriptor1": "Cereal Grains",
+			"farm_unit_quantity": 1,
+			"title": "Cereal Grains - Barley",
+			"descriptor2": "Barley",
+			"descriptor3": "",
+			"notes": "Enter notes here",
+			"created_date": "2016-05-24T05:11:11.487Z",
+			"descriptor6": "",
+			"descriptor4": "",
+			"descriptor5": "",
+			"farm_unit": "Acre",
+			"state": "OR",
+			"user": 1,
+			"enterprise": "Crop",
+			"region": "",
+			"market": "GMO",
+			"time_unit": "Week",
+			"time_value": 20
+		},
+		"model": "budget.budget",
+		"pk": 1000
+	},
+	{
+		"fields": {
+			"modified_date": "2016-05-24T05:11:12.064Z",
+			"descriptor1": "Beef Cattle",
+			"farm_unit_quantity": 1,
+			"title": "Beef Cattle - Weaning",
+			"descriptor2": "Weaning",
+			"descriptor3": "",
+			"notes": "Enter notes here",
+			"created_date": "2016-05-24T05:11:12.064Z",
+			"descriptor6": "",
+			"descriptor4": "",
+			"descriptor5": "",
+			"farm_unit": "Acre",
+			"state": "OR",
+			"user": 1,
+			"enterprise": "Livestock",
+			"region": "",
+			"market": "GMO",
+			"time_unit": "Day",
+      "time_value": 120
+		},
+		"model": "budget.budget",
+		"pk": 1001
+	},
+	{
+		"fields": {
+			"modified_date": "2016-05-24T05:11:12.343Z",
+			"descriptor1": "Whole",
+			"farm_unit_quantity": 1,
+			"title": "Whole Farm Budget",
+			"descriptor2": "Farm",
+			"descriptor3": "",
+			"notes": "This budget represents the unallocated incomes/costs from your business.",
+			"created_date": "2016-05-24T05:11:12.343Z",
+			"descriptor6": "",
+			"descriptor4": "",
+			"descriptor5": "",
+			"farm_unit": "Acre",
+			"state": "OR",
+			"time_value": 1,
+			"user": 1,
+			"enterprise": "Whole Farm",
+			"region": "",
+			"market": "Other",
+			"time_unit": "Year"
+		},
+		"model": "budget.budget",
+		"pk": 1002
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 999,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "100.00",
+			"unit": "Acre",
+			"name": "Chemicals"
+		},
+		"model": "budget.costitem",
+		"pk": 999
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 999,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "100.00",
+			"unit": "Acre",
+			"name": "Gasoline, Fuel, and Oil"
+		},
+		"model": "budget.costitem",
+		"pk": 1000
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 999,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "100.00",
+			"unit": "Acre",
+			"name": "Labor Hired (less employment credits)"
+		},
+		"model": "budget.costitem",
+		"pk": 1001
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 1000,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "50.00",
+			"unit": "Acre",
+			"name": "Chemicals"
+		},
+		"model": "budget.costitem",
+		"pk": 1002
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 1000,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "50.00",
+			"unit": "Acre",
+			"name": "Gasoline, Fuel, and Oil"
+		},
+		"model": "budget.costitem",
+		"pk": 1003
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 1000,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "50.00",
+			"unit": "Acre",
+			"name": "Labor Hired (less employment credits)"
+		},
+		"model": "budget.costitem",
+		"pk": 1004
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 1001,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "200.00",
+			"unit": "Acre",
+			"name": "Feed"
+		},
+		"model": "budget.costitem",
+		"pk": 1005
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 1001,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "50.00",
+			"unit": "Acre",
+			"name": "Chemicals"
+		},
+		"model": "budget.costitem",
+		"pk": 1006
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 1002,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "50.00",
+			"unit": "Acre",
+			"name": "Gasoline, Fuel, and Oil"
+		},
+		"model": "budget.costitem",
+		"pk": 1007
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 1002,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "50.00",
+			"unit": "Acre",
+			"name": "Labor Hired (less employment credits)"
+		},
+		"model": "budget.costitem",
+		"pk": 1008
+	},
+	{
+		"fields": {
+			"category": "",
+			"sub_category": "",
+			"farm_unit_quantity": 1,
+			"notes": "",
+			"parent_category": "",
+			"parent_budget": 1002,
+			"cost_type": "general",
+			"unit_quantity": "1.00",
+			"cost_total": "100.00",
+			"unit": "Acre",
+			"name": "Feed"
+		},
+		"model": "budget.costitem",
+		"pk": 1009
+	},
+	{
+		"fields": {
+			"farm_unit_quantity": 1,
+			"name": "WheatSoft White Winter",
+			"descriptor2": "Wheat",
+			"descriptor3": "Soft White Winter",
+			"notes": "",
+			"descriptor1": "Cereal Grains",
+			"descriptor6": "",
+			"parent_budget": 999,
+			"descriptor4": "",
+			"descriptor5": "",
+			"farm_unit": "Acre",
+			"return_total": "1100.00",
+			"enterprise": "Crop",
+			"sale_unit_quantity": 1,
+			"sale_unit": "Ton"
+		},
+		"model": "budget.incomeitem",
+		"pk": 999
+	},
+	{
+		"fields": {
+			"farm_unit_quantity": 1,
+			"name": "Barley",
+			"descriptor2": "Barley",
+			"descriptor3": "",
+			"notes": "",
+			"descriptor1": "Cereal Grains",
+			"descriptor6": "",
+			"parent_budget": 1000,
+			"descriptor4": "",
+			"descriptor5": "",
+			"farm_unit": "Acre",
+			"return_total": "500.00",
+			"enterprise": "Crop",
+			"sale_unit_quantity": 1,
+			"sale_unit": "Ton"
+		},
+		"model": "budget.incomeitem",
+		"pk": 1000
+	},
+	{
+		"fields": {
+			"farm_unit_quantity": 1,
+			"name": "Weaning",
+			"descriptor2": "Weaning",
+			"descriptor3": "",
+			"notes": "",
+			"descriptor1": "Beef Cattle",
+			"descriptor6": "",
+			"parent_budget": 1001,
+			"descriptor4": "",
+			"descriptor5": "",
+			"farm_unit": "Acre",
+			"return_total": "2000.00",
+			"enterprise": "Livestock",
+			"sale_unit_quantity": 1,
+			"sale_unit": "Ton"
+		},
+		"model": "budget.incomeitem",
+		"pk": 1001
+	},
+	{
+		"fields": {
+			"farm_unit_quantity": 1,
+			"name": "Whole Farm Income",
+			"descriptor2": "",
+			"descriptor3": "",
+			"notes": "",
+			"descriptor1": "",
+			"descriptor6": "",
+			"parent_budget": 1002,
+			"descriptor4": "",
+			"descriptor5": "",
+			"farm_unit": "Acre",
+			"return_total": "1600.00",
+			"enterprise": "",
+			"sale_unit_quantity": 1,
+			"sale_unit": "Ton"
+		},
+		"model": "budget.incomeitem",
+		"pk": 1002
+	}
+]

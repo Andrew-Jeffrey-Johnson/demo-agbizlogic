@@ -1,0 +1,121 @@
+<hr class="item-divider">
+<form
+  class="flex"
+  name="$ctrl.form">
+  <span
+    class="flex-4"
+    ng-bind="$ctrl.plan.title">
+  </span>
+
+  <div class="flex-1 flex-column">
+    <div style="margin: 0 5px;">
+      <div class="input-group">
+        <input
+          name="discount_rate"
+          class="form-control"
+          type="text"
+          maxlength="3"
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_investment: $ctrl.beginning_investment,
+            ending_investment: $ctrl.ending_investment,
+            use_investment_values: $ctrl.use_investment_values,
+          })"
+          ng-model="$ctrl.discount_rate"
+          ng-pattern="/^[0-9]{1,2}(\.[0-9]{1})?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+          <span class="input-group-addon">
+          %
+        </span>
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.discount_rate.$valid && $ctrl.form.discount_rate.$dirty">
+      Please enter a positive percentage with 1 decimal place (ex. 20.0)
+    </span>
+  </div>
+
+  <div class="flex-1 flex-column">
+    <div style="margin: 0 5px;">
+      <div class="input-group">
+        <span class="input-group-addon">
+          $
+        </span>
+        <input
+          name="beginning_investment"
+          class="form-control"
+          type="text"
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_investment: $ctrl.beginning_investment,
+            ending_investment: $ctrl.ending_investment,
+            use_investment_values: $ctrl.use_investment_values,
+          })"
+          ng-model="$ctrl.beginning_investment"
+          ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.beginning_investment.$valid && $ctrl.form.beginning_investment.$dirty">
+      Please enter a positive currency value (ex. $200.00)
+    </span>
+  </div>
+
+  <div class="flex-1 flex-column">
+    <div style="margin: 0 5px;">
+      <div class="input-group">
+        <span class="input-group-addon">
+          $
+        </span>
+        <input
+          name="ending_investment"
+          class="form-control"
+          type="text"
+          ng-blur="$ctrl.onChange({
+            plan_id: $ctrl.plan.id,
+            discount_rate: $ctrl.discount_rate,
+            beginning_investment: $ctrl.beginning_investment,
+            ending_investment: $ctrl.ending_investment,
+            use_investment_values: $ctrl.use_investment_values,
+          })"
+          ng-model="$ctrl.ending_investment"
+          ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+          onfocus="if(this.value == 0)this.value='';"
+          onblur="if(this.value == '')this.value=0;">
+      </div>
+    </div>
+    <!-- Error messages -->
+    <span
+      class="help-block help-block-invalid"
+      ng-show="!$ctrl.form.ending_investment.$valid && $ctrl.form.ending_investment.$dirty">
+      Please enter a positive currency value (ex. $200.00)
+    </span>
+  </div>
+  <div class="flex-1 flex-column">
+    <div style="margin: 0 5px;">
+      <input
+        name="use_investment_values"
+        type="checkbox"
+        ng-model="$ctrl.use_investment_values"
+        ng-true-value="'True'",
+        ng-false-value="'False'",
+        ng-blur="$ctrl.onChange({
+         plan_id: $ctrl.plan.id,
+         discount_rate: $ctrl.discount_rate,
+         beginning_investment: $ctrl.beginning_investment,
+         ending_investment: $ctrl.ending_investment,
+         use_investment_values: $ctrl.use_investment_values,
+       })">
+    </div>
+  </div>
+</div>
+</form>

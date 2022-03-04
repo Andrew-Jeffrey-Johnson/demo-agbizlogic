@@ -1,0 +1,391 @@
+{% load static %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>AgBiz Logic</title>
+        <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.ico" %}"/>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" media="screen" href="{% static "css/bootstrap.min.css" %}" />
+        <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" /> -->
+        <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="{% static "css/flat-ui.css" %}" rel="stylesheet">
+        <!-- <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css" /> -->
+        <link rel="stylesheet" href="{% static "css/main.css" %}" />
+
+        <style>
+          .banner h2, label {
+            color: #f8f8f8;
+          }
+        </style>
+        <script src="{% static "js/vendor/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
+    </head>
+
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+      </button>
+
+        {% if user.is_authenticated %}
+         <a class="navbar-brand" rel="home" href="/dashboard/" style='"Lato","Helvetica Neue",sans-serif;font-size: 22px;  font-weight: 700;'>
+      <img style="max-width:30px; margin-top: -7px; margin-right: 3px;" src="{% static "img/icon.png" %}"> <i>AgBiz Logic</i>&#0153</a>
+        {% else %}
+         <a class="navbar-brand" rel="home" href="/index/" style='"Lato","Helvetica Neue",sans-serif;font-size: 22px;  font-weight: 700;'>
+      <img style="max-width:30px; margin-top: -7px; margin-right: 3px;" src="{% static "img/icon.png" %}"> <i>AgBiz Logic</i>&#0153</a>
+        {% endif %}
+      </div>
+
+
+
+
+        <div class="collapse navbar-collapse">
+    {% if user.is_authenticated %}
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false"> {{user.username}} <span class="caret"></span></a>
+          <ul class="dropdown-menu first_dropdown">
+            <li> <a class="dropdown-item" href="/index/#bottom" style="color: #e1e4e7;">Contact Us</a> </li>
+            <li> <a class="dropdown-item" href="/resources/" style="color: #e1e4e7;">Resources</a> </li>
+            <li class="dropdown-submenu"> <a tabindex="-1" class="dropdown-toggle" href="/profile_setting/" style="color: #e1e4e7;">Account Settings</a>
+            </li>
+            <li><a href="/logout/" style="color: #e1e4e7;">Logout</a></li>
+          </ul>
+      </li>
+    </ul>
+
+     {% else %}
+
+       <ul class="nav navbar-nav navbar-right">
+
+   <li> <a href="/index/#bottom">Contact Us</a> </li>
+
+       <li>    <form action="#"><a href="/login/" class="btn btn-success navbar-btn">Log in</a>   </form> </li>
+       <li> <form action="#"><a href="/account/" class="btn btn-success navbar-btn">Sign up</a> </form>  </li>
+       <li> <a href="/resources/">Resources</a> </li>
+
+
+ </ul>
+
+
+
+
+       {% endif %}
+
+
+          </div><!--/.navbar-collapse -->
+
+          </div><!--/.navbar-header -->
+
+    </div><!--/.container -->
+
+ </div>
+
+
+<div class="home-img">
+    <div class="intro-message">
+        <h1>Data is always in season.</h1>
+        <h3>  Welcome to <i>AgBiz Logic</i>!</h3>
+        <h5><i>AgBiz Logic</i> is a suite of <b>economic, financial, and environmental decision tools</b> for businesses that grow, harvest, package, add value, and sell agricultural products.</h5>
+        <br>
+        <a class="btn btn-lg btn-primary fp-buttons" href="/about/">
+            Learn more
+        </a>
+
+    </div>
+
+</div><!-- .carousel -->
+<!--end bg-carousel-->
+
+
+
+
+
+<div class="container">
+
+  <div class="row">
+      <div class="col-md-7 " >
+        <h2 class="featurette-heading"><i>AgBizProfit™</i></h2>
+        <h4><i>Measure your profitability.</i></h4>
+        <p class="lead"> <i>AgBizProfit</i> enables you to make more effective short-, medium-, and long-term capital investment decisions by effectively measuring your investment’s profitability.</p>
+      </div>
+
+  <div class="col-md-5 ">
+          <img src="{% static "img/Clipboard.png" %}" alt="placeholder" class="featurette-image img-responsive">
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-7 ">
+        <h2 class="featurette-heading"><i>AgBizLease™</i></h2>
+        <h4><i>Enhance your negotiations.</i></h4>
+        <p class="lead"><i>AgBizLease</i> allows you to establish equitable crop and livestock leases. </p>
+      </div>
+
+    <div class="col-md-5 ">
+        <img src="{% static "img/Infinity-Loop.png" %}" alt="placeholder" class="featurette-image img-responsive">
+      </div>
+
+   </div>
+
+  <hr>
+
+    <div class="row">
+      <div class="col-md-7">
+        <h2 class="featurette-heading"><i>AgBizFinance™</i> </h2>
+        <h4><i>Manage your financial risk.</i></h4>
+        <p class="lead"><i>AgBizFinance</i> empowers you to make sound investment decisions based on 19 financial ratios and performance measures.</p>
+      </div>
+
+    <div class="col-md-5  ">
+         <img src="{% static "img/Retina-Ready.png" %}" alt="placeholder" class="featurette-image img-responsive">
+        </div>
+
+
+    </div>
+
+    <hr>
+
+
+
+    <div class="row">
+      <div class="col-md-7 ">
+        <h2 class="featurette-heading"><i>AgBizEnvironment™</i> </h2>
+        <h4><i>Gauge your environmental impact.</i></h4>
+        <p class="lead"><i>AgBizEnvironment</i> gives you the ability to account for environmental impacts when analyzing business decisions.</p>
+      </div>
+
+  <div class="col-md-5 ">
+        <img src="{% static "img/Map.png" %}" alt="placeholder" class="featurette-image img-responsive">
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-7 ">
+        <h2 class="featurette-heading"><i>AgBizClimate™</i> </h2>
+        <h4><i>Observe before and after effects of climate change.</i></h4>
+        <p class="lead"><i>AgBizClimate</i> is both a farm-level decision support tool and an assessment tool for researchers and government agencies to realistically determine how climate change and climate change policies may influence and impact regional agricultural sectors. </p>
+      </div>
+
+  <div class="col-md-5 ">
+        <img src="{% static "img/Compass.png" %}" alt="AgBizClimate logo" class="featurette-image img-responsive">
+      </div>
+
+    </div>
+
+
+</div> <!--- container -->
+<br>
+<br>
+<!--
+
+
+<br>
+<br>
+</div> container -->
+
+<div id="bottom" class="banner">
+
+
+    <div class="container">
+      {% if success %}
+
+           <div class="row">
+      <div class="col-lg-12 text-center">
+                  <div id="success"><div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>Thank you for contacting <i>AgBiz Logic<i/>.</strong></div></div>
+
+             </div>
+             </div>
+
+
+            {% endif %}
+
+
+
+
+                <div class="row ">
+                    <div class="col-md-6">
+                    <div class="pull-left">
+               <ul class="list-inline banner-social-buttons">
+                <li>
+                    <a href="https://twitter.com/agbizlogic" class="btn btn-default btn-lg"><i class="fab fa-twitter"></i> <span class="network-name">Twitter</span></a>
+                </li>
+                <li>
+                    <a href="https://facebook.com/AgBizLogic" class="btn  btn-default btn-lg"><i class="fab fa-facebook-f"></i> <span class="network-name">Facebook</span></a>
+                </li>
+                <!--
+                <li>
+                    <a href="#" class="btn  btn-default btn-lg"><i class="fa fa-envelope fa-fw"></i> <span class="network-name">Email</span></a>
+                </li>
+                -->
+
+              </ul>
+              </div>
+          </div>       <!-- /.row -->
+           </div>       <!-- /.row -->
+
+                   <div class="row">
+                      <div class="col-md-6">
+
+                 <h2>Contact Us</h2>
+
+                 </div>
+
+                    </div>
+
+{% csrf_token %}
+                  <div class="row">
+
+           <div class="col-md-6">
+
+          <form action="/index/#bottom" id='contact_form' role="form" method="post" >{% csrf_token %}
+
+             {{ form|crispy }}
+
+            <script src="https://www.google.com/recaptcha/api.js?render=6LesDJEUAAAAALr44k1MwVwZM6xUn86v4sZQbQFq">
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LesDJEUAAAAALr44k1MwVwZM6xUn86v4sZQbQFq', {action: 'send_email'}).then(function(token) {
+                  // pass the token to the backend script for verification
+                  $('contact_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+                });
+            });
+            </script>
+
+            <div style="font-size:16px;color:white;"><button type="submit" class="btn pull-right btn-success">Send message</button>
+
+          </form>
+
+        </div>
+
+        </div>
+
+
+      <div id="contribution" class="row" >
+
+        <!-- Logo hide
+      <div class="col-lg-4" id="osu-logo">
+         <img src="{% static "img/osu_logo.png" %}" alt="placeholder" class="featurette-image img-responsive" width="23%">
+      </div>
+        -->
+
+
+        <div class="col-lg-6" id="contribution-text">
+
+        <h6> Acknowledgements: </h6>
+          <h6>  This project is made possible by contributions from: </h6>
+          <ul style="list-style-type:circle">
+          <li>Oregon State University </li>
+           <li>Oregon State University – College of Agricultural Sciences  </li>
+           <li>Oregon State University – Department of Applied Economics  </li>
+           <li>USDA Northwest Climate Hub  </li>
+           <li  title="Any opinion, findings, and conclusions or recommendations expressed in this material are those of the authors(s) and do not necessarily reflect the views of the U. S. Department of Agriculture.">USDA National Institute of Food and Agriculture – Award #2014-51181-22384 </li>
+           <li title="Any opinion, findings, and conclusions or recommendations expressed in this material are those of the authors(s) and do not necessarily reflect the views of the U. S. Department of Agriculture.">USDA National Institute of Food and Agriculture - Award #2017-68002-26819</li>
+           </ul>
+
+
+        </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
+
+      <footer>
+
+
+     <div class="container">
+       <p><span style="color:white;">Copyright &copy; <script>document.write(new Date().getFullYear())</script> <i>Oregon State University</i>. All Rights Reserved.</span></p>
+
+
+      </div>
+      </footer>
+
+</div> <!-- /container -->
+</body>
+
+<script src="{% static "js/vendor/jquery.min.js" %}"></script>
+        <script>window.jQuery || document.write('<script src="{% static "jquery/dist/jquery.min.js" %}"><\/script>')</script>
+
+        <script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
+
+        <script src="{% static "js/main.js" %}"></script>
+
+       <script>
+
+       $(".alert").show();
+
+       </script>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+       <style>
+
+       .dropdown-menu li:hover > ul.dropdown-menu {
+           display: block;
+       }
+
+       .dropdown-submenu {
+           position:relative;
+       }
+       .dropdown-submenu>.dropdown-menu {
+           background-color: #34495e;
+           top:0;
+           left:100%;
+           margin-top:-1px;
+       }
+
+       #dropdown-menu li:hover {
+         background-color: #16a085
+       }
+
+       .dropdown:hover .first_dropdown {
+           background-color: #34495e;
+           display: block;
+           margin-top:0px;
+        }
+
+        .first_dropdown li:hover {
+          background-color: #16a085
+        }
+       </style>
+
+</html>

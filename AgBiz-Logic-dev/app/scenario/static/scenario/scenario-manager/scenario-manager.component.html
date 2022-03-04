@@ -1,0 +1,197 @@
+<div style="height: 10px;">
+  <uib-progressbar
+      value="$ctrl.progress"
+      class="progress-striped active"
+      max="50"
+      ng-if="$ctrl.progress < 100">
+    </uib-progressbar>
+</div>
+
+<div ng-if="$ctrl.module == 'scenario'">
+  <div class="row">
+    <h3 class="col-md-12"><i>AgBiz Logic</i> Scenarios</h3>
+  </div>
+
+  <!--Description Panel-->
+
+  <div class="row">
+    <h4 class="col-md-4 pull-left"><i>Scenario Manager</i></h4>
+  </div>
+  <p>
+    <i>AgBiz Logic</i> tools rely on Scenarios to run decision-support analyses.
+    You can select an existing Scenario and modify it according to your current
+    objectives, copy an existing Scenario and edit the copy as needed or create a new Scenario by clicking
+    on the Create New Scenario button.
+  </p>
+</div>
+
+
+<div ng-if="$ctrl.module == 'profit'">
+  <div class="row">
+    <h3 class="col-md-12"><i>AgBizProfit</i></h3>
+  </div>
+
+  <!--Description Panel-->
+  <div class="row">
+    <h4 class="col-md-4 pull-left"><i>Plan for the future... Today</i></h4>
+  </div>
+  <p>
+    <i>AgBizProfit</i> relies on Scenarios to run a profitability of investments
+    analysis. You can either select an existing Scenario and modify according
+     to your current objectives, or you can create a new Scenario by clicking on the Create New button.
+  </p>
+</div>
+
+<div ng-if="$ctrl.module == 'finance'">
+  <div class="row">
+    <h3 class="col-md-12"><i>AgBizFinance</i></h3>
+  </div>
+
+  <!--Description Panel-->
+  <p>
+    <!-- To build an <i>AgBizFinance Analysis</i>, please create a beginning
+    balance and enter your current loans and leases. This information will
+     be used evaluating future investment. -->
+    <i>AgBizFinance</i> allows you to create your own Scenarios or use existing Scenarios from
+    <i>AgBizProfit</i> and <i>AgBizLease</i> as the foundation for annual returns and cash costs for each
+    business enterprise. With current financial information, distributions, depreciation, inflation,
+    and future transactions for each <i>AgBizFinance</i> Scenario, you can compare Cash Flow, Balance Sheets,
+    and Income Statements.
+  </p>
+</div>
+
+<!--Actions Panel-->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      Available Actions
+      <a
+        class="glyphicon glyphicon-question-sign"
+        uib-tooltip="Common actions that can be performed. Hover over the buttons to learn more">
+      </a>
+    </h6>
+  </div>
+  <div
+    class="panel-body"
+    uib-collapse="$ctrl.showActions == false">
+    <div class="row">
+      <button
+        class="btn btn-info col-md-2 action-bar-btn "
+        style="width: 14%"
+        uib-tooltip="Return to the Dashboard"
+        ng-click="$ctrl.back()">
+        Back to Dashboard
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        style="width: 12%"
+        uib-tooltip="Create a copy of an existing Scenario"
+        ng-click="$ctrl.addNewScenario('copy')">
+        Copy Scenario
+      </button>
+      <!-- TODO: enable once standalone Budget creation enabled -->
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        style="width: 12%"
+        uib-tooltip="Create a Scenario from scratch"
+        ng-click="$ctrl.addNewScenario('new')">
+        Create Scenario
+      </button>
+
+      <!-- <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        style="width: 13%"
+        ng-if="$ctrl.module=='finance'"
+        uib-tooltip="Create an Analysis comparing Scenarios"
+        ng-click="$ctrl.analyzeFinanceScenario()">
+        Analyze Scenarios
+      </button> -->
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        style="width: 17%"
+        ng-if="$ctrl.module=='finance'"
+        uib-tooltip="Edit your current balance sheet, loans, and leases"
+        ng-click="$ctrl.editCurrentFinanceInfo()">
+        Edit Financial Info
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        style="width: 18%"
+        ng-if="$ctrl.module=='finance'"
+        uib-tooltip="Make accrual adjustments to a Scenario"
+        ng-click="$ctrl.makeAccrualAdjustments()">
+        Make Accrual Adjustments
+      </button>
+  </div>
+  </div>
+</div>
+
+<!-- <h5 ng-if="$ctrl.module==='finance'"><i>AgBizFinance</i> Analyses</h5>
+<div class="row" ng-if="$ctrl.module==='finance'">
+  <manager-list
+    ng-if="$ctrl.module==='finance'"
+    class="col-md-12"
+    item-list="$ctrl.financeAnalysis_list"
+    show-date="true"
+    editable="true"
+    on-edit="$ctrl.editfinanceAnalysis(item)"
+    on-delete="$ctrl.removefinanceAnalysis(item)"
+    custom-button-text=""
+    on-custom-button=""
+    height="'medium'">
+  </manager-list>
+</div> -->
+
+<h5 ng-if="$ctrl.module==='scenario'">Base Scenarios</h5>
+<div class="row">
+  <manager-list
+    ng-if="$ctrl.module==='scenario'"
+    class="col-md-12"
+    item-list="$ctrl.scenario_list"
+    show-date="true"
+    editable="true"
+    type="false"
+    on-edit="$ctrl.editScenario(item)"
+    on-delete="$ctrl.removeScenario(item)"
+    on-custom-button="$ctrl.viewSummary(item)"
+    height="'medium'">
+  </manager-list>
+</div>
+
+<h5 ng-if="$ctrl.module==='profit'"><i>AgBizProfit</i> Scenarios</h5>
+<div class="row">
+  <manager-list
+    ng-if="$ctrl.module==='profit'"
+    class="col-md-12"
+    item-list="$ctrl.scenario_list"
+    show-date="true"
+    editable="true"
+    on-edit="$ctrl.editScenario(item)"
+    on-delete="$ctrl.removeScenario(item)"
+    type="false"
+    on-custom-button="$ctrl.viewSummary(item)"
+    height="'medium'">
+  </manager-list>
+</div>
+
+<h5 ng-if="$ctrl.module==='finance'"><i>AgBizFinance</i> Scenarios</h5>
+<div class="row">
+  <div ng-if="$ctrl.module == 'finance'">
+    <manager-list
+      ng-if="$ctrl.module==='finance'"
+      class="col-md-12"
+      item-list="$ctrl.scenario_list"
+      show-date="true"
+      editable="true"
+      on-edit="$ctrl.editScenario(item)"
+      on-delete="$ctrl.removeScenario(item)"
+      on-custom-button="$ctrl.viewSummary(item)"
+      shortcutpdf="true"
+      height="'medium'">
+    </manager-list>
+
+  </div>
+</div>

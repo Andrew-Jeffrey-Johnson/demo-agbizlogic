@@ -1,0 +1,95 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h3>New <i>AgBizClimate</i> Scenario</h3>
+
+<div>
+  To begin an <i>AgBizClimate</i> analysis, name this scenario, add notes, then select one or more budgets from your existing lists of budgets. You are allowed to add up to <span ng-bind="$ctrl.max_budgets"></span> budgets per scenario.
+</div>
+
+<form name="$ctrl.form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        Basic Information About Your New <i>AgBizClimate</i> Scenario
+      </h4>
+    </div>
+    <div class="panel-body">
+      <label>Name of Scenario:</label>
+      <input
+        name="name" class="form-control" type="text"
+        ng-model="$ctrl.climate_scenario.title"
+        ng-blur="$ctrl.updateScenario()"
+        maxlength="91"
+        placeholder="Name of Scenario"
+        onfocus="if(this.value == 'New Climate Scenario')this.value='';"
+        onblur="if(this.value == '')this.value='New Climate Scenario';"
+        required>
+
+      <label>Notes for this Scenario:</label>
+      <textarea
+        class="form-control"
+        ng-model="$ctrl.climate_scenario.notes"
+        ng-blur="$ctrl.updateScenario()"
+        maxlength="1000"
+        placeholder="Notes on Scenario">
+      </textarea>
+    </div>
+  </div>
+</form>
+
+<h4>Select Budgets for this <i>AgBizClimate</i> Scenario</h4>
+
+<climate-budget-select
+  item-list="$ctrl.climate_scenario.climate_budgets"
+  option-list="$ctrl.budget_list"
+  item-limit="$ctrl.max_budgets"
+  editable="true"
+  on-delete="$ctrl.removeBudget(item)"
+  on-edit="$ctrl.editBudget(item)"
+  on-add="$ctrl.addBudget(item)">
+</climate-budget-select>
+
+<br>
+
+<div class="row">
+  <confirm-button
+    ng-if="$ctrl.is_new == true"
+    label="'Delete'"
+    message="'This will delete the current scenario and all edited budgets'"
+    on-confirm="$ctrl.cancel()">
+  </confirm-button>
+
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-disabled="$ctrl.form.$invalid"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      ng-if="$ctrl.is_new != true"
+      class="btn btn-primary"
+      ng-disabled="$ctrl.form.$invalid"
+      ng-click="$ctrl.back()">
+      Save
+    </button>
+  </div>
+</div>
+<br>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<div class="pull-right">
+<button type="button" class="btn btn-danger" ng-click="$dismiss()">&times;</button>
+</div>
+
+
+  <div style="text-align:center">
+  <h2>Budget Manager Help</h2>
+  </div>
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+        <button  id="modal-form-btn" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         <h5 style="text-align:center"> How do I rename a budget?</h5>
+        </button>
+    </div>
+
+    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div id="modal-form-text" class="card-block">
+    You can rename a budget by directly overwriting the “Budget Name”. As best practice, the title should include: <ol><li> What the enterprise is (e.g., specific name of crop, livestock or nursery item).</li><li> Where or how the enterprise was produced (e.g., by field, farm, or a particular stage of production). <li>The year the enterprise was produced. Hint: consider developing a budget naming convention so you can easily recognize each budget from within the full list you’ll be creating.</li></ol>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <button id="modal-form-btn" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <h5>How do I change the state and county of a budget?</h5>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div id="modal-form-text" class="card-block">
+        The state that displays on your budget was pulled from your user account. If you want to change the state and/or county associated with a particular budget, select a different state from the dropdown menu and then the appropriate county within the state.
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <button id="modal-form-btn" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+          <h5>How do I modify the budget unit?</h5>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div id="modal-form-text" class="card-block">
+       <p> When you create a budget from your Schedule F or accounting data, the Budget Unit defaults to the total income and expenses allocated to your enterprise (“1 Total”). For most budgeting purposes in <i>AgBiz Logic</i>, financial data is best analyzed when broken down and allocated to the smallest production unit possible (such as “1 Acre” or “1 Head”). Later this data can be scaled up to a larger unit, depending on the type of analysis you want to run.</p>
+
+      <p>To modify your budget unit and reallocate your budget data, follow these steps:
+      <ol>
+      <li>Click on the text box to the right of number below “Budget Unit” to display the “Change Budget Unit” dialog box.</p>
+
+        <img src='/static/budget/img/budget-form-help-modal.png' class="img-fluid" style="max-width:100%; border:2px solid black" ></li>
+
+      <li>
+      <p>Click in the box below “New Budget Unit” and select an appropriate budget unit.</p>
+
+        <img src='/static/budget/img/budget-form-help-modal-2.png' class="img-fluid" style="max-width:40%;border:2px solid black" ></li>
+
+      <li>
+      <p>Select whether the new budget unit is smaller or larger than the original unit, and then enter the new number of units. For example, if your budget was created based on 200 acres of wheat, this number would be 200.</p>
+
+        <img src='/static/budget/img/budget-form-help-modal-3.png' class="img-fluid" style="max-width:40%; border:2px solid black" ></li>
+
+
+      <p>When you’re satisfied with your updates, click Save.</p></ol>
+
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <button id="modal-form-btn" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+         <h5> How do I scale income and costs to the new budget unit? </h5>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div id="modal-form-text" class="card-block">
+        <p>Now that you’ve selected a new budget unit, you need to update the income and cost items to scale to the new unit. For example, if you now have a budget for 200 acres, you’ll want to scale it down to a budget per single acre.
+        <ol>
+        To scale income and costs to the new budget unit, follow these steps:
+
+       <li>Click on the new unit below the “Budget Unit”, where a “Change Budget Unit” screen appears.</p>
+
+        <img src='/static/budget/img/updated-budget-help-modal-4.png' class="img-fluid" style="max-width:40%; border:2px solid black" ></li>
+
+
+      <li>
+        <p>Insert the number of units in this budget as “New Quantity”. In most cases, this value will be “1”.</p>
+
+        <img src='/static/budget/img/updated-budget-help-modal-5.png' class="img-fluid" style="max-width:40%; border:2px solid black" ></li>
+
+
+      <li>
+       <p>When you’re satisfied with your updates, click Save. This will affect the price per unit for every income and cost item in the budget.</p>
+
+
+       <p>Before:</p>
+
+       <img src='/static/budget/img/updated-budget-help-modal-6.png' class="img-fluid" style="max-width:70%; border:2px solid black" >
+
+       <p>After:</p>
+
+      <img src='/static/budget/img/updated-budget-help-modal-7.png' class="img-fluid" style="max-width:70%; border:2px solid black" ></li></ol>
+
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <button id="modal-form-btn" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
+          <h5>How do I set the correct time period for my budget?</h5>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div id="modal-form-text" class="card-block">
+      <p>
+      The data in this budget is on a per unit basis.  We now need to base this budget information on a production cycle, defined as a specific period of time typically set for the production of an enterprise. Examples of production cycles include from the start of one harvest through the next; the period from one phase of added value to another; or the window when a particular enterprise reaches a certain weight, height, or container size and is classified anew. The time period you set will be relevant when your budgets are imported as plans for scenarios, which are the cornerstone of <i>AgBiz Logic</i> decision tools including <i>AgBizProfit</i>, <i>AgBizFinance</i>, and <i>AgBizLease</i>.</p>
+
+      <p>
+      Production cycles, thus budgets, can be based on a year, month, week or day and by a specific number of time periods, e.g., 1 to 365.  A budget can be based on one year’s data measured by 12 months, 52 weeks or 365 days, depending on the enterprise, situation, markets, etc. For example, let’s say you are producing a nursery crop that has various production cycles as shown below. You’ll want to create a budget that reflects each of the production cycles, as there are unique income and costs involved with each.</p>
+      <img src='/static/budget/img/budget-form-help-modal-4.png' class="img-fluid" style="max-width:70%; border:2px solid black" >
+      <p>
+      To match the production cycle to the data in a budget, click inside the box below “Length of Time for this Budget” and select the desired time period from the dropdown menu. Then enter the number of time periods for this budget by entering a number from 1 to 365 in the box below “Time Periods for this Budget”.</p>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <button id="modal-form-btn" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseTwo">
+          <h5>How do I make the best use of the Notes section?</h5>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div id="modal-form-text" class="card-block">
+      <p>
+     One of the most important features of an <i>AgBiz Logic</i> budget is the Notes section. This is where you can store pertinent information relevant to a particular budget. For example, you may want to document specific soil characteristics, or include weather information for a specific year, field and crop. Your notes serve as a reminder of how, when, where and what information was utilized to provide each budget’s income and expenses.</p>
+      </div>
+    </div>
+  </div>
+
+</div>

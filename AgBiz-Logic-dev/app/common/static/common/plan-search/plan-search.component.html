@@ -1,0 +1,21 @@
+<div class="row">
+  <h6 class="col-md-12"><b>Search</b></h6>
+</div>
+
+<hr>
+
+<div class="row">
+  <label
+    class="col-md-3">
+    Choose plan:
+  </label>
+  <div class="col-md-8">
+    <select
+      class="form-control"
+      ng-model="$ctrl.plan"
+      ng-change="$ctrl.onSelect({plan: $ctrl.plan})"
+      ng-options="plan.title for plan in $ctrl.filtered_plan_list | orderBy: 'title'">
+      <option value="">Select</option>
+    </select>
+  </div>
+</div>

@@ -1,0 +1,162 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h4>How do you think these seasonal climate forecasts will affect your <i ng-bind="$ctrl.climate_budget.title"></i> Budget?</h4>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span>Seasonal Climate Forecast Scenario</span>
+    <i
+      ng-if="$ctrl.current_factor.region"
+      ng-bind="$ctrl.region + ' County, '">
+    </i>
+    <i
+      ng-if="$ctrl.current_factor.state"
+      ng-bind="$ctrl.state">
+    </i>
+  </div>
+  <div class="panel-body chart-container">
+    <ul class="nav nav-tabs nav-justified">
+      <li class="active tab"><a class="tab" data-toggle="tab" href="#precipitation" >Forecasted Precipitation</a></li>
+      <li><a class="tab" data-toggle="tab" href="#precipitation_anom">Forecasted Precipitation Above or Below Historical Average</a></li>
+      <li><a class="tab" data-toggle="tab" href="#temperature">Forecasted Temperature</a></li>
+      <li><a class="tab" data-toggle="tab" href="#temperature_anom">Forecasted Temperature Above or Below Historical Average</a></li>
+    </ul>
+    <div class="tab-content">
+    <div id ="precipitation"
+      class="col-md-6 tab tab-pane fade in active">
+      <canvas
+        class="chart chart-line chart-pad"
+        chart-series="Precipitation"
+        chart-data="[$ctrl.projection_data.precip, $ctrl.projection_data.precip_historic]"
+        chart-scaleLabel="Stuff and things"
+        chart-labels="$ctrl.projection_data.labels"
+        chart-options="$ctrl.optionsPrecip"
+        >
+      </canvas>
+    </div>
+
+    <div id="precipitation_anom"
+    class="chart-pad col-md-6 tab-pane fade">
+    <canvas
+      class="chart chart-line chart-pad"
+      chart-series="Precipitation_Anomaly"
+      chart-data="$ctrl.projection_data.precip_anom"
+      chart-labels="$ctrl.projection_data.labels"
+      chart-options="$ctrl.optionsPrecip">
+    </canvas>
+    </div>
+    <div id="temperature"
+    class="chart-pad col-md-6 tab-pane fade">
+      <canvas
+         class="chart chart-line chart-pad"
+        chart-series="Temperature"
+        chart-data="[$ctrl.projection_data.temp, $ctrl.projection_data.temp_historic]"
+        chart-labels="$ctrl.projection_data.labels"
+        chart-options="$ctrl.optionsTemp">
+      </canvas>
+    </div>
+    <div id="temperature_anom"
+    class="col-md-6 tab-pane fade">
+      <canvas
+        class="chart-pad chart chart-line chart-pad"
+        chart-series="Temperature_Anomaly"
+        chart-data="$ctrl.projection_data.temp_anom"
+        chart-labels="$ctrl.projection_data.labels"
+        chart-options="$ctrl.optionsTemp">
+      </canvas>
+    </div>
+    </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form name="$ctrl.form">
+          <div class="row">
+            <b class="col-md-12">
+              Based on this information, how do <b>YOU</b> think this forecast will affect your yields or quality for your <i ng-bind="$ctrl.climate_budget.title"></i>?
+            </b>
+          </div>
+          <div class="input-group col-md-6">
+            <input
+              id="user-estimate" class="form-control"
+              name="user_estimate"
+              placeholder="0.0"
+              type="text"
+              min="-100" max="100" step="0.1"
+              onfocus="if(this.value == 0)this.value = '';"
+              onblur="if(this.value == '')this.value = 0.0;"
+              ng-pattern="/^[-]{0,1}[0-9]{1,2}[0]{0,1}(\.[0-9]{1})?$/"
+              ng-model="$ctrl.climate_budget.user_estimate"
+              required>
+            <span class="input-group-addon">% Change</span>
+          </div>
+          <span
+            style="color: red;"
+            ng-show="!$ctrl.form.user_estimate.$valid">
+          Please enter a percentage with 1 decimal place (ex. 20.0)
+        </span>
+        </form>
+      </div>
+</div>
+
+<!--<div class="panel panel-primary">-->
+  <!--<div class="panel-heading">-->
+    <!--<h6 class="panel-title">-->
+      <!--Based on this information, how do <b>YOU</b> think these climate changes will affect your yields or quality?-->
+    <!--</h6>-->
+  <!--</div>-->
+  <!--<div class="panel-body" style="height: 100px;">-->
+    <!--<form name="$ctrl.form">-->
+      <!--<div class="input-group col-md-3">-->
+        <!--<input-->
+          <!--id="user-estimate" class="form-control"-->
+          <!--name="user_estimate"-->
+          <!--placeholder="0.0"-->
+          <!--type="text"-->
+          <!--min="-100" max="100" step="0.1"-->
+          <!--onfocus="if(this.value == 0)this.value = '';"-->
+          <!--onblur="if(this.value == '')this.value = 0.0;"-->
+          <!--ng-pattern="/^[-]{0,1}[0-9]{1,2}(\.[0-9]{1})?$/"-->
+          <!--ng-model="$ctrl.current_factor.user_estimate"-->
+          <!--required>-->
+        <!--<span class="input-group-addon">% Change</span>-->
+      <!--</div>-->
+      <!--<span-->
+        <!--style="color: red;"-->
+        <!--ng-show="!$ctrl.form.user_estimate.$valid">-->
+        <!--Please enter a percentage with 1 decimal place (ex. 20.0)-->
+      <!--</span>-->
+    <!--</form>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-disabled="!$ctrl.form.user_estimate.$valid"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

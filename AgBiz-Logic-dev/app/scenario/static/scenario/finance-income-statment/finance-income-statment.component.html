@@ -1,0 +1,457 @@
+<h3 class="text-center">Build Your <i>AgBizFinance</i> Analysis</h3>
+
+<finance-step-indicator
+  step="3"
+  steps=$ctrl.steps_2>
+</finance-step-indicator>
+<br />
+
+<h4>Income Statement Review</h4>
+
+
+<br />
+<!-- <table id="example" class="display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in $ctrl.plans">
+                <td>${{x.title}}</td>
+                <td>${{x.title}}</td>
+            </tr>
+        </tbody>
+    </table> -->
+
+
+    <!-- <div class="col-xl-1 pull-left">
+      <h4>Income</h4>
+    </div>
+    <div class="col-xl-1 pull-right">
+      <button class="btn btn-default collapse table_1" ng-click="$ctrl.calapse_by_class('table_1')" >Show more</button>
+      <button class="btn btn-default table_1" ng-click="$ctrl.calapse_by_class('table_1')" >Show Less</button>
+    </div>
+    <table class="table table-hover table-bordered">
+      <thead style="background-color: #428bc9; color: white">
+        <tr>
+          <th style="text-align: right;">Year</th>
+          <th ng-repeat="y in $ctrl.plans" style="text-align: right;"><span title="{{y.title}}">plan {{$index + 1}}</span></th>
+          <th style="text-align: right;">{{$ctrl.scenario.title}}</th>
+        </tr>
+      </thead>
+        <tbody>
+            <tr ng-repeat="x in $ctrl.years track by $index" ng-class="$index > 2 ? 'table_1' : ''">
+              <td >{{$index}}</td>
+              <td ng-repeat="y in x">${{y.return_with_inflation | number : 2}}</td>
+              <td >{{$ctrl.totals[$index].return_with_inflation | number : 2}}</td>
+              <td >{{$ctrl.sum($index)}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="col-xl-1 pull-left">
+      <h4>Cost</h4>
+    </div>
+    <div class="col-xl-1 pull-right">
+      <button class="btn btn-default collapse table_2" ng-click="$ctrl.calapse_by_class('table_2')" >Show more</button>
+      <button class="btn btn-default table_2" ng-click="$ctrl.calapse_by_class('table_2')" >Show Less</button>
+    </div>
+
+    <table class="table table-hover table-bordered">
+      <thead style="background-color: #428bc9; color: white">
+        <tr>
+          <th style="text-align: right;">Year</th>
+          <th ng-repeat="y in $ctrl.plans" style="text-align: right;"><span title="{{y.title}}">plan {{$index + 1}}</span></th>
+          <th style="text-align: right;">{{$ctrl.scenario.title}}</th>
+        </tr>
+      </thead>
+        <tbody>
+            <tr ng-repeat="x in $ctrl.years track by $index" ng-class="$index > 2 ? 'table_2' : ''">
+              <td >{{$index}}</td>
+              <td ng-repeat="y in x">${{y.cost_with_inflation | number : 2}}</td>
+              <td >{{$ctrl.totals[$index].cost_with_inflation | number : 2}}</td>
+              <td >{{$ctrl.sum($index)}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="col-xl-1 pull-left">
+      <h4>Net Return</h4>
+    </div>
+    <div class="col-xl-1 pull-right">
+      <button class="btn btn-default collapse table_3" ng-click="$ctrl.calapse_by_class('table_3')" >Show more</button>
+      <button class="btn btn-default table_3" ng-click="$ctrl.calapse_by_class('table_3')" >Show Less</button>
+    </div>
+
+    <table class="table table-hover table-bordered">
+      <thead style="background-color: #428bc9; color: white">
+        <tr>
+          <th style="text-align: right;">Year</th>
+          <th ng-repeat="y in $ctrl.plans" style="text-align: right;"><span title="{{y.title}}">plan {{$index + 1}}</span></th>
+          <th style="text-align: right;">{{$ctrl.scenario.title}}</th>
+        </tr>
+      </thead>
+        <tbody>
+            <tr ng-repeat="x in $ctrl.years track by $index" ng-class="$index > 2 ? 'table_3' : ''">
+              <td >{{$index}}</td>
+              <td ng-repeat="y in x">${{y.net_return | number : 2}}</td>
+              <td >{{$ctrl.totals[$index].net_return | number : 2}}</td>
+              <td >{{$ctrl.sum($index)}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="col-xl-1 pull-left">
+      <h4>Accumulated Net Return</h4>
+    </div>
+    <div class="col-xl-1 pull-right">
+      <button class="btn btn-default collapse table_4" ng-click="$ctrl.calapse_by_class('table_4')" >Show more</button>
+      <button class="btn btn-default table_4" ng-click="$ctrl.calapse_by_class('table_4')" >Show Less</button>
+    </div>
+
+    <table class="table table-hover table-bordered">
+      <thead style="background-color: #428bc9; color: white">
+        <tr>
+          <th style="text-align: right;">Year</th>
+          <th ng-repeat="y in $ctrl.plans" style="text-align: right;"><span title="{{y.title}}">plan {{$index + 1}}</span></th>
+          <th style="text-align: right;">{{$ctrl.scenario.title}}</th>
+        </tr>
+      </thead>
+        <tbody>
+            <tr ng-repeat="x in $ctrl.years track by $index" ng-class="$index > 2 ? 'table_4' : ''">
+              <td >{{$index}}</td>
+              <td ng-repeat="y in x">${{y.cumulative_net_returns | number : 2}}</td>
+              <td >{{$ctrl.totals[$index].cumulative_net_returns | number : 2}}</td>
+              <td >{{$ctrl.sum($index)}}</td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <!-- <div ng-repeat="y in $ctrl.plans track by $index">
+      <h5>{{y.title}}</h1>
+    <table class="table table-hover table-bordered">
+      <thead style="background-color: #428bc9; color: white">
+        <tr>
+          <th style="text-align: right;">Returns</th>
+          <th style="text-align: right;">Costs</th>
+          <th style="text-align: right;">Net Returns</th>
+          <th style="text-align: right;">Cumulative net Returns</th>
+        </tr>
+      </thead>
+        <tbody>
+            <tr ng-repeat="x in y.net_returns_over_time track by $index">
+              <td>${{x.return_with_inflation}}</td>
+              <td>${{x.cost_with_inflation}}</td>
+              <td>${{x.net_return}}</td>
+              <td>${{x.cumulative_net_returns}}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div> -->
+
+  <table class="table table-bordered">
+    <thead class="bg-primary">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Year 1</th>
+        <th scope="col">Year 2</th>
+        <th scope="col">Year 3</th>
+        <th scope="col">Year 4</th>
+        <th scope="col">Year 5</th>
+        <th scope="col">Year 6</th>
+        <th scope="col">Year 7</th>
+        <th scope="col">Year 8</th>
+        <th scope="col">Year 9</th>
+        <th scope="col">Year 10</th>
+      </tr>
+    </thead>
+
+    <tbody >
+      <tr>
+          <th colspan="11" style="background-color:lightgray; text-align: left" >Revenues</th>
+        </tr>
+      <tr ng-repeat="(key, value) in $ctrl.cashflowitem_income" style="text-align: right">
+
+        <th scope="row">{{value.name |InitCase}}</th>
+        <td>{{value.year_1|currency : symbol : 0}}</td>
+        <td>{{value.year_2|currency : symbol : 0}}</td>
+        <td>{{value.year_3|currency : symbol : 0}}</td>
+        <td>{{value.year_4|currency : symbol : 0}}</td>
+        <td>{{value.year_5|currency : symbol : 0}}</td>
+        <td>{{value.year_6|currency : symbol : 0}}</td>
+        <td>{{value.year_7|currency : symbol : 0}}</td>
+        <td>{{value.year_8|currency : symbol : 0}}</td>
+        <td>{{value.year_9|currency : symbol : 0}}</td>
+        <td>{{value.year_10|currency : symbol : 0}}</td>
+      </tr>
+
+      <tr >
+        <th scope="row">Revenues from Products</th>
+        <td ng-repeat="(key, value) in $ctrl.cashflowitem_income_total track by $index" style="text-align: right">{{value|currency : symbol : 0}}</td>
+      </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Accounts Receivable</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.account_receivable|currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Prepaid Expenses</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.prepaid_expenses|currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Cash Investment Growing Crops</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.investment| currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Marketable Livestock </th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.investment| currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Stored Crops and Feed</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.investment| currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Supplies</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.supplies|currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Other Current Assets</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.other_assets|currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Contracts & Notes Receivable</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.contracts_and_notes_receivable|currency : symbol : 0}} </th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Investment in Cooperatives</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.investing_in_cooperatives|currency : symbol : 0}}</th>
+       </tr>
+
+      <tr >
+        <th scope="row">Gross Farm Revenue</th>
+        <!-- <td style="text-align: right">{{$ctrl.gross_farm_revene_head |currency : symbol : 0}}</td> -->
+        <td ng-repeat="(key, value) in $ctrl.gross_farm_revene track by $index" style="text-align: right">{{value|currency : symbol : 0}}</td>
+      </tr>
+      <!-- <tr>
+          <th colspan="11">Capital Sales</th>
+      </tr> -->
+
+      <!-- <tr ng-repeat="(key, value) in $ctrl.capital_sales">
+        <th scope="row">{{value.name}}</th>
+        <td>{{value.year_1}}</td>
+        <td>{{value.year_2}}</td>
+        <td>{{value.year_3}}</td>
+        <td>{{value.year_4}}</td>
+        <td>{{value.year_5}}</td>
+        <td>{{value.year_6}}</td>
+        <td>{{value.year_7}}</td>
+        <td>{{value.year_8}}</td>
+        <td>{{value.year_9}}</td>
+        <td>{{value.year_10}}</td>
+      </tr>
+
+      <tr>
+          <th colspan="11">Capital Purchase</th>
+      </tr>
+      <tr ng-repeat="(key, value) in $ctrl.capital_purchase">
+        <th scope="row">{{value.name}}</th>
+        <td>{{value.year_1}}</td>
+        <td>{{value.year_2}}</td>
+        <td>{{value.year_3}}</td>
+        <td>{{value.year_4}}</td>
+        <td>{{value.year_5}}</td>
+        <td>{{value.year_6}}</td>
+        <td>{{value.year_7}}</td>
+        <td>{{value.year_8}}</td>
+        <td>{{value.year_9}}</td>
+        <td>{{value.year_10}}</td>
+      </tr> -->
+
+
+      <tr>
+          <th colspan="11" style="background-color:lightgray; text-align: left">Farm Expenses</th>
+      </tr>
+
+      <tr ng-repeat="(key, value) in $ctrl.cashflowitem_expense | orderBy: 'name'" style="text-align: right">
+        <th scope="row">{{value.name |InitCase}}</th>
+        <td>{{value.year_1|currency : symbol : 0}}</td>
+        <td>{{value.year_2|currency : symbol : 0}}</td>
+        <td>{{value.year_3|currency : symbol : 0}}</td>
+        <td>{{value.year_4|currency : symbol : 0}}</td>
+        <td>{{value.year_5|currency : symbol : 0}}</td>
+        <td>{{value.year_6|currency : symbol : 0}}</td>
+        <td>{{value.year_7|currency : symbol : 0}}</td>
+        <td>{{value.year_8|currency : symbol : 0}}</td>
+        <td>{{value.year_9|currency : symbol : 0}}</td>
+        <td>{{value.year_10|currency : symbol : 0}}</td>
+      </tr>
+
+      <!--
+      <tr >
+        <th scope="row">Total</th>
+        <td ng-repeat="(key, value) in $ctrl.cashflowitem_expense_total track by $index" style="text-align: right">{{value|currency : symbol : 0}}</td>
+      </tr>
+      -->
+
+
+      <!-- <tr>
+        <th scope="row" colspan="11" style="background-color:lightgray; text-align: left">Current Assets</th>
+      </tr> -->
+
+       <tr>
+         <th scope="row">+/- Change in Purchased Feed</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.purchased_feed|currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Accounts Payable</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.accounts_payable|currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Real Estate and Other Taxes</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.valorem_taxes|currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Employee Payroll Withholding
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.employee_payroll_withholding|currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Other Accrued Expenses</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.other_accured_expenses|currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">+/- Change in Other Liabilities</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right">{{value.other_current_liabilites |currency : symbol : 0}}</th>
+       </tr>
+
+       <tr>
+         <th scope="row">Depreciation Expense</th>
+         <th scope="row" ng-repeat="(key, value) in $ctrl.depreciation track by key" style="font-weight: normal; text-align: right">{{value|currency : symbol : 0}}</th>
+       </tr>
+
+
+
+      <!-- <tr>
+        <th scope="row">Cash & Checking</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="text-align: right">{{value.cash_and_checking|currency : symbol : 0}}</th>
+      </tr>
+
+
+
+      <tr>
+        <th scope="row">Marketable Livestock</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="text-align: right">{{value.marketable_livestock|currency : symbol : 0}}</th>
+      </tr>
+      <tr>
+        <th scope="row">Stored Crops and Feed</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="text-align: right">{{value.stored_crops_and_feed|currency : symbol : 0}}</th>
+      </tr>
+
+
+
+
+
+      <tr>
+        <th scope="row" colspan="11" style="background-color:lightgray; text-align: left">Intermediate Assets</th>
+      </tr>
+      <tr>
+        <th scope="row">Vehicles, Machinery</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="text-align: right">{{value.vehicles|currency : symbol : 0}}</th>
+      </tr>
+
+
+
+      <tr>
+        <th scope="row" colspan="11" style="background-color:lightgray; text-align: left">Long Term Assets</th>
+      </tr>
+
+      <tr>
+        <th scope="row">Real Estate, Land</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="text-align: right">{{value.real_estate_land|currency : symbol : 0}}</th>
+      </tr>
+      <tr>
+        <th scope="row">Buildings & Improvements</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="text-align: right">{{value.buildings_and_improvements|currency : symbol : 0}}</th>
+      </tr>
+
+
+      <tr>
+        <th scope="row" colspan="11" style="background-color:lightgray; text-align: left">Current Liabilities</th>
+      </tr>
+
+
+      <tr>
+        <th scope="row">Income Taxes</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="text-align: right"> {{value.income_taxes|currency : symbol : 0}}</th>
+      </tr>
+      <tr>
+        <th scope="row">Deferred Taxes</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="text-align: right"> {{value.deferred_taxes|currency : symbol : 0}} </th>
+      </tr> -->
+
+      <tr >
+        <th scope="row">Total Operating Expense</th>
+        <td scope="row" ng-repeat="(key, value) in $ctrl.total_operating_expense track by $index" style="text-align: right">{{value|currency : symbol : 0}}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Cash Interest Paid</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.cash_interest_paid track by $index" style="font-weight: normal; text-align: right">{{value|currency : symbol : 0}}</th>
+      </tr>
+
+      <tr>
+        <th scope="row">Net Farm Income from Operations</th>
+        <th scope="row" ng-repeat="(key, value) in $ctrl.balance_data track by key" style="font-weight: normal; text-align: right"> </th>
+      </tr>
+
+      <tr >
+        <th scope="row">Cash Income Taxes Paid</th>
+        <td scope="row" ng-repeat="(key, value) in $ctrl.total_operating_expense track by $index" style="text-align: right">{{value|currency : symbol : 0}}</td>
+      </tr>
+
+      <tr >
+        <th scope="row">Net Income</th>
+        <td scope="row" ng-repeat="(key, value) in $ctrl.net_farm_income_from_operations track by $index" style="text-align: right">{{value|currency : symbol : 0}}</td>
+      </tr>
+
+      </tbody>
+  </table>
+
+<div class="row" >
+  <div class="col-xl-1 btn pull-left">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Previous
+    </button>
+  </div>
+  <div class="col-xl-1 btn pull-right">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Next
+    </button>
+  </div>
+
+  <div class="btn pull-right">
+  <income-statement-pdf
+    style="padding: 10px 0;"
+    statements="$ctrl.pdf_data">
+  </income-statement-pdf>
+  </div>
+
+</div>

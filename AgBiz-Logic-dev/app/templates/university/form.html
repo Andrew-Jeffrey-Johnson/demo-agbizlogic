@@ -1,0 +1,64 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+{% block content %}
+
+ 
+  {% for field in form %}
+    {{field.error}}
+
+  {% endfor %}
+
+  <form action="" method="post">
+  {% csrf_token %}
+  <table>
+  
+    <div class="hidden-xs hidden-sm">
+  <ol class="progtrckr" data-progtrckr-steps="5">
+    <li class="progtrckr-done">Account Information</li>
+    <li class="progtrckr-done">Business Information</li>
+    <li class="progtrckr-on">Enterprise</li>
+    <li class="progtrckr-todo">Asset</li>
+    <li class="progtrckr-todo">Liabilities</li>
+</ol> 
+</div>
+
+<br> 
+  {{ wizard.management_form }}
+  {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+      {% for form in wizard.form.forms %}
+          {{ form.as_p }}
+          
+       
+      {% endfor %}
+  {% else %}
+  
+  
+      {{ wizard.form | bootstrap}}
+      
+      
+      
+  {% endif %}
+  </table>
+ 
+     {% if wizard.steps.prev %}
+           <button name="wizard_goto_step" class="btn btn-default" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+        {% endif %}
+        
+    <a class="btn btn-default" type="button" href="/index/">Leave page</a>
+
+  
+      <input type="submit" class="btn pull-right btn-success"  value="Continue" />
+      
+      
+
+
+
+    
+  </form>
+
+
+  
+  
+{% endblock %}

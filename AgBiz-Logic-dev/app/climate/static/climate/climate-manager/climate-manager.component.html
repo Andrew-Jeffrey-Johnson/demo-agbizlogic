@@ -1,0 +1,98 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<div>
+  <h3><i>AgBizClimate</i></h3>
+</div>
+
+<div class="row">
+  <h4 class="col-md-4 pull-left">Your <i>AgBizClimate</i> Scenarios</h4>
+</div>
+<div>
+  <p>
+    An <i>AgBizClimate</i> Scenario consists of one or more crop, nursery and/or livestock budgets for
+    which you want to evaluate the impact of seasonal climate forecasts or future climate projections.
+    You can modify these budgets to reflect changes to yields or product quality and production inputs
+    based on climate forecasts or projections for your county. The end result is a view of estimated net
+    returns for your selected budgets, before and after your estimated impacts based on selected seasonal
+    climate forecasts or future climate projections.
+  </p>
+<div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h6 class="panel-title">
+          Available Actions
+          <a
+            class="glyphicon glyphicon-question-sign"
+            uib-tooltip="Common actions that can be performed. Hover over the buttons to learn more">
+          </a>
+        </h6>
+      </div>
+      <div
+        class="panel-body"
+        uib-collapse="$ctrl.showActions == false">
+        <div class="row">
+          <button
+            class="btn btn-info col-md-3 action-bar-btn "
+            style="width: 14%"
+            ng-click="$ctrl.back()">
+            Back to Dashboard
+          </button>
+
+          <button
+            class="btn btn-info col-md-3 action-bar-btn"
+            uib-tooltip="Create a copy of an existing Scenario"
+            style="width: 14%"
+            ng-click="$ctrl.newScenario()">
+            Create Scenario
+          </button>
+          <button
+            class="btn btn-primary"
+            style="float: right; margin-right: 10px;"
+            ng-click="$ctrl.viewClimateManagerHelp()">
+            Climate Help
+         </button>
+          <!-- TODO: enable once standalone Budget creation enabled -->
+        </div>
+        <div class="row">
+          <button
+            class="btn btn-info col-md-3 action-bar-btn"
+            ng-if="$ctrl.module=='finance'"
+            ng-click="$ctrl.analyzeFinanceScenario()">
+            Analyze Finance Scenarios
+          </button>
+
+          <button
+            class="btn btn-info col-md-3 action-bar-btn"
+            ng-if="$ctrl.module=='finance'"
+            ng-click="$ctrl.editCurrentFinanceInfo()">
+            Edit Current Finance Info.
+          </button>
+
+          <button
+            class="btn btn-info col-md-3 action-bar-btn"
+            ng-if="$ctrl.module=='finance'"
+            ng-click="$ctrl.makeAccrualAdjustments()">
+            Make Accrual Adjustments
+          </button>
+
+        </div>
+      </div>
+    </div>
+<climate-manager-list
+  item-list="$ctrl.scenario_list"
+  editable="true"
+  on-edit="$ctrl.editScenario(item)"
+  on-delete="$ctrl.removeScenario(item)"
+  show-date="true"
+  custom-button-text="'Analyze'"
+  on-custom-button="$ctrl.viewSummary(item)"
+  height="'large'"
+  show-type="true">
+</climate-manager-list>

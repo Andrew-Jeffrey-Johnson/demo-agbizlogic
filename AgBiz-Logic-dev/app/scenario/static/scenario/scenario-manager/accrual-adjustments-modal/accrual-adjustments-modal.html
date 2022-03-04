@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3
+      class="panel-title"
+      ng-bind="$ctrl.modal_title">
+    </h3>
+  </div>
+  <div class="panel-body">
+
+    <scenario-search
+      scenario-list="$ctrl.scenario_list"
+      on-select="$ctrl.selectScenario(budget)">
+    </scenario-search>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6">
+        <button
+          class="btn btn-warning"
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+
+      <div class="col-md-6">
+        <button
+          style="width: auto;"
+          class="btn btn-success pull-right"
+          ng-click="$ctrl.createAccrualAdjustments()">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

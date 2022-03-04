@@ -1,0 +1,33 @@
+{
+  "variables": {
+    "Snow Water Equivalent (April 1)":"The amount of water contained in the snowpack on April 1.",
+    "Chilling Hours Accumulation (32–45°F; Nov–Mar)":"The number of hours between 32°F and 45°F accumulated over November 1 and March 31.",
+    "Growing Degree Days Accumulation (Base 50°F)":"The amount of mean daily temperature above a base 50°F accumulated over January through December.",
+    "Cold Snap Event Frequency":"The mean number of cold snap events per year defined as three or more consecutive days with minimum temperature below 32°F.",
+    "Frost Days Frequency":"The mean number of days each year in which the minimum daily temperature is less than 32°F.",
+    "Heat Wave Event Frequency":"The mean number of heat wave events per year defined as three or more consecutive days with maximum daily temperature above 95°F.",
+    "Tropical Nights Frequency":"The mean number of days each year in which the minimum daily temperature is greater than 68°F.",
+    "Heavy Precipitation Event Frequency":"The mean number of days each year in which the daily precipitation is greater than 0.5.",
+    "Warm Days Frequency":"The mean number of days each year in which the maximum daily temperature is greater than 86°F.",
+    "Evaporation":"The amount of average annual evaporation.",
+    "Mean Temperature":"Annual average of monthly means of daily mean temperatures, computed as the mean of daily high and low temperatures.",
+    "Coldest Night Temperature":"The mean coldest minimum daily temperature experienced each winter.",
+    "Hottest Day Temperature":"The mean highest maximum daily temperature each year.",
+    "First Fall Freeze":"The median day of the year after August 1st which minimum daily temperature drops below 32°F for the first time after summer.",
+    "Last Spring Freeze":"The median day of the year during which minimum daily temperature drops below 32°F for the last time before summer.",
+    "Growing Season Length":"The mean number of days between the last spring freeze and first fall freeze.",
+    "Longest Dry Spell Length":"The mean maximum number of consecutive days per year with daily precipitation less than 0.01.",
+    "Longest Wet Spell Length":"The mean maximum number of consecutive days per year with daily precipitation greater than or equal to 0.01.",
+    "Diurnal Temperature Range":"The annual average of the difference between maximum and minimum daily temperature.",
+    "Maximum Temperature":"The annual average of monthly mean of daily high temperatures.",
+    "Minimum Temperature":"The annual average of monthly mean of daily low temperatures.",
+    "Potential Evapotranspiration (Spring)":"Reference evapotranspiration, averaged over March through May, for a well-watered grass surface, this represents the maximum water demand for a reference grass crop calculated using the Penman-Monteith method.",
+    "Growing Degree Days Total (Base 32°F)":"The total amount of mean daily temperature above a base 32°F accumulated for each day over January through December.",
+    "Growing Degree Days Total (Base 37.4°F)":"The total amount of mean daily temperature above a base 37.4°F accumulated for each day over January through December.",
+    "Growing Degree Days Total (Base 41°F)":"The total amount of mean daily temperature above a base 41°F accumulated for each day over January through December.",
+    "Growing Degree Days Total (Base 50°F)":"The total amount of mean daily temperature above a base 50°F accumulated for each day over January through December.",
+    "Precipitation":"The annual accumulated amount of daily precipitation.",
+    "Chilling Hours Total (32–45°F; Nov–Mar)":"The total number of hours between 32°F and 45°F accumulated each day between November 1 and March 31. Hourly temperatures are derived from daily minimum and maximum temperatures.",
+    "Total Soil Moisture (Spring)":"The amount of water contained in the upper few meters of soil averaged over March through May."
+  }
+}

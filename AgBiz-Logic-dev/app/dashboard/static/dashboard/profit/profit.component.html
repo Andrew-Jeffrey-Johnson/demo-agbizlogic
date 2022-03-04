@@ -1,0 +1,32 @@
+<div ng-class="$ctrl.css_classes">
+  <div class="panel-heading">
+    <h4>
+      <a
+        ng-class="{
+          'panel-link-inactive': $ctrl.is_inactive,
+          'panel-link': true,
+        }"
+        href="/scenario/#/scenario-manager?module=profit">
+        <i>AgBizProfit</i>
+      </a>
+    </h4>
+  </div>
+  <div
+    class="panel-body"
+    ng-if="$ctrl.is_inactive">
+    Coming Soon!
+  </div>
+  <div
+    class="panel-body"
+    ng-if="!$ctrl.is_inactive">
+    <div class="row">
+      <div class="col-md-12">
+        Use your Budgets to build investment Plans, which in turn are used to create
+        Scenarios that analyze net present value, internal rate of return, and cash flow
+        breakeven for each Plan. 
+      </div>
+    </div>
+
+    <hr>
+  </div>
+</div>

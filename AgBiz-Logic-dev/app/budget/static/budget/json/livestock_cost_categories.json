@@ -1,0 +1,75 @@
+[
+  {
+    "descriptor1": "Swine",
+    "categories": [
+      "Pigs to 45 Pounds",
+      "Grower Pigs",
+      "Finishing Pigs",
+      "Sows, Gilts, and Boars"
+    ]
+  },
+  {
+    "descriptor1": "Beef Cattle",
+    "categories": [
+      "Feed Costs",
+      "Non-Feed Costs"
+    ]
+  },
+  {
+    "descriptor1": "Bison",
+    "categories": [
+      "Feed Costs",
+      "Non-Feed Costs"
+    ]
+  },
+  {
+    "descriptor1": "Dairy Cattle",
+    "categories": [
+      "Feed Costs, Lactating Cows",
+      "Feed Costs, Dry Cows",
+      "Non-Feed Costs, Herd"
+    ]
+  },
+  {
+    "descriptor1": "Sheep",
+    "categories": [
+      "Feed Costs",
+      "Non-Feed Costs"
+    ]
+  },
+  {
+    "descriptor1": "Goats",
+    "categories": [
+      "Feed Costs",
+      "Non-Feed Costs"
+    ]
+  },
+  {
+    "descriptor1": "Camelids",
+    "categories": [
+      "Feed Costs",
+      "Non-Feed Costs"
+    ]
+  },
+  {
+    "descriptor1": "Horses",
+    "categories": [
+      "Feed Costs",
+      "Non-Feed Costs"
+    ]
+  },
+  {
+    "descriptor1": "Rabbits",
+    "categories": [
+      "Feed Costs",
+      "Non-Feed Costs"
+    ]
+  },
+  {
+    "descriptor1": "Poultry",
+    "categories": [
+      "Feed Costs",
+      "Non-Feed Costs"
+    ]
+  }
+]

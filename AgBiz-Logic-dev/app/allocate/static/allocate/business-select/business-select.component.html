@@ -1,0 +1,49 @@
+<h4>Allocate your business information</h4>
+
+To begin, select all enterprises that apply to your business:
+
+<br><br>
+
+<div class="row col-md-12">
+  <div class="col-md-6">
+    <div
+      class="list-group"
+      ng-repeat="business in $ctrl.business_options track by $index">
+      <div
+        ng-class="{
+          'selected': business.selected,
+          'deselected': !business.selected,
+          'list-group-item': true,
+          'business-select': true,
+          'disabled': business.disabled,
+          'row': true
+        }"
+        ng-click="$ctrl.select(business)">
+        <h6 ng-bind="business.business_type"></h6>
+        <span
+          ng-if="business.disabled">
+          Coming Soon!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <button
+      class="btn btn-default pull-left"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="col-md-2 pull-right">
+    <button
+      class="btn btn-success pull-right"
+      ng-disabled="$ctrl.businesses_needed"
+      ng-click="$ctrl.submit()">
+      Continue
+    </button>
+  </div>
+</div>

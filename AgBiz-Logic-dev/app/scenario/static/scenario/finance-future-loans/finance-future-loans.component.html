@@ -1,0 +1,104 @@
+<h3>Build Your <i>AgBizFinance</i> Analysis</h3>
+<h4>Future Loans</h4>
+
+<finance-step-indicator
+  step="5"
+  steps="$ctrl.steps">
+</finance-step-indicator>
+
+<div class="container">
+
+<h>{{future_loans}}<h>
+
+<div>
+
+
+
+<div class="panel panel-info col-md-10 col-md-offset-1">
+  <div class="panel-heading">
+    <h3 class="panel-title">Future Transaction</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      You already entered your current loans and current capital leases. Please provide the <b>furture transactions</b> you may use in the
+      <i>AgBizFinance</i> Scenario.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3 pull-right">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.addTransaction()">
+      Add New Transaction
+    </button>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+    <div class="panel panel-default" ng-repeat="(key, value) in $ctrl.futureloans | groupBy: 'asset_type'">
+      <div>
+        <div class="panel-heading" style="background-color: #428bca;">
+            <a data-toggle="collapse" data-parent="#accordion" ng-attr-href="#{{$index}}" style="color: white;">{{key}}</a>
+        </div>
+        <div ng-attr-id="{{$index}}" class="panel-collapse collapse in">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th style="text-align: right;">Loan Amount</th>
+                <th style="text-align: right;">Interest Rate</th>
+                <th style="text-align: right;">Loan Repayment Terms</th>
+                <th style="text-align: right;">Years before Loan Matures</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in value">
+                <td>{{item.transaction_description}}</td>
+                <td style="text-align: right;">${{item.loan_amount}}</td>
+                <td style="text-align: right;">{{item.interest_rate}}%</td>
+                <td style="text-align: right;">{{item.years_of_loan}}</td>
+                <td style="text-align: right;">{{item.years_before_loan_matures}}</td>
+                <td style="text-align: right;">
+                  <div>
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="$ctrl.edit(item)"></span>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="$ctrl.remove(item.id)"></span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Loading -->
+
+
+<br />
+<br />
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Previous
+    </button>
+  </div>
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      next
+    </button>
+  </div>
+</div>

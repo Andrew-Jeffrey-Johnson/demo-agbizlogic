@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load bootstrap %}
+
+{% block content %}
+
+<div ng-app="UserBusinessDataModule" ng-controller="UserBusinessDataModuleController">
+
+  <div style="margin-top:4%">
+    <button class="btn btn-info" ng-click="user_profile_setting()">User Profile Settings </button>
+    <button class="btn btn-info" ng-click="password_setting()">Password Settings </button></br>
+  </div>
+
+  <form name="businessform" style="margin-top:3%;" ng-submit="ChangeUserBusinessData(user)" novalidate>
+
+    {% csrf_token%}
+
+    {% verbatim %}
+
+      <div>
+        <label>Business Name*</label>
+      </div>
+      <div>
+        <input type="text" id="required" ng-minlength="1" name="business_name" class="name" ng-model="data.name" ng-required="true" autofocus/>
+      </div>
+      <div>
+        <small class="errorclass" ng-show="businessform.business_name.$error.required">This is a required field</small>
+      </div>
+
+      <div>
+        <label>Address 1*</label>
+      </div>
+      <div>
+        <input type="text" id="required"  ng-minlength="1" name="address1" class="address1"  ng-model="data.address1" ng-required="true"/>
+      </div>
+      <div>
+        <small class="errorclass" ng-show="businessform.address1.$error.required">This is a required field</small>
+      </div>
+
+      <div>
+        <label>Address 2</label>
+      </div>
+      <div>
+        <input type="text" class="address2" id="notrequired" ng-model="data.address2" ng-required="false"/>
+      </div>
+
+      <div>
+        <label>Zipcode*</label>
+      </div>
+      <div>
+        <input type="text" class="zipcode" name="zipcode" ui-mask="AAAAA" ng-pattern="/^[0-9 -]*$/" min="5" max="5" id="required" ng-model="data.zipcode" required/>
+      </div>
+      <div>
+        <small class="errorclass" ng-show="businessform.zipcode.$error.required">This is a required field. </small>
+        <small class="errorclass" ng-show="businessform.zipcode.$invalid"> Enter a valid Zipcode</small>
+        <small class="errorclass" ng-model="businessform.zip_error" ng-show="data.zipcode.length !=5"> Enter a zip code in the format XXXXX</small>
+      </div>
+
+      <div>
+        <label>City*</label>
+      </div>
+      <div>
+        <input type="text" class="city" name="city" ng-minlength="1" id="required" ng-model="data.city" ng-required="true" pattern="[a-zA-Z]+" ng-pattern-restrict/>
+      </div>
+      <div>
+        <small class="errorclass" ng-show="businessform.city.$error.required">This is a required field</small>
+      </div>
+
+      <div>
+        <label>State*</label>
+      </div>
+      <div style="padding-top:0.4%;">
+        <select class="form-control" ng-model="data.state">
+          <!-- <option value="data.state">{{ data.state }}</option> -->
+          <option value="{{ state }}" ng-repeat="state in state_names" ng-hide='state=="data.state"'>{{ state }}</option>
+        </select>
+      </div>
+
+      <div style="padding-top:0.8%;">
+        <label>Industry*</label>
+      </div>
+      <div style="padding-top:0.4%;">
+        <select ng-model="data.industry" class="form-control">
+          <option ng-model="data.industry">{{ data.industry }}</option>
+          <option ng-model="Agriculture" ng-hide='data.industry=="Agriculture"'>Agriculture</option>
+          <option ng-model="Non-Agriculture" ng-hide='data.industry=="Non-Agriculture"'>Non-Agriculture</option>
+        </select>
+      </div>
+
+      <div style="padding-top:0.8%;">
+        <label>Primary Business*</label>
+      </div>
+
+      <div style="padding-top:0.4%;">
+        <select class="form-control" ng-model="data.primary_business">
+          <option value="{{ primary_business }}" ng-repeat="primary_business in primary_business_value" ng-hide='primary_business=="data.primary_business"'>{{ primary_business }}</option>
+        </select>
+      </div>
+
+      <div style="padding-top:0.8%;">
+        <label>Secondary Business</label>
+      </div>
+      <div ng-repeat="secondary_business in primary_business_value">
+        <div ng-if="valuepresent(secondary_businesses,secondary_business)">
+          <input type="radio" id="check" value="{{ secondary_business }}" ng-model="secondary" ng-click="checkboxvaluefunction(checkboxvalues,secondary_business)"  ng-checked="true"  />
+          {{ secondary_business }}
+        </div>
+        <div ng-if="valuepresent(secondary_businesses,secondary_business) == false ">
+          <input type="radio" id="check" value="{{ secondary_business }}" ng-model="secondary" ng-click="checkboxvaluefunction(checkboxvalues,secondary_business)" />
+        {{ secondary_business }}
+        </div>
+      </div>
+
+      <br>
+      <button
+        type="submit"
+        id="submit"
+        value="submit"
+        ng-disabled="!businessform.$dirty || data.zipcode.length != 5 ||businessform.zipcode.$invalid || businessform.business_name.$invalid || businessform.address1.$invalid || businessform.city.$invalid"
+        class="btn btn-success">
+        Submit
+      </button>
+
+      {% endverbatim %}
+
+  </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+<script src="{% static "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" %}"></script>
+<script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+
+
+<script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
+<script>
+
+    var app = angular.module("UserBusinessDataModule", []);
+
+    app.config(['$httpProvider', function($httpProvider) {
+      $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+      $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+      }
+    ]);
+
+    app.controller("UserBusinessDataModuleController", function($scope,$http) {
+
+      $scope.state_names=["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME",
+                          "MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA",
+                          "RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
+
+      $scope.primary_business_value = ["Producer","Processor","Packer","Direct sales",
+                                        "Manufacturer","Wholesale","Retail","Consultant",
+                                        "Research/Education/Extension","Government agency","Other"]
+
+
+      $http.get('/registration/api/userbusinessdata/')
+           .then(function(response){
+
+              $scope.data = response.data[0]
+              $scope.user=$scope.data.user
+              $scope.secondary_businesses = []
+
+              var secondary_data=($scope.data.secondary_business).split( "'" )
+              var i=1
+
+              while (i < secondary_data.length) {
+                $scope.secondary_businesses.push(secondary_data[i])
+                i=i+2
+              }
+
+              $scope.checkboxvalues=$scope.secondary_businesses
+
+          });
+
+      $scope.checkboxvaluefunction = function(checkboxvalues,value,toggle){
+
+          if(checkboxvalues.indexOf(value) !== -1){
+
+            var index = checkboxvalues.indexOf(value)
+            if (index > -1) {
+                  checkboxvalues.splice(index, 1);
+              }
+          }else{
+            $scope.checkboxvalues.push(value)
+          }
+        }
+
+      $scope.checked = function () {
+          $scope.toggle = !$scope.toggle;
+      }
+
+      $scope.valuepresent = function(array,value){
+            return array.indexOf(value) !== -1
+          }
+
+      $scope.ChangeUserBusinessData = function(user){
+
+        $http.put('/registration/api/userbusinessdata/'+user+'/',
+                { 'user':user,
+                  'name':angular.element('.name').val(),
+                  'address1':angular.element('.address1').val(),
+                  'address2':angular.element('.address2').val(),
+                  'zipcode':angular.element('.zipcode').val(),
+                  'city':angular.element('.city').val(),
+                  'state':$scope.data.state,
+                  'industry':$scope.data.industry,
+                  'primary_business':$scope.data.primary_business,
+                  'secondary_business':$scope.checkboxvalues
+                })
+              .then(function(response){
+                console.log("success")
+                window.location.href = '/thankyou/';
+              },
+              function(error){
+                console.log("error")
+              })
+        }
+
+
+        $scope.back=function(){
+          window.location.href = '/profile_setting';
+        }
+
+        $scope.user_profile_setting=function(){
+          window.location.href = '/profile_setting/';
+        }
+
+        $scope.password_setting=function(){
+          window.location.href = '/changepassword/';
+        }
+
+        });
+
+</script>
+
+<style>
+      .errorclass{
+        color: red;
+      }
+
+      input[type=text]{
+          width: 100%;
+          padding: 3px 15px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          box-sizing: border-box;
+      }
+
+      #required.ng-invalid.ng-dirty{
+        border:2px solid red;
+      }
+
+
+</style>
+
+{% endblock %}

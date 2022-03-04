@@ -1,0 +1,145 @@
+﻿<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+<div>
+  <h3><i>AgBizBudget</i></h3>
+</div>
+<div class="row">
+  <h4 class="col-md-4 pull-left"><i>Budget Manager</i></h4>
+</div>
+<p>
+  <i>AgBiz Logic</i> decision tools rely on enterprise budgets to analyze economic, financial, and environmental
+  outcomes of your investment decisions.  Budget Manager allows you to manage and customize your various
+  enterprise budgets for this purpose.
+</p> 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      Available Actions
+      <a
+        class="glyphicon glyphicon-question-sign"
+        uib-tooltip="Common actions that can be performed. Hover over the buttons to learn more">
+      </a>
+    </h6>
+  </div>
+  <div
+    class="panel-body"
+    uib-collapse="$ctrl.showActions == false">
+    <div class="row">
+      <button
+          class="btn btn-info col-md-2 action-bar-btn"
+          style="width: 14%"
+          ng-click="$ctrl.back()">
+          Back to Dashboard
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        style="width: 10%"
+        uib-tooltip="Create a copy of an existing Budget"
+        ng-click="$ctrl.newBudget('copy')">
+        Copy Budget
+      </button>
+
+      <!--Change button label from "Use University Budget" to "Use ABL Library Budget"-->
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        style="width: 14%"
+        uib-tooltip="Use a pre-made Budget"
+        ng-click="$ctrl.newBudget('university')">
+        <i>ABL</i> Library Budget
+      </button>
+
+      <!-- TODO: enable once standalone Budget creation enabled -->
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        uib-tooltip="Create a Budget from scratch"
+        style="width: 11%"
+        ng-click="$ctrl.newBudget('new')">
+        Create Budget
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        uib-tooltip="Combine two or more Budgets into one"
+        style="width: 13%"
+        ng-click="$ctrl.newBudget('combine')">
+        Combine Budgets
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        style="width: 13%"
+        uib-tooltip="Restore budgets from Schedule F and allocation data"
+        ng-click="$ctrl.restoreBudgets()">
+        Restore Budgets
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading" ng-click="$ctrl.toggleSearch()">
+    <h6 class="panel-title" >
+      Search for a Budget
+      <a
+        class="glyphicon glyphicon-question-sign"
+        uib-tooltip="Quickly search for a specific Budget matching your criteria, and see the results filtered below.">
+      </a>
+    </h6>
+  </div>
+  <div
+    class="panel-body"
+    ng-show="$ctrl.show_search">
+    <div class="row">
+      <budget-search
+        class="col-md-6"
+        budget-list="$ctrl.budget_list"
+        on-select="$ctrl.selectBudget(budget)">
+      </budget-search>
+    </div>
+
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-2">
+        <button
+          class="btn btn-success"
+          ng-disabled="$ctrl.search_budget.id == undefined"
+          ng-click="$ctrl.editBudget($ctrl.search_budget)">
+          Edit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+
+
+<button ng-click="$ctrl.viewBudgetManagerFormHelp()" class="btn btn-primary btn-sm" style="float:right; font-size:16px; margin-top:10px;">Budget Manager Help</button>
+<table>
+  <tr style="max-width:auto">
+    <td> <h4>View Your Budgets</h4> </td>
+    <td> <button class="btn btn-info action-bar-btn" ng-click="$ctrl.toggleSearch()"> Search Budgets </button> </td>
+  </tr>
+</table>
+
+
+<div ng-style="{'pointer-events': $ctrl.loading ? 'none' : 'auto'}">
+  <budget-manager-list
+    item-list="$ctrl.budget_list"
+    editable="true"
+    on-edit="$ctrl.editBudget(item)"
+    on-delete="$ctrl.removeBudget(item)"
+    show-date="true"
+    height="'large'">
+  </budget-manager-list>
+</div>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <base href="/">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>AgBiz Climate</title>
+    <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.ico" %}"/>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Dependencies -->
+    {% if view.environment == 'local' %}
+      <!-- AngularJS and additional modules -->
+      <script src="{% static "angular/angular.js" %}"></script>
+      <script src="{% static "angular-ui-router/release/angular-ui-router.js" %}"></script>
+      <script src="{% static "angular-animate/angular-animate.js" %}"></script>
+      <script src="{% static "angular-aria/angular-aria.js" %}"></script>
+
+      <!-- jQuery (needed for Bootstrap) -->
+      <script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+
+      <!-- Angular-Filter -->
+      <script src="{% static "angular-filter/dist/angular-filter.min.js" %}"></script>
+
+      <!-- Angular Material -->
+      <script src="{% static "angular-material/angular-material.js" %}"></script>
+      <link rel="stylesheet" href="{% static "angular-material/angular-material.css" %}"></script>
+
+      <!-- Bootstrap -->
+      <script src="{% static "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" %}"></script>
+      <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+      <link rel="stylesheet" media="screen" href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" />
+      <link rel="stylesheet" href="{% static "flat-ui/css/flat-ui.css" %}" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+      <!-- Angular Chart.js -->
+      <script src="{% static "chart.js/dist/Chart.min.js" %}"></script>
+      <script src="{% static "angular-chart.js/dist/angular-chart.js" %}"></script>
+
+      <!-- PDFMake -->
+      <script src="{% static "pdfmake/build/pdfmake.js" %}"></script>
+      <script src="{% static "pdfmake/build/vfs_fonts.js" %}"></script>
+
+      <!-- html2canvas -->
+      <script src="{% static "html2canvas/dist/html2canvas.js" %}"></script>
+      <script src="{% static "html2canvas/dist/html2canvas.min.js" %}"></script>
+    {% else %}
+      <!-- AngularJS and additional modules -->
+      <script src="{% static "angular/angular.min.js" %}"></script>
+      <script src="{% static "angular-ui-router/release/angular-ui-router.min.js" %}"></script>
+      <script src="{% static "angular-animate/angular-animate.min.js" %}"></script>
+      <script src="{% static "angular-aria/angular-aria.min.js" %}"></script>
+
+      <!-- jQuery (needed for Bootstrap) -->
+      <script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+
+      <!-- Angular-Filter -->
+      <script src="{% static "angular-filter/dist/angular-filter.min.js" %}"></script>
+
+      <!-- Angular Material -->
+      <script src="{% static "angular-material/angular-material.min.js" %}"></script>
+      <link rel="stylesheet" href="{% static "angular-material/angular-material.min.css" %}"></script>
+
+      <!-- Bootstrap -->
+      <script src="{% static "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" %}"></script>
+      <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+      <link rel="stylesheet" media="screen" href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" />
+      <link rel="stylesheet" href="{% static "flat-ui/css/flat-ui.css" %}" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+      <!-- Angular Chart.js -->
+      <script src="{% static "chart.js/dist/Chart.min.js" %}"></script>
+      <script src="{% static "angular-chart.js/dist/angular-chart.js" %}"></script>
+
+      <!-- PDFMake -->
+      <script src="{% static "pdfmake/build/pdfmake.min.js" %}"></script>
+      <script src="{% static "pdfmake/build/vfs_fonts.js" %}"></script>
+
+      <!-- html2canvas -->
+      <script src="{% static "html2canvas/dist/html2canvas.js" %}"></script>
+      <script src="{% static "html2canvas/dist/html2canvas.min.js" %}"></script>
+    {% endif %}
+
+    <!-- Modules -->
+    <script src="{% static "budget/budget.module.js" %}"></script>
+    <script src="{% static "climate/climate.module.js" %}"></script>
+    <script src="{% static "common/common.module.js" %}"></script>
+
+    <!-- Module-level styles -->
+    <link rel="stylesheet" href="{% static "climate/styles/transitions.css" %}" />
+    <link rel="stylesheet" href="{% static "common/styles/styles.css" %}" />
+    <link rel="stylesheet" href="{% static "common/styles/flex.css" %}" />
+
+    <!-- Services -->
+    <script src="{% static "budget/services/budget/budget.service.js" %}"></script>
+    <script src="{% static "climate/services/climate/climate.service.js" %}"></script>
+    <script src="{% static "common/services/common/common.service.js" %}"></script>
+    <script src="{% static "common/services/modal/modal.service.js" %}"></script>
+    <script src="{% static "common/services/error/error.service.js" %}"></script>
+    <script src="{% static "common/services/config/config.service.js" %}"></script>
+
+    <!-- Climate manager -->
+    <script src="{% static "common/climate-manager/manager-list/manager-list.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/climate-manager/manager-list/manager-list.component.css" %}" />
+    <script src="{% static "common/climate-manager/manager-list-item/manager-list-item.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/climate-manager/manager-list-item/manager-list-item.component.css" %}" />
+    <script src="{% static "common/climate-manager/budget-select/budget-select.component.js" %}"></script>
+    <!-- <link rel="stylesheet" href="{% static "common/climate-manager/budget-select/budget-select.component.spec.js" %}" /> -->
+    <!-- Filters -->
+    <script src="{% static "common/filters/capitalize.filter.js" %}"></script>
+
+    <!-- Sidenav -->
+    <script src="{% static "common/sidenav/sidenav.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/sidenav/sidenav.component.css" %}" />
+
+    <!-- Navbar -->
+    <script src="{% static "common/navbar/navbar.component.js" %}"></script>
+    <script src="{% static "common/navbar/contact-modal/ContactModalController.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/navbar/navbar.css" %}" />
+
+    <!--Sidebar-->
+    <script src="{% static "common/sidebar/sidebar.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/sidebar/sidebar.component.css" %}"/>
+
+    <!--index.html-->
+    <script type="text/javascript" src="{% static "common/index/index.js" %}"></script>
+
+
+    <!-- Budget Search -->
+    <script src="{% static "common/budget-search/budget-search.component.js" %}"></script>
+
+    <!-- Budget Select -->
+    <script src="{% static "common/budget-select/budget-select.component.js" %}"></script>
+
+    <!-- Manager List -->
+    <script src="{% static "common/manager/manager-list/manager-list.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/manager/manager-list/manager-list.component.css" %}" />
+
+    <!-- Manager List Item -->
+    <script src="{% static "common/manager/manager-list-item/manager-list-item.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/manager/manager-list-item/manager-list-item.component.css" %}" />
+
+    <!-- Constants -->
+    <script src="{% static "common/constants/crop-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/crop-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/wholefarm-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/wholefarm-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/nursery-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/nursery-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/livestock-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/livestock-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/time-units.constant.js" %}"></script>
+
+    <!-- Climate Routing -->
+    <script src="{% static "climate/routing/climate-routing.config.js" %}"></script>
+    <script src="{% static "climate/routing/climate-budget-editor-route/climate-budget-editor-route.component.js" %}"></script>
+
+    <!-- Climate Manager -->
+    <script src="{% static "climate/climate-manager/climate-manager.component.js" %}"></script>
+
+    <!-- Confirm Button -->
+    <script src="{% static "common/confirm-button/confirm-button.component.js" %}"></script>
+
+    <!-- Climate Create -->
+    <script src="{% static "climate/climate-create/climate-create.component.js" %}"></script>
+
+    <!-- Budget Editor -->
+    <script src="{% static "budget/budget-editor/budget-editor.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "budget/budget-editor/budget-editor.component.css" %}">
+    <script src="{% static "budget/budget-editor/add-cost-modal/AddCostModalController.js" %}"></script>
+    <script src="{% static "budget/budget-editor/add-income-modal/AddIncomeModalController.js" %}"></script>
+    <script src="{% static "budget/budget-editor/budget-unit-modal/BudgetUnitModalController.js" %}"></script>
+
+    <!-- Climate Region Select -->
+    <script src="{% static "climate/climate-region-select/climate-region-select.component.js" %}"></script>
+
+    <!--Climate data impact for short term climate scenarios-->
+    <script src="{% static "climate/climate-data-impact/climate-data-impact.component.js" %}"></script>
+
+    <!-- Climate Variable Select -->
+    <script src="{% static "climate/climate-variable-select/climate-variable-select.component.js" %}"></script>
+    <script src="{% static "climate/climate-variable-select/climate-variable-select-help-modal/ClimateModalController.js" %}"></script>
+
+
+    <!-- Climate Variable Impact -->
+    <script src="{% static "climate/climate-variable-impact/climate-variable-impact.component.js" %}"></script>
+
+    <!-- Climate Total Impact -->
+    <script src="{% static "climate/climate-total-impact/climate-total-impact.component.js" %}"></script>
+
+    <!-- Climate Summary -->
+    <script src="{% static "climate/climate-summary/climate-summary.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "climate/climate-summary/climate-summary.component.css" %}" />
+
+    <!-- CSS -->
+    <!--link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/darkly/bootstrap.min.css"-->
+    <link rel="stylesheet" href="{% static "climate/climate-summary/style.css" %}" >
+    <link rel="stylesheet" href="{% static "climate/climate-data-impact/climate-data-impact.component.css" %}" >
+    <!-- FIXME: Move to REST API endpoint -->
+    <script>
+      window.__config = {
+        environment: "{{ view.environment }}",
+      };
+    </script>
+
+  </head>
+  <body>
+
+    <div ng-app="climateModule">
+      <nav>
+        <navbar></navbar>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row">
+          <sidebar></sidebar>
+          <div id="main" role="main" class="col-md-10 main-monitor">
+            <div class="ui-view-container">
+              <div ui-view>Loading...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

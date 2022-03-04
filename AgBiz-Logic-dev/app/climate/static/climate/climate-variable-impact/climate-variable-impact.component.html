@@ -1,0 +1,154 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h4>How will <i ng-bind="$ctrl.current_factor.name"></i> affect your enterprise?</h4>
+
+<div class="row">
+  <ul class="nav nav-tabs">
+    <li ng-repeat-start="factor in $ctrl.climate_budget.climate_factors" ng-if="$first" class="active">
+  		<a href="#{{$ctrl.replace(factor.name)}}" data-toggle="tab" ng-click="$ctrl.showChart(factor)">{{factor.name}}</a>
+  	</li>
+    <li ng-repeat-end ng-if="!$first">
+      <a href="#{{$ctrl.replace(factor.name)}}" data-toggle="tab" ng-click="$ctrl.showChart(factor)">{{factor.name}}</a>
+    </li>
+  </ul>
+  <div id="$ctrl.replace($ctrl.current_factor.name)" class="tab-content">
+    <br>
+      <div ng-if="$ctrl.current_factor.name!=='Climate Focus Groups' && $ctrl.current_factor.name!=='Crop Models'" class="tab-pane active" role="tabpanel">
+          <!--div class="panel panel-default">
+            <div class="panel-body"-->
+              <div
+                class="col-md-6"
+                ng-if="$ctrl.projection_data.chart_type == 'line'">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  style="height: 400px"
+                  chart-series="$ctrl.projection_data.series"
+                  chart-data="$ctrl.projection_data.data"
+                  chart-labels="$ctrl.projection_data.labels"
+                  chart-colors="$ctrl.colors"
+                  chart-options="$ctrl.options_line"
+                  chart-dataset-override="True">
+                </canvas>
+
+
+                <button  id="modal-form-btn" style="width: 100%" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                 <h7> Show more data </h7>
+                </button>
+                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">{{$ctrl.projection_data.series[0]}}</th>
+                              <th scope="col">{{$ctrl.projection_data.series[1]}}</th>
+                              <th scope="col">{{$ctrl.projection_data.series[2]}}</th>
+                            </tr>
+                          </thead>
+                          <tbody ng-repeat="(key, value) in $ctrl.projection_data.labels">
+                            <tr>
+                              <th scope="row">{{value}}</th>
+                              <td>{{$ctrl.projection_data.data[0][key]}}</td>
+                              <td>{{$ctrl.projection_data.data[1][key]}}</td>
+                              <td>{{$ctrl.projection_data.data[2][key]}}</td>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+              </div>
+              <div
+                class="col-md-6"
+                ng-if="$ctrl.projection_data.chart_type == 'bar'">
+                <canvas
+                  id="bar" class="chart chart-bar"
+                  style="height: 400px"
+                  chart-series="$ctrl.projection_data.series"
+                  chart-data="$ctrl.projection_data.data"
+                  chart-labels="$ctrl.projection_data.labels"
+                  chart-colors="$ctrl.colors"
+                  chart-options="$ctrl.options">
+                </canvas>
+                <br>
+                <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">{{$ctrl.projection_data.labels[0]}}</th>
+                          <th scope="col">{{$ctrl.projection_data.labels[1]}}</th>
+                          <th scope="col">{{$ctrl.projection_data.labels[2]}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">{{$ctrl.options['scales']['yAxes'][0]['scaleLabel']['labelString']}}</th>
+                          <td>{{$ctrl.projection_data.data[0]}}</td>
+                          <td>{{$ctrl.projection_data.data[1]}}</td>
+                          <td>{{$ctrl.projection_data.data[2]}}</td>
+                        </tr>
+                      </tbody>
+                </table>
+              </div>
+
+              <div class="col-md-6">
+                <form name="$ctrl.form">
+                  <div class="row">
+                    <b class="col-md-12">
+                      Based on this information, how do <b>YOU</b> think these climate changes will affect your yields or quality?
+                    </b>
+                  </div>
+                  <div class="input-group col-md-4">
+                    <input
+                      id="user-estimate" class="form-control"
+                      name="user_estimate"
+                      placeholder="0.0"
+                      type="text"
+                      min="-100" max="100" step="0.1"
+                      onfocus="if(this.value == 0)this.value = '';"
+                      onblur="if(this.value == '')this.value = 0.0;"
+                      ng-pattern="/^[-]{0,1}[0-9]{1,2}[0]{0,1}(\.[0-9]{1})?$/"
+                      ng-model="$ctrl.current_factor.user_estimate"
+                      ng-change="$ctrl.updateFactor()"
+                      required>
+                    <span class="input-group-addon">% Change</span>
+                  </div>
+                  <span
+                    style="color: red;"
+                    ng-show="!$ctrl.form.user_estimate.$valid">
+                  Please enter a percentage with 1 decimal place (ex. 20.0)
+                </span>
+                </form>
+              </div>
+          <!--/div>
+        </div-->
+      </div>
+      <div ng-if="$ctrl.current_factor.name=='Climate Focus Groups' || $ctrl.current_factor.name=='Crop Models'" class="tab-pane active" role="tabpanel">
+        <h3 style="text-align: center;">Coming Soon!</h3>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-disabled="!$ctrl.form.user_estimate.$valid || $ctrl.checked_variables.length!==3"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

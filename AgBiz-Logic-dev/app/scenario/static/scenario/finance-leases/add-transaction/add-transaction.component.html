@@ -1,0 +1,110 @@
+<h4 style="display:inline;" ng-if="$ctrl.operation=='edit'">Edit</h4>
+<h4 style="display:inline;" ng-if="$ctrl.operation=='new'">Add</h4>
+<h4 style="display:inline;" ng-if="$ctrl.transaction_type=='future_transaction'"> a New Transaction</h4>
+<h4 style="display:inline;" ng-if="$ctrl.transaction_type=='leases'"> a Current Lease</h4>
+<h4 style="display:inline;" ng-if="$ctrl.transaction_type=='loans'"> a Current Capital Loan</h4>
+
+<br />
+
+<ul class="col-md-10 col-md-offset-1">
+  <!-- <li class="active">
+    <a href="#loans" data-toggle="tab">Loans</a>
+	</li> -->
+
+
+</ul>
+
+
+  <div id="leases">
+    <form class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="table-responsive">
+          <table class="table table-borderless">
+              <tr>
+                <td>Describe Transaction</td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      ng-model="$ctrl.transaction.financed_through">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Annual Payment</td>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input
+                      class="form-control"
+                      type="ng-currency"
+                      ng-model="$ctrl.transaction.annual_payment">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Years Before Lease Expires</td>
+                <td>
+                  <div class="input-group">
+                    <input
+                      class="form-control text-right"
+                      type="number"
+                      ng-model="$ctrl.transaction.years_before_leases_expired">
+                    <span class="input-group-addon">Year(s)</span>
+                  </div>
+                </td>
+              </tr>
+          </table>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Asset Class</h3>
+            </div>
+            <div class="panel-body">
+              <div class="radio_group">
+                <label class="assets-option">
+                  <input type="radio" ng-model="$ctrl.transaction.asset_class" value="Intermediate Assets" class="assets-option-input">
+                  Intermediate Assets
+                </label><br />
+                <label>
+                  <input type="radio" ng-model="$ctrl.transaction.asset_class" value="Facilities and Other Improvements">
+                  Long Term Assets - Facilities and Other Improvements
+                </label><br />
+                <label>
+                  <input type="radio" ng-model="$ctrl.transaction.asset_class" value="Real Estate" disabled=True>
+                  Long Term Assets - Real Estate
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+<br />
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-primary"
+      ng-click="$ctrl.cancel()">
+      Cancel
+    </button>
+  </div>
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      style="width: 110%;"
+      ng-click="$ctrl.proceed()"
+      ng-if="$ctrl.operation=='new'">
+      Add
+    </button>
+    <button
+      class="btn btn-success"
+      style="width: 110%;"
+      ng-click="$ctrl.proceed()"
+      ng-if="$ctrl.operation=='edit'">
+      Save
+    </button>
+  </div>
+</div>

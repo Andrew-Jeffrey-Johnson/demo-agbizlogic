@@ -1,0 +1,376 @@
+{
+    "Snow Water Equivalent (April 1)": {
+        "chart-type": "bar", 
+        "historic-max": [
+            5.1
+        ], 
+        "historic-mean": [
+            5.1
+        ], 
+        "historic-min": [
+            5.2
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Snow Water Equivalent (April 1)", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Warm Days Frequency": {
+        "chart-type": "bar", 
+        "historic-max": [
+            9.0
+        ], 
+        "historic-mean": [
+            3.0
+        ], 
+        "historic-min": [
+            8.0
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Warm Days Frequency", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Evaporation": {
+        "chart-type": "bar", 
+        "historic-max": [
+            19.6
+        ], 
+        "historic-mean": [
+            18.4
+        ], 
+        "historic-min": [
+            19.5
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Evaporation", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Mean Temperature": {
+        "chart-type": "bar", 
+        "historic-max": [
+            43.8
+        ], 
+        "historic-mean": [
+            41.1
+        ], 
+        "historic-min": [
+            43.5
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Mean Temperature", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Coldest Night Temperature": {
+        "chart-type": "bar", 
+        "historic-max": [
+            -6.9
+        ], 
+        "historic-mean": [
+            -10.1
+        ], 
+        "historic-min": [
+            -7.8
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Coldest Night Temperature", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Hottest Day Temperature": {
+        "chart-type": "bar", 
+        "historic-max": [
+            85.7
+        ], 
+        "historic-mean": [
+            82.5
+        ], 
+        "historic-min": [
+            85.2
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Hottest Day Temperature", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "First Fall Freeze": {
+        "chart-type": "bar", 
+        "historic-max": [
+            266.0
+        ], 
+        "historic-mean": [
+            257.0
+        ], 
+        "historic-min": [
+            264.0
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "First Fall Freeze", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Last Spring Freeze": {
+        "chart-type": "bar", 
+        "historic-max": [
+            146.0
+        ], 
+        "historic-mean": [
+            154.0
+        ], 
+        "historic-min": [
+            147.0
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Last Spring Freeze", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Maximum Temperature": {
+        "chart-type": "bar", 
+        "historic-max": [
+            57.5
+        ], 
+        "historic-mean": [
+            54.7
+        ], 
+        "historic-min": [
+            57.3
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Maximum Temperature", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Minimum Temperature": {
+        "chart-type": "bar", 
+        "historic-max": [
+            30.1
+        ], 
+        "historic-mean": [
+            27.5
+        ], 
+        "historic-min": [
+            29.8
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Minimum Temperature", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Potential Evapotranspiration (Spring)": {
+        "chart-type": "bar", 
+        "historic-max": [
+            11.9
+        ], 
+        "historic-mean": [
+            10.4
+        ], 
+        "historic-min": [
+            11.8
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Potential Evapotranspiration (Spring)", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Growing Degree Days Total (Base 32°F)": {
+        "chart-type": "bar", 
+        "historic-max": [
+            5100.0
+        ], 
+        "historic-mean": [
+            4159.0
+        ], 
+        "historic-min": [
+            4784.0
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Growing Degree Days Total (Base 32°F)", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Growing Degree Days Total (Base 37.4°F)": {
+        "chart-type": "bar", 
+        "historic-max": [
+            3751.0
+        ], 
+        "historic-mean": [
+            2969.0
+        ], 
+        "historic-min": [
+            3507.0
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Growing Degree Days Total (Base 37.4°F)", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Growing Degree Days Total (Base 41°F)": {
+        "chart-type": "bar", 
+        "historic-max": [
+            2971.0
+        ], 
+        "historic-mean": [
+            2289.0
+        ], 
+        "historic-min": [
+            2769.0
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Growing Degree Days Total (Base 41°F)", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Growing Degree Days Total (Base 50°F)/10C": {
+        "chart-type": "bar", 
+        "historic-max": [
+            1412.0
+        ], 
+        "historic-mean": [
+            972.0
+        ], 
+        "historic-min": [
+            1296.0
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Growing Degree Days Total (Base 50°F)/10C", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Precipitation": {
+        "chart-type": "bar", 
+        "historic-max": [
+            22.3
+        ], 
+        "historic-mean": [
+            21.7
+        ], 
+        "historic-min": [
+            22.3
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Precipitation", 
+        "series": [
+            "1"
+        ]
+    }, 
+    "Total Soil Moisture (Spring)": {
+        "chart-type": "bar", 
+        "historic-max": [
+            10.6
+        ], 
+        "historic-mean": [
+            10.7
+        ], 
+        "historic-min": [
+            10.7
+        ], 
+        "label_unit": "bar", 
+        "labels": [
+            "Modeled Historic Baseline", 
+            "Modeled Low Future", 
+            "Modeled High Future"
+        ], 
+        "name": "Total Soil Moisture (Spring)", 
+        "series": [
+            "1"
+        ]
+    }
+}

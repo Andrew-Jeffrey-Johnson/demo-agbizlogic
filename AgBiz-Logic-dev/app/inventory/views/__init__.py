@@ -1,0 +1,1 @@
+from .inventory_home_view import InventoryHomeView

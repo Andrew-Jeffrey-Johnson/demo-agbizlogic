@@ -1,0 +1,101 @@
+<h4>Farm Unit Adjustment</h4>
+
+<p>Please convert all different units into one same unit. For example, 50 heads could be 1 acre.</p>
+
+<hr />
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <form class="form-inline">
+      <div class="form-group">
+        <label>Please choose a unit</label>
+        <select
+          class="form-control"
+          name="unit"
+          ng-options="key for (key, val) in $ctrl.unit_dic"
+          data-style="btn-default"
+          ng-model="$ctrl.selected_unit"
+          required>
+          <option value="">Select</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Ratio</div>
+      <div class="panel-body">
+        <center ng-if="$ctrl.selected_unit['unit']==undefined"><p>Please select a unit</p></center>
+        <form name="ratioForm" class="form-inline" ng-if="$ctrl.selected_unit['unit']!= undefined" ng-repeat="(key, val) in $ctrl.unit_dic">
+          <div class="form-group" ng-if="key!=$ctrl.selected_unit['unit']">
+            <label>
+              <span ng-bind="$ctrl.selected_unit['unit']"></span> : <span ng-bind="key"></span>
+            </label>
+            <input
+              name="selected_input"
+              type="number"
+              ng-model="val['selected']"
+              ng-change="$ctrl.validate()"
+              required> :
+            <input
+              name="converted_input"
+              type="number"
+              ng-model="val['converted']"
+              ng-change="$ctrl.validate()"
+              required>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading" ng-bind="$ctrl.plan.title"></div>
+      <table class="table">
+        <tr>
+          <th>Budget Title</th>
+          <th>Amount</th>
+          <th>Unit</th>
+          <th ng-if="$ctrl.selected_unit!=undefined">Amount</th>
+          <th ng-if="$ctrl.selected_unit!=undefined">Unit</th>
+        </tr>
+        <tr ng-repeat="budget in $ctrl.plan.plan_budgets">
+          <td ng-bind="budget.title"></td>
+          <td width="81" ng-bind="budget.farm_unit_quantity" style="text-align:right;"></td>
+          <td width="100" ng-bind="budget.farm_unit"></td>
+          <td width="100" ng-if="$ctrl.selected_unit!=undefined">
+            <!--Show the calculation result in a different color or in strong-->
+            <p ng-bind="budget.farm_unit_quantity * $ctrl.unit_dic[budget.farm_unit]['selected'] /$ctrl.unit_dic[budget.farm_unit]['converted']"></p>
+          </td>
+          <td width="100" ng-if="$ctrl.selected_unit!=undefined" ng-bind="$ctrl.selected_unit['unit']">
+          </td>
+        </tr>
+      </table>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-primary"
+      ng-click="$ctrl.cancel()">
+      Cancel
+    </button>
+  </div>
+  <div class="col-md-2 pull-right">
+    <button
+      class="btn btn-success"
+      ng-disabled="$ctrl.input_invalid || $ctrl.selected_unit==undefined"
+      ng-click="$ctrl.proceed()">
+      Confirm
+    </button>
+  </div>
+</div>

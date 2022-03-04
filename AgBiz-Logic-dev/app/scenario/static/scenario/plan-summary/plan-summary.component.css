@@ -1,0 +1,13 @@
+.summary-budget-item {
+  transition: all 0.2s ease;
+}
+
+.summary-budget-item:hover {
+  background: #83bef0;
+  cursor: pointer;
+}
+
+.fixed-panel {
+  max-height: 550px;
+  overflow-y: auto;
+}

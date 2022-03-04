@@ -1,0 +1,177 @@
+[
+	{
+		"model": "auth.user",
+		"pk": 2,
+		"fields": {
+			"username": "ClimateTestUser",
+			"first_name": "ClimateTestUser",
+			"last_name": "",
+			"is_active": true,
+			"is_superuser": false,
+			"is_staff": false,
+			"last_login": "2016-05-24T05:10:57.423Z",
+			"groups": [],
+			"user_permissions": [],
+			"password": "pbkdf2_sha256$20000$bpSXCAumHC7U$MRjR8n3OiPJq1Fi16MiOYz6h3RBoCUD291KocZbQ/mY=",
+			"email": "",
+			"date_joined": "2016-05-24T04:57:04.401Z"
+		}
+	},
+	{
+		"model": "registration.business",
+        "pk": 1,
+        "fields": {
+            "city": "Corvallis",
+            "name": "AgBiz Logic",
+            "address1": "1234 Fake Address",
+            "address2": "",
+            "zipcode": "97331",
+            "state": "OR",
+            "user": 2,
+            "primary_business": "Producer",
+            "secondary_business": "[]",
+            "industry": "Agriculture"
+        }
+    },
+    {
+        "model": "registration.schedulef",
+        "pk": 1,
+        "fields": {
+            "net_profit": "171000",
+            "line_31": "0",
+            "line_30": "2,000",
+            "line_1_c": "180,000",
+            "line_1_b": "20,000",
+            "line_1_a": "200,000",
+            "line_15": "0",
+            "line_14": "0",
+            "line_17": "30,000",
+            "line_16": "0",
+            "line_11": "2,000",
+            "line_10": "2,000",
+            "line_13": "0",
+            "line_12": "0",
+            "year": "2015",
+            "line_19": "2,000",
+            "line_18": "0",
+            "line_8": "0",
+            "line_29": "0",
+            "line_2": "10,000",
+            "line_7": "12,000",
+            "line_20": "0",
+            "line_22": "3,000",
+            "line_23": "0",
+            "line_25": "0",
+            "line_26": "2,000",
+            "line_27": "0",
+            "line_28": "0",
+            "line_21_b": "0",
+            "line_32_d": "0",
+            "line_32_e": "0",
+            "line_32_b": "0",
+            "line_32_c": "0",
+            "line_32_a": "0",
+            "other_expense_1": "Other Expenses",
+            "user": 2,
+            "total_expenses": "43,000",
+            "line_21_a": "0",
+            "other_expense_3": "Other Expenses",
+            "line_4_b": "0",
+            "line_4_a": "10,000",
+            "line_3_a": "10,000",
+            "line_24_b": "0",
+            "gross_income": "214,000",
+            "line_3_b": "0",
+            "other_expense_4": "Other Expenses",
+            "line_6_d": "0",
+            "line_32_f": "0",
+            "line_6_a": "0",
+            "line_6_b": "0",
+            "line_5_c": "12,000",
+            "line_5_b": "12,000",
+            "line_5_a": "0",
+            "other_expense_2": "Other Expenses",
+            "other_expense_5": "Other Expenses",
+            "line_24_a": "0",
+            "other_expense_6": "Other Expenses"
+        }
+    },
+	{
+		"model": "allocate.BusinessData",
+		"pk": 3,
+		"fields": {
+			"user": 2,
+			"business_type": "Crop",
+
+			"income_sales": 2000,
+			"income_other": 200,
+
+			"expenses_chemicals": 200,
+			"expenses_gasoline": 200,
+			"expenses_labor": 200
+		}
+	},
+	{
+		"model": "allocate.BusinessData",
+		"pk": 4,
+		"fields": {
+			"user": 2,
+			"business_type": "Livestock",
+
+			"income_sales": 3000,
+
+			"expenses_feed": 300
+		}
+	},
+	{
+		"model": "allocate.EnterpriseData",
+		"pk": 4,
+		"fields": {
+			"user": 2,
+			"enterprise": "Livestock",
+			"category_1": "Beef Cattle",
+			"category_2": "Weaning",
+			"market": "GMO",
+
+			"income_sales": 2000,
+
+			"expenses_feed": 200
+		}
+	},
+	{
+		"model": "allocate.EnterpriseData",
+		"pk": 5,
+		"fields": {
+			"user": 2,
+			"enterprise": "Crop",
+			"category_1": "Cereal Grains",
+			"category_2": "Wheat",
+			"category_3": "Soft White Winter",
+			"market": "GMO",
+
+			"income_sales": 1000,
+			"income_other": 100,
+
+			"expenses_chemicals": 100,
+			"expenses_gasoline": 100,
+			"expenses_labor": 100
+		}
+	},
+	{
+		"model": "allocate.EnterpriseData",
+		"pk": 6,
+		"fields": {
+			"user": 2,
+			"enterprise": "Crop",
+			"category_1": "Cereal Grains",
+			"category_2": "Barley",
+			"market": "GMO",
+
+			"income_sales": 500,
+
+			"expenses_chemicals": 50,
+			"expenses_gasoline": 50,
+			"expenses_labor": 50
+		}
+	}
+]

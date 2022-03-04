@@ -1,0 +1,69 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<div class="content-padding">
+  <h5>Plan Space Allocation</h5>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">Allocate Space for Each Budget</h6>
+  </div>
+  <div class="panel-body">
+    The returns and costs associated with most enterprises assume 100 percent of the land
+    or building space is used to develop the enterprise. Now you can adjust all costs in a
+    Budget to account for this unused space, if applicable.
+  </div>
+</div>
+<form name="myform" class="form-inline">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-4">Budget Name</div>
+      <div class="col-md-3">Total space available in this plan</div>
+      <div class="col-md-2">Actual space used/occupied in this plan</div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <form name="$ctrl.form">
+    <div
+      class="row"
+      ng-repeat="plan_budget in $ctrl.plan.plan_budgets">
+      <plan-space-item
+        name="planSpaceItem"
+        plan-budget="plan_budget"
+        on-change="$ctrl.updateData(budget_id, space_units, total_space_available, total_space_used,valid)">
+      </plan-space-item>
+    </div>
+    </form>
+
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="col-md-1 pull-right">
+    <h1>{{$ctrl.form.$valid}}</h1>
+    <h1>{{planSpaceForm.totalspaceavailable.$invalid}}</h1>
+    <button
+      class="btn btn-success"
+      ng-disabled="$ctrl.space_error || myform.$invalid"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>
+</form>

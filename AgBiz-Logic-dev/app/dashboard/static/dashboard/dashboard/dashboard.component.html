@@ -1,0 +1,227 @@
+<!-- New users -->
+<div ng-if="$ctrl.completed_steps > 0 && $ctrl.completed_steps < 7" style="width: 100%; height: 100%; margin: 0 auto;">
+    <div
+            class="panel panel-default">
+        <div class="panel-heading">
+            <h1 class="panel-title">Welcome, <span ng-bind="$ctrl.user.first_name"></span></h1>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h6>Continue with these steps to create your first <i>AgBiz Logic</i> Budget, which you will later
+                        use with the
+                        <i>AgBiz Logic</i> decision-support tools.</h6>
+                </div>
+            </div>
+
+            <hr class="col-md-10 col-md-offset-1">
+
+            <div class="row">
+                <div class="col-md-2">
+                    <b>You have completed:</b>
+                    <div class="row">
+                        <div
+                                class="text-left completed-step"
+                                uib-tooltip="You successfully created your account as {$ $ctrl.user.username $}"
+                                tooltip-placement="right">
+            <span ng-class="{
+              'glyphicon': true,
+              'glyphicon-ok': true,
+              }"
+                  style="color: green;">
+            </span>
+                            Account Creation
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div
+                                class="text-left completed-step"
+                                uib-tooltip="Getting your data into the system for further allocation"
+                                tooltip-placement="right">
+            <span ng-class="{
+              'glyphicon': true,
+              'glyphicon-ok': $ctrl.completed_steps > 1,
+              }"
+                  style="color: green;">
+            </span>
+                            Data Collection
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div
+                                class="text-left completed-step"
+                                uib-tooltip="Allocating your business data into Gold Standard categories"
+                                tooltip-placement="right">
+            <span ng-class="{
+              'glyphicon': true,
+              'glyphicon-ok': $ctrl.completed_steps > 3,
+              }"
+                  style="color: green;">
+            </span>
+                            Business Allocation
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div
+                                class="text-left completed-step"
+                                uib-tooltip="Further allocation for each enterprise"
+                                tooltip-placement="right">
+            <span ng-class="{
+              'glyphicon': true,
+              'glyphicon-ok': $ctrl.completed_steps > 5,
+              }"
+                  style="color: green;">
+            </span>
+                            Enterprise Allocation
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-1">
+                    <div class="row">
+                        <b>Next Step:</b>
+                    </div>
+
+                    <div class="row">
+                        <span ng-bind-html="$ctrl.next_step_instructions[$ctrl.next_step]"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="pull-right">
+                            <button
+                                    class="btn btn-primary"
+                                    ng-click="$ctrl.proceed()">
+                                Next Step
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+            class="row"
+            ng-if="$ctrl.dashboard_modified == true">
+        <div
+                class="col-md-1 pull-right"
+                style="margin-right: 38px;">
+            <button
+                    class="btn btn-success"
+                    uib-popover="Dashboard Saved!"
+                    ng-click="$ctrl.saveDashboard()">
+                Save Dashboard
+            </button>
+        </div>
+    </div>
+</div>
+
+<div ng-if="$ctrl.completed_steps >= 7" style="height: 100%; margin: 0 auto;">
+
+    <!-- Tiles -->
+    <div
+            class="row"
+            ng-if="$ctrl.next_step === 'agbiz'" align='center' style="width:70%; margin-left:auto; margin-right:auto; height: 90%;">
+        <h3> Your <i>AgBiz Logic </i>Dashboard</h3>
+
+        <h6>Welcome, {{ $ctrl.user.username }} </h6>
+
+        <p><b>What would you like to do next?</b></p>
+
+        <div class="column" style="width:100%;">
+
+          <div class="row">
+            <div align="right" class="column left" style="width:40%">
+                <a href="/inventory/" style="color:#005ce6;">Your Inventory:</a>
+            </div>
+            <div align="left" class="column right" style="width:60%">
+              View your existing budgets, plans and scenarios.
+            </div>
+          </div>
+
+          <div class="row">
+            <div align="right" class="column left" style="width:40%">
+                <a href="/budget/" style="color:#005ce6;">Budget Manager:</a>
+            </div>
+            <div align="left" class="column right" style="width:60%">
+              Create new budgets or manage existing budgets.
+              <i class="fas fa-video fa-sm" style="color:black; display:none;"></i>
+            </div>
+          </div>
+
+          <div class="row">
+            <div align="right" class="column left" style="width:40%">
+                <a href="/scenario/#/plan-manager" style="color:#005ce6;">Plan Manager:</a>
+            </div>
+            <div align="left" class="column right" style="width:60%">
+              Create new plans or manage existing plans.
+              <i class="fas fa-video fa-sm" style="color:black; display:none;"></i>
+            </div>
+          </div>
+
+          <div class="row">
+            <div align="right" class="column left" style="width:40%">
+                <a href="/scenario/#/scenario-manager?module=scenario" style="color:#005ce6;">Scenario Manager:</a>
+            </div>
+            <div align="left" class="column right" style="width:60%">
+              Create new scenarios or manage existing scenarios.
+              <i class="fas fa-video fa-sm" style="color:black; display:none;"></i>
+            </div>
+          </div>
+
+          <div class="row">
+            <div align="right" class="column left" style="width:40%">
+                <a href="/scenario/#/scenario-manager?module=profit" style="color:#005ce6;"><i>AgBizProfit:</i></a>
+            </div>
+            <div align="left" class="column right" style="width:60%">
+              Perform a profitability analysis on your investments.
+              <i class="fas fa-video fa-sm" style="color:black; display:none;"></i>
+            </div>
+          </div>
+
+          <div class="row">
+            <div align="right" class="column left" style="width:40%">
+                <a href="/climate/" style="color:#005ce6;"><i>AgBizClimate:</i></a>
+            </div>
+            <div align="left" class="column right" style="width:60%">
+              Assess impact to net returns from seasonal climate forecasts or future climate projections.
+              <i class="fas fa-video fa-sm" style="color:black; display:none;"></i>
+            </div>
+          </div>
+
+          <div class="row">
+            <div align="right" class="column left" style="width:40%">
+                <a href="/scenario/#/scenario-manager?module=finance" style="color:#005ce6;"><i>AgBizFinance:</i></a>
+            </div>
+            <div align="left" class="column right" style="width:60%">
+              Conduct a whole farm financial analysis.
+              <i class="fas fa-video fa-sm" style="color:black; display:none;"></i>
+            </div>
+          </div>
+
+          <div class="row">
+            <div align="right" class="column left" style="width:40%">
+                <i>AgBizLease:</i>
+            </div>
+            <div align="left" class="column right" style="width:60%">
+              Establish an equitable lease.
+              <i class="fas fa-video fa-sm" style="color:black; display:none;"></i>
+            </div>
+          </div>
+
+          <div class="row">
+            <div align="right" class="column left" style="width:40%">
+                <i>AgBizEnvironment:</i>
+            </div>
+            <div align="left" class="column right" style="width:60%">
+              Measure economic and environmental trade-offs.
+              <i class="fas fa-video fa-sm" style="color:black; display:none;"></i>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</div>
+
+<!--<footer>-->
+    <!--<span style="font-size: 15px;">Copyright © <script>document.write(new Date().getFullYear())</script> <i>AgBiz Logic.</i> All Rights Reserved</span>-->
+<!--</footer>-->

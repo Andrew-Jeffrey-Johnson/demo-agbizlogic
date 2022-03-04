@@ -1,0 +1,389 @@
+AgBiz Logic API: Data is always in season.
+
+Notes: |
+  - Any methods not specified should return "HTTP 400 - Method not allowed"
+  - Parameters use the query parameter form "/resource?queryparam=value"
+  - URL parameters are represented as "/resource/{value}"
+  - No trailing slashes (it's a setting in Django Rest Framework (DRF), may require some tweaking)
+  - Much of the error behavior is already handled by DRF, just confirm it works.
+  - Try to use the existing ViewSets, just add new action methods.
+  - "Restrict to admin" means only User objects with is_superuser flag can perform this action. Return HTTP 401 otherwise.
+
+Host: agbizlogic.com
+
+Base Path: /api/v1
+
+Paths:
+
+  /schedulef
+    description: Collection resource
+    model: ScheduleF
+
+    GET: Return full list of all objects in table with all fields. Restrict to admin.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, year, total_expenses and net_profit fields. If false return all fields.
+
+    POST: Creates a new entry in table. Requires all fields except user (auto assigned using request user).
+
+
+
+  /schedulef/{id}
+    description: Instance resource.
+    model: ScheduleF
+
+    GET: Return all fields of object with given id. If none exist, return none.
+
+    PUT: Update provided fields of object with given id.
+
+    DELETE: Destroy object with given id. If none exist, return HTTP 404 - Not Found.
+
+
+  /businessdata
+    description: Collection resource.
+    model: BusinessData
+
+    GET: Return full list of all objects in table with all fields. Restrict to admin.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, business_type, total_expenses and total_income fields. If false return all fields.
+
+    POST: Creates a new entry in table. Requires all fields except user (auto assigned using request user).
+
+  /businessdata/{id}
+    description: Instance resource.
+    model: BusinessData
+
+    GET: Return all fields of object with given id. If none exist, return none.
+
+    PUT: Update provided fields of object with given id.
+
+    DELETE: Destroy object with given id. If none exist, return HTTP 404 - Not Found.
+
+  /enterprisedata
+    description: Collection resource.
+    model: EnterpriseData
+
+    GET: Return full list of all objects in table with all fields. Restrict to admin.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, year, total_expenses and total_income fields. If false return all fields.
+
+      - name: parentbusiness
+        type: int
+        required: false
+        description: Return all objects with the inverse relationship to the given id. If none exist, return none.
+
+
+    POST: Creates a new entry in table. Requires all fields except user (auto assigned using request user).
+
+  /enterprisedata/{id}
+    description: Instance resource.
+    model: EnterpriseData
+
+    GET: Return all fields of object with given id. If none exist, return none.
+
+    PUT: Update provided fields of object with given id.
+
+    DELETE: Destroy object with given id. If none exist, return HTTP 404 - Not Found.
+
+  /budget
+    description: Collection resource.
+    model: Budget
+
+    GET: Return full list of all objects in table with all fields. Restrict to admin.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, title, notes, total_costs and total_gross_income fields. If false return all fields.
+
+    POST: Creates a new entry in table. Requires all fields except user (auto assigned using request user).
+
+  /budget/{id}
+    description: Instance resource.
+    model: Budget
+
+    GET: Return all fields of object with given id. If none exist, return none.
+
+    PUT: Update provided fields of object with given id.
+
+    DELETE: Destroy object with given id. If none exist, return HTTP 404 - Not Found.
+
+  /budget/generate
+    description: Create Budget objects for every EnterpriseData object associated with request user (or if given).
+    model: Budget
+
+    POST: |
+      No body content required. Create Budget objects for every EnterpriseData object associated with request user.
+      Return HTTP 201 if objects created successfully.
+      If no EnterpriseData objects, return HTTP 400.
+
+    - parameters:
+      - name: userid
+        type: int
+        required: false
+        description: Create objects for User with given id, overriding request user. If none, return HTTP 400. Restrict to admin.
+
+  /budget/combine
+    description: Combine two or more Budget objects to create a new Budget with all the CostItem and IncomeItem objects from all.
+    model: Budget
+
+    POST: |
+      Given an array of id's of existing Budget objects, create new Budget object and new IncomeItem and CostItem objects associated with it.
+      Return newly created Budget.
+      If id's represent Budget objects not associated with request user, return HTTP 400.
+
+    - parameters:
+      - name: userid
+        type: int
+        required: false
+        description: Create object for User with given id, overriding request user. If none, return HTTP 400. Restrict to admin.
+
+      - name: title
+        type: string
+        required: true
+        description: Specifies the title field of the new Budget to be created
+
+      - name: enterprise
+        type: string
+        required: true
+        description: Specifies the enterprise field of the new Budget to be created
+
+      - name: descriptor1
+        type: string
+        required: true
+        description: Specifies the descriptor1 field of the new Budget to be created
+
+      - name: descriptor1
+        type: string
+        required: true
+        description: Specifies the descriptor1 field of the new Budget to be created
+
+      - name: descriptor2
+        type: string
+        required: true
+        description: Specifies the descriptor2 field of the new Budget to be created
+
+      - name: descriptor3
+        type: string
+        required: true
+        description: Specifies the descriptor3 field of the new Budget to be created
+
+      - name: descriptor4
+        type: string
+        required: true
+        description: Specifies the descriptor4field of the new Budget to be created
+
+      - name: descriptor5
+        type: string
+        required: true
+        description: Specifies the descriptor5 field of the new Budget to be created
+
+      - name: descriptor6
+        type: string
+        required: true
+        description: Specifies the descriptor6 field of the new Budget to be created
+
+      - name: state
+        type: string
+        required: true
+        description: Specifies the state field of the new Budget to be created
+
+      - name: region
+        type: string
+        required: false
+        description: Specifies the region field of the new Budget to be created
+
+      - name: timeunit
+        type: string
+        required: true
+        description: Specifies the timeunit field of the new Budget to be created
+
+      - name: timevalue
+        type: string
+        required: true
+        description: Specifies the timevalue field of the new Budget to be created
+
+      - name: farmunit
+        type: string
+        required: true
+        description: Specifies the farmunit field of the new Budget to be created
+
+      - name: farmunitquantity
+        type: string
+        required: true
+        description: Specifies the farmunitquantity field of the new Budget to be created
+
+  /costitem
+    description: Collection resource.
+    model: CostItem
+
+    GET: Return full list of all objects in table with all fields. Restrict to admin.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, name, notes, cost_type, and cost_total fields. If false return all fields.
+
+  /costitem/variable
+    description: Collection resource for CostItem objects with cost_type of 'variable'.
+    model: CostItem
+
+    GET: Return full list of all objects in table with all fields. Restrict to admin.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, name, notes, cost_type, and cost_total fields. If false return all fields.
+
+    POST: Create new entry in table. Require all fields except user. Check that cost_type is 'variable'.
+
+  /costitem/variable/{id}
+    description: Instance resource for CostItem objects with cost_type of 'variable'.
+    model: CostItem
+
+    GET: Return all fields of object with given id. If none exist, return none.
+
+    PUT: Update provided fields of object with given id.
+
+    DELETE: Destroy object with given id. If none exist, return HTTP 404 - Not Found.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, name, notes, cost_type, and cost_total fields. If false return all fields.
+
+    POST: Create new entry in table. Require all fields except user. Check that cost_type is 'variable'.
+
+  /costitem/fixed
+    description: Collection resource for CostItem objects with cost_type of 'fixed'.
+    model: CostItem
+
+    GET: Return full list of all objects in table with all fields. Restrict to admin.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, name, notes, cost_type, and cost_total fields. If false return all fields.
+
+    POST: Create new entry in table. Require all fields except user. Check that cost_type is 'fixed'.
+
+  /costitem/fixed{id}
+    description: Collection resource for CostItem objects with cost_type of 'fixed'.
+    model: CostItem
+
+    GET: Return all fields of object with given id. If none exist, return none.
+
+    PUT: Update provided fields of object with given id.
+
+    DELETE: Destroy object with given id. If none exist, return HTTP 404 - Not Found.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, name, notes, cost_type, and cost_total fields. If false return all fields.
+
+    POST: Create new entry in table. Require all fields except user. Check that cost_type is 'fixed'.
+
+  /costitem/general
+    description: Collection resource for CostItem objects with cost_type of 'general'.
+    model: CostItem
+
+    GET: Return full list of all objects in table with all fields. Restrict to admin.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, name, notes, cost_type, and cost_total fields. If false return all fields.
+
+    POST: Create new entry in table. Require all fields except user. Check that cost_type is 'general'.
+
+  /costitem/general{id}
+    description: Collection resource for CostItem objects with cost_type of 'general'.
+    model: CostItem
+
+    GET: Return all fields of object with given id. If none exist, return none.
+
+    PUT: Update provided fields of object with given id.
+
+    DELETE: Destroy object with given id. If none exist, return HTTP 404 - Not Found.
+
+    - parameters:
+      - name: username
+        type: string
+        required: false
+        description: Filters based on username. If username not found, return none. If username does not match request user, return none.
+
+      - name: condensed
+        type: boolean
+        required: false
+        description: If true, return only id, name, notes, cost_type, and cost_total fields. If false return all fields.
+
+    POST: Create new entry in table. Require all fields except user. Check that cost_type is 'general'.

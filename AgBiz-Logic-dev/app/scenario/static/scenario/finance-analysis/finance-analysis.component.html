@@ -1,0 +1,171 @@
+<h3><i>AgBizFinance</i> Analysis: <span ng-bind="$ctrl.financeAnalysis.title"></span></h3>
+<br />
+<p>To create a new <i>AgBizFinance</i> Analysis, give it a unique name, notes,
+  and add completed <i>AgBizFinance</i> Scenarios to compare for further analysis.</p>
+
+<!--finance-step-indicator step="1"></finance-step-indicator-->
+<form name="$ctrl.form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        Please fill out the following information about this <i>AgBizFinance</i> Scenario Analysis
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <label>Name of <i>AgBizFinance</i> Analysis:</label>
+          <input
+            name="name" class="form-control" type="text"
+            ng-model="$ctrl.financeAnalysis.title"
+            ng-blur="$ctrl.updateFinanceAnalysis()"
+            ng-change="$ctrl.validateFinanceAnalysisTitle()"
+            maxlength="91"
+            placeholder="Name of Finance Analysis"
+            required>
+          </input>
+          <span class="error" ng-show="$ctrl.form.name.$touched && $ctrl.form.name.$error.notempty" style="color:red;">Required</span>
+          <span class="error" ng-show="$ctrl.form.name.$touched && $ctrl.form.name.$error.unique" style="color:red;">Duplicated Name</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <label>Notes for this <i>AgBizFinance</i> Analysis:</label>
+          <textarea
+            class="form-control"
+            ng-model="$ctrl.financeAnalysis.notes"
+            ng-blur="$ctrl.updateFinanceAnalysis()"
+            maxlength="1000"
+            placeholder="Notes on Finance Analysis">
+          </textarea>
+        </div>
+      </div>
+      <span class="error" ng-show="$ctrl.finance_scenario_list_with_plans.length < 2" style="color:red;">Please select two scenarios below</span>
+      <span class="error" ng-show="$ctrl.finance_scenario_list_with_plans.length > 2" style="color:red;">Please select ONLY two scenarios below</span>
+    </div>
+  </div>
+</form>
+<h5 >Scenarios
+  <!-- <div class="col-md-2 pull-right">
+    <button class="btn btn-success add" ng-disabled="$ctrl.form.$invalid || $ctrl.financeAnalysis.scenarios.length > 1" ng-click="$ctrl.addFinanceScenario()">ADD</button>
+  <div> -->
+</h5>
+
+<div
+  class="form-group panel panel-info"
+  <div class="panel-heading">
+    <h5 class="panel-title">Add or Create New Plan</h5>
+  </div>
+  <div class="panel-body">
+    <div class="row" ng-if="$ctrl.module=='finance'">
+      <label class="col-md-2">
+        Scenarios:
+      </label>
+      <div class="col-md-6">
+        <select
+          name="scenario"
+          class="form-control"
+          ng-options="scenario.title for scenario in $ctrl.scenario_list"
+          ng-model="$ctrl.selected_scenario">
+          <option value="">Select</option>
+        </select>
+      </div>
+      <!-- only allow users compare two different scenarios -->
+      <div class="col-md-2">
+        <button
+          class="btn btn-success"
+          ng-disabled="$ctrl.financeAnalysis.scenarios.length > 1"
+          ng-click="$ctrl.add()">
+          Add Scenario
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+
+<div class="row">
+  <div >
+    <manager-list
+      class="col-md-12"
+      item-list="$ctrl.finance_scenario_list_with_plans"
+      show-date="true"
+      editable="true"
+      editable="true"
+      delete-only="true"
+      on-edit="$ctrl.editFinanceScenario(item)"
+      on-delete="$ctrl.removeFinanceScenarioWithoutIndex(item)"
+      height="'small'">
+    </manager-list>
+
+  </div>
+</div>
+<!-- <br />
+  <div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-2" ng-repeat="finance_scenario in $ctrl.finance_scenario_list_with_plans">
+    <div class="panel panel-default" id="card">
+      <div class="panel-heading">
+          <p class="scenario-title">{{finance_scenario.title}}</p>
+      </div>
+      <div class="panel-body" id="panel-body">
+        <table class="table">
+          <tbody>
+            <tr ng-repeat="plan in finance_scenario.plans">
+              <td>{{plan.title}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-footer text-center">
+        <!--span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="$ctrl.editFinanceScenario(finance_scenario, $index)"></span>
+        <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="$ctrl.removeFinanceScenario(finance_scenario, $index)"></span-->
+        <!-- <button class="btn btn-primary" ng-click="$ctrl.editFinanceScenario(finance_scenario, $index)">Edit</button> -->
+        <!-- <button class="btn btn-danger" ng-click="$ctrl.removeFinanceScenario(finance_scenario, $index)">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2" ng-if="$ctrl.finance_scenario_list.length < 5">
+    <div class="panel panel-default" id="card">
+      <div class="panel-heading">
+          <p text-center class="scenario-title">Add an <i>AgBizFinance</i> Scenario</p>
+      </div>
+      <div class="panel-body" id="panel-body" style="height:480px;">
+        <div class="add" style="text-align:center;" ng-click="$ctrl.addFinanceScenario()">
+          <span class="glyphicon glyphicon-plus"></span>
+          <br />ADD
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<md-progress-circular
+  class="col-md-offset-5"
+  style="margin-top: 40px"
+  ng-if="$ctrl.scenario_list === undefined"
+  md-mode="indeterminate">
+</md-progress-circular>
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Previous
+    </button>
+  </div>
+  <div style="width: fit-content;" class="col-md-2 pull-right">
+    <button
+      class="btn btn-success"
+      style="width: fit-content;"
+      ng-disabled="$ctrl.form.$invalid || $ctrl.financeAnalysis.scenarios.length < 2 || $ctrl.financeAnalysis.scenarios.length > 2"
+      ng-click="$ctrl.proceed()">
+      Income Statement
+    </button>
+  </div>
+</div>

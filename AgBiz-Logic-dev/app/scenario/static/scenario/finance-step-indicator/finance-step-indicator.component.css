@@ -1,0 +1,69 @@
+.steps-form {
+  display: table;
+  width: 100%;
+  position: relative;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.steps-form .steps-row {
+  display: table-row;
+}
+
+.steps-form .steps-row:before {
+  top: 15px;
+  bottom: 0;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.steps-form .steps-row:after {
+  top: 15px;
+  bottom: 0;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+}
+
+.steps-form .steps-row .steps-step {
+  display: table-cell;
+  text-align: center;
+  position: relative;
+}
+
+.steps-form .steps-row .steps-step .glyphicon {
+  margin-top: 0.5rem;
+}
+
+.steps-form .steps-row .steps-step .btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  margin-top: 0;
+  background-color: #ccc;
+}
+
+.glyphicon { color: #00BC8C; }
+
+.checked { color: #00BC8C; }
+
+.btn-circle-checked {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  margin-top: 0;
+  background-color: #00BC8C;
+  color: #000;
+}

@@ -1,0 +1,757 @@
+[
+  {
+    "model": "allocate.BusinessData",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "business_type": "Crop",
+
+      "income_sales": 2000,
+      "income_cooperative": 2000,
+      "income_other": 200,
+
+      "expenses_chemicals": 200,
+      "expenses_gasoline": 200,
+      "expenses_labor": 200
+    }
+  },
+  {
+    "model": "allocate.BusinessData",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "business_type": "Livestock",
+
+      "income_sales": 3000,
+
+      "expenses_feed": 300
+    }
+  },
+  {
+    "model": "allocate.EnterpriseData",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "enterprise": "Livestock",
+      "category_1": "Beef Cattle",
+      "category_2": "Weaning",
+      "market": "GMO",
+
+      "income_sales": 2000,
+
+      "expenses_feed": 200
+    }
+  },
+  {
+    "model": "allocate.EnterpriseData",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "enterprise": "Crop",
+      "category_1": "Cereal Grains",
+      "category_2": "Wheat",
+      "category_3": "Soft White Winter",
+      "market": "GMO",
+
+      "income_sales": 1000,
+      "income_cooperative": 1000,
+      "income_other": 100,
+
+      "expenses_chemicals": 100,
+      "expenses_gasoline": 100,
+      "expenses_labor": 100
+    }
+  },
+  {
+    "model": "allocate.EnterpriseData",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "enterprise": "Crop",
+      "category_1": "Cereal Grains",
+      "category_2": "Barley",
+      "market": "GMO",
+
+      "income_sales": 500,
+      "income_cooperative": 1000,
+
+      "expenses_chemicals": 50,
+      "expenses_gasoline": 50,
+      "expenses_labor": 50
+    }
+  },
+  {
+    "fields": {
+      "modified_date": "2016-05-24T05:11:10.902Z",
+      "descriptor1": "Cereal Grains",
+      "farm_unit_quantity": 1,
+      "title": "Cereal Grains - Wheat - Soft White Winter",
+      "descriptor2": "Wheat",
+      "descriptor3": "Soft White Winter",
+      "notes": "Enter notes here",
+      "created_date": "2016-05-24T05:11:10.902Z",
+      "descriptor6": "",
+      "descriptor4": "",
+      "descriptor5": "",
+      "farm_unit": "Acre",
+      "state": "OR",
+      "user": 1,
+      "enterprise": "Crop",
+      "region": "",
+      "market": "GMO",
+      "module": "allocate",
+      "source": 0,
+      "time_unit": "Month",
+      "time_value": 10
+    },
+    "model": "budget.budget",
+    "pk": 999
+  },
+  {
+    "fields": {
+      "modified_date": "2016-05-24T05:11:11.487Z",
+      "descriptor1": "Cereal Grains",
+      "farm_unit_quantity": 1,
+      "title": "Cereal Grains - Barley",
+      "descriptor2": "Barley",
+      "descriptor3": "",
+      "notes": "Enter notes here",
+      "created_date": "2016-05-24T05:11:11.487Z",
+      "descriptor6": "",
+      "descriptor4": "",
+      "descriptor5": "",
+      "farm_unit": "Acre",
+      "state": "OR",
+      "user": 1,
+      "enterprise": "Crop",
+      "region": "",
+      "market": "GMO",
+      "module": "allocate",
+      "source": 0,
+      "time_unit": "Week",
+      "time_value": 20
+    },
+    "model": "budget.budget",
+    "pk": 1000
+  },
+  {
+    "fields": {
+      "modified_date": "2016-05-24T05:11:12.064Z",
+      "descriptor1": "Beef Cattle",
+      "farm_unit_quantity": 1,
+      "title": "Beef Cattle - Weaning",
+      "descriptor2": "Weaning",
+      "descriptor3": "",
+      "notes": "Enter notes here",
+      "created_date": "2016-05-24T05:11:12.064Z",
+      "descriptor6": "",
+      "descriptor4": "",
+      "descriptor5": "",
+      "farm_unit": "Acre",
+      "state": "OR",
+      "user": 1,
+      "enterprise": "Livestock",
+      "region": "",
+      "market": "GMO",
+      "module": "allocate",
+      "source": 0,
+      "time_unit": "Day",
+      "time_value": 120
+    },
+    "model": "budget.budget",
+    "pk": 1001
+  },
+  {
+    "fields": {
+      "modified_date": "2016-05-24T05:11:12.343Z",
+      "descriptor1": "Whole",
+      "farm_unit_quantity": 1,
+      "title": "Whole Farm Budget",
+      "descriptor2": "Farm",
+      "descriptor3": "",
+      "notes": "This budget represents the unallocated incomes/costs from your business.",
+      "created_date": "2016-05-24T05:11:12.343Z",
+      "descriptor6": "",
+      "descriptor4": "",
+      "descriptor5": "",
+      "farm_unit": "Acre",
+      "state": "OR",
+      "time_value": 1,
+      "user": 1,
+      "enterprise": "Whole Farm",
+      "region": "",
+      "market": "Other",
+      "module": "allocate",
+      "source": 0,
+      "time_unit": "Year"
+    },
+    "model": "budget.budget",
+    "pk": 1002
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 999,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "100.00",
+      "unit": "Acre",
+      "name": "Chemicals"
+    },
+    "model": "budget.costitem",
+    "pk": 999
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 999,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "100.00",
+      "unit": "Acre",
+      "name": "Gasoline, Fuel, and Oil"
+    },
+    "model": "budget.costitem",
+    "pk": 1000
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 999,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "100.00",
+      "unit": "Acre",
+      "name": "Labor Hired (less employment credits)"
+    },
+    "model": "budget.costitem",
+    "pk": 1001
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 1000,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "50.00",
+      "unit": "Acre",
+      "name": "Chemicals"
+    },
+    "model": "budget.costitem",
+    "pk": 1002
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 1000,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "50.00",
+      "unit": "Acre",
+      "name": "Gasoline, Fuel, and Oil"
+    },
+    "model": "budget.costitem",
+    "pk": 1003
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 1000,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "50.00",
+      "unit": "Acre",
+      "name": "Labor Hired (less employment credits)"
+    },
+    "model": "budget.costitem",
+    "pk": 1004
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 1001,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "200.00",
+      "unit": "Acre",
+      "name": "Feed"
+    },
+    "model": "budget.costitem",
+    "pk": 1005
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 1001,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "50.00",
+      "unit": "Acre",
+      "name": "Chemicals"
+    },
+    "model": "budget.costitem",
+    "pk": 1006
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 1002,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "50.00",
+      "unit": "Acre",
+      "name": "Gasoline, Fuel, and Oil"
+    },
+    "model": "budget.costitem",
+    "pk": 1007
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 1002,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "50.00",
+      "unit": "Acre",
+      "name": "Labor Hired (less employment credits)"
+    },
+    "model": "budget.costitem",
+    "pk": 1008
+  },
+  {
+    "fields": {
+      "category": "",
+      "sub_category": "",
+      "farm_unit_quantity": 1,
+      "notes": "",
+      "parent_category": "",
+      "parent_budget": 1002,
+      "cost_type": "general",
+      "unit_quantity": "1.00",
+      "cost_total": "100.00",
+      "unit": "Acre",
+      "name": "Feed"
+    },
+    "model": "budget.costitem",
+    "pk": 1009
+  },
+  {
+    "fields": {
+      "farm_unit_quantity": 1,
+      "name": "Wheat Soft White Winter",
+      "descriptor2": "Wheat",
+      "descriptor3": "Soft White Winter",
+      "notes": "",
+      "descriptor1": "Cereal Grains",
+      "descriptor6": "",
+      "parent_budget": 999,
+      "descriptor4": "",
+      "descriptor5": "",
+      "farm_unit": "Acre",
+      "return_total": "110000.00",
+      "enterprise": "Crop",
+      "sale_unit_quantity": 1000,
+      "sale_unit": "Ton"
+    },
+    "model": "budget.incomeitem",
+    "pk": 999
+  },
+  {
+    "fields": {
+      "farm_unit_quantity": 1,
+      "name": "Barley",
+      "descriptor2": "Barley",
+      "descriptor3": "",
+      "notes": "",
+      "descriptor1": "Cereal Grains",
+      "descriptor6": "",
+      "parent_budget": 1000,
+      "descriptor4": "",
+      "descriptor5": "",
+      "farm_unit": "Acre",
+      "return_total": "239978.00",
+      "enterprise": "Crop",
+      "sale_unit_quantity": 579,
+      "sale_unit": "Ton"
+    },
+    "model": "budget.incomeitem",
+    "pk": 1000
+  },
+  {
+    "fields": {
+      "farm_unit_quantity": 1,
+      "name": "Weaning",
+      "descriptor2": "Weaning",
+      "descriptor3": "",
+      "notes": "",
+      "descriptor1": "Beef Cattle",
+      "descriptor6": "",
+      "parent_budget": 1001,
+      "descriptor4": "",
+      "descriptor5": "",
+      "farm_unit": "Acre",
+      "return_total": "282213.00",
+      "enterprise": "Livestock",
+      "sale_unit_quantity": 344,
+      "sale_unit": "Ton"
+    },
+    "model": "budget.incomeitem",
+    "pk": 1001
+  },
+  {
+    "fields": {
+      "farm_unit_quantity": 1,
+      "name": "Whole Farm Income",
+      "descriptor2": "",
+      "descriptor3": "",
+      "notes": "",
+      "descriptor1": "",
+      "descriptor6": "",
+      "parent_budget": 1002,
+      "descriptor4": "",
+      "descriptor5": "",
+      "farm_unit": "Acre",
+      "return_total": "87440.00",
+      "enterprise": "",
+      "sale_unit_quantity": 127,
+      "sale_unit": "Ton"
+    },
+    "model": "budget.incomeitem",
+    "pk": 1002
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:57:18.364Z",
+      "notes": "Some notes here.",
+      "created_date": "2016-06-09T21:57:18.364Z",
+      "user": 1,
+      "title": "Full Test Scenario"
+    },
+    "model": "climate.climatescenario",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:57:38.969Z",
+      "focus_group_estimate": "0.0",
+      "user_estimate": "-23.0",
+      "budget": 999,
+      "climate_scenario": 3,
+      "is_original": true,
+      "user": 1,
+      "modeling_estimate": "0.0",
+      "position": 0,
+      "created_date": "2016-06-09T21:57:38.969Z"
+    },
+    "model": "climate.climatebudget",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:57:44.215Z",
+      "focus_group_estimate": "0.0",
+      "user_estimate": "-12.4",
+      "budget": 1000,
+      "climate_scenario": 3,
+      "is_original": true,
+      "user": 1,
+      "modeling_estimate": "0.0",
+      "position": 2,
+      "created_date": "2016-06-09T21:57:44.215Z"
+    },
+    "model": "climate.climatebudget",
+    "pk": 999
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:57:49.330Z",
+      "focus_group_estimate": "0.0",
+      "user_estimate": "-34.0",
+      "budget": 1001,
+      "climate_scenario": 3,
+      "is_original": true,
+      "user": 1,
+      "modeling_estimate": "0.0",
+      "position": 4,
+      "created_date": "2016-06-09T21:57:49.330Z"
+    },
+    "model": "climate.climatebudget",
+    "pk": 1000
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:57:56.628Z",
+      "focus_group_estimate": "0.0",
+      "user_estimate": "22.0",
+      "budget": 1002,
+      "climate_scenario": 3,
+      "is_original": true,
+      "user": 1,
+      "modeling_estimate": "0.0",
+      "position": 6,
+      "created_date": "2016-06-09T21:57:56.628Z"
+    },
+    "model": "climate.climatebudget",
+    "pk": 1001
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:58:34Z",
+      "focus_group_estimate": "0.0",
+      "user_estimate": "0.0",
+      "budget": 999,
+      "climate_scenario": 3,
+      "is_original": false,
+      "user": 1,
+      "modeling_estimate": "0.0",
+      "position": 1,
+      "created_date": "2016-06-09T21:58:34Z"
+    },
+    "model": "climate.climatebudget",
+    "pk": 1002
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:59:06Z",
+      "focus_group_estimate": "0.0",
+      "user_estimate": "0.0",
+      "budget": 1000,
+      "climate_scenario": 3,
+      "is_original": false,
+      "user": 1,
+      "modeling_estimate": "0.0",
+      "position": 3,
+      "created_date": "2016-06-09T21:59:06Z"
+    },
+    "model": "climate.climatebudget",
+    "pk": 1003
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:59:40Z",
+      "focus_group_estimate": "0.0",
+      "user_estimate": "0.0",
+      "budget": 1001,
+      "climate_scenario": 3,
+      "is_original": false,
+      "user": 1,
+      "modeling_estimate": "0.0",
+      "position": 5,
+      "created_date": "2016-06-09T21:59:40Z"
+    },
+    "model": "climate.climatebudget",
+    "pk": 1004
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T22:00:10Z",
+      "focus_group_estimate": "0.0",
+      "user_estimate": "0.0",
+      "budget": 1002,
+      "climate_scenario": 3,
+      "is_original": false,
+      "user": 1,
+      "modeling_estimate": "0.0",
+      "position": 7,
+      "created_date": "2016-06-09T22:00:10Z"
+    },
+    "model": "climate.climatebudget",
+    "pk": 1005
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:58:09.396Z",
+      "name": "Seasonal Mean Temperature",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 999,
+      "created_date": "2016-06-09T21:58:09.396Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 999
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:58:13.028Z",
+      "name": "Number of Consecutive Extremely Cold Days",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 999,
+      "created_date": "2016-06-09T21:58:13.028Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1000
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:58:16.547Z",
+      "name": "Accumulated Growing Degree Days",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 999,
+      "created_date": "2016-06-09T21:58:16.547Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1001
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:58:42.696Z",
+      "name": "Number of Nights Below Freezing",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 1000,
+      "created_date": "2016-06-09T21:58:42.696Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1002
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:58:46.065Z",
+      "name": "Number of Warm Nights",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 1000,
+      "created_date": "2016-06-09T21:58:46.065Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1003
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:58:49.411Z",
+      "name": "Number of Consecutive Extremely Hot Days",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 1000,
+      "created_date": "2016-06-09T21:58:49.411Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1004
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:59:13.979Z",
+      "name": "Number of Nights Below Freezing",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 1001,
+      "created_date": "2016-06-09T21:59:13.979Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1005
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:59:17.468Z",
+      "name": "24-Hour Temperature Range (Night vs. Day)",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 1001,
+      "created_date": "2016-06-09T21:59:17.468Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1006
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:59:21.653Z",
+      "name": "Number of Consecutive Dry Days",
+      "region": "La Paz",
+      "user_estimate": "3.0",
+      "state": "Arizona",
+      "climate_budget": 1001,
+      "created_date": "2016-06-09T21:59:21.653Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1007
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:59:47.573Z",
+      "name": "Seasonal Mean Temperature",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 1002,
+      "created_date": "2016-06-09T21:59:47.573Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1008
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:59:50.761Z",
+      "name": "Number of Consecutive Extremely Hot Days",
+      "region": "La Paz",
+      "user_estimate": "2.0",
+      "state": "Arizona",
+      "climate_budget": 1002,
+      "created_date": "2016-06-09T21:59:50.761Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1009
+  },
+  {
+    "fields": {
+      "modified_date": "2016-06-09T21:59:54.215Z",
+      "name": "Number of Consecutive Extremely Cold Days",
+      "region": "La Paz",
+      "user_estimate": "3.0",
+      "state": "Arizona",
+      "climate_budget": 1002,
+      "created_date": "2016-06-09T21:59:54.215Z"
+    },
+    "model": "climate.climatefactor",
+    "pk": 1010
+  }
+]

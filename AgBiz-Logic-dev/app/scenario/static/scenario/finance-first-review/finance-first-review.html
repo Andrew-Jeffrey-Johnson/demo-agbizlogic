@@ -1,0 +1,280 @@
+<h3 class="text-center">Review Your <i>AgBizFinance</i> Analysis</h3>
+
+<finance-step-indicator
+  step="5"
+  steps="$ctrl.steps">
+</finance-step-indicator>
+
+<h4>Review</h4>
+
+<p>Review the data you have entered up to this point for accuracy. 
+  Pay special attention to loans and leases, as on the next page you will have the opportunity to enter new loans and leases or to renew existing ones.</p>
+
+      <table class="table table-sm  table-bordered table-striped table-hover bottommargin="0">
+        <thead style="background-color: #428bc9; color: white" class="thead-dark">
+          <tr>
+            <th scope="col" style="width: 15%"></th>
+            <th scope="col" style="text-align: right">Year 1</th>
+            <th scope="col" style="text-align: right">Year 2</th>
+            <th scope="col" style="text-align: right">Year 3</th>
+            <th scope="col" style="text-align: right">Year 4</th>
+            <th scope="col" style="text-align: right">Year 5</th>
+            <th scope="col" style="text-align: right">Year 6</th>
+            <th scope="col" style="text-align: right">Year 7</th>
+            <th scope="col" style="text-align: right">Year 8</th>
+            <th scope="col" style="text-align: right">Year 9</th>
+            <th scope="col" style="text-align: right">Year 10</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr >
+              <th style="text-align: left; background-color:lightgrey;" Colspan="11">Distributions</th>
+          </tr>
+
+        </tbody>
+        <tbody>
+          <!-- <tr>
+            <th scope="col">Net Returns</th>
+            <th scope="col" ng-repeat="x in $ctrl.net_returns track by $index">{{x}}</th>
+          </tr> -->
+
+
+          <tr>
+              <th scope="col">Wages</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.table_wages track by $index">
+                <span ng-if="x === -1 "> n/a </span>
+                <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+              </th>
+          </tr>
+          <tr>
+              <th scope="col">Salaries</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.salaries track by $index">
+                <span ng-if="x === -1 "> n/a </span>
+                <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+              </th>
+          </tr>
+          <tr>
+              <th scope="col">Family Withdrawals</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.family_withdrawls track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+          <tr>
+              <th scope="col">Contributions</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.contributions track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+
+          <tr >
+              <th style="text-align: left; background-color:lightgrey;" Colspan="11">Depreciation</th>
+          </tr>
+
+          <tr>
+              <th scope="col">Total Depreciation - Replacement Costs from Budgets</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.depreciation_items track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+
+          <tr>
+              <th scope="col">Depreciation - Intermediate</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.depreciation_items_intermediate track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+
+          <tr>
+              <th scope="col">Depreciation - Long Term</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.depreciation_items_long_term track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+          <tr >
+              <th style="text-align: left; background-color:lightgrey;" Colspan="11">Capital Expenditures</th>
+          </tr>
+          <tr>
+              <th scope="col">Total Capital Expenditures</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.capital_expenditures track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+
+          <tr>
+              <th scope="col">Capital Expenditures - Intermediate</th>
+              <th scope="col"style="text-align: right;" ng-repeat="x in $ctrl.capital_expenditures_intermediate track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+
+          <tr>
+              <th scope="col">Capital Expenditures - Long Term</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.capital_expenditures_long_term track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+          <tr >
+              <th style="text-align: left; background-color:lightgrey;" Colspan="11">Replacement Costs</th>
+          </tr>
+          <tr>
+              <th scope="col">Total Replacement Costs</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.replacement_costs track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+
+          <tr>
+              <th scope="col">Replacement Costs - Intermediate</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.replacement_costs_intermediate track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+
+          <tr>
+              <th scope="col">Replacement Costs - Long Term</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.replacement_costs_long_term track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+
+
+
+          <tr >
+              <th style="text-align: left; background-color:lightgrey;" Colspan="11">Budget Expenses</th>
+          </tr>
+          <tr>
+              <th scope="col">Total Expenses from Budgets</th>
+              <th scope="col" style="text-align: right;"ng-repeat="x in $ctrl.table_distributions track by $index">
+  <span ng-if="x === -1 "> n/a </span>
+  <span ng-if="x !== -1 "> {{x |currency:$:0}} </span>
+</th>
+          </tr>
+          <!-- <tr >
+              <th scope="col">Loan: {{x.title}}</th>
+          </tr>
+          <tr ng-repeat="x in $ctrl.current_loans_list_table track by $index">
+              <th scope="col">Principle Payment</th>
+              <th scope="col" ng-repeat="y in x.years track by $index">{{y.principle_payment}}</th>
+          </tr>
+          <tr ng-repeat="x in $ctrl.current_loans_list_table track by $index">
+              <th scope="col">Interest Payment</th>
+              <th scope="col" ng-repeat="y in x.years track by $index">{{y.interest_payment}}</th>
+          </tr>
+          <div ng-repeat="x in $ctrl.current_loans_list_table track by $index">
+            <tr >
+                <th scope="col">Loan: {{x.title}}</th>
+            </tr>
+            <tr >
+                <th scope="col">Principle Payment</th>
+                <th scope="col" ng-repeat="y in x.years track by $index">{{y.principle_payment}}</th>
+            </tr>
+            <tr >
+                <th scope="col">Interest Payment</th>
+                <th scope="col" ng-repeat="y in x.years track by $index">{{y.interest_payment}}</th>
+            </tr>
+          </div> -->
+
+          <!-- <tr class="bg-success">
+              <th scope="col">Finance Returns</th>
+              <th scope="col" ng-repeat="x in $ctrl.table_income track by $index">{{x}}</th>
+          </tr> -->
+
+
+        </tbody>
+      <!-- </table>
+      <table class="table table-bordered"  style="margin: 0 px;" bottommargin="0"> -->
+      <tbody >
+        <tr >
+            <th style="text-align: left; background-color:lightgrey;"Colspan="11">Loans</th>
+        </tr>
+
+      </tbody>
+        <tbody ng-repeat="x in $ctrl.current_loans_list_table |orderBy:'title'">
+          <tr >
+              <th scope="col"Colspan="11">{{x.title}}</th>
+          </tr>
+          <tr >
+              <th scope="col">Principal</th>
+              <th scope="col" style="text-align: right;"ng-repeat="y in x.years track by $index">{{y.principle_payment|currency:$:0}}</th>
+          </tr>
+          <tr >
+              <th scope="col">Interest</th>
+              <th scope="col" style="text-align: right;"ng-repeat="y in x.years track by $index">{{y.interest_payment|currency:$:0}}</th>
+
+          </tr>
+          <tr >
+              <th scope="col">Total</th>
+              <th scope="col"  style="text-align: right;"ng-repeat="y in x.years track by $index">{{y.total_payment |currency:$:0}}</th>
+
+
+          </tr>
+        </tbody>
+      <!-- </table> -->
+    <!-- </table>
+
+    <table class="table table-bordered" ng-repeat="x in $ctrl.current_lease_list_table track by $index" style="margin: 0 px;" bottommargin="0"> -->
+    <tbody >
+      <tr >
+          <th style="text-align: left; background-color:lightgrey;" Colspan="11">Leases</th>
+      </tr>
+
+    </tbody>
+      <tbody ng-repeat="x in $ctrl.current_lease_list_table |orderBy:'title'">
+        <tr >
+            <th scope="col" Colspan="11">{{x.title}}</th>
+        </tr>
+        <tr >
+            <th scope="col">Annual</th>
+            <th scope="col" style="text-align: right;"ng-repeat="y in x.years track by $index"  >
+              <!-- <div *ng-if=" else templateName">
+                  If isValid is true
+              </div>
+
+              <ng-template #templateName>
+                  If isValid is false
+              </ng-template> -->
+              <!-- <p *ng-if="y.annual_payment > 0">
+              	Data is valid.
+              </p>
+              <p *ng-if="y.annual_payment !> 0">
+              	Data is not valid.
+              </p> -->
+              <!-- <span [ngIf]="y.annual_payment > 0; then thenBlock else elseBlock">
+              <ng-template #thenBlock>{{y.annual_payment|currency:$:0:$:0}}</ng-template>
+              <ng-template #elseBlock>Content to render when condition is false.</ng-template>
+              </span> -->
+              {{y.annual_payment|currency:$:0}}
+            </th>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+      <div class="row">
+        <div class="col-md-1 pull-left">
+          <button
+            class="btn btn-primary"
+            ng-click="$ctrl.back()">
+            Previous
+          </button>
+        </div>
+        <div class="col-md-1 pull-right">
+          <button
+            class="btn btn-success"
+            ng-click="$ctrl.proceed()">
+            Next
+          </button>
+        </div>
+      </div>

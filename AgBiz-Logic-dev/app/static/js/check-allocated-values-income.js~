@@ -1,0 +1,200 @@
+$(document).ready(function(){
+
+	CheckAllocatedValue('line_1_c', 'number_1_c', 'whole_farm_1', 'unit_1');
+	CheckAllocatedValue('line_2', 'number_2', 'whole_farm_2', 'unit_2');
+	CheckAllocatedValue('line_3_b', 'number_3_b', 'whole_farm_3' , 'unit_3');
+	CheckAllocatedValue('line_4_a', 'number_4_a', 'whole_farm_4', 'unit_4');
+	CheckAllocatedValue('line_6_a', 'number_6_a', 'whole_farm_5', 'unit_5');
+	CheckAllocatedValue('line_7', 'number_7', 'whole_farm_6', 'unit_6');
+	CheckAllocatedValue('line_8', 'number_8', 'whole_farm_7', 'unit_7');
+
+
+	function findLableForControl(el) {
+	   var idVal = el.id;
+	   labels = document.getElementsByTagName('label');
+	   for( var i = 0; i < labels.length; i++ ) {
+	      if (labels[i].htmlFor == idVal)
+		   return labels[i];
+	   }
+	}
+
+	function CheckAllocatedValue(name, str, farm, unit){
+
+		//str is the textbox with the number already
+
+		var list = [];
+		var select_list = [];
+		var line_value = 0;
+		var whole_farm;
+		var selected_unit;
+		
+		var regexString = '(step\\d+\\-' + str + ')'; //regex string for line html name
+		var regex = new RegExp(regexString);
+
+		var farmString = '(step\\d+\\-' + farm + ')';
+		var farmRegex = new RegExp(farmString);
+
+		var unitString = '(step\\d+\\-' + unit + ')';
+		var unitRegex = new RegExp(unitString);
+
+		var inputs = document.getElementsByTagName("input");
+		var select = document.getElementsByTagName("select");
+
+		//get the unit drop down and find the corresponding one
+		for (var i = 0; i < select.length; i++){
+			if (select[i].name.match(unitRegex)){
+
+				//get select object
+				
+				select_list = document.getElementById(select[i].id);
+				
+				selected_unit = select[i].value; //get inital selected value
+			
+				select_list.addEventListener("change", function() {
+		
+					//if changed reread the select value
+					selected_unit = select_list.value;
+
+					for(var i = 0; i < inputs.length; i++) {
+					
+						 if(inputs[i].name.indexOf(name) > -1) {
+							inputs[i].value = "";
+
+						 }	
+
+
+
+					}
+
+
+				}); //end eventlistener
+
+		
+				
+
+			} //end if
+
+
+		} //end for
+
+
+		
+		//get new value if user selects a new unit
+	
+
+		
+		
+		for(var i = 0; i < inputs.length; i++) {
+		    if(inputs[i].name.indexOf(name) > -1) {
+		    	//get all the html object element associated with name
+			list.push(document.getElementById(inputs[i].id));
+			
+
+		    }
+
+		    if (inputs[i].name.match(regex)){
+
+			//get the schedule_f line value
+			line_value = inputs[i].value;
+			
+		
+		    }
+
+		
+
+		    if (inputs[i].name.match(farmRegex)){
+
+			//get the whole farm html object
+			whole_farm = inputs[i];
+		    }
+		}
+
+
+		for (var i = 0; i < list.length; i++){
+
+			list[i].addEventListener("keyup", function(){
+
+				
+				    var total = 0;
+
+				    if (selected_unit == "A"){
+					    for (var i = 0; i < list.length; i++){
+
+						
+	
+						if (list[i].value == ""){
+		
+							total = total + 0;
+						}else{
+
+					    		total = total + parseInt(list[i].value.replace(/\,/g,''));
+					    		
+					    		if (total > line_value){
+					    			/***
+					    			var response = $('label[for="'+list[i].id+'"]').text();
+					    			console.log(response);
+					    			$('#myModal').find('.modal-body').text(response);
+								$('#myModal').modal('show'); 
+					    			***/
+					    			
+					    			$('#myModal').find('.modal-body').text(You have over allocated this particular income item. The whole farm value cannot be less than 0.);
+								$('#myModal').modal('show'); 
+					    		}
+					    		
+			
+						}
+					    }
+					 
+
+					
+	
+					    whole_farm.value = line_value - total;
+					
+				    }else if (selected_unit == "B"){
+				    
+				    		
+
+						for (var i = 0; i < list.length; i++){
+	
+							if (list[i].value == ""){
+		
+			
+								total = total + 0;
+							}else{
+	
+						    		total = total + parseInt(list[i].value.replace(/\,/g,''));
+						    		
+			
+							}
+						    }
+						 
+					
+						    if (total > 100){
+	
+						
+							$('#myModal').modal('show'); 
+		
+						    }
+					
+					whole_farm.value = line_value - (line_value * (total / 100)) ;
+					
+					}
+			
+				});
+		}//end for
+
+				    
+	}//function end
+
+
+	 
+		
+	
+	
+	    
+	
+	
+
+	
+});
+

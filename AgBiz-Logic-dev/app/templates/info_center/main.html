@@ -1,0 +1,120 @@
+{% extends "wizard.html" %}
+
+
+<style type="text/css" />
+
+
+  
+  @media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+    margin-top:25px;
+    width:228px;
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:25px;
+    width:228px;
+  }
+}
+
+.glyphicon-arrow-right{
+
+  color: blue;
+}
+
+
+.affix,.affix-top {
+   position:static;
+}
+
+
+</style>
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <br>
+      <div class="list-group" id="sidebar">
+        <a href="#" class="list-group-item"><i>AgBiz Logic</i> Home</a>
+        <a href="#" class="list-group-item"><i>AgBizProfit</i></a>
+        <a href="#" class="list-group-item"><i>AgBizLease</i></a>
+        <a href="#" class="list-group-item"><i>AgBizFinance</i></a>
+        <a href="{% url 'climate_home' %}" class="list-group-item"><i>AgBizClimate</i></a>
+        <a href="#" class="list-group-item"><i>AgBizEnvironment</i></a>
+      </div>
+              
+      </div>  
+      <div class="col-md-9">
+        <h5> <i>AgBiz Logic</i> Home </h5>
+        <p>Welcome, {{ first_name }}!</p>
+
+        <p>To move forward with <i>AgBiz Logic</i> decision tools, proceed to the next step in the list below:</p>
+
+
+        {# Below logic determines which step the user is on, and sets the 'continue' link to the next step (Re-write to DRY standards later) #}
+
+        {% if not is_set_tax %}
+
+        <p><span id="step-account" class="glyphicon glyphicon-check"></span> Complete your account setup </p>
+        <p><span id="step-tax" class="glyphicon glyphicon-arrow-right"></span> Transfer your business data to <i>AgBiz Logic</i> </p>
+        <p><span id="step-business" class="glyphicon glyphicon-unchecked"></span> Allocate your business information </p>
+        <p><span id="step-enterprise" class="glyphicon glyphicon-unchecked"></span> Allocate your enterprise information </p>
+        <p><span id="step-budget" class="glyphicon glyphicon-unchecked"></span> Create an <i>AgBiz Logic</i> budget </p>
+
+        <a class="btn btn-success pull-right" type="button" href="/income/">Continue</a>
+
+        {% elif not is_set_business %}
+
+        <p><span id="step-account" class="glyphicon glyphicon-check"></span> Complete your account setup </p>
+        <p><span id="step-tax" class="glyphicon glyphicon-check"></span> Transfer your business data to <i>AgBiz Logic</i> </p>
+        <p><span id="step-business" class="glyphicon glyphicon-arrow-right"></span> Allocate your business information </p>
+        <p><span id="step-enterprise" class="glyphicon glyphicon-unchecked"></span> Allocate your enterprise information </p>
+        <p><span id="step-budget" class="glyphicon glyphicon-unchecked"></span> Create an <i>AgBiz Logic</i> budget </p>
+
+        <a class="btn btn-success pull-right" type="button" href="{% url 'allocate_select' %}">Continue</a>
+
+        {% elif is_set_tax and is_set_business and not is_set_enterprise %}
+
+        <p><span id="step-account" class="glyphicon glyphicon-check"></span> Complete your account setup </p>
+        <p><span id="step-tax" class="glyphicon glyphicon-check"></span> Transfer your business data to <i>AgBiz Logic</i> </p>
+        <p><span id="step-business" class="glyphicon glyphicon-check"></span> Allocate your business information </p>
+        <p><span id="step-enterprise" class="glyphicon glyphicon-arrow-right"></span> Allocate your enterprise information </p>
+        <p><span id="step-budget" class="glyphicon glyphicon-unchecked"></span> Create an <i>AgBiz Logic</i> budget </p>
+
+        <a class="btn btn-success pull-right" type="button" href="{% url 'enterprise_select' %}">Continue</a>
+
+        {% else %}
+
+        <p><span id="step-account" class="glyphicon glyphicon-check"></span> Complete your account setup </p>
+        <p><span id="step-tax" class="glyphicon glyphicon-check"></span> Transfer your business data to <i>AgBiz Logic</i> </p>
+        <p><span id="step-business" class="glyphicon glyphicon-check"></span> Allocate your business information </p>
+        <p><span id="step-enterprise" class="glyphicon glyphicon-check"></span> Allocate your enterprise information </p>
+        <p><span id="step-budget" class="glyphicon glyphicon-arrow-right"></span> Create an <i>AgBiz Logic</i> budget </p>
+
+        <a class="btn btn-success pull-right" type="button" href="{% url 'budget_home' %}">Continue</a>
+
+        {% endif %}
+
+        <a class="btn btn-success" type="button" href="{% url 'budget_home' %}">Budget Manager</a>
+
+      </div> 
+  </div>
+</div>
+
+
+<script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+
+
+
+<script>
+  $('.select').removeAttr('class');
+  $("select").attr('class', 'form-control');
+</script>
+  
+{% endblock %}
+
+

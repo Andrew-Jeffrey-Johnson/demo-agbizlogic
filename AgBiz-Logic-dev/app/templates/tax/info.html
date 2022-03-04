@@ -1,0 +1,86 @@
+{% extends "wizard.html" %}
+{% load static %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<style type="text/css">label{
+
+  font-size: 18px;
+
+  }
+
+  footer {
+
+    font-size: 12px;
+  }
+
+.asteriskField {
+    display: none;
+}
+  </style>
+
+
+ <div class="form">
+
+<div class="row">
+
+<div class="col-lg-12">
+
+<h3>Enter information from your Schedule F (Form 1040)</h3>
+
+<h4>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h4>
+
+<p> In this section you'll be populating <i>AgBiz Logic</i> with income and expenses from your Schedule F (Form 1040).</p>
+</div>
+</div>
+  <form action="" method="post">{% csrf_token %}
+
+
+
+
+
+
+  {{ wizard.management_form  }}
+  {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+      {% for form in wizard.form.forms %}
+          {{ form | bootstrap}}
+
+      {% endfor %}
+  {% else %}
+      {% crispy wizard.form %}
+  {% endif %}
+ <br>
+
+   {% if wizard.steps.prev %}
+   <button name="wizard_goto_step" class="btn btn-primary" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+
+
+  {% endif %}
+
+  <button type="submit" class="btn pull-right btn-success">Continue</button>
+
+   <a class="btn btn-default" type="button" href="/income/">Back</a>
+
+
+
+
+  </form>
+
+</div>
+
+
+<script src="{% static "js/vendor/jquery-1.8.3.js" %}"></script>
+
+
+
+
+<script>
+  $( '.select' ).removeAttr( 'class' );
+  $( "select").attr( 'class' , 'form-control');
+
+
+</script>
+
+{% endblock %}

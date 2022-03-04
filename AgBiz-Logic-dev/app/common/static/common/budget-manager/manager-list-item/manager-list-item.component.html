@@ -1,0 +1,191 @@
+<hr class="item-divider">
+
+<!--Title-->
+<span
+  ng-if="$ctrl.emptyFlex == true && $ctrl.showType == false"
+  class="flex-4 item-title"
+  ng-bind="$ctrl.item.title">
+</span>
+
+<span
+  ng-if="$ctrl.emptyFlex == true && $ctrl.showType == true"
+  class="flex-3 item-title"
+  ng-bind="$ctrl.item.title">
+</span>
+
+<span
+  ng-if="$ctrl.emptyFlex == false"
+  class="flex-2 item-title"
+  ng-bind="$ctrl.item.title">
+</span>
+
+<!--Note-->
+<!--<span-->
+  <!--ng-if="$ctrl.showNotes == true && $ctrl.emptyFlex == true && $ctrl.showType == false"-->
+  <!--class="flex-4 item-notes"-->
+  <!--ng-bind="$ctrl.item.notes | limitTo : 100">-->
+<!--</span>-->
+
+<!--<span-->
+  <!--ng-if="$ctrl.showNotes == true && $ctrl.emptyFlex == true && $ctrl.showType == true"-->
+  <!--class="flex-3 item-notes"-->
+  <!--ng-bind="$ctrl.item.notes | limitTo : 100">-->
+<!--</span>-->
+
+<!--<span-->
+  <!--ng-if="$ctrl.showNotes == true && $ctrl.emptyFlex == false"-->
+  <!--class="flex-2 item-notes"-->
+  <!--ng-bind="$ctrl.item.notes | limitTo : 100">-->
+<!--</span>-->
+
+<span
+  ng-if="$ctrl.item.notes && $ctrl.item.notes != 'Enter notes here'"
+  style="text-align: center;"
+  class="flex-1">
+  <i class="fas fa-file fa-lg" tooltip-class="tooltip-400max" tooltip-placement="right" uib-tooltip={{$ctrl.item.notes}}></i>
+</span>
+
+<span
+  ng-if="!$ctrl.item.notes || $ctrl.item.notes == 'Enter notes here'"
+  style="text-align: center;"
+  class="flex-1 fa-stack">
+  <i class="far fa-file fa-lg fa-stack-1x" tooltip-class="tooltip-400max" tooltip-placement="right" uib-tooltip={{$ctrl.item.notes}}></i>
+  <i style="color: #34495e;" class="fas fa-ban fa-xs fa-stack-1x" tooltip-placement="right" uib-tooltip='No notes'></i>
+</span>
+
+
+<!--Scenario-->
+<span
+  ng-if="$ctrl.module=='finance' && $ctrl.emptyFlex == true"
+  class="flex-4">
+  Scenario Name
+</span>
+
+<span
+  ng-if="$ctrl.module=='finance'"
+  class="flex-3">
+  <button
+    class="btn btn-primary"
+    ng-if="$ctrl.convert == true"
+    ng-click="$ctrl.farmUnitAdjustment($ctrl.item)">
+    Convert
+  </button>
+  <span ng-if="$ctrl.convert == false" ng-bind="$ctrl.farmUnit"></span>
+</span>
+
+<!--Create Date-->
+<span
+  style="text-align: right;"
+  class="flex-1"
+  ng-if="$ctrl.showDate == true && $ctrl.emptyFlex == true;"
+  ng-bind="$ctrl.item.created_date | date : 'shortDate'">
+</span>
+
+<span
+  style="text-align: right;"
+  class="flex-1"
+  ng-if="$ctrl.showDate == true && $ctrl.emptyFlex == false;"
+  ng-bind="$ctrl.item.created_date | date : 'shortDate'">
+</span>
+
+<!--Modified Date-->
+<span
+  style="text-align: right;"
+  class="flex-1"
+  ng-if="$ctrl.showDate == true && $ctrl.showType == false && $ctrl.emptyFlex == false"
+  ng-bind="$ctrl.item.modified_date | date : 'shortDate'">
+</span>
+
+<span
+  style="text-align: right;"
+  class="flex-2"
+  ng-if="$ctrl.showDate == true && $ctrl.showType == false && $ctrl.emptyFlex == true"
+  ng-bind="$ctrl.item.modified_date | date : 'shortDate'">
+</span>
+
+<span
+  style="text-align: right;"
+  class="flex-2"
+  ng-if="$ctrl.showDate == true && $ctrl.showType == true"
+  ng-bind="$ctrl.item.modified_date | date : 'shortDate'">
+</span>
+
+<!--Projection Type-->
+<span
+  style="text-align: center;"
+  class="flex-2"
+  ng-if="$ctrl.showType == true"
+  ng-bind="$ctrl.item.projection_type == 'short' ? 'Seasonal Projection' : 'Future Projection'">
+</span>
+
+<div
+  ng-if="$ctrl.ordered"
+  class="flex flex-column"
+  style="margin-right: 5px;">
+  <div>
+    <i
+      class="glyphicon glyphicon-chevron-up position-shifter"
+      ng-click="$ctrl.onShiftUp($ctrl.item)">
+    </i>
+  </div>
+  <div>
+    <i
+      class="glyphicon glyphicon-chevron-down position-shifter"
+      style="right: 1px;"
+      ng-click="$ctrl.onShiftDown($ctrl.item)">
+    </i>
+  </div>
+</div>
+
+<!-- Initial buttons -->
+<div
+  ng-if="$ctrl.module=='finance' || ($ctrl.confirm == false && $ctrl.emptyFlex == true)"
+  style="height: 40px; align-self: center;"
+  class="flex-3 flex flex-end">
+  <button
+    ng-if="$ctrl.customButtonText"
+    class="btn btn-primary"
+    ng-click="$ctrl.onCustomButton({item: $ctrl.item})">
+    <span ng-bind="$ctrl.customButtonText"></span>
+  </button>
+
+  <budget-pdf
+    budget="$ctrl.item">
+  </budget-pdf>
+
+  <div class="btn-divider"> </div>
+
+  <button
+    style="width: auto;"
+    ng-if="$ctrl.editable && $ctrl.deleteOnly == false"
+    class="btn btn-success"
+    ng-click="$ctrl.onEdit({item: $ctrl.item})">
+    View/Edit
+  </button>
+
+  <div class="btn-divider"> </div>
+
+  <button
+    ng-if="$ctrl.editable || $ctrl.module=='finance'"
+    class="btn btn-danger"
+    ng-click="$ctrl.confirm = true">
+    Remove
+  </button>
+</div>
+
+<!-- Buttons after clicking 'delete' -->
+<div
+  ng-if="$ctrl.confirm == true"
+  style="height: 40px; align-self: center;"
+  class="flex-3 flex flex-end">
+  <button
+    class="btn btn-danger"
+    ng-click="$ctrl.delete_reloadCurPage()">
+    Confirm
+  </button>
+  <button
+    class="btn btn-warning"
+    ng-click="$ctrl.confirm = false">
+    Cancel
+  </button>
+</div>

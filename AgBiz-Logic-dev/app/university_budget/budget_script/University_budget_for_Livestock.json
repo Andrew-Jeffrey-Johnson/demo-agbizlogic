@@ -1,0 +1,2745 @@
+[
+    {
+        "fields": {
+            "descriptor1": "Beef Cattle",
+            "descriptor2": "Commercial",
+            "descriptor3": "Weaning - Owned Grazing",
+            "descriptor4": "Meat",
+            "descriptor5": "N/A",
+            "descriptor6": "Cross",
+            "enterprise": "Livestock",
+            "expense_unit": "Herd",
+            "expense_unit_quantity": 1,
+            "farm_unit": "Head",
+            "farm_unit_quantity": 1,
+            "market": "Conventional",
+            "notes": "This enterprise budget estimates the typical per-acre costs associated with a cow/calf operation in North Dakota. It should be used as a guide to estimate your actual costs and does not represent any specific farm.    Source: Information in this budget is based on the North Dakota Farm and Ranch Business Management Annual Report 2016",
+            "region": "",
+            "state": "ND",
+            "time_unit": "Year",
+            "time_value": 1,
+            "title": "Cow/Calf Production, North Dakota"
+        },
+        "model": "university_budget.universitybudget",
+        "pk": 747
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull bulls",
+            "notes": "",
+            "parent_budget": 747,
+            "return_total": 0,
+            "sale_unit": "pound",
+            "sale_unit_quantity": 0,
+            "weight": 1
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 711
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Cows",
+            "notes": "",
+            "parent_budget": 747,
+            "return_total": 127.4,
+            "sale_unit": "pound",
+            "sale_unit_quantity": 0.14,
+            "weight": 1300
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 712
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Horses",
+            "notes": "",
+            "parent_budget": 747,
+            "return_total": 0,
+            "sale_unit": "pound",
+            "sale_unit_quantity": 0,
+            "weight": 1
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 713
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Heifer Calves ",
+            "notes": "",
+            "parent_budget": 747,
+            "return_total": 185.25,
+            "sale_unit": "pound",
+            "sale_unit_quantity": 0.26,
+            "weight": 570
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 714
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Open Heifers ",
+            "notes": "",
+            "parent_budget": 747,
+            "return_total": 51.75,
+            "sale_unit": "pound",
+            "sale_unit_quantity": 0.05,
+            "weight": 900
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 715
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Steer Calves",
+            "notes": "",
+            "parent_budget": 747,
+            "return_total": 384.97,
+            "sale_unit": "pound",
+            "sale_unit_quantity": 0.45,
+            "weight": 590
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 716
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 30,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "L-T asset replacement & section 179 expenses",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8285
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 220,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Feed",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8286
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 30,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Gasoline, Fuel, and Oil",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8287
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 10,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Insurance (other than health)",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8288
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 14,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Interest on Loans and Mortgages",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8289
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 25,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Labor Hired (less employment credits)",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8290
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 140,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Rent and leases: Land and animals",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8291
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 40,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Repairs and Maintenance",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8292
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 35,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Veterinary, Breeding, and Medicine",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8293
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 35,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Other expenses",
+            "notes": "",
+            "parent_budget": 747,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8294
+    },
+    {
+        "fields": {
+            "descriptor1": "Beef Cattle",
+            "descriptor2": "Commercial",
+            "descriptor3": "Stocker/Yearling - owned grazing",
+            "descriptor4": "Meat",
+            "descriptor5": "N/A",
+            "descriptor6": "Cross",
+            "enterprise": "Livestock",
+            "expense_unit": "Head",
+            "expense_unit_quantity": 1,
+            "farm_unit": "Head",
+            "farm_unit_quantity": 1,
+            "market": "Conventional",
+            "notes": "This enterprise budget estimates the typical per-acre costs associated with backgrounding stocker/yearlings in North Dakota. It should be used as a guide to estimate your actual costs and does not represent any specific farm.    Source: Information in this budget is based on the North Dakota Farm and Ranch Business Management Annual Report 2016",
+            "region": "",
+            "state": "ND",
+            "time_unit": "Year",
+            "time_value": 1,
+            "title": "Steers Backgrounding, 550 lb., High Rate of Gain, North Dakota"
+        },
+        "model": "university_budget.universitybudget",
+        "pk": 748
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Steer",
+            "notes": "",
+            "parent_budget": 748,
+            "return_total": 1048.6,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 1,
+            "weight": 7.49
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 717
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 826.93,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Cost of goods sold",
+            "notes": "",
+            "parent_budget": 748,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8295
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 73.97,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Feed",
+            "notes": "",
+            "parent_budget": 748,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8296
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1.5,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Freight and Trucking",
+            "notes": "",
+            "parent_budget": 748,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8297
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 8.57,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Interest on Loans and Mortgages",
+            "notes": "",
+            "parent_budget": 748,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8298
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 10,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Veterinary, Breeding, and Medicine",
+            "notes": "",
+            "parent_budget": 748,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8299
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 73.57,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Other expenses",
+            "notes": "",
+            "parent_budget": 748,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8300
+    },
+    {
+        "fields": {
+            "descriptor1": "Beef Cattle",
+            "descriptor2": "Commercial",
+            "descriptor3": "Stocker/Yearling - owned grazing",
+            "descriptor4": "Meat",
+            "descriptor5": "N/A",
+            "descriptor6": "Cross",
+            "enterprise": "Livestock",
+            "expense_unit": "Head",
+            "expense_unit_quantity": 1,
+            "farm_unit": "Head",
+            "farm_unit_quantity": 1,
+            "market": "Conventional",
+            "notes": "This enterprise budget estimates the typical per-acre costs associated with backgrounding stocker/yearlings in North Dakota. It should be used as a guide to estimate your actual costs and does not represent any specific farm.    Source: Information in this budget is based on the North Dakota Farm and Ranch Business Management Annual Report 2016",
+            "region": "",
+            "state": "ND",
+            "time_unit": "Year",
+            "time_value": 1,
+            "title": "Steers Feeders, Summer Grazing, 550 lb., North Dakota"
+        },
+        "model": "university_budget.universitybudget",
+        "pk": 749
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Steer",
+            "notes": "",
+            "parent_budget": 749,
+            "return_total": 1145.5,
+            "sale_unit": "pound",
+            "sale_unit_quantity": 1,
+            "weight": 790
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 718
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 907.5,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Cost of goods sold",
+            "notes": "",
+            "parent_budget": 749,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8301
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 3,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "L-T asset replacement & section 179 expenses",
+            "notes": "",
+            "parent_budget": 749,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8302
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 0.5,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Feed",
+            "notes": "",
+            "parent_budget": 749,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8303
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 5,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Gasoline, Fuel, and Oil",
+            "notes": "",
+            "parent_budget": 749,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8304
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 15,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Interest on Loans and Mortgages",
+            "notes": "",
+            "parent_budget": 749,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8305
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 120,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Rent and leases: Land and animals",
+            "notes": "",
+            "parent_budget": 749,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8306
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 3,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Repairs and Maintenance",
+            "notes": "",
+            "parent_budget": 749,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8307
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 12,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Veterinary, Breeding, and Medicine",
+            "notes": "",
+            "parent_budget": 749,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8308
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 32.08,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Other expenses",
+            "notes": "",
+            "parent_budget": 749,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "head",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8309
+    },
+    {
+        "fields": {
+            "descriptor1": "Sheep",
+            "descriptor2": "Commercial",
+            "descriptor3": "Feeder Lamb Production",
+            "descriptor4": "Meat",
+            "descriptor5": "Wool",
+            "descriptor6": "Cross",
+            "enterprise": "Livestock",
+            "expense_unit": "Herd",
+            "expense_unit_quantity": 1,
+            "farm_unit": "Head",
+            "farm_unit_quantity": 1,
+            "market": "Conventional",
+            "notes": "This enterprise budget estimates the typical costs and returns associated with producing lambs in the Klamath Falls area of South Central Oregon. It should be used as a guide to estimate your actual costs and does not represent any specific farm.    Source: http://arec.oregonstate.edu/oaeb/files/pdf/EM8369.pdf  EM 8369 1988",
+            "region": "South Central",
+            "state": "OR",
+            "time_unit": "Year",
+            "time_value": 1,
+            "title": "Feeder Lamb Production, 100 Ewe Farm Flock, North Central Oregon"
+        },
+        "model": "university_budget.universitybudget",
+        "pk": 750
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Ewes ",
+            "notes": "",
+            "parent_budget": 750,
+            "return_total": 0,
+            "sale_unit": "Pound",
+            "sale_unit_quantity": 15,
+            "weight": 1
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 719
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Ram",
+            "notes": "",
+            "parent_budget": 750,
+            "return_total": 0,
+            "sale_unit": "Pound",
+            "sale_unit_quantity": 1,
+            "weight": 1
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 720
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Lamb incentive Pmt.",
+            "notes": "",
+            "parent_budget": 750,
+            "return_total": 458.32,
+            "sale_unit": "Pound",
+            "sale_unit_quantity": 97,
+            "weight": 105
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 721
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Lambs",
+            "notes": "",
+            "parent_budget": 750,
+            "return_total": 7638.75,
+            "sale_unit": "Pound",
+            "sale_unit_quantity": 97,
+            "weight": 105
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 722
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Wool ",
+            "notes": "",
+            "parent_budget": 750,
+            "return_total": 640,
+            "sale_unit": "Pound",
+            "sale_unit_quantity": 100,
+            "weight": 8
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 723
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Wool incentive Pmt.",
+            "notes": "",
+            "parent_budget": 750,
+            "return_total": 864,
+            "sale_unit": "Pound",
+            "sale_unit_quantity": 100,
+            "weight": 8
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 724
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 235,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Custom Hire",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8310
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 3249,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "L-T asset replacement & section 179 expenses",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8311
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2980,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Feed",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8312
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 363.0,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Gasoline, Fuel, and Oil",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8313
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 283,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Insurance (other than health)",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8314
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 720,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Rent and leases: Land and animals",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8315
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 297,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Repairs and Maintenance",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8316
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 75,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Property Taxes",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8317
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 750,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Veterinary, Breeding, and Medicine",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8318
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 150,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Other expenses",
+            "notes": "",
+            "parent_budget": 750,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8319
+    },
+    {
+        "fields": {
+            "descriptor1": "Beef Cattle",
+            "descriptor2": "Commercial",
+            "descriptor3": "Weaning - Owned Grazing",
+            "descriptor4": "Meat",
+            "descriptor5": "N/A",
+            "descriptor6": "Cross",
+            "enterprise": "Livestock",
+            "expense_unit": "Herd",
+            "expense_unit_quantity": 1,
+            "farm_unit": "Head",
+            "farm_unit_quantity": 1,
+            "market": "Conventional",
+            "notes": "This enterprise budget estimates the typical per-acre costs associated with producing calves in the plateau area of North Central Oregon. It should be used as a guide to estimate your actual costs and does not represent any specific farm.    Source:http://arec.oregonstate.edu/oaeb/files/pdf/EM8681.pdf  EM 8681 1998",
+            "region": "North Central Plateau Region",
+            "state": "OR",
+            "time_unit": "Year",
+            "time_value": 1,
+            "title": "Cow/Calf Production, 50 Head, North Central Oregon"
+        },
+        "model": "university_budget.universitybudget",
+        "pk": 751
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull bulls",
+            "notes": "",
+            "parent_budget": 751,
+            "return_total": 325,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 0.4,
+            "weight": 16.25
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 725
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Cows",
+            "notes": "",
+            "parent_budget": 751,
+            "return_total": 3085.25,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 7,
+            "weight": 10.75
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 726
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Horses",
+            "notes": "",
+            "parent_budget": 751,
+            "return_total": 150,
+            "sale_unit": "Herd",
+            "sale_unit_quantity": 0.5,
+            "weight": 1
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 727
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Heifer Calves ",
+            "notes": "",
+            "parent_budget": 751,
+            "return_total": 3600,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 10,
+            "weight": 5
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 728
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Open Heifers ",
+            "notes": "",
+            "parent_budget": 751,
+            "return_total": 1457.25,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 3,
+            "weight": 7.25
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 729
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Steer Calves",
+            "notes": "",
+            "parent_budget": 751,
+            "return_total": 9041.55,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 21,
+            "weight": 5.45
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 730
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2508.28,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "L-T asset replacement & section 179 expenses",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8320
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 6655,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Feed",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8321
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2288.83,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Gasoline, Fuel, and Oil",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8322
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1587.25,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Insurance (other than health)",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8323
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1972.67,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Repairs and Maintenance",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8324
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 600,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Supplies",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8325
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 215,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Property Taxes",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8326
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2200,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Utilities",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8327
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1000,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Veterinary, Breeding, and Medicine",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8328
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 3482.22,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Other expenses",
+            "notes": "",
+            "parent_budget": 751,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8329
+    },
+    {
+        "fields": {
+            "descriptor1": "Beef Cattle",
+            "descriptor2": "Commercial",
+            "descriptor3": "Weaning - Owned Grazing",
+            "descriptor4": "Meat",
+            "descriptor5": "N/A",
+            "descriptor6": "Cross",
+            "enterprise": "Livestock",
+            "expense_unit": "Herd",
+            "expense_unit_quantity": 1,
+            "farm_unit": "Head",
+            "farm_unit_quantity": 1,
+            "market": "Conventional",
+            "notes": "This enterprise budget estimates the typical per-acre costs associated with producing calves in the High Desert area of Southeast Oregon. It should be used as a guide to estimate your actual costs and does not represent any specific farm.    Source:http://arec.oregonstate.edu/oaeb/files/pdf/EM8653.pdf  EM 8653 1997",
+            "region": "High Desert Area",
+            "state": "OR",
+            "time_unit": "Year",
+            "time_value": 1,
+            "title": "Cow/Calf Production, 50 Head, Southeast Oregon"
+        },
+        "model": "university_budget.universitybudget",
+        "pk": 752
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Bulls",
+            "notes": "",
+            "parent_budget": 752,
+            "return_total": 229.5,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 0.3,
+            "weight": 15
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 731
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Cows",
+            "notes": "",
+            "parent_budget": 752,
+            "return_total": 2394,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 6,
+            "weight": 9.5
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 732
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Horse ",
+            "notes": "",
+            "parent_budget": 752,
+            "return_total": 150,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 0.25,
+            "weight": 1
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 733
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Heifer Calves",
+            "notes": "",
+            "parent_budget": 752,
+            "return_total": 1757.5,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 5,
+            "weight": 4.75
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 734
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Yearling Heifers ",
+            "notes": "",
+            "parent_budget": 752,
+            "return_total": 5125.5,
+            "sale_unit": "Herd",
+            "sale_unit_quantity": 9,
+            "weight": 8.5
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 735
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Steer Calves",
+            "notes": "",
+            "parent_budget": 752,
+            "return_total": 8505,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 20,
+            "weight": 5.25
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 736
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1433,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "L-T asset replacement & section 179 expenses",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8330
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 6860,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Feed",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8331
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1997.33,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Gasoline, Fuel, and Oil",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8332
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1016.86,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Insurance (other than health)",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8333
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 4354,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Rent and leases: Land and animals",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8334
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2084.18,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Repairs and Maintenance",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8335
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 700,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Supplies",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8336
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 320,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Property Taxes",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8337
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 900,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Utilities",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8338
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1550,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Veterinary, Breeding, and Medicine",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8339
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2245.38,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Other expenses",
+            "notes": "",
+            "parent_budget": 752,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8340
+    },
+    {
+        "fields": {
+            "descriptor1": "Beef Cattle",
+            "descriptor2": "Commercial",
+            "descriptor3": "Weaning - Owned Grazing",
+            "descriptor4": "Meat",
+            "descriptor5": "N/A",
+            "descriptor6": "Cross",
+            "enterprise": "Livestock",
+            "expense_unit": "Herd",
+            "expense_unit_quantity": 1,
+            "farm_unit": "Head",
+            "farm_unit_quantity": 1,
+            "market": "Conventional",
+            "notes": "This enterprise budget estimates the typical per-acre costs associated with producing calves in the High Desert area of Southeast Oregon. It should be used as a guide to estimate your actual costs and does not represent any specific farm.    Source:http://arec.oregonstate.edu/oaeb/files/pdf/EM8653.pdf  EM 8654 1997",
+            "region": "High Desert Area",
+            "state": "OR",
+            "time_unit": "Year",
+            "time_value": 1,
+            "title": "Cow/Calf Production, 100 Head, Southeast Oregon"
+        },
+        "model": "university_budget.universitybudget",
+        "pk": 753
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Bulls",
+            "notes": "",
+            "parent_budget": 753,
+            "return_total": 612,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 0.8,
+            "weight": 15
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 737
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Cows",
+            "notes": "",
+            "parent_budget": 753,
+            "return_total": 5187,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 13,
+            "weight": 9.5
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 738
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Horse ",
+            "notes": "",
+            "parent_budget": 753,
+            "return_total": 150,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 0.25,
+            "weight": 1
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 739
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Heifer Calves",
+            "notes": "",
+            "parent_budget": 753,
+            "return_total": 3515,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 10,
+            "weight": 4.75
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 740
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Yearling Heifers ",
+            "notes": "",
+            "parent_budget": 753,
+            "return_total": 9112,
+            "sale_unit": "Herd",
+            "sale_unit_quantity": 16,
+            "weight": 8.5
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 741
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Steer Calves",
+            "notes": "",
+            "parent_budget": 753,
+            "return_total": 17435.25,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 41,
+            "weight": 5.25
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 742
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2433.33,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "L-T asset replacement & section 179 expenses",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8341
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 13835,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Feed",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8342
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2658.62,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Gasoline, Fuel, and Oil",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8343
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1296.51,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Insurance (other than health)",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8344
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 777.75,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Rent and leases: Land and animals",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8345
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2845.23,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Repairs and Maintenance",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8346
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 700,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Supplies",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8347
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 730,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Property Taxes",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8348
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 900,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Utilities",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8349
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2350,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Veterinary, Breeding, and Medicine",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8350
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 4503.74,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Other expenses",
+            "notes": "",
+            "parent_budget": 753,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8351
+    },
+    {
+        "fields": {
+            "descriptor1": "Beef Cattle",
+            "descriptor2": "Commercial",
+            "descriptor3": "Weaning - Owned Grazing",
+            "descriptor4": "Meat",
+            "descriptor5": "N/A",
+            "descriptor6": "Cross",
+            "enterprise": "Livestock",
+            "expense_unit": "Herd",
+            "expense_unit_quantity": 1,
+            "farm_unit": "Head",
+            "farm_unit_quantity": 1,
+            "market": "Conventional",
+            "notes": "This enterprise budget estimates the typical per-acre costs associated with producing calves in the High Desert area of Southeast Oregon. It should be used as a guide to estimate your actual costs and does not represent any specific farm.    Source:http://arec.oregonstate.edu/oaeb/files/pdf/EM8470.pdf  EM 8470 1997",
+            "region": "High Desert Area",
+            "state": "OR",
+            "time_unit": "Year",
+            "time_value": 1,
+            "title": "Cow/Calf Production, 350 Head, Southeast Oregon"
+        },
+        "model": "university_budget.universitybudget",
+        "pk": 754
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Bulls",
+            "notes": "",
+            "parent_budget": 754,
+            "return_total": 2142,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 2.8,
+            "weight": 15
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 743
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Cows",
+            "notes": "",
+            "parent_budget": 754,
+            "return_total": 17955,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 45,
+            "weight": 9.5
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 744
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Horse ",
+            "notes": "",
+            "parent_budget": 754,
+            "return_total": 300,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 0.5,
+            "weight": 1
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 745
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Heifer Calves",
+            "notes": "",
+            "parent_budget": 754,
+            "return_total": 11599.5,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 33,
+            "weight": 4.75
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 746
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Yearling Heifers ",
+            "notes": "",
+            "parent_budget": 754,
+            "return_total": 32461.5,
+            "sale_unit": "Herd",
+            "sale_unit_quantity": 57,
+            "weight": 8.5
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 747
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Steer Calves",
+            "notes": "",
+            "parent_budget": 754,
+            "return_total": 60810.75,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 143,
+            "weight": 5.25
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 748
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 9306,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "L-T asset replacement & section 179 expenses",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8352
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 47604,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Feed",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8353
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 4346.1,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Gasoline, Fuel, and Oil",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8354
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2369,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Insurance (other than health)",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8355
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 8001,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Labor Hired (less employment credits)",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8356
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2672,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Rent and leases: Land and animals",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8357
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 4555.9,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Repairs and Maintenance",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8358
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 1050,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Supplies",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8359
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2500,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Property Taxes",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8360
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 900,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Utilities",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8361
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 3500,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Veterinary, Breeding, and Medicine",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8362
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 13060,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Other expenses",
+            "notes": "",
+            "parent_budget": 754,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8363
+    },
+    {
+        "fields": {
+            "descriptor1": "Beef Cattle",
+            "descriptor2": "Commercial",
+            "descriptor3": "Weaning - Owned Grazing",
+            "descriptor4": "Meat",
+            "descriptor5": "N/A",
+            "descriptor6": "Cross",
+            "enterprise": "Livestock",
+            "expense_unit": "Herd",
+            "expense_unit_quantity": 1,
+            "farm_unit": "Head",
+            "farm_unit_quantity": 1,
+            "market": "Conventional",
+            "notes": "This enterprise budget estimates the typical costs and returns of producing calves on irrigated pasture in Klamath and Lake Counties of South Central Oregon, utilizing leased winter range in northern California.  Source: http://arec.oregonstate.edu/oaeb/files/pdf/AEB0053.pdf  AEB 0053  2014",
+            "region": "South Central",
+            "state": "OR",
+            "time_unit": "Year",
+            "time_value": 1,
+            "title": "Cow/Calf Production, 350 Head, CA Winter Range, South Central Oregon,"
+        },
+        "model": "university_budget.universitybudget",
+        "pk": 755
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Weaning steer calves",
+            "notes": "",
+            "parent_budget": 755,
+            "return_total": 223380,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 146,
+            "weight": 8.5
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 749
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Stocker/yearling heifers",
+            "notes": "",
+            "parent_budget": 755,
+            "return_total": 144160,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 106,
+            "weight": 8
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 750
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Cows",
+            "notes": "",
+            "parent_budget": 755,
+            "return_total": 61200,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 34,
+            "weight": 12
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 751
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Bulls",
+            "notes": "",
+            "parent_budget": 755,
+            "return_total": 4200,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 2,
+            "weight": 21
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 752
+    },
+    {
+        "fields": {
+            "descriptor1": "",
+            "descriptor2": "",
+            "descriptor3": "",
+            "descriptor4": "",
+            "descriptor5": "",
+            "descriptor6": "",
+            "enterprise": "Livestock",
+            "farm_unit": "acres",
+            "farm_unit_quantity": 1,
+            "name": "Cull Horses",
+            "notes": "",
+            "parent_budget": 755,
+            "return_total": 0,
+            "sale_unit": "cwt",
+            "sale_unit_quantity": 0.13,
+            "weight": 1
+        },
+        "model": "university_budget.universityincomeitem",
+        "pk": 753
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 11625,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Car and Truck Expenses",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8364
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 23057,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "L-T asset replacement & section 179 expenses",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8365
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 12960,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Feed",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8366
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 12671.45,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Gasoline, Fuel, and Oil",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8367
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 14000,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Insurance (other than health)",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8368
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 7508,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Interest on Loans and Mortgages",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8369
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 2000,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Labor Hired (less employment credits)",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8370
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 80223,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Rent and leases: Land and animals",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8371
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 11367.55,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Repairs and Maintenance",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8372
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 14022,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Supplies",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8373
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 4500,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Property Taxes",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8374
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 40000,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Utilities",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8375
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 7500,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Veterinary, Breeding, and Medicine",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8376
+    },
+    {
+        "fields": {
+            "category": "",
+            "cost_total": 62655,
+            "cost_type": "general",
+            "farm_unit_quantity": 1,
+            "name": "Other expenses",
+            "notes": "",
+            "parent_budget": 755,
+            "parent_category": "",
+            "sub_category": "",
+            "unit": "herd",
+            "unit_quantity": 1
+        },
+        "model": "university_budget.universitycostitem",
+        "pk": 8377
+    }
+]

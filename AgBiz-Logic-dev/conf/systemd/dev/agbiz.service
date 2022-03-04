@@ -1,0 +1,8 @@
+[Unit]
+Description=agbiz
+
+[Service]
+Slice=machine.slice
+ExecStart=/home/hammonse/projects/AgBiz-Logic/app/rkt-run.sh
+KillMode=mixed
+Restart=always

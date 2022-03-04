@@ -1,0 +1,21 @@
+<div id="sidebar" class="col-md-2 sidebar d-md-block bg-light">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item" ng-repeat="option in $ctrl.options track by $index">
+                <a ng-class="'nav-link'" href="{$ option.url $}">
+                    <span style="color: #005ce6;" ng-bind="option.name"></span>
+                </a>
+            </li>
+            <li class="nav-item" ng-repeat="agbiz_option in $ctrl.agbiz_options track by $index">
+                <a ng-class="'nav-link'" href="{$ agbiz_option.url $}">
+                    <i style="color: #005ce6;">AgBiz<span ng-bind="agbiz_option.name"></span></i>
+                </a>
+            </li>
+            <li class="nav-item" ng-repeat="agbiz_option_soon in $ctrl.agbiz_options_soon track by $index">
+                <a title="Coming soon!" ng-class="'nav-link'" href="{$ agbiz_option_soon.url $}">
+                    <i>AgBiz<span ng-bind="agbiz_option_soon.name"></span></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

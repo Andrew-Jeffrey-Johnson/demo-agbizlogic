@@ -1,0 +1,3270 @@
+[
+  {
+    "name": "Cost of Goods Sold",
+    "variable_sub_categories": [
+      {
+        "name": "Cost of Goods Sold",
+        "items": [
+          {
+            "name": "Calf"
+          },
+          {
+            "name": "Chicks"
+          },
+          {
+            "name": "Feeder Heifer"
+          },
+          {
+            "name": "Feeder Lamb"
+          },
+          {
+            "name": "Feeder Pig"
+          },
+          {
+            "name": "Feeder Steer"
+          },
+          {
+            "name": "Yearling Heifer"
+          },
+          {
+            "name": "Yearling Steer"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Head",
+          "Pound",
+          "Cwt",
+          "Cow",
+          "Each",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+    "name": "Car and Truck Expenses",
+    "variable_sub_categories": [
+      {
+        "name": "Vehicles, Machinery and Buildings",
+        "items": [
+          {
+            "name": "Repairs"
+          },
+          {
+            "name": "Maintenance"
+          },
+          {
+            "name": "Lube"
+          },
+          {
+            "name": "Fuel - Diesel"
+          },
+          {
+            "name": "Fuel - Gas"
+          },
+          {
+            "name": "Fuel - Propane"
+          },
+          {
+            "name": "Fuel - Natural Gas"
+          },
+          {
+            "name": "Power - Electricity"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Hour",
+          "Gallon",
+          "kwh",
+          "Liter",
+          "Quart",
+          "Each",
+          "Head",
+          "Annual",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+{
+    "name": "Chemicals",
+    "variable_sub_categories": [
+        {
+            "name": "Herbicide",
+            "items": [
+                {
+                    "name": "2,4-D"
+                },
+                {
+                    "name": "2,4-DB"
+                },
+                {
+                    "name": "acetochlor"
+                },
+                {
+                    "name": "acifluorfen"
+                },
+                {
+                    "name": "alachlor"
+                },
+                {
+                    "name": "ametryn"
+                },
+                {
+                    "name": "altrazine"
+                },
+                {
+                    "name": "aminopyralid"
+                },
+                {
+                    "name": "benefin"
+                },
+                {
+                    "name": "bensulfuron"
+                },
+                {
+                    "name": "bensulide"
+                },
+                {
+                    "name": "bentazon"
+                },
+                {
+                    "name": "bromacil"
+                },
+                {
+                    "name": "butylate"
+                },
+                {
+                    "name": "carfentrazone"
+                },
+                {
+                    "name": "chlorimuron"
+                },
+                {
+                    "name": "clethodim"
+                },
+                {
+                    "name": "clomazon"
+                },
+                {
+                    "name": "clopyralid"
+                },
+                {
+                    "name": "cloransulam"
+                },
+                {
+                    "name": "cycoate"
+                },
+                {
+                    "name": "DCPA"
+                },
+                {
+                    "name": "desmedipham"
+                },
+                {
+                    "name": "dicamba"
+                },
+                {
+                    "name": "dichlobenil"
+                },
+                {
+                    "name": "diclofop"
+                },
+                {
+                    "name": "diclosulam"
+                },
+                {
+                    "name": "diflufenzopyr"
+                },
+                {
+                    "name": "dimethenamid"
+                },
+                {
+                    "name": "dquat"
+                },
+                {
+                    "name": "diuron"
+                },
+                {
+                    "name": "DSMA"
+                },
+                {
+                    "name": "endothall"
+                },
+                {
+                    "name": "EPTC"
+                },
+                {
+                    "name": "ethalfluralin"
+                },
+                {
+                    "name": "ethofumesate"
+                },
+                {
+                    "name": "fenoxaprop"
+                },
+                {
+                    "name": "fluazifop-P"
+                },
+                {
+                    "name": "flucarbazone"
+                },
+                {
+                    "name": "flufenacet"
+                },
+                {
+                    "name": "flumetsulam"
+                },
+                {
+                    "name": "flumiclorac"
+                },
+                {
+                    "name": "flumioxazin"
+                },
+                {
+                    "name": "fluometuron"
+                },
+                {
+                    "name": "fluroxypyr"
+                },
+                {
+                    "name": "fomesafen"
+                },
+                {
+                    "name": "foramsulfuron"
+                },
+                {
+                    "name": "glufosinate"
+                },
+                {
+                    "name": "glyphosate"
+                },
+                {
+                    "name": "halosulfuron"
+                },
+                {
+                    "name": "hexazinone"
+                },
+                {
+                    "name": "imazamethabenz"
+                },
+                {
+                    "name": "imazamox"
+                },
+                {
+                    "name": "imazapic"
+                },
+                {
+                    "name": "imazaquin"
+                },
+                {
+                    "name": "imazethapyr"
+                },
+                {
+                    "name": "isozaben"
+                },
+                {
+                    "name": "isoxaflutole"
+                },
+                {
+                    "name": "lactofen"
+                },
+                {
+                    "name": "linuron"
+                },
+                {
+                    "name": "MCPA"
+                },
+                {
+                    "name": "MCPB"
+                },
+                {
+                    "name": "mesotrione"
+                },
+                {
+                    "name": "metochlor-s"
+                },
+                {
+                    "name": "metribuzin"
+                },
+                {
+                    "name": "metasulfuron"
+                },
+                {
+                    "name": "molinate"
+                },
+                {
+                    "name": "MSMA"
+                },
+                {
+                    "name": "napropamide"
+                },
+                {
+                    "name": "naptalam"
+                },
+                {
+                    "name": "nicosulfuron"
+                },
+                {
+                    "name": "norflurazon"
+                },
+                {
+                    "name": "oryzalin"
+                },
+                {
+                    "name": "oxadiozon"
+                },
+                {
+                    "name": "paraquat"
+                },
+                {
+                    "name": "pelargonic acid"
+                },
+                {
+                    "name": "pendimethalin"
+                },
+                {
+                    "name": "phenmedipham"
+                },
+                {
+                    "name": "picloram"
+                },
+                {
+                    "name": "primisulfuron"
+                },
+
+                {
+                    "name": "prodiamine"
+                },
+                {
+                    "name": "prometryn"
+                },
+                {
+                    "name": "pronamide"
+                },
+                {
+                    "name": "propanil"
+                },
+                {
+                    "name": "prosulfuron"
+                },
+                {
+                    "name": "pyrazon"
+                },
+                {
+                    "name": "pyrithiobac"
+                },
+                {
+                    "name": "quinclorac"
+                },
+                {
+                    "name": "quizalofop"
+                },
+                {
+                    "name": "rimsulfuron"
+                },
+                {
+                    "name": "sethoxydim"
+                },
+                {
+                    "name": "siduron"
+                },
+                {
+                    "name": "simazine"
+                },
+                {
+                    "name": "sulfentrazone"
+                },
+                {
+                    "name": "sulfometuron"
+                },
+                {
+                    "name": "sulfosulfuron"
+                },
+                {
+                    "name": "tebuthiuron"
+                },
+                {
+                    "name": "terbacil"
+                },
+                {
+                    "name": "thiazopyr"
+                },
+                {
+                    "name": "thifensulfuron"
+                },
+                {
+                    "name": "thiobencarb"
+                },
+                {
+                    "name": "tralkoxydim"
+                },
+                {
+                    "name": "triallate"
+                },
+                {
+                    "name": "trialsulfuron"
+                },
+                {
+                    "name": "tribenuron"
+                },
+                {
+                    "name": "triclopyr"
+                },
+                {
+                    "name": "trifluralin"
+                },
+                {
+                    "name": "triflusulfuron"
+                }
+            ],
+            "units": [
+                "Acre",
+                "Ounce",
+                "Quart",
+                "Each",
+                "Gallon",
+                "Pound",
+                "Fluid Ounce",
+                "Pint",
+                "Liter",
+                "Gross",
+                "Other"
+            ]
+        },
+        {
+            "name": "Insecticide",
+            "items": [
+                {
+                    "name": "temephos"
+                },
+                {
+                    "name": "abamectin"
+                },
+                {
+                    "name": "chlorantraniliprole"
+                },
+                {
+                    "name": "indoxicarb"
+                },
+                {
+                    "name": "methoprene"
+                },
+                {
+                    "name": "permethrin"
+                },
+                {
+                    "name": "clothianidin"
+                },
+                {
+                    "name": "esfenvalerate"
+                },
+                {
+                    "name": "fenoxycarb"
+                },
+                {
+                    "name": "propoxur"
+                },
+                {
+                    "name": "cyfluthrin"
+                },
+                {
+                    "name": "flubendiamide"
+                },
+                {
+                    "name": "dicrotophos"
+                },
+                {
+                    "name": "bacillus thunngiensis"
+                },
+                {
+                    "name": "fipronil"
+                },
+                {
+                    "name": "bifenthrin"
+                },
+                {
+                    "name": "bifenthrin + imidacloprid"
+                },
+                {
+                    "name": "flonicamid"
+                },
+                {
+                    "name": "thiamethoxam"
+                },
+                {
+                    "name": "methyl parathion"
+                },
+                {
+                    "name": "cyromazine"
+                },
+                {
+                    "name": "propargite"
+                },
+                {
+                    "name": "lambda-cyhalothrin"
+                },
+                {
+                    "name": "bacillus thuringiensis"
+                },
+                {
+                    "name": "tebufenozide"
+                },
+                {
+                    "name": "spinosad/spintor"
+                },
+                {
+                    "name": "coumaphos"
+                },
+                {
+                    "name": "coumaphos + diazinon"
+                },
+                {
+                    "name": "terbufos"
+                },
+                {
+                    "name": "profenofos"
+                },
+                {
+                    "name": "dioxathion"
+                },
+                {
+                    "name": "novaluron"
+                },
+                {
+                    "name": "naled"
+                },
+                {
+                    "name": "trichlorfon"
+                },
+                {
+                    "name": "disulfoton"
+                },
+                {
+                    "name": "pyriproxyfen"
+                },
+                {
+                    "name": "mancozeb"
+                },
+                {
+                    "name": "lambda-cyhalothrin + thiamethoxam"
+                },
+                {
+                    "name": "eprinomectin"
+                },
+                {
+                    "name": "methoprene, amdro"
+                },
+                {
+                    "name": "bifenazate"
+                },
+                {
+                    "name": "spiromesifen"
+                },
+                {
+                    "name": "tefluthrin"
+                },
+                {
+                    "name": "methylchloroform"
+                },
+                {
+                    "name": "zetamethrin/zeta-cyprmethrin"
+                },
+                {
+                    "name": "malathion"
+                },
+                {
+                    "name": "imidacloprid"
+                },
+                {
+                    "name": "azinphos methyl"
+                },
+                {
+                    "name": "bifenthrin + zeta-cyprmethrin"
+                },
+                {
+                    "name": "phosmet"
+                },
+                {
+                    "name": "methoxyfenozide"
+                },
+                {
+                    "name": "acetamiprid"
+                },
+                {
+                    "name": "dicofol"
+                },
+                {
+                    "name": "methomyl"
+                },
+                {
+                    "name": "thiodicarb"
+                },
+                {
+                    "name": "imidacloprid + beta-cyfluthrin"
+                },
+                {
+                    "name": "chlorpyrifos"
+                },
+                {
+                    "name": "halo-fenozide"
+                },
+                {
+                    "name": "soap"
+                },
+                {
+                    "name": "methiocarb"
+                },
+                {
+                    "name": "oxydemeton-methyl"
+                },
+                {
+                    "name": "methamidophos/acephate-met"
+                },
+                {
+                    "name": "zeta-cypermethrin"
+                },
+                {
+                    "name": "isofenphos"
+                },
+                {
+                    "name": "acephate"
+                },
+                {
+                    "name": "endosulfan"
+                },
+                {
+                    "name": "aluminum phosphide"
+                },
+                {
+                    "name": "gamma-cyhalothrin"
+                },
+                {
+                    "name": "allethrin"
+                },
+                {
+                    "name": "pyrethrin"
+                },
+                {
+                    "name": "tetrachlorvinphos"
+                },
+                {
+                    "name": "tetrachlorvinphos + dichlorvos"
+                },
+                {
+                    "name": "lambda-cyhalothrin + PBO"
+                },
+                {
+                    "name": "carbaryl"
+                },
+                {
+                    "name": "fenthion"
+                },
+                {
+                    "name": "indoxacarb"
+                },
+                {
+                    "name": "methidathion"
+                },
+                {
+                    "name": "amitraz"
+                },
+                {
+                    "name": "tetradifon"
+                },
+                {
+                    "name": "aldicarb"
+                },
+                {
+                    "name": "phorate"
+                },
+                {
+                    "name": "bacillus sphaericus"
+                },
+                {
+                    "name": "dichlofenthion"
+                },
+                {
+                    "name": "difubenzuron"
+                },
+                {
+                    "name": "fenbutatin-oxide"
+                },
+                {
+                    "name": "sulfurimid"
+                },
+                {
+                    "name": "oxamyl"
+                },
+                {
+                    "name": "diazinon + chlorpyrifos"
+                }
+            ],
+            "units": [
+                "Acre",
+                "Ounce",
+                "Quart",
+                "Each",
+                "Gallon",
+                "Pound",
+                "Fluid Ounce",
+                "Pint",
+                "Liter",
+                "Gross",
+                "Other"
+            ]
+        },
+        {
+            "name": "Fungicide",
+            "items": [
+                {
+                    "name": "thiophanate-methyl"
+                },
+                {
+                    "name": "iprodione-vinclozolin"
+                },
+                {
+                    "name": "triflumizole"
+                },
+                {
+                    "name": "triforine"
+                },
+                {
+                    "name": "myclobutanil"
+                },
+                {
+                    "name": "tebuconazole"
+                },
+                {
+                    "name": "mefenoxam"
+                },
+                {
+                    "name": "carbaxin"
+                },
+                {
+                    "name": "cyprodinil"
+                },
+                {
+                    "name": "azoxystrobin"
+                },
+                {
+                    "name": "trifloxystrobin"
+                },
+                {
+                    "name": "pyraclostrobin"
+                },
+                {
+                    "name": "fludioxonil"
+                },
+                {
+                    "name": "quintoxene"
+                },
+                {
+                    "name": "dicloran"
+                },
+                {
+                    "name": "etridiazole"
+                },
+                {
+                    "name": "dimethomorph"
+                },
+                {
+                    "name": "fenhaxamid"
+                },
+                {
+                    "name": "strptomycin"
+                },
+                {
+                    "name": "polyoxin D"
+                },
+                {
+                    "name": "acibenzolar-S-methyl"
+                },
+                {
+                    "name": "harpin"
+                },
+                {
+                    "name": "fosetyl-aluminum"
+                },
+                {
+                    "name": "phosphorus acid"
+                },
+                {
+                    "name": "copper"
+                },
+                {
+                    "name": "sulfer"
+                },
+                {
+                    "name": "mancozeb"
+                },
+                {
+                    "name": "dimethyldithiocarbamate"
+                },
+                {
+                    "name": "captan"
+                },
+                {
+                    "name": "chlorothalonil"
+                },
+                {
+                    "name": "fluazinam"
+                },
+                {
+                    "name": "cymoxanil"
+                },
+                {
+                    "name": "propamocarb"
+                },
+                {
+                    "name": "gliocladium catenulatum"
+                },
+                {
+                    "name": "aspergillus flavus"
+                },
+                {
+                    "name": "coniotyrium minitans"
+                },
+                {
+                    "name": "bacillus subtilis"
+                },
+                {
+                    "name": "cinnamaldehyde"
+                },
+                {
+                    "name": "mineral oil"
+                },
+                {
+                    "name": "plant essential oil"
+                },
+                {
+                    "name": "potassium bicarbonate"
+                },
+                {
+                    "name": "monopotassium phosphate"
+                },
+                {
+                    "name": "kaolin"
+                }
+
+            ],
+            "units": [
+                "Acre",
+                "Ounce",
+                "Quart",
+                "Each",
+                "Gallon",
+                "Pound",
+                "Fluid Ounce",
+                "Pint",
+                "Liter",
+                "Gross",
+                "Other"
+            ]
+        },
+        {
+            "name": "Rodenticide",
+            "items": [
+                {
+                    "name": "scilliroside"
+                },
+                {
+                    "name": "strychnine"
+                },
+                {
+                    "name": "mieshuan"
+                },
+                {
+                    "name": "brodifacoum"
+                },
+                {
+                    "name": "coumachlor"
+                },
+                {
+                    "name": "coumafuryl"
+                },
+                {
+                    "name": "coumatetralyl"
+                },
+                {
+                    "name": "dicoumarol"
+                },
+                {
+                    "name": "difenacoum"
+                },
+                {
+                    "name": "difethialone"
+                },
+                {
+                    "name": "flocoumafen"
+                },
+                {
+                    "name": "warfarin"
+                },
+                {
+                    "name": "chlorophacinone"
+                },
+                {
+                    "name": "diphacinone"
+                },
+                {
+                    "name": "naphthylindane-1,3-diones"
+                },
+                {
+                    "name": "pindone"
+                },
+                {
+                    "name": "valone"
+                },
+                {
+                    "name": "arsenous oxide"
+                },
+                {
+                    "name": "phosphorus"
+                },
+                {
+                    "name": "potassium arsenite"
+                },
+                {
+                    "name": "sodium arsenite"
+                },
+                {
+                    "name": "thallium sulfate"
+                },
+                {
+                    "name": "zinc phosphide"
+                },
+                {
+                    "name": "gamma-HCH"
+                },
+                {
+                    "name": "HCH"
+                },
+                {
+                    "name": "fluoroacetamide"
+                },
+                {
+                    "name": "fluoroacetic acid"
+                },
+                {
+                    "name": "gliftor"
+                },
+                {
+                    "name": "sodium fluoroacetate"
+                },
+                {
+                    "name": "phosacetim"
+                },
+                {
+                    "name": "crimidine"
+                },
+                {
+                    "name": "antu"
+                },
+                {
+                    "name": "promurit"
+                },
+                {
+                    "name": "thiosemicarbazide"
+                },
+                {
+                    "name": "pyrinuron"
+                },
+                {
+                    "name": "bromethalin"
+                },
+                {
+                    "name": "chloralose"
+                },
+                {
+                    "name": "a-chlorohydrin"
+                },
+                {
+                    "name": "cholecalciferol"
+                },
+                {
+                    "name": "copper acetoarsenite"
+                },
+                {
+                    "name": "curcumenol"
+                },
+                {
+                    "name": "ergocalciferol"
+                },
+                {
+                    "name": "flupropaine"
+                },
+                {
+                    "name": "hydrogen cyanide"
+                },
+                {
+                    "name": "norbormide"
+                },
+                {
+                    "name": "silatrane"
+                },
+                {
+                    "name": "tetramine"
+                }
+            ],
+            "units": [
+                "Acre",
+                "Ounce",
+                "Quart",
+                "Each",
+                "Gallon",
+                "Pound",
+                "Fluid Ounce",
+                "Pint",
+                "Liter",
+                "Gross",
+                "Other"
+            ]
+        },
+
+        {
+            "name": "Bacteriocide",
+            "items": [
+
+            ],
+            "units": [
+                "Acre",
+                "Ounce",
+                "Quart",
+                "Each",
+                "Gallon",
+                "Pound",
+                "Fluid Ounce",
+                "Pint",
+                "Liter",
+                "Gross",
+                "Other"
+            ]
+        },
+        {
+            "name": "Nematicides",
+            "items": [
+
+            ],
+            "units": [
+                "Acre",
+                "Ounce",
+                "Quart",
+                "Each",
+                "Gallon",
+                "Pound",
+                "Fluid Ounce",
+                "Pint",
+                "Liter",
+                "Gross",
+                "Other"
+            ]
+        }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+      "name": "Fertilizers and Lime",
+      "variable_sub_categories": [
+          {
+              "name": "Fertilizer",
+              "items": [
+                  {
+                      "name": "Ammonium nitrate"
+                  },
+                  {
+                      "name": "Ammonium sulfate"
+                  },
+                  {
+                     "name": "Calcium nitrate"
+                  },
+                  {
+                     "name": "Cal-nitro"
+                  },
+                  {
+                     "name": "Diammonium phosphate"
+                  },
+                  {
+                     "name": "Urea"
+                  },
+                  {
+                     "name": "Anhydrous ammonia"
+                  },
+                  {
+                     "name": "Aqua ammonia"
+                  },
+                  {
+                     "name": "UAN32"
+                  },
+                  {
+                     "name": "Monoammonium phosphate"
+                  },
+                  {
+                     "name": "Triple superphosphate"
+                  },
+                  {
+                     "name": "Potassium sulfate"
+                  },
+                  {
+                     "name": "Potassium nitrate"
+                  },
+                  {
+                     "name": "Potassium hydroxide"
+                  },
+                  {
+                     "name": "Sulfate of potash magnesia"
+                  },
+                  {
+                     "name": "Manure"
+                  },
+                  {
+                     "name": "Compost"
+                  },
+                  {
+                     "name": "Potassium chloride"
+                  },
+                  {
+                     "name": "Liquid manure"
+                  },
+                  {
+                     "name": "Compost teas"
+                  },
+                  {
+                     "name": "Elemental sulfur"
+                  },
+                  {
+                     "name": "UN32"
+                  },
+                  {
+                     "name": "Zinc sulfate foliar"
+                  },
+                  {
+                     "name": "Potash"
+                  },
+                  {
+                     "name": "Foliar N"
+                  },
+                  {
+                     "name": "Foliar Mn"
+                  },
+                  {
+                     "name": "Foliar Zn"
+                  },
+                  {
+                     "name": "Other"
+                  },
+                  {
+                     "name": "Nitrogen"
+                  },
+                  {
+                     "name": "Phosphorus"
+                  },
+                  {
+                     "name": "Blend"
+                  }
+              ],
+              "units": [
+                  "Acre",
+                  "Quart",
+                  "Each",
+                  "Gallon",
+                  "Pound",
+                  "Fluid Ounce",
+                  "Pint",
+                  "Liter",
+                  "Other"
+              ]
+          }
+      ],
+      "fixed_sub_categories": []
+  },
+  {
+      "name": "Seeds and Plants",
+      "variable_sub_categories": [
+          {
+              "name": "Seed",
+              "items": [
+                  {
+                      "name": "Seed"
+                  },
+                  {
+                      "name": "Cereal Grains"
+                  },
+                  {
+                      "name": "Oil"
+                  },
+                  {
+                      "name": "Feed"
+                  },
+                  {
+                      "name": "Legumes"
+                  },
+                  {
+                      "name": "Row Crops"
+                  },
+                  {
+                      "name": "Other"
+                  }
+              ],
+              "units": [
+                  "Acre",
+                  "Pound",
+                  "Bushel",
+                  "Other"
+              ]
+          },
+          {
+              "name": "Trees",
+              "items": [
+                  {
+                      "name": "Tree Fruits"
+                  },
+                  {
+                      "name": "Nut Crops"
+                  },
+                  {
+                      "name": "Other"
+                  }
+              ],
+              "units": [
+                  "Acre",
+                  "Tree",
+                  "Graft",
+                  "Cutting",
+                  "Rootstock",
+                  "Other"
+              ]
+          },
+          {
+              "name": "Vines",
+              "items": [
+                  {
+                      "name": "Vine Crops"
+                  },
+                  {
+                      "name": "Other"
+                  }
+              ],
+              "units": [
+                  "Acre",
+                  "Tree",
+                  "Graft",
+                  "Cutting",
+                  "Rootstock",
+                  "Other"
+              ]
+          },
+          {
+              "name": "Plants",
+              "items": [
+                  {
+                      "name": "Berry Crops"
+                  },
+                  {
+                      "name": "Other"
+                  }
+              ],
+              "units": [
+                  "Acre",
+                  "Tree",
+                  "Graft",
+                  "Cutting",
+                  "Rootstock",
+                  "Other"
+              ]
+          }
+      ],
+      "fixed_sub_categories": []
+  },
+  {
+    "name": "Conservation Expenses",
+    "variable_sub_categories": [
+      {
+        "name": "Conservation Practices",
+        "items": [
+          {
+            "name": "Seed"
+          },
+          {
+            "name": "Custom Hire"
+          },
+          {
+            "name": "Chemicals"
+          },
+          {
+            "name": "Fertilizers"
+          },
+          {
+            "name": "Equipment"
+          },
+          {
+            "name": "Machinery"
+          },
+          {
+            "name": "NRCS Project"
+          },
+          {
+            "name": "Other"
+          },
+          {
+            "name": "Gas, Fuel and Lube"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": [
+      {
+        "name": "Conservation Practices",
+        "items": [
+          {
+            "name": "Seed"
+          },
+          {
+            "name": "Custom Hire"
+          },
+          {
+            "name": "Chemicals"
+          },
+          {
+            "name": "Fertilizers"
+          },
+          {
+            "name": "Equipment"
+          },
+          {
+            "name": "Machinery"
+          },
+          {
+            "name": "Gas, Fuel and Lube"
+          },
+          {
+            "name": "Other"
+          },
+          {
+            "name": "NRCS Project"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Custom Hire",
+    "variable_sub_categories": [
+      {
+        "name": "Custom",
+        "items": [
+          {
+            "name": "Aerial Images"
+          },
+          {
+            "name": "Baling (Haying)"
+          },
+          {
+            "name": "Hauling"
+          },
+          {
+            "name": "Trucking"
+          },
+          {
+            "name": "Harvesting"
+          },
+          {
+            "name": "Cultivating"
+          },
+          {
+            "name": "Seeding"
+          },
+          {
+            "name": "Spraying"
+          },
+          {
+            "name": "Breeding (AI)"
+          },
+          {
+            "name": "Feeding"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Hour",
+          "Bin",
+          "Piece",
+          "Ton",
+          "Mile",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+    "name": "L-T asset replacement and section 179 expenses",
+    "variable_sub_categories": [],
+    "fixed_sub_categories": [
+      {
+        "name": "Replacement Costs",
+        "items": [
+          {
+            "name": "ATV"
+          },
+          {
+            "name": "Bred Cow"
+          },
+          {
+            "name": "Bred Heifer"
+          },
+          {
+            "name": "Equipment"
+          },
+          {
+            "name": "Buildings"
+          },
+          {
+            "name": "Gators"
+          },
+          {
+            "name": "Heifer"
+          },
+          {
+            "name": "Machinery"
+          },
+          {
+            "name": "Pickups"
+          },
+          {
+            "name": "Trucks"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Cow",
+          "Herd",
+          "Head",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Employee Benefit Programs",
+    "variable_sub_categories": [],
+    "fixed_sub_categories": [
+      {
+        "name": "Employee Benefits",
+        "items": [
+          {
+            "name": "401(k) Plan"
+          },
+          {
+            "name": "Education"
+          },
+          {
+            "name": "Short-Term Disability Insurance"
+          },
+          {
+            "name": "Long-Term Care Insurance"
+          },
+          {
+            "name": "Hospital Insurance"
+          },
+          {
+            "name": "Accident Insurance"
+          },
+          {
+            "name": "Life Insurance"
+          },
+          {
+            "name": "AD&D Insurance"
+          },
+          {
+            "name": "Other Insurance"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Month",
+          "Annual",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Feed",
+    "variable_sub_categories": [
+      {
+        "name": "Pulp",
+        "items": [
+          {
+            "name": "Wet Sugarbeet"
+          },
+          {
+            "name": "Other"
+          },
+          {
+            "name": "Beet"
+          }
+        ],
+        "units": [
+          "Bushel",
+          "Ton",
+          "Pound",
+          "Cwt",
+          "Head",
+          "Other"
+        ]
+      },
+      {
+        "name": "Grazing",
+        "items": [
+          {
+            "name": "Irrigated Pasture"
+          },
+          {
+            "name": "State"
+          },
+          {
+            "name": "Private Range"
+          },
+          {
+            "name": "Pasture"
+          },
+          {
+            "name": "BLM"
+          },
+          {
+            "name": "Federal Range"
+          },
+          {
+            "name": "US Forest Service"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "AUM",
+          "Head",
+          "Other"
+        ]
+      },
+      {
+        "name": "Crop Aftermath",
+        "items": [
+          {
+            "name": "Corn"
+          },
+          {
+            "name": "Cereal Grains"
+          },
+          {
+            "name": "Sudangrass"
+          },
+          {
+            "name": "Alfalfa"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Head",
+          "Cow",
+          "Each",
+          "AUM",
+          "Acre",
+          "Other"
+        ]
+      },
+      {
+        "name": "Grain",
+        "items": [
+          {
+            "name": "Barley"
+          },
+          {
+            "name": "Canola"
+          },
+          {
+            "name": "Millet"
+          },
+          {
+            "name": "Oats"
+          },
+          {
+            "name": "Tye"
+          },
+          {
+            "name": "Triticale"
+          },
+          {
+            "name": "Potatoes"
+          },
+          {
+            "name": "Sorghum"
+          },
+          {
+            "name": "Vegetables"
+          },
+          {
+            "name": "Wheat"
+          },
+          {
+            "name": "Corn"
+          },
+          {
+            "name": "Wet Dry Distillers"
+          },
+          {
+            "name": "Distillers"
+          },
+          {
+            "name": "Cottonseed"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Bushel",
+          "Ton",
+          "Pound",
+          "Cwt",
+          "Head",
+          "Other"
+        ]
+      },
+      {
+        "name": "Hay",
+        "items": [
+          {
+            "name": "Alfalfa Grass"
+          },
+          {
+            "name": "Alfalfa"
+          },
+          {
+            "name": "Grass"
+          },
+          {
+            "name": "Meadow"
+          },
+          {
+            "name": "Mixed"
+          },
+          {
+            "name": "Stover"
+          },
+          {
+            "name": "Grain"
+          },
+          {
+            "name": "Corn Stalk"
+          },
+          {
+            "name": "Grain Hay"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Bushel",
+          "Ton",
+          "Pound",
+          "Cwt",
+          "Head",
+          "Other"
+        ]
+      },
+      {
+        "name": "Rations",
+        "items": [
+          {
+            "name": "Feed"
+          },
+          {
+            "name": "Finish"
+          },
+          {
+            "name": "Grower"
+          },
+          {
+            "name": "Pre-starter"
+          },
+          {
+            "name": "Process Waste"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Bushel",
+          "Ton",
+          "Pound",
+          "Cwt",
+          "Other"
+        ]
+      },
+      {
+        "name": "Silage",
+        "items": [
+          {
+            "name": "Corn"
+          },
+          {
+            "name": "Grass"
+          },
+          {
+            "name": "Mixed"
+          },
+          {
+            "name": "Barley"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Ton",
+          "Pound",
+          "Cwt",
+          "Bale",
+          "Other"
+        ]
+      },
+      {
+        "name": "Supplements",
+        "items": [
+          {
+            "name": "Protein"
+          },
+          {
+            "name": "Minerals"
+          },
+          {
+            "name": "Salt"
+          },
+          {
+            "name": "Cake/Cubes"
+          },
+          {
+            "name": "Molasses"
+          },
+          {
+            "name": "Bypass Fat"
+          },
+          {
+            "name": "Feed Additives"
+          },
+          {
+            "name": "Concentrates"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Bushel",
+          "Ton",
+          "Pound",
+          "Cwt",
+          "Other"
+        ]
+      },
+      {
+        "name": "Straw",
+        "items": [
+          {
+            "name": "Grain"
+          },
+          {
+            "name": "Grass"
+          },
+          {
+            "name": "Corn Stalk"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Ton",
+          "Pound",
+          "Cwt",
+          "Bale",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+    "name": "Freight and Trucking",
+    "variable_sub_categories": [
+      {
+        "name": "Trucking",
+        "items": [
+          {
+            "name": "Grain"
+          },
+          {
+            "name": "Livestock"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Percent",
+          "Acre",
+          "Mile",
+          "Head",
+          "kwh",
+          "Gallon",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+    "name": "Gasoline, Fuel, and Oil",
+    "variable_sub_categories": [
+      {
+        "name": "Vehicles, Machinery and Buildings",
+        "items": [
+          {
+            "name": "Repairs"
+          },
+          {
+            "name": "Maintenance"
+          },
+          {
+            "name": "Lube"
+          },
+          {
+            "name": "Fuel - Diesel"
+          },
+          {
+            "name": "Fuel - Gas"
+          },
+          {
+            "name": "Fuel - Propane"
+          },
+          {
+            "name": "Fuel - Natural Gas"
+          },
+          {
+            "name": "Power - Electricity"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Hour",
+          "Gallon",
+          "kwh",
+          "Liter",
+          "Quart",
+          "Each",
+          "Head",
+          "Annual",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+    "name": "Insurance (other than health)",
+    "variable_sub_categories": [
+      {
+        "name": "Insurance",
+        "items": [
+          {
+            "name": "Payroll"
+          },
+          {
+            "name": "Crop Revenue Coverage"
+          },
+          {
+            "name": "Liability"
+          },
+          {
+            "name": "Crop - Fire"
+          },
+          {
+            "name": "Crop - Hail"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Bushel",
+          "Gross",
+          "Head",
+          "Cow",
+          "Each",
+          "Herd",
+          "Annual",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": [
+      {
+        "name": "Insurance",
+        "items": [
+          {
+            "name": "Payroll"
+          },
+          {
+            "name": "Liability"
+          },
+          {
+            "name": "Property"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Interest on Loans and Mortgages",
+    "variable_sub_categories": [
+      {
+        "name": "Interest",
+        "items": [
+          {
+            "name": "Operating"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Percent",
+          "Acre",
+          "Herd",
+          "Head",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": [
+      {
+        "name": "Interest",
+        "items": [
+          {
+            "name": "Machinery"
+          },
+          {
+            "name": "Vehicle"
+          },
+          {
+            "name": "Land"
+          },
+          {
+            "name": "Livestock"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Percent",
+          "Acre",
+          "Annual",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Labor Hired (less employment credits)",
+    "variable_sub_categories": [
+      {
+        "name": "Labor",
+        "items": [
+          {
+            "name": "Feeding"
+          },
+          {
+            "name": "Fencing"
+          },
+          {
+            "name": "Herding"
+          },
+          {
+            "name": "Milking"
+          },
+          {
+            "name": "Irrigation"
+          },
+          {
+            "name": "Other"
+          },
+          {
+            "name": "Planting"
+          },
+          {
+            "name": "Rake"
+          },
+          {
+            "name": "Rodent Control"
+          },
+          {
+            "name": "Farrowing"
+          },
+          {
+            "name": "Tractor Driver"
+          },
+          {
+            "name": "Truck Driver"
+          },
+          {
+            "name": "Weeding"
+          },
+          {
+            "name": "General"
+          }
+        ],
+        "units": [
+          "Month",
+          "Year",
+          "Acre",
+          "Piece",
+          "Sq.Ft",
+          "Mile",
+          "Head",
+          "Cow",
+          "Each",
+          "Herd",
+          "Hour",
+          "Percent",
+          "Piece Rate",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+    "name": "Pension and Profit-Sharing Plans",
+    "variable_sub_categories": [],
+    "fixed_sub_categories": [
+      {
+        "name": "Profit Sharing",
+        "items": [
+          {
+            "name": "Cash distributions"
+          },
+          {
+            "name": "Bonus"
+          },
+          {
+            "name": "401(l) Plan"
+          },
+          {
+            "name": "Stocks"
+          },
+          {
+            "name": "Other Retirement Savings"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Month",
+          "Annual",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Rent and leases: Machinery, equipment and vehicles",
+    "variable_sub_categories": [
+      {
+        "name": "Lease",
+        "items": [
+          {
+            "name": "Vehicle"
+          },
+          {
+            "name": "Tractor"
+          },
+          {
+            "name": "Equipment"
+          },
+          {
+            "name": "Building"
+          },
+          {
+            "name": "Machinery"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Month",
+          "Year",
+          "Acre",
+          "Piece",
+          "Each",
+          "Sq. Ft.",
+          "Hour",
+          "Head",
+          "Mile",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": [
+      {
+        "name": "Rent",
+        "items": [
+          {
+            "name": "Machinery"
+          },
+          {
+            "name": "Vehicle"
+          },
+          {
+            "name": "Tractor"
+          },
+          {
+            "name": "Equipment"
+          },
+          {
+            "name": "Building"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Rent and leases: Land and animals",
+    "variable_sub_categories": [
+      {
+        "name": "Rent",
+        "items": [
+          {
+            "name": "Land"
+          },
+          {
+            "name": "Herd"
+          },
+          {
+            "name": "Head"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      },
+      {
+        "name": "Lease",
+        "items": [
+          {
+            "name": "Building"
+          },
+          {
+            "name": "Equipment"
+          },
+          {
+            "name": "Tractor"
+          },
+          {
+            "name": "Vehicle"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": [
+      {
+        "name": "Rent",
+        "items": [
+          {
+            "name": "Land"
+          },
+          {
+            "name": "Herd"
+          },
+          {
+            "name": "Head"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      },
+      {
+        "name": "Lease",
+        "items": [
+          {
+            "name": "Building"
+          },
+          {
+            "name": "Equipment"
+          },
+          {
+            "name": "Tractor"
+          },
+          {
+            "name": "Vehicle"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Repairs and Maintenance",
+    "variable_sub_categories": [
+      {
+        "name": "Vehicles, Machinery and Buildings",
+        "items": [
+          {
+            "name": "Repairs"
+          },
+          {
+            "name": "Maintenance"
+          },
+          {
+            "name": "Lube"
+          },
+          {
+            "name": "Fuel - Diesel"
+          },
+          {
+            "name": "Fuel - Gas"
+          },
+          {
+            "name": "Fuel - Propane"
+          },
+          {
+            "name": "Fuel - Natural Gas"
+          },
+          {
+            "name": "Power - Electricity"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Hour",
+          "Gallon",
+          "kwh",
+          "Liter",
+          "Quart",
+          "Each",
+          "Head",
+          "Annual",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+    "name": "Storage and Warehousing",
+    "variable_sub_categories": [
+      {
+        "name": "Storage",
+        "items": [
+          {
+            "name": "Handling"
+          },
+          {
+            "name": "Grain"
+          },
+          {
+            "name": "Hay"
+          },
+          {
+            "name": "Feed"
+          },
+          {
+            "name": "Fruit"
+          },
+          {
+            "name": "Crops"
+          },
+          {
+            "name": "Minerals"
+          },
+          {
+            "name": "Goods to be Sold"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Percent",
+          "Acre",
+          "Hour",
+          "Annual",
+          "Bushel",
+          "Ton",
+          "Pound",
+          "Month",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+    "name": "Supplies",
+    "variable_sub_categories": [
+      {
+        "name": "Livestock Equipment",
+        "items": [
+          {
+            "name": "Panels"
+          },
+          {
+            "name": "Scales"
+          },
+          {
+            "name": "Chutes"
+          },
+          {
+            "name": "Corrals"
+          },
+          {
+            "name": "Fencing"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Each",
+          "Acre",
+          "Annual",
+          "Box",
+          "Carton",
+          "Container",
+          "Hour",
+          "Percent",
+          "Piece",
+          "Pound",
+          "Ton",
+          "Other"
+        ]
+      },
+      {
+        "name": "Supplies",
+        "items": [
+          {
+            "name": "Chains"
+          },
+          {
+            "name": "Containers and Storage"
+          },
+          {
+            "name": "Fuel Storage Equipment"
+          },
+          {
+            "name": "Hardware"
+          },
+          {
+            "name": "Heating and Cooling"
+          },
+          {
+            "name": "Mats"
+          },
+          {
+            "name": "Power Equipment"
+          },
+          {
+            "name": "Power Tools"
+          },
+          {
+            "name": "Ropes and Tiedowns"
+          },
+          {
+            "name": "Tape"
+          },
+          {
+            "name": "Tarps and Wraps"
+          },
+          {
+            "name": "Tools"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Each",
+          "Acre",
+          "Annual",
+          "Box",
+          "Carton",
+          "Container",
+          "Hour",
+          "Percent",
+          "Piece",
+          "Pound",
+          "Ton",
+          "Other"
+        ]
+      },
+      {
+        "name": "Bedding",
+        "items": [
+          {
+            "name": "Hay"
+          },
+          {
+            "name": "Straw"
+          },
+          {
+            "name": "Compost"
+          },
+          {
+            "name": "Shavings"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Each",
+          "Acre",
+          "Annual",
+          "Box",
+          "Carton",
+          "Container",
+          "Hour",
+          "Percent",
+          "Piece",
+          "Pound",
+          "Ton",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": [
+      {
+        "name": "Office Expense",
+        "items": [
+          {
+            "name": "Computer"
+          },
+          {
+            "name": "Printer"
+          },
+          {
+            "name": "Internet"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Annual",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Property Taxes",
+    "variable_sub_categories": [],
+    "fixed_sub_categories": [
+      {
+        "name": "Taxes",
+        "items": [
+          {
+            "name": "Property"
+          },
+          {
+            "name": "Local"
+          },
+          {
+            "name": "State"
+          },
+          {
+            "name": "Federal"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Annual",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Utilities",
+    "variable_sub_categories": [
+      {
+        "name": "Utilities",
+        "items": [
+          {
+            "name": "Electricity"
+          },
+          {
+            "name": "Propane"
+          },
+          {
+            "name": "Natural Gas"
+          },
+          {
+            "name": "Sewer"
+          },
+          {
+            "name": "Water"
+          },
+          {
+            "name": "Phone"
+          },
+          {
+            "name": "Internet"
+          },
+          {
+            "name": "Solar"
+          },
+          {
+            "name": "Wind"
+          },
+          {
+            "name": "Geothermal"
+          },
+          {
+            "name": "Miscellaneous"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "kwh",
+          "Gallon",
+          "Gross",
+          "Head",
+          "Cow",
+          "Each",
+          "Pound",
+          "Cwt",
+          "Annual",
+          "Herd",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": [
+      {
+        "name": "Utilities",
+        "items": [
+          {
+            "name": "Electricity"
+          },
+          {
+            "name": "Propane"
+          },
+          {
+            "name": "Natural Gas"
+          },
+          {
+            "name": "Sewer"
+          },
+          {
+            "name": "Water"
+          },
+          {
+            "name": "Phone"
+          },
+          {
+            "name": "Internet"
+          },
+          {
+            "name": "Solar"
+          },
+          {
+            "name": "Wind"
+          },
+          {
+            "name": "Geothermal"
+          },
+          {
+            "name": "Miscellaneous"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "kwh",
+          "Gallon",
+          "Gross",
+          "Head",
+          "Cow",
+          "Each",
+          "Pound",
+          "Cwt",
+          "Annual",
+          "Herd",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Veterinary, Breeding and Medicine",
+    "variable_sub_categories": [
+      {
+        "name": "Veterinary",
+        "items": [
+          {
+            "name": "Medicine"
+          },
+          {
+            "name": "Supplies"
+          },
+          {
+            "name": "Surgery"
+          },
+          {
+            "name": "Vaccinations"
+          },
+          {
+            "name": "Miscellaneous"
+          },
+          {
+            "name": "AI Services"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Head",
+          "Cow",
+          "Each",
+          "Pound",
+          "Cwt",
+          "Annual",
+          "Herd",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": []
+  },
+  {
+    "name": "Other Expenses",
+    "variable_sub_categories": [
+      {
+        "name": "Sanitation Costs",
+        "items": [
+          {
+            "name": "Portable Toilets"
+          },
+          {
+            "name": "Wash Basins"
+          },
+          {
+            "name": "Cleaning Service"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      },
+      {
+        "name": "Environmental Costs",
+        "items": [
+          {
+            "name": "Air Pollution"
+          },
+          {
+            "name": "Water Discharges"
+          },
+          {
+            "name": "Hazardous Materials"
+          },
+          {
+            "name": "Safety Training"
+          },
+          {
+            "name": "Safety Equipment"
+          },
+          {
+            "name": "Pesticide License"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      },
+      {
+        "name": "Irrigation",
+        "items": [
+          {
+            "name": "Water District"
+          },
+          {
+            "name": "Assessment Fee"
+          },
+          {
+            "name": "Water-Pumping"
+          },
+          {
+            "name": "Repairs - Pivot"
+          },
+          {
+            "name": "Repairs - Wheel Line"
+          },
+          {
+            "name": "Repairs - Handline"
+          },
+          {
+            "name": "Repairs - Flood"
+          },
+          {
+            "name": "Repairs - Sprinkler"
+          },
+          {
+            "name": "Repairs - Drip"
+          },
+          {
+            "name": "Repairs - Micros"
+          },
+          {
+            "name": "Repairs - Overhead"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "acre-foot",
+          "annual",
+          "acre-inch",
+          "Head",
+          "Cow",
+          "Each",
+          "Herd",
+          "Other"
+        ]
+      },
+      {
+        "name": "Marketing",
+        "items": [
+          {
+            "name": "Steer"
+          },
+          {
+            "name": "Heifer"
+          },
+          {
+            "name": "Cow"
+          },
+          {
+            "name": "Bull"
+          },
+          {
+            "name": "Bred Heifer"
+          },
+          {
+            "name": "Stocker/Yearling Steer"
+          },
+          {
+            "name": "Stocker/Yearling Heifer"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Head",
+          "Cow",
+          "Each",
+          "Pound",
+          "Cwt",
+          "Other"
+        ]
+      },
+      {
+        "name": "Packing",
+        "items": [
+          {
+            "name": "Store"
+          },
+          {
+            "name": "Sort"
+          },
+          {
+            "name": "Sell"
+          },
+          {
+            "name": "Inspection"
+          },
+          {
+            "name": "Handle Culls"
+          },
+          {
+            "name": "Delivery"
+          },
+          {
+            "name": "Commission"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Head",
+          "Cow",
+          "Each",
+          "Pound",
+          "Cwt",
+          "Other"
+        ]
+      },
+      {
+        "name": "Processing",
+        "items": [
+          {
+            "name": "Store"
+          },
+          {
+            "name": "Sort"
+          },
+          {
+            "name": "Sell"
+          },
+          {
+            "name": "Inspection"
+          },
+          {
+            "name": "Handle Culls"
+          },
+          {
+            "name": "Delivery"
+          },
+          {
+            "name": "Commission"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Head",
+          "Cow",
+          "Each",
+          "Pound",
+          "Cwt",
+          "Other"
+        ]
+      },
+      {
+        "name": "Sales & Commission",
+        "items": [
+          {
+            "name": "Source of age verification"
+          },
+          {
+            "name": "Bred Heifer"
+          },
+          {
+            "name": "Brand inspection"
+          },
+          {
+            "name": "Check Off"
+          },
+          {
+            "name": "Steer"
+          },
+          {
+            "name": "Heifer"
+          },
+          {
+            "name": "Cow"
+          },
+          {
+            "name": "Bull"
+          },
+          {
+            "name": "Stocker/Yearling Steer"
+          },
+          {
+            "name": "Stocker/Yearling Heifer"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Head",
+          "Cow",
+          "Each",
+          "Pound",
+          "Cwt",
+          "Other"
+        ]
+      }
+    ],
+    "fixed_sub_categories": [
+      {
+        "name": "Sanitation Costs",
+        "items": [
+          {
+            "name": "Portable Toilets"
+          },
+          {
+            "name": "Wash Basins"
+          },
+          {
+            "name": "Cleaning Service"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      },
+      {
+        "name": "Environmental Costs",
+        "items": [
+          {
+            "name": "Air Pollution"
+          },
+          {
+            "name": "Water Discharges"
+          },
+          {
+            "name": "Hazardous Materials"
+          },
+          {
+            "name": "Safety Training"
+          },
+          {
+            "name": "Safety Equipment"
+          },
+          {
+            "name": "Pesticide License"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      },
+      {
+        "name": "Professional Services",
+        "items": [
+          {
+            "name": "Tax Preparation"
+          },
+          {
+            "name": "Accounting"
+          },
+          {
+            "name": "Educational fees"
+          },
+          {
+            "name": "Industry, legal, membership"
+          },
+          {
+            "name": "Legal"
+          },
+          {
+            "name": "Membership"
+          },
+          {
+            "name": "Safety Records"
+          },
+          {
+            "name": "Other"
+          }
+        ],
+        "units": [
+          "Acre",
+          "Percent",
+          "Gross",
+          "Each",
+          "Hour",
+          "Mile",
+          "Month",
+          "Annual",
+          "Sq Foot",
+          "Each",
+          "Container",
+          "Bushel",
+          "Bin",
+          "Other"
+        ]
+      }
+    ]
+  }
+]

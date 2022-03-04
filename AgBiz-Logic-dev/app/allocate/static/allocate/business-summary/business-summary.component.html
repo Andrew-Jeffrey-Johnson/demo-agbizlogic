@@ -1,0 +1,157 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h4>Summary</h4>
+
+Here is a summary of your allocated business income and expenses.
+
+<br><br>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="btn-group">
+      <button
+        class="btn btn-info"
+        ng-class="{
+          'active': $ctrl.statement_type == 'Income',
+        }"
+        ng-click="$ctrl.changeStatement()">
+        <h6 class="btn-text-large">Income</h6>
+      </button>
+      <button
+        class="btn btn-info"
+        ng-class="{
+          'active': $ctrl.statement_type == 'Expenses',
+        }"
+        ng-click="$ctrl.changeStatement()">
+        <h6 class="btn-text-large">Expenses</h6>
+      </button>
+    </div>
+  </div>
+  <div class="panel-body">
+
+    <div class="row">
+      <span class="col-md-2"><b>Category</b></span>
+      <div
+        class="col-md-1 text-right"
+        ng-repeat="business in $ctrl.business_data_list">
+        <b><span ng-bind="business.business_type"></span></b>
+      </div>
+      <span class="col-md-1 text-right"><b>Whole Farm</b></span>
+    </div>
+
+    <!-- Income -->
+    <div ng-if="$ctrl.statement_type == 'Income'">
+      <div
+        class="row"
+        ng-repeat="category in $ctrl.gold_standard_categories | orderObjectBy:'label':false track by $index"
+        ng-if="category.type == 'income' && ($ctrl.whole_farm_data[category.name]>0 || $ctrl.isCategoryEmpty(category.name) == false)">
+        <hr class="item-divider-summary" />
+
+        <span
+          class="col-md-2"
+          ng-bind="category.label">
+        </span>
+        <span
+          class="col-md-1 text-right"
+          ng-repeat="business in $ctrl.business_data_list"
+          ng-bind="business[category.name] | currency: USD$:0">
+        </span>
+        <span
+          class="col-md-1 text-right"
+          ng-bind="$ctrl.whole_farm_data[category.name] | currency: USD$:0">
+        </span>
+      </div>
+
+      <hr></hr>
+
+      <!-- Total Income -->
+      <div class="row">
+        <span class="col-md-2">
+          <b>Total</b>
+        </span>
+        <span
+          class="col-md-1 text-right"
+          ng-repeat="business_data in $ctrl.business_data_list">
+          <b ng-bind="business_data['total_income'] | currency: USD$:0"></b>
+        </span>
+        <span
+          class="col-md-1 text-right">
+          <b ng-bind="$ctrl.whole_farm_data['total_income'] | currency: USD$:0"></b>
+        </span>
+      </div>
+    </div>
+
+    <!-- Expenses -->
+    <div ng-if="$ctrl.statement_type == 'Expenses'">
+      <div
+        class="row"
+        ng-repeat="category in $ctrl.gold_standard_categories | orderObjectBy:'label':false track by $index"
+        ng-if="((category.type == 'expense' && category.name.indexOf('expenses_other') == -1)&&($ctrl.isCategoryEmpty(category.name) ==false ||$ctrl.whole_farm_data[category.name]>0 )) ||
+               (category.name.indexOf('expenses_other') != -1 && ($ctrl.isCategoryEmpty(category.name) == false || $ctrl.whole_farm_data[category.name]>0))">
+
+        <hr class="item-divider-summary"></hr>
+
+        <span
+          class="col-md-2"
+          ng-bind="$ctrl.getLabel(category)">
+        </span>
+        <span
+          class="col-md-1 text-right"
+          ng-repeat="business in $ctrl.business_data_list"
+          ng-bind="business[category.name] | currency: USD$:0">
+        </span>
+        <span
+          class="col-md-1 text-right"
+          ng-bind="$ctrl.whole_farm_data[category.name] | currency: USD$:0">
+        </span>
+
+    </div>
+
+      <hr></hr>
+
+      <!-- Total Expenses -->
+      <div class="row" >
+        <span class="col-md-2">
+          <b>Total</b>
+        </span>
+        <span
+          class="col-md-1 text-right"
+          ng-repeat="business_data in $ctrl.business_data_list">
+          <b ng-bind="business_data['total_expenses'] | currency: USD$:0"></b>
+        </span>
+        <span
+          class="col-md-1 text-right">
+          <b ng-bind="$ctrl.whole_farm_data['total_expenses'] | currency: USD$:0"></b>
+        </span>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="row">
+  <!-- TODO: Disabled until we can get more precision with percentage/currency conversion to avoid user confusion -->
+  <!-- <div class="col-md-2">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div> -->
+
+  <div class="col-md-2 pull-right">
+    <button
+      class="btn btn-success pull-right"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

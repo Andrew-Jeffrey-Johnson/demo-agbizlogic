@@ -1,0 +1,490 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+{%load static%}
+{% block content %}
+
+<div class="container">
+  <form action="" method="post">
+    {% csrf_token %}
+
+    {{ wizard.management_form }}
+    {% if wizard.form.forms %}
+      {{ wizard.form.management_form }}
+
+      {% for form in wizard.form.forms %}
+        {{ form }}
+      {% endfor %}
+
+    {% else %}
+
+    {{wizard.form }} 
+
+    <br>
+    <br>
+
+    <!-- Modal -->
+    <div id="video" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Overview</h4>
+          </div>
+          <div class="modal-body">
+
+            <video width="100%" height="100%" controls>
+              <source src="{% static "video/draggable.mp4" %}" type="video/mp4">
+
+                Your browser does not support the video tag.
+              </video>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 style="text-align:center"> Convert your accounting data to <i>AgBiz Logic</i> </h5>
+
+      <p> Drag income & expense items highlighted in green on the left to the <i>AgBiz Logic</i> standardized categories on the right, as demonstrated <a data-toggle="modal" data-target="#video">here</a>. </p>
+      <p>Note: Negative values convert to positive, per standard accounting practices.</p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <div class="span3">
+            <table id="items" class="table table-condensed">
+              <tbody>
+                
+              </tbody>
+            </table>
+
+          </div>
+
+   {% endif %}
+
+        </div> <!-- col -->
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="category">Select an <i>AgBiz Logic</i> Income/Expense Category:</label>
+            <select class="form-control" id="category">
+              <option value="" disabled selected>Select your option</option>
+              <optgroup label="Income">
+                <option value="income-1">Sales of livestock, produce, grains and other products</option>
+                <option value="income-2">Cooperative distributions received</option>
+                <option value="income-3">Agricultural program payments</option>
+                <option value="income-4">Commodity Credit Corporation</option>
+                <option value="income-5">Crop insurance proceeds & federal crop disaster payments</option>
+                <option value="income-6">Specified custom hire (machine work) income</option>
+                <option value="income-7">Other income</option>
+              </optgroup>
+              <optgroup label="Expenses">
+                <option value="expense-1">Cost of goods sold</option>
+                <option value="expense-2">Car and truck expenses</option>
+                <option value="expense-3">Chemicals</option>
+                <option value="expense-4">Conservation expenses</option>
+                <option value="expense-5">Custom hire (machine work)</option>
+                <option value="expense-6">L-T asset replacement and section 179 expense</option>
+                <option value="expense-7">Employee benefit programs </option>
+                <option value="expense-8">Feed</option>
+                <option value="expense-9">Fertilizers and lime</option>
+                <option value="expense-10">Freight and trucking</option>
+                <option value="expense-11">Gasoline, fuel, and oil</option>
+                <option value="expense-12">Insurance (other than health)</option>
+                <option value="expense-13">Interest on loans and mortgages</option>
+                <option value="expense-14">Labor hired (less employment credits)</option>
+                <option value="expense-15">Pension and profit-sharing plans</option>
+                <option value="expense-16">Rent and leases: Machinery, equipment and vehicles</option>
+                <option value="expense-17">Rent and leases: Land and animals</option>
+                <option value="expense-18">Repairs and maintenance</option>
+                <option value="expense-19">Seeds and plants</option>
+                <option value="expense-20">Storage and warehousing</option>
+                <option value="expense-21">Supplies</option>
+                <option value="expense-22">Property taxes</option>
+                <option value="expense-23">Utilities</option>
+                <option value="expense-24">Veterinary, breeding, and medicine</option>
+                <option value="expense-25">Other expenses</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div id="expense-1" class="panel panel-default">
+            <div class="panel-heading">Cost of goods sold</div>
+            <div id="expense-panel-1" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-1-total" data-total=0 class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="expense-2" class="panel panel-default">
+            <div class="panel-heading">Car and truck expenses</div>
+            <div id="expense-panel-2" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-2-total" data-total="0" class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="expense-3" class="panel panel-default">
+            <div class="panel-heading">Chemicals</div>
+            <div id="expense-panel-3" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-3-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="expense-4" class="panel panel-default">
+            <div class="panel-heading">Conservation expenses</div>
+            <div id="expense-panel-4" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-4-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="expense-5" class="panel panel-default">
+            <div class="panel-heading">Custom hire (machine work)</div>
+            <div id="expense-panel-5" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-5-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="expense-6" class="panel panel-default">
+            <div class="panel-heading">L-T asset replacement and section 179 expense</div>
+            <div id="expense-panel-6" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-6-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="expense-7" class="panel panel-default">
+            <div class="panel-heading">Employee benefit programs </div>
+            <div id="expense-panel-7" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-7-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="expense-8" class="panel panel-default">
+            <div class="panel-heading">Feed</div>
+            <div id="expense-panel-8" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-8-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-9" class="panel panel-default">
+            <div class="panel-heading">Fertilizers and lime</div>
+            <div id="expense-panel-9" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-9-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-10" class="panel panel-default">
+            <div class="panel-heading">Freight and trucking</div>
+            <div id="expense-panel-10" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-10-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-11" class="panel panel-default">
+            <div class="panel-heading">Gasoline, fuel, and oil</div>
+            <div id="expense-panel-11" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-11-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-12" class="panel panel-default">
+            <div class="panel-heading">Insurance (other than health)</div>
+            <div id="expense-panel-12" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-12-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-13" class="panel panel-default">
+            <div class="panel-heading">Interest on loans and mortgages</div>
+            <div id="expense-panel-13" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-13-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-14" class="panel panel-default">
+            <div class="panel-heading">Labor hired (less employment credits)</div>
+            <div id="expense-panel-14" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-14-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-15" class="panel panel-default">
+            <div class="panel-heading">Pension and profit-sharing plans</div>
+            <div id="expense-panel-15" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-15-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-16" class="panel panel-default">
+            <div class="panel-heading">Rent and leases: Machinery, Equipment and vehicles</div>
+            <div id="expense-panel-16" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-16-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-17" class="panel panel-default">
+            <div class="panel-heading">Rent and leases: Land and animals</div>
+            <div id="expense-panel-17" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-17-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-18" class="panel panel-default">
+            <div class="panel-heading">Repairs and maintenance</div>
+            <div id="expense-panel-18" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-18-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-19" class="panel panel-default">
+            <div class="panel-heading">Seeds and plants</div>
+            <div id="expense-panel-19" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-19-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-20" class="panel panel-default">
+            <div class="panel-heading">Storage and warehousing</div>
+            <div id="expense-panel-20" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-20-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-21" class="panel panel-default">
+            <div class="panel-heading">Supplies</div>
+            <div id="expense-panel-21" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-21-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-22" class="panel panel-default">
+            <div class="panel-heading">Property taxes</div>
+            <div id="expense-panel-22" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-22-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-23" class="panel panel-default">
+            <div class="panel-heading">Utilities</div>
+            <div id="expense-panel-23" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-23-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-24" class="panel panel-default">
+            <div class="panel-heading">Veterinary, breeding, and medicine</div>
+            <div id="expense-panel-24" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-24-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+          <div id="expense-25" class="panel panel-default">
+            <div class="panel-heading">Other expenses</div>
+            <div id="expense-panel-25" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="expense-panel-25-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="income-1" class="panel panel-default">
+            <div class="panel-heading">Sales of livestock, produce, grains and other products</div>
+            <div id="income-panel-1" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="income-panel-1-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="income-2" class="panel panel-default">
+            <div class="panel-heading">Cooperative distributions received</div>
+            <div id="income-panel-2" class="panel-body"><li class="placeholder">Drag your cost items above or below here.</li></div>
+            <div id="income-panel-2-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+          </div>
+
+          <div id="income-3" class="panel panel-default">
+            <div class="panel-heading">Agricultural program payments</div>
+            <div id="income-panel-3" class="panel-body"><li class="placeholder">Drag your cost items here</li></div>
+            <div id="income-panel-3-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+
+
+          </div>
+
+          <div id="income-4" class="panel panel-default">
+            <div class="panel-heading">Commodity Credit Corporation</div>
+            <div id="income-panel-4" class="panel-body"><li class="placeholder">Drag your cost items here</li></div>
+            <div id="income-panel-4-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+          </div>
+
+          <div id="income-5" class="panel panel-default">
+            <div class="panel-heading">Crop insurance proceeds & federal crop disaster payments</div>
+            <div id="income-panel-5" class="panel-body"><li class="placeholder">Drag your cost items here</li></div>
+            <div id="income-panel-5-total"  data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+          </div>
+
+
+          <div id="income-6" class="panel panel-default">
+            <div class="panel-heading">Specified custom hire (machine work) income</div>
+            <div id="income-panel-6" class="panel-body"><li class="placeholder">Drag your cost items here</li></div>
+            <div id="income-panel-6-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+          </div>
+
+          <div id="income-7" class="panel panel-default">
+            <div class="panel-heading">Other income</div>
+            <div id="income-panel-7" class="panel-body"><li class="placeholder">Drag your cost items here</li></div>
+            <div id="income-panel-7-total" data-total="0"  class="panel-footer clearfix">
+              Total: $0
+            </div>
+          </div>
+
+
+          <table id="running_total" class="table  table-bordered">
+            <thead>
+              <tr>
+
+                <th>Income</th>
+                <th style="text-align:right"></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><b>Income Total:</b></td>
+                <td id="income_sum" style="text-align:right"></td>
+              </tr>
+            </tfoot>
+          </table>
+
+          <!-- New table for Explenses here -->
+          <table id="expense_total" class="table  table-bordered">
+            <thead>
+              <tr>
+
+                <th>Expenses</th>
+                <th style="text-align:right"></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><b>Expenses Total:</b></td>
+                <td id="expense_sum" style="text-align:right"></td>
+              </tr>
+            </tfoot>
+          </table>
+          <!-- New table for Expenses here -->
+
+        </div>
+      </div>
+
+      <br><br>
+
+      {% if wizard.steps.prev %}
+        <button name="wizard_goto_step" class="btn btn-default" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+      {% endif %}
+
+      <input type="submit" class="btn pull-right btn-success"  value="Continue" />
+
+    </form>
+  </div>
+
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="{% static "js/draggable.js" %}"></script>
+  <script src="{% static "js/accounting.min.js" %}"></script>
+
+  <style>
+    .tab-content {
+      height: 1250px !important;
+      overflow: scroll;
+
+
+    }
+
+    .span3 {
+      height: 1250px !important;
+      overflow: scroll;
+
+
+    }
+
+    .panel-body{
+
+      border-spacing: 3px;
+      font-size: 14px;
+
+    }
+
+    .table-condensed {
+
+      font-size: 12px;
+
+    }
+
+    #running_total {
+
+      font-size: 12px;
+    }
+
+    #expense_total {
+      font-size: 12px;
+    }
+
+    .modal-dialog {
+      position: relative;
+      overflow-y: auto;
+
+      width: 50%;
+      height: 90%;
+
+    }
+  </style>
+
+  {% endblock %}

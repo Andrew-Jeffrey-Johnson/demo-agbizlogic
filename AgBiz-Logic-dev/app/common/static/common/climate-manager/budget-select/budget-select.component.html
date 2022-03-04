@@ -1,0 +1,56 @@
+<div
+  class="form-group panel panel-info"
+  ng-if="$ctrl.items_allowed">
+  <div class="panel-heading">
+    <h5 class="panel-title">Add New Budget</h5>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <budget-search
+        class="col-md-12"
+        budget-list="$ctrl.optionList"
+        on-select="$ctrl.selectBudget(budget)">
+      </budget-search>
+    </div>
+
+    <br>
+
+    <div class="flex flex-end">
+      <div style="margin: 0 5px;">
+        <button
+          class="btn btn-success"
+          ng-click="$ctrl.onAdd({item: $ctrl.new_budget})">
+          Add
+        </button>
+      </div>
+      <div style="margin: 0 5px;">
+        <button
+          class="btn btn-primary"
+          ng-if="$ctrl.editable"
+          ng-click="$ctrl.onEdit({item: $ctrl.new_budget})">
+          Edit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<h4>Budgets Selected</h4>
+
+<p ng-if="$ctrl.fromPlan">The order of the
+  selected Budgets will affect the calculations in each <i>AgBiz Logic</i> module where
+  the Plan is utilized.  Use the up and down arrows (^ v) to organize the
+  Budgets in their correct sequence.</p>
+
+
+<climate-manager-list
+  item-list="$ctrl.itemList"
+  editable="true"
+  delete-only="true"
+  show-notes="$ctrl.showNotes"
+  on-delete="$ctrl.onDelete({item: item})"
+  ordered="$ctrl.ordered"
+  on-order-change="$ctrl.onOrderChange({items: items})">
+</climate-manager-list>

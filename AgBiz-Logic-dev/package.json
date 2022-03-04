@@ -1,0 +1,45 @@
+{
+  "name": "Agbiz-Logic",
+  "version": "1.0.0",
+  "description": "Data is always in season.",
+  "scripts": {
+    "start": "./entrypoint.sh",
+    "dev": "rm -f AgBiz_Logic/secrets.json && cd app && python3 manage.py runserver",
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "tests": "./node_modules/.bin/karma start karma.conf.js"
+  },
+  "author": "Alec Merdler",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "1.5.9",
+    "angular-animate": "1.5.9",
+    "angular-aria": "1.5.9",
+    "angular-chart.js": "^1.1.1",
+    "angular-filter": "^0.5.8",
+    "angular-material": "^1.1.1",
+    "angular-messages": "^1.4.14",
+    "angular-mocks": "1.5.9",
+    "angular-sanitize": "1.5.9",
+    "angular-ui-bootstrap": "^2.3.0",
+    "angular-ui-router": "^0.3.0",
+    "bootstrap": "^3.1.1",
+    "chart.js": "^2.7.2",
+    "flat-ui": "^2.1.1",
+    "html2canvas": "^1.0.0-alpha.10",
+    "intl": "^1.2.5",
+    "jasmine-core": "^2.4.1",
+    "jquery": "^2.2.4",
+    "npm": "^6.11.3",
+    "pdfmake": "^0.1.27"
+  },
+  "devDependencies": {
+    "karma": "^0.13.22",
+    "karma-coverage": "^0.5.5",
+    "karma-es6-shim": "^1.0.0",
+    "karma-intl-shim": "^1.0.3",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "protractor": "^3.2.2"
+  }
+}

@@ -1,0 +1,21 @@
+<div>
+    <!--Title-->
+    <h3>Your Inventory</h3>
+
+    <div class="row row-inventory">
+        <div class="col-md-2">
+            <h4 class="pull-left">Your Budgets</h4>
+        </div>
+        <div class="col-md-10">
+            <a class="btn btn-success pull-right" href="/budget/">Budget Manager</a>
+        </div>
+    </div>
+
+    <div ng-style="{'pointer-events': $ctrl.loading ? 'none' : 'auto'}">
+        <manager-list
+                item-list="$ctrl.budget_list"
+                empty-flex="false"
+                show-date="true">
+        </manager-list>
+    </div>
+</div>

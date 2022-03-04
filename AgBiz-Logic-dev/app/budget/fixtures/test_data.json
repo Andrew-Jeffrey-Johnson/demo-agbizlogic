@@ -1,0 +1,81 @@
+[
+	{
+		"model": "allocate.BusinessData",
+		"pk": 1,
+		"fields": {
+			"user": 1,
+			"business_type": "Crop",
+
+			"income_sales": 2000,
+			"income_other": 200,
+
+			"expenses_chemicals": 200,
+			"expenses_gasoline": 200,
+			"expenses_labor": 200
+		}
+	},
+	{
+		"model": "allocate.BusinessData",
+		"pk": 2,
+		"fields": {
+			"user": 1,
+			"business_type": "Livestock",
+
+			"income_sales": 3000,
+
+			"expenses_feed": 300
+		}
+	},
+	{
+		"model": "allocate.EnterpriseData",
+		"pk": 4,
+		"fields": {
+			"user": 1,
+			"enterprise": "Livestock",
+			"category_1": "Beef Cattle",
+			"category_2": "Weaning",
+			"market": "GMO",
+
+			"income_sales": 3000,
+
+			"expenses_feed": 300
+		}
+	},
+	{
+		"model": "allocate.EnterpriseData",
+		"pk": 1,
+		"fields": {
+			"user": 1,
+			"enterprise": "Crop",
+			"category_1": "Cereal Grains",
+			"category_2": "Wheat",
+			"category_3": "Soft White Winter",
+			"market": "GMO",
+
+			"income_sales": 1000,
+			"income_other": 100,
+
+			"expenses_chemicals": 100,
+			"expenses_gasoline": 100,
+			"expenses_labor": 100
+		}
+	},
+	{
+		"model": "allocate.EnterpriseData",
+		"pk": 2,
+		"fields": {
+			"user": 1,
+			"enterprise": "Crop",
+			"category_1": "Cereal Grains",
+			"category_2": "Barley",
+			"market": "GMO",
+
+			"income_sales": 1000,
+      "income_other": 100,
+
+			"expenses_chemicals": 100,
+			"expenses_gasoline": 100,
+			"expenses_labor": 100
+		}
+	}
+]

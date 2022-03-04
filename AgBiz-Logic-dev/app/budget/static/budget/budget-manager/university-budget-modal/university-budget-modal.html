@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3
+      class="panel-title"
+      ng-bind-html="$ctrl.modal_title | to_italics">
+    </h3>
+  </div>
+  <div class="panel-body">
+    <budget-search
+      budget-list="$ctrl.university_budget_list"
+      on-select="$ctrl.selectBudget(budget)">
+    </budget-search>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6">
+        <button
+          class="btn btn-warning "
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button
+          class="btn btn-success pull-right"
+          ng-click="$ctrl.addNewBudget($ctrl.university_budget)">
+          Copy and edit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

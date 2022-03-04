@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<br>
+
+
+
+
+
+  <form action="" method="post">{% csrf_token %}
+
+
+
+  {% for field in form %}
+    {{field.error}}
+
+  {% endfor %}
+
+
+
+
+  <p> Please provide the following business information. </p>
+
+
+      {{ wizard.management_form }}
+      {% if wizard.form.forms %}
+          {{ wizard.form.management_form }}
+          {% for form in wizard.form.forms %}
+        {{ form.as_p }}
+
+
+          {% endfor %}
+      {% else %}
+          {{ wizard.form | crispy}}
+      {% endif %}
+
+
+  <br>
+
+       <input type="submit" class="btn pull-right btn-success"  value="Continue" />
+
+           {% if wizard.steps.prev %}
+           <button name="wizard_goto_step" class="btn btn-default" type="submit" value="{{ wizard.steps.prev }}">Back</button>
+        {% endif %}
+
+
+
+
+        <a class="btn btn-default" type="button" href="/index/">Leave page</a>
+
+
+
+
+  </form>
+
+
+  <script src="{% static "js/vendor/jquery-2.0.3.min.js" %}"></script>
+  <script src="{% static "js/jquery.ziptastic.js" %}">  </script>
+  <script>
+   (function($) {
+                $(function() {
+
+
+
+                  $("#id_step2-zipcode").ziptastic().on('zipChange', function(evt, country, state, state_short, city, zip) {
+
+                  $("#id_step2-city").val(city)
+                  $("#id_step2-state").val(state_short)
+
+                  });
+                });
+            }(jQuery));
+
+  </script>
+
+
+
+{% endblock %}

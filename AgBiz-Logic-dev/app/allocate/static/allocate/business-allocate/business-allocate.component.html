@@ -1,0 +1,122 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h4>Allocate your business information</h4>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">Business Allocation</h6>
+  </div>
+  <div class="panel-body">
+    Next, allocate your business <span ng-bind="$ctrl.statement_type | lowercase"></span> by category.
+    Any unallocated <span ng-bind="$ctrl.statement_type | lowercase"></span>
+    will be put into a <strong>Whole Farm</strong> budget for later use.
+    <b>*Note: Totals have been rounded down to an even number</b>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <a class="glyphicon glyphicon-question-sign"></a>
+  <a uib-tooltip="After entering data in one of the boxes, press the tab key to skip to the next box">
+    Pro Tip: Press the Tab key to move to the next input box quickly
+  </a>
+</div>
+
+<div class="row col-md-12">
+  <div class="panel panel-primary header-fixed">
+    <div class="panel-heading">
+      <h5 ng-bind="$ctrl.statement_type"></h5>
+    </div>
+    <div class="panel-body">
+
+      <div class="row">
+        <b><span class="col-md-2">Category</span></b>
+        <b><span class="col-md-1">Total</span></b>
+
+        <div
+          class="col-md-1"
+          ng-repeat="business in $ctrl.business_data_list track by $index">
+          <b ng-bind="business.business_type"></b>
+          <a
+            class="glyphicon glyphicon-question-sign"
+            uib-tooltip="Enter the {$ $ctrl.statement_type | lowercase $} for each line item.
+                         If you are unsure, you may give an estimate. The remainder will be put into
+                         the Whole Farm budget for later use.">
+          </a>
+        </div>
+
+        <span
+          class="col-md-1">
+          <b>Whole Farm</b>
+          <a
+            class="glyphicon glyphicon-question-sign"
+            uib-tooltip="{$ $ctrl.statement_type $}  not allocated to an enterprise will default to a Whole Farm budget
+                          for use at a later time.">
+          </a>
+        </span>
+        <span
+          class="col-md-2">
+          <b>$ or %</b>
+          <a
+            class="glyphicon glyphicon-question-sign"
+            uib-tooltip="You can enter your {$ $ctrl.statement_type | lowercase $} as currency ($) or as a percentage (%) of the total.
+             Click on the box to toggle between the two">
+          </a>
+        </span>
+      </div>
+
+      <!-- Income -->
+      <div
+        ng-if="$ctrl.statement_type == 'Income'"
+        class="allocate-container">
+        <allocate-item
+          ng-repeat="category in $ctrl.gold_standard_categories | orderObjectBy:'label':false track by $index"
+          ng-if="category.type == 'income' && category.total != 0"
+          source="category"
+          targets="$ctrl.business_data_list"
+          on-change="$ctrl.updateData(targets, status)"
+          >
+        </allocate-item>
+      </div>
+
+      <!-- Expenses -->
+      <div
+        ng-if="$ctrl.statement_type == 'Expenses'"
+        class="allocate-container">
+        <allocate-item
+          ng-repeat="category in $ctrl.gold_standard_categories | orderObjectBy:'label':false track by $index"
+          ng-if="((category.type == 'expense' && category.name.indexOf('expenses_other') == -1) ||
+                 (category.name.indexOf('expenses_other') != -1 && category.total > 0))&&category.total != 0"
+          source="category"
+          targets="$ctrl.business_data_list"
+          on-change="$ctrl.updateData(targets, status)">
+        </allocate-item>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <button
+        class="btn btn-default"
+        ng-click="$ctrl.back()">
+        Back
+      </button>
+    </div>
+
+    <div class="col-md-2 pull-right">
+      <button
+        class="btn btn-success pull-right"
+        ng-click="$ctrl.check_zero_remainders()">
+        Continue
+      </button>
+    </div>
+  </div>
+</div>

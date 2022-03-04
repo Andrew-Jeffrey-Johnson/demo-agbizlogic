@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3
+      class="panel-title"
+      ng-bind="$ctrl.modal_title">
+    </h3>
+  </div>
+  <div class="panel-body">
+    <budget-search
+      budget-list="$ctrl.budget_list"
+      on-select="$ctrl.selectBudget(budget)">
+    </budget-search>
+
+    <form name="newBudgetForm">
+      <div class="row">
+        <label
+          class="col-md-3">
+          Re-name the Budget:
+        </label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            type="text"
+            name="budgetTitle"
+            placeholder="Enter Name..."
+            ng-model="$ctrl.new_name"
+            ng-change="$ctrl.Validate()"
+            required>
+          </input>
+          <span class="error" ng-show="newBudgetForm.budgetTitle.$touched && !$ctrl.new_name.length && $ctrl.isEmpty($ctrl.new_name)" style="color:red;">Required</span>
+          <span class="error" ng-show="$ctrl.new_name.length && $ctrl.duplicateBudgetTitle" style="color:red;">Duplicated Name</span>
+        </div>
+      </div>
+    </ng-form>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6">
+        <button
+          type="button"
+          class="btn btn-warning"
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button
+          class="btn btn-success pull-right"
+          ng-disabled="$ctrl.duplicateBudgetTitle || !$ctrl.new_name.length"
+          ng-click="$ctrl.addNewBudget()">
+          Copy Budget
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+<div>
+  <h3><i>AgBiz Logic</i> Plans</h3>
+</div>
+<div class="row">
+  <h4 class="col-md-4 pull-left"><i>Plan Manager</i></h4>
+</div>
+<p>
+  Create and manage collections of Budgets, called Plans, in order to create Scenarios. Scenarios can then
+  be assessed using our suite of powerful analysis tools, including <i>AgBizProfit</i>, <i>AgBizLease</i>,
+  <i>AgBizFinance</i>, and <i>AgBizEnvironment</i>.
+</p>
+
+<!--Actions Panel-->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      Available Actions
+      <a
+        class="glyphicon glyphicon-question-sign"
+        uib-tooltip="Common actions that can be performed. Hover over the buttons to learn more">
+      </a>
+    </h6>
+  </div>
+  <div
+    class="panel-body"
+    uib-collapse="$ctrl.showActions == false">
+    <div class="row">
+      <button
+        class="btn btn-info col-md-2 action-bar-btn "
+        style="width: 14%"
+        ng-click="$ctrl.back()">
+        Back to Dashboard
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        uib-tooltip="Create a copy of an existing Plan"
+        style="width: 10%"
+        ng-click="$ctrl.copyPlan('copy')">
+        Copy Plan
+      </button>
+
+      <!-- TODO: enable once standalone Budget creation enabled -->
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        uib-tooltip="Create a Plan from scratch"
+        style="width: 10%"
+        ng-click="$ctrl.newPlan()">
+        Create Plan
+      </button>
+
+      <button
+        class="btn btn-info col-md-2 action-bar-btn"
+        uib-tooltip="Modify price and yield of a Plan to see how it impacts net returns "
+        style="width: 14%"
+        ng-click="$ctrl.copyPlan('sensitive_analysis')">
+        Sensitivity Analysis
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h4 class="col-md-2 pull-left">Your Plans</h4>
+</div>
+
+<manager-list
+  item-list="$ctrl.plan_list"
+  show-date="true"
+  editable="true"
+  height="'large'"
+  on-edit="$ctrl.editPlan(item)"
+  on-delete="$ctrl.removePlan(item)"
+  on-custom-button="$ctrl.viewSummary(item)">
+</manager-list>

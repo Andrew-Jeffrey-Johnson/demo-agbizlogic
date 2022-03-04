@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <base href="/">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>AgBiz Budget</title>
+    <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.ico" %}"/>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Dependencies -->
+    {% if view.environment == 'local' %}
+      <!-- AngularJS and additional modules -->
+      <script src="{% static "angular/angular.js" %}"></script>
+      <script src="{% static "angular-ui-router/release/angular-ui-router.js" %}"></script>
+      <script src="{% static "angular-animate/angular-animate.js" %}"></script>
+      <script src="{% static "angular-aria/angular-aria.js" %}"></script>
+
+      <!-- jQuery (needed for Bootstrap) -->
+      <script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+
+      <!-- Bootstrap -->
+      <script src="{% static "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" %}"></script>
+      <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+      <link rel="stylesheet" media="screen" href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" />
+      <link rel="stylesheet" href="{% static "flat-ui/css/flat-ui.css" %}" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+      <!-- Angular-Filter -->
+      <script src="{% static "angular-filter/dist/angular-filter.min.js" %}"></script>
+
+      <!-- Angular Material -->
+      <script src="{% static "angular-material/angular-material.js" %}"></script>
+      <link rel="stylesheet" href="{% static "angular-material/angular-material.css" %}"></script>
+
+      <!-- PDFMake -->
+      <script src="{% static "pdfmake/build/pdfmake.min.js" async %}"></script>
+      <script src="{% static "pdfmake/build/vfs_fonts.js" async %}"></script>
+    {% else %}
+      <!-- AngularJS and additional modules -->
+      <script src="{% static "angular/angular.min.js" %}"></script>
+      <script src="{% static "angular-ui-router/release/angular-ui-router.min.js" %}"></script>
+      <script src="{% static "angular-animate/angular-animate.min.js" %}"></script>
+      <script src="{% static "angular-aria/angular-aria.min.js" %}"></script>
+
+      <!-- jQuery (needed for Bootstrap) -->
+      <script src="{% static "jquery/dist/jquery.min.js" %}"></script>
+
+      <!-- Bootstrap -->
+      <script src="{% static "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" %}"></script>
+      <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+      <link rel="stylesheet" media="screen" href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" />
+      <link rel="stylesheet" href="{% static "flat-ui/css/flat-ui.css" %}" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+      <!-- Angular-Filter -->
+      <script src="{% static "angular-filter/dist/angular-filter.min.js" %}"></script>
+
+      <!-- Angular Material -->
+      <script src="{% static "angular-material/angular-material.min.js" %}"></script>
+      <link rel="stylesheet" href="{% static "angular-material/angular-material.min.css" %}">
+
+      <!-- PDFMake -->
+      <script src="{% static "pdfmake/build/pdfmake.min.js" %}"></script>
+      <script src="{% static "pdfmake/build/vfs_fonts.js" %}"></script>
+    {% endif %}
+
+    <!-- Modules -->
+    <script src="{% static "budget/budget.module.js" %}"></script>
+    <script src="{% static "common/common.module.js" %}"></script>
+
+    <!-- Module-level styles -->
+    <link rel="stylesheet" href="{% static "budget/styles/transitions.css" %}" />
+    <link rel="stylesheet" href="{% static "common/styles/styles.css" %}" />
+    <link rel="stylesheet" href="{% static "common/styles/flex.css" %}" />
+
+    <!-- Services -->
+    <script src="{% static "budget/services/budget/budget.service.js" %}"></script>
+    <script src="{% static "common/services/common/common.service.js" %}"></script>
+    <script src="{% static "common/services/modal/modal.service.js" %}"></script>
+    <script src="{% static "common/services/error/error.service.js" %}"></script>
+    <script src="{% static "common/services/config/config.service.js" %}"></script>
+
+    <!-- Budget Search -->
+    <script src="{% static "common/budget-search/budget-search.component.js" %}"></script>
+
+    <!-- Budget Select -->
+    <script src="{% static "common/budget-select/budget-select.component.js" %}"></script>
+
+    <!-- Budget Manager -->
+    <script src="{% static "budget/budget-manager/budget-manager.component.js" %}"></script>
+
+    <!--Budget Inventory-->
+    <script src="{% static "budget/budget-inventory/budget-inventory.component.js" %}"></script>
+
+    <!-- Copy Budget Modal -->
+    <script src="{% static "budget/budget-manager/copy-budget-modal/CopyBudgetModalController.js" %}"></script>
+
+      <!-- New Budget Modal -->
+    <script src="{% static "budget/budget-manager/new-budget-modal/NewBudgetModalController.js" %}"></script>
+    <link rel="stylesheet" href="{% static "budget/budget-manager/new-budget-modal/new-budget-modal.css" %}" />
+
+    <!-- Combine Budgets Modal -->
+    <script src="{% static "budget/budget-manager/combine-budgets-modal/CombineBudgetsModalController.js" %}"></script>
+
+    <!-- University Budget Modal -->
+    <script src="{% static "budget/budget-manager/university-budget-modal/UniversityBudgetModalController.js" %}"></script>
+
+    <!-- Budget Routing -->
+    <script src="{% static "budget/routing/budget-routing.config.js" %}"></script>
+    <script src="{% static "budget/routing/budget-editor-route/budget-editor-route.component.js" %}"></script>
+
+    <!-- Budget Editor -->
+    <script src="{% static "budget/budget-editor/budget-editor.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "budget/budget-editor/budget-editor.component.css" %}">
+    <script src="{% static "budget/budget-editor/add-cost-modal/AddCostModalController.js" %}"></script>
+    <script src="{% static "budget/budget-editor/add-income-modal/AddIncomeModalController.js" %}"></script>
+    <script src="{% static "budget/budget-editor/budget-unit-modal/BudgetUnitModalController.js" %}"></script>
+
+    <!-- Generate PDF -->
+    <script src="{% static "common/budget-pdf/budget-pdf.component.js" %}"></script>
+
+    <!-- Filters -->
+    <script src="{% static "common/filters/capitalize.filter.js" %}"></script>
+
+    <!-- Directives -->
+    <script src="{% static "common/directives/comma-number-input.directive.js" %}"></script>
+
+    <!-- Constants -->
+    <script src="{% static "common/constants/crop-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/crop-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/wholefarm-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/wholefarm-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/nursery-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/nursery-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/livestock-farm-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/livestock-sale-units.constant.js" %}"></script>
+    <script src="{% static "common/constants/time-units.constant.js" %}"></script>
+
+    <!-- Navbar -->
+    <script src="{% static "common/navbar/navbar.component.js" %}"></script>
+    <script src="{% static "common/navbar/contact-modal/ContactModalController.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/navbar/navbar.css" %}"/>
+
+    <!--Sidebar-->
+    <script src="{% static "common/sidebar/sidebar.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/sidebar/sidebar.component.css" %}"/>
+
+    <!-- Manager List -->
+    <script src="{% static "common/budget-manager/manager-list/manager-list.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/budget-manager/manager-list/manager-list.component.css" %}" />
+
+    <!-- Manager List Item -->
+    <script src="{% static "common/budget-manager/manager-list-item/manager-list-item.component.js" %}"></script>
+    <link rel="stylesheet" href="{% static "common/budget-manager/manager-list-item/manager-list-item.component.css" %}" />
+
+    <!-- Confirm Button -->
+    <script src="{% static "common/confirm-button/confirm-button.component.js" %}"></script>
+
+    <!--side nav js -->
+    <script type="text/javascript" src="{% static "common/index/index.js" %}"></script>
+
+    <!-- FIXME: Move to REST API endpoint -->
+    <script>
+      window.__config = {
+        environment: "{{ view.environment }}",
+      };
+    </script>
+
+  </head>
+  <body>
+
+    <div ng-app="budgetModule">
+      <nav>
+        <navbar></navbar>
+      </nav>
+      <div class="container-fluid">
+        <div class="row">
+          <sidebar></sidebar>
+          <div id="main" role="main" class="col-md-10 main-monitor">
+            <div class="ui-view-container">
+              <div ui-view>Loading...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

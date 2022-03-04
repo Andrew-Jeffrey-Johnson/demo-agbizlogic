@@ -1,0 +1,182 @@
+<h3 class="text-center">Build Your <i>AgBizFinance</i> Analysis</h3>
+
+<finance-step-indicator
+  step="2"
+  steps="$ctrl.steps">
+</finance-step-indicator>
+
+<h4>Budget Adjustments</h4>
+
+<p>Enter all withdrawals from the business that are not included in your budgets.
+   This includes wages, salaries, family living withdrawals, and any financial investments from previous years.
+   Also enter anticipated capital gains tax as well as both state and federal income tax rates for each year in your <i>AgBizFinance</i> scenario.</p>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-hover table-bordered">
+      <thead style="background-color: #428bc9; color: white ;border: none;">
+        <tr  style=" border-spacing: 100px;">
+          <th>Year</th>
+          <th style="text-align: center;">Wages</th>
+          <th style="text-align: center;">Salaries</th>
+          <th style="text-align: center;">Family Withdrawals</th>
+          <th style="text-align: center;">Contributions</th>
+          <th style="text-align: center;">Capital Gains Tax Rate</th>
+          <th style="text-align: center;">Income Tax Rate</th>
+
+          <!--th style="text-align: right;">Family Withdrawals</th-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="x in $ctrl.distributions track by $index">
+          <td>{{x.year| number:0}}</td>
+
+
+
+          <td>
+            <form class="form-inline">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input
+                  name="wages"
+                  class="form-control"
+                  type="text"
+                  ng-blur="$ctrl.updateDistributions(x)"
+                  ng-model="x.wages"
+                  style="text-align: right"
+                  ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d{1,2})?$/"
+                  onfocus="if(this.value == 0)this.value='';"
+                  onblur="if(this.value == '')this.value=0; if(this.validity.valid ){this.value = parseFloat(this.value).toFixed(2)};">
+                    <!--  onblur="if(this.value == '')this.value=0; if( this.checkValidity() == true ) console.log('true'); else console.log('false'); ">
+                      for (property in this){ console.log(property +' is set to '+ this[property] )-->
+              </div>
+            </form>
+          </td>
+
+          <td>
+            <form class="form-inline">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input
+                  name="salaries"
+                  class="form-control"
+                  type="text"
+                  ng-blur="$ctrl.updateDistributions(x)"
+                  ng-model="x.salaries"
+                  style="text-align: right"
+                  ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+                  onfocus="if(this.value == 0)this.value='';"
+                  onblur="if(this.value == '')this.value=0; this.value = parseFloat(this.value).toFixed(2);">
+
+              </div>
+            </form>
+          </td>
+
+          <td>
+            <form class="form-inline">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input
+                  name="family_withdrawls"
+                  class="form-control"
+                  type="text"
+                  ng-blur="$ctrl.updateDistributions(x)"
+                  ng-model="x.family_withdrawls"
+                  style="text-align: right"
+                  ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+                  onfocus="if(this.value == 0)this.value='';"
+                  onblur="if(this.value == '')this.value=0; this.value = parseFloat(this.value).toFixed(2);">
+
+              </div>
+            </form>
+          </td>
+          <td>
+            <form class="form-inline">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input
+                  name="contributions"
+                  class="form-control"
+                  type="text"
+                  ng-blur="$ctrl.updateDistributions(x)"
+                  ng-model="x.contributions"
+                  style="text-align: right"
+                  ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+                  onfocus="if(this.value == 0)this.value='';"
+                  onblur="if(this.value == '')this.value=0; this.value = parseFloat(this.value).toFixed(2);">
+
+              </div>
+            </form>
+          </td>
+
+          <td>
+            <form class="form-inline">
+              <div class="input-group">
+                <input
+                  name="capital_gains"
+                  class="form-control"
+                  type="text"
+                  ng-blur="$ctrl.updateDistributions(x)"
+                  ng-model="x.capital_gains"
+                  style="text-align: right"
+                  ng-pattern="/^[0-9]{1,2}(\.[0-9]{0,2})?$/"
+                  onfocus="if(this.value == 0)this.value='';"
+                  onblur="if(this.value == '')this.value=0; this.value = parseFloat(this.value).toFixed(2);">
+
+                  <span class="input-group-addon">%</span>
+              </div>
+
+            </form>
+          </td>
+
+          <td>
+            <form class="form-inline">
+              <div class="input-group">
+                <input
+                  name="tax_rate"
+                  class="form-control"
+                  type="text"
+                  ng-blur="$ctrl.updateDistributions(x)"
+                  ng-model="x.tax_rate"
+                  style="text-align: right"
+                  ng-pattern="/^[0-9]{1,2}(\.[0-9]{0,2})?$/"
+                  onfocus="if(this.value == 0)this.value='';"
+                  onblur="if(this.value == '')this.value=0; this.value = parseFloat(this.value).toFixed(2);">
+
+                  <span class="input-group-addon">%</span>
+              </div>
+
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<md-progress-circular
+  class="col-md-offset-5"
+  style="margin-top: 40px"
+  ng-if="$ctrl.distributions.length== 0"
+  md-mode="$ctrl.distributions"
+>
+</md-progress-circular>
+
+
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      ng-if="$ctrl.new!='new'"
+      class="btn btn-primary"
+      ng-click="$ctrl.back()">
+      Previous
+    </button>
+  </div>
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Next
+    </button>
+  </div>
+</div>

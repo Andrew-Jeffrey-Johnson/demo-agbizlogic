@@ -1,0 +1,111 @@
+{% extends "wizard.html" %}
+{% load bootstrap %}
+
+{% block content %}
+
+<h5 style="text-align:center">Transfer your business data to <i>AgBiz Logic</i></h5>
+
+<p>
+  The first step toward utilizing <i>AgBiz Logic</i> decision tools is to populate <i>AgBiz Logic</i> with
+  income and expense data generated from your business. Once this information is entered,
+  you’ll be able to allocate income and expenses to create enterprise budgets for comparing investments.
+</p>
+
+
+<form action="" method="post">{% csrf_token %}
+  <div class="form-group">
+    <p>
+      We provide two methods for collecting your business data: you can manually enter your Schedule F data,
+      or you can import data from an accounting system or spreadsheet. A third option is to select a
+      pre-made budget from the <i>ABL</i> Library, which you can modify to fit your personal needs.
+      Note: Not all enterprises are represented in the <i>ABL</i> Library.
+    </p>
+    <div class="radio">
+      <label class="radio">
+        <input
+          id="id_choice_0"
+          name="choice"
+          type="radio"
+          data-toggle="radio"
+          class="custom-radio"
+          value="A">
+        </input>
+        <span class="icons">
+          <span class="icon-unchecked"></span>
+          <span class="icon-checked"></span>
+        </span>
+        Enter information from your Schedule F/Form 1040
+      </label>
+    </div>
+
+
+
+    <div class="radio">
+      <label class="radio">
+        <input
+          disabled
+
+          id="id_choice_1"
+          name="choice"
+          type="radio"
+          data-toggle="radio"
+          class="custom-radio"
+          value="B">
+        </input>
+        <span class="icons">
+          <span class="icon-unchecked"></span>
+          <span class="icon-checked"></span>
+        </span>
+        <span style="color:grey"> Import data from your accounting system or spreadsheet - Coming soon! </span>
+      </label>
+    </div>
+
+
+    <div class="radio">
+      <label class="radio">
+        <input
+          id="id_choice_2"
+          name="choice"
+          type="radio"
+          data-toggle="radio"
+          class="custom-radio"
+          value="C">
+        </input>
+        <span class="icons">
+          <span class="icon-unchecked"></span>
+          <span class="icon-checked"></span>
+        </span>
+        Select pre-made budget(s) from the <i>ABL</i> Library
+      </label>
+    </div>
+  </div>
+
+  <br>
+
+  <input
+    type="submit"
+    class="btn pull-right btn-success"
+    value="Continue">
+  </button>
+</form>
+
+<a
+  class="btn btn-default"
+  type="button"
+  href="/dashboard/">
+  Back
+</a>
+
+<style type="text/css" />
+  label {
+
+    font-size: 18px;
+  }
+
+  label.radio {
+
+    font-size: 18px;
+  }
+</style>
+
+{% endblock %}

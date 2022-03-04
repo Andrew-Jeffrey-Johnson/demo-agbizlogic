@@ -1,0 +1,130 @@
+<div class="navbar navbar-inverse fixed-top shadow" role="navigation">
+  <div class="container-fluid">
+    <div class="row">
+      <div style="padding: 0;" class="navbar-header col-md-3">
+        <i onclick="hideSide()" style="display: block; color: white; float: left; padding: 16px 25px; cursor: pointer" class="fas fa-bars"></i>
+        <a
+          class="navbar-brand flex-align-center"
+          rel="home"
+          href="/dashboard/"
+          style="'Nobile', Helvetica, Arial, sans-serif; font-size: 21px; display: flex; padding-left: 0; margin-left: 0;">
+          <img
+            style="max-width:30px; margin: 0 10px 0 0"
+            src="/static/img/icon.png">
+          <div>
+            <i style="margin-top: 2px; font-size: 19px;">AgBiz Logic</i>&#0153;
+          </div>
+        </a>
+      </div>
+
+  <div
+    class="pull-right col-md-3"
+    style="float: right;"
+    ng-if="$ctrl.is_authenticated">
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a style="font-size: 19px;font-weight: 550; padding-left: 10px; padding-right: 10px;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span ng-bind="$ctrl.current_user.username"></span><span class="caret"></span></a>
+          <ul class="dropdown-menu first_dropdown" style="width:190px; margin-top: 2px !important; margin-left:0px !important;">
+            <li class="dropdown-submenu"> <a tabindex="-1" class="dropdown-toggle" href="/profile_setting/"> Account Settings </a></li>
+            <li><a href="/logout/">Logout</a></li>
+          </ul>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="col-md-3" style="float: left;">
+
+    <a
+      class="navbar-brand flex-align-center"
+      rel="home"
+      href="/index/#bottom">
+      <div style="margin-top: 2px; font-size: 19px; font-weight: 550;">
+         Contact Us
+      </div>
+    </a>
+
+    <a
+      class="navbar-brand flex-align-center"
+      rel="home"
+      href="/resources/">
+      <div style="margin-top: 2px; font-size: 19px;font-weight: 550;">
+         Resources
+      </div>
+    </a>
+  </div>
+
+<!-- User dropdown--!>
+
+      <!--
+    </div>
+--!>
+
+    <!--<div class="navbar-header col-md-2">-->
+      <!--<a-->
+        <!--class="navbar-brand flex-align-center"-->
+        <!--rel="home"-->
+        <!--href="/dashboard/"-->
+        <!--style="'Nobile', Helvetica, Arial, sans-serif; font-size: 21px; display: flex;">-->
+        <!--<img-->
+          <!--style="max-width:30px; margin: 0 10px 0 0"-->
+          <!--src="/static/img/icon.png">-->
+        <!--<div>-->
+          <!--<i style="margin-top: 2px">AgBiz Logic</i>&#0153-->
+        <!--</div>-->
+      <!--</a>-->
+    <!--</div>-->
+
+    <!--<ul-->
+      <!--class="nav navbar-nav navbar-link"-->
+      <!--ng-if="$ctrl.is_authenticated">-->
+      <!--<li-->
+        <!--class="navbar-module"-->
+        <!--ng-repeat="option in $ctrl.options track by $index"-->
+        <!--ng-if="option.display"-->
+        <!--ng-class="{'active-link': option.active == true}">-->
+        <!--<a-->
+          <!--ng-class="{'inactive': option.disabled}"-->
+          <!--ng-href="{$ option.url $}">-->
+          <!--<i>AgBiz<span ng-bind="option.name"></span></i>-->
+        <!--</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+
+
+    <!--<div-->
+      <!--class="nav navbar-nav navbar-right"-->
+      <!--ng-if="!$ctrl.is_authenticated">-->
+      <!--<button-->
+        <!--class="btn btn-success navbar-btn"-->
+        <!--type="submit">-->
+        <!--Log in-->
+      <!--</button>-->
+
+      <!--<a-->
+        <!--class="btn btn-primary navbar-btn"-->
+        <!--type="button"-->
+        <!--href="/account/">-->
+        <!--Sign up-->
+      <!--</a>-->
+    <!--</div>-->
+
+    <!--<div-->
+      <!--class="collapse navbar-collapse col-md-10"-->
+      <!--ng-if="$ctrl.is_authenticated">-->
+
+      <!--<ul class="nav navbar-nav navbar-right">-->
+        <!--<li class="dropdown">-->
+          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span ng-bind="$ctrl.current_user.username"></span><span class="caret"></span></a>-->
+            <!--<ul class="dropdown-menu first_dropdown">-->
+              <!--<li> <a class="dropdown-item" href="/index/#bottom">Contact Us</a> </li>-->
+              <!--<li> <a class="dropdown-item" href="/resources/">Resources</a> </li>-->
+              <!--<li class="dropdown-submenu"> <a tabindex="-1" class="dropdown-toggle" href="/profile_setting/"> Account Settings </a></li>-->
+              <!--<li><a href="/logout/">Logout</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+
+  </div>

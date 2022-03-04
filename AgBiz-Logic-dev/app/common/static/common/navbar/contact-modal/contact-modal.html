@@ -1,0 +1,106 @@
+<div class="modal-body">
+  <h6>Give Us Your Feedback!</h6>
+<!---uncomment once email is working
+  <div class="row">
+    <div
+      class="col-md-12"
+      style="font-size: 16px">
+      Please be sure to include as much information as possible, including the page you were on, what the bug was,
+      and how it was caused. This will help us fix the issue as quickly as possible, so you can focus on using our
+      tools to make a real difference in your enterprise management.
+    </div>
+  </div>
+--->
+<div class="row">
+  <div
+    class="col-md-12"
+    style="font-size: 16px">
+    For questions, comments, feedback, and other issues regarding <i>AgBiz Logic</i>
+    contact Clark Seavert at <a href="mailto:clark.seavert@oregonstate.edu" target="_top">clark.seavert@oregonstate.edu</a>.
+  </div>
+</div>
+  <hr>
+<!---uncomment once email is working
+  <form name="$ctrl.form">
+    <div class="row">
+      <div class="col-md-12">
+        <label>
+          Subject
+        </label>
+        <input
+          class="form-control"
+          name="subject"
+          type="text"
+          maxlength="100"
+          ng-model="$ctrl.message.subject"
+          required>
+        </input>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.subject.$valid && $ctrl.form.subject.$dirty">
+          <span ng-if="$ctrl.form.subject.$error">
+            Please give your request a subject
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label>
+          Message
+        </label>
+        <textarea
+          class="form-control"
+          name="message"
+          type="text"
+          maxlength="500"
+          ng-model="$ctrl.message.message"
+          required>
+        </textarea>
+
+        <span
+          class="help-block help-block-invalid"
+          ng-show="!$ctrl.form.message.$valid && $ctrl.form.message.$dirty">
+          <span ng-if="$ctrl.form.message.$error">
+            Please give us some feedback
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <br>
+    --->
+    <div class="row">
+      <div class="col-md-2 pull-left">
+        <button
+          class="btn btn-default"
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+
+<!---uncomment once email is working
+      <div class="col-md-2 pull-right">
+        <!-- Confirm button
+        <button
+          class="btn btn-primary"
+          ng-if="$ctrl.confirm == false"
+          ng-disabled="$ctrl.form.$invalid == true"
+          ng-click="$ctrl.confirm = true">
+          Send
+        </button>
+
+        <!-- Send button
+        <button
+          class="btn btn-primary"
+          ng-if="$ctrl.confirm == true && $ctrl.form.$invalid == false"
+          ng-click="$ctrl.send()">
+          Confirm
+        </button>
+      </div>
+      -->
+    </div>
+  </form>
+</div>

@@ -1,0 +1,37 @@
+<!-- Display while resizing -->
+<button
+  class="sidenav-toggle"
+  ng-if="$ctrl.disabled == true">
+  &#9776;
+</button>
+
+<!-- Display after resizing -->
+<button
+  class="sidenav-toggle"
+  ng-if="$ctrl.disabled == false"
+  ng-mouseenter="$ctrl.show = true"
+  ng-click="$ctrl.show = !$ctrl.show">
+  &#9776;
+</button>
+
+<div
+  class="sidenav row"
+  ng-style="{ 'height': $ctrl.height }"
+  ng-show="$ctrl.show"
+  ng-mouseleave="$ctrl.show = false">
+  <div class="sidenav-options">
+    <div class="list-group">
+      <a
+        ng-repeat="option in $ctrl.options track by $index"
+        ng-class="(option.active) ? 'list-group-item active' : 'list-group-item'"
+        href="{$ option.url $}">
+        <i>AgBiz<span ng-bind="option.name"></span></i>
+      </a>
+    </div>
+
+    <div class="sidebar-footer col-md-12">
+      Copyright © <script>document.write(new Date().getFullYear())</script> AgBiz Logic. All Rights Reserved.
+    </div>
+  </div>
+
+</div>

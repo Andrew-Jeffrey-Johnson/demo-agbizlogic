@@ -1,0 +1,74 @@
+income item:
+
+itemName: {
+  budget_id: [],
+  price_per_sale_unit: "0.00",
+  adjusted_value: "0.00",
+  adjustPersentage: 0,
+  quantity: "0.00",
+  unit: "0.00",
+  adjusted_quantity: "0.00"
+}
+
+
+cost item:
+
+[
+  itemName : {
+    budget_id: [],          // array of int
+    cost_total: "0.00",
+    adjusted_value: "0.00",
+    adjustPersentage: 0,
+    fixed: [
+      itemName : {
+        budget_id: [],      // array of int
+        cost_total: "0.00"
+      }
+    ],
+    variable: [
+      itemName : {
+        budget_id: [],      // array of int
+        cost_total: "0.00"
+      }
+    ]
+  }
+]
+
+
+/* Example */​
+
+Chemicals:
+  adjustPersentage: 0
+  ​adjusted_value: "500.00"
+  ​budget_id: Array [ 1350 ]
+  ​cost_total: "500.00"
+  ​fixed: Object {}
+  ​variable: Object {
+    "2,4-DB":
+      Object {
+        budget_id: Array [ 1349 ],
+        cost_total: "400.00"
+      }
+  }
+
+
+/* FixMe: The  structure should be below */
+
+Chemicals:
+  adjustPersentage: 0
+  ​adjusted_value: "500.00"
+  ​budget_id: Array [ 1350, 1349 ]
+  ​cost_total: "500.00"
+  general: {
+    item: {
+      budget_id: [ 1350 ],
+      cost_total: "100.00"
+    }
+  }
+  ​fixed: {}
+  ​variable: {
+    "2,4-DB": {
+        budget_id: [ 1349 ],
+        cost_total: "400.00"
+      }
+  }

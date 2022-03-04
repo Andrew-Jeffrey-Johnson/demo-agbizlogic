@@ -1,0 +1,102 @@
+<hr>
+<form name="$ctrl.form">
+<div class="col-md-4">
+  <b><span ng-bind="$ctrl.planBudget.title"></span></b>
+</div>
+
+<div class="col-md-3">
+
+  <div class="input-group">
+    <input
+      required
+      name="totalspaceavailable"
+      class="form-control input-number"
+      type="text"
+      comma-number-input
+      onfocus="if(this.value == 0)this.value='';"
+      ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/"
+      onblur="if(this.value == '')this.value=0;"
+      ng-init="$ctrl.planBudget.total_space_available = $ctrl.planBudget.farm_unit_quantity"
+      ng-model="$ctrl.planBudget.total_space_available"
+      ng-change="$ctrl.recalculate($ctrl.unit)">
+    <span
+      class="input-group-addon">
+      <select
+        style="height: 90%;"
+        ng-init="$ctrl.planBudget.space_units = $ctrl.planBudget.farm_unit"
+        ng-model="$ctrl.planBudget.space_units"
+        ng-options="space_unit as space_unit for space_unit in $ctrl.space_units">
+      </select>
+    </span>
+  </div>
+</div>
+
+
+<div class="col-md-2">
+  <div
+    class="input-group"
+    ng-show="$ctrl.unit == 'percent'">
+    <input
+      required
+      class="form-control input-number"
+      type="text"
+      comma-number-input
+      onfocus="if(this.value == 0)this.value='';"
+      onblur="if(this.value == '')this.value=0;"
+      ng-model="$ctrl.total_space_used_percent"
+      ng-pattern="/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$|^[0-9]+\e\-[0-9]+$/"
+      ng-pattern="/^0|[1-9]{1,2}[0-9]+$|[0-9]+\e\-[0-9]+$/"
+      ng-change="$ctrl.recalculate('unit')">
+    </input>
+    <span class="input-group-addon">
+      %
+    </span>
+  </div>
+  <div
+    class="input-group"
+    ng-show="$ctrl.unit == 'unit'">
+    <input
+      class="form-control input-number"
+      type="text"
+      comma-number-input
+      onfocus="if(this.value == 0)this.value='';"
+      onblur="if(this.value == '')this.value=0;"
+      ng-model="$ctrl.total_space_used_unit"
+      ng-show="$ctrl.unit == 'unit'"
+      ng-change="$ctrl.recalculate('percent')">
+    </input>
+
+    <span
+      class="input-group-addon"
+      ng-bind="$ctrl.planBudget.space_units">
+    </span>
+  </div>
+</div>
+
+</form>
+
+<div class="col-md-1">
+  <span
+    ng-bind="$ctrl.error"
+    class="space-error">
+  </span>
+</div>
+
+<div
+  class="col-md-1"
+  ng-if="$ctrl.unit == 'unit'">
+  <button
+    class="btn btn-info"
+    ng-click="$ctrl.unit = 'percent'">
+    Change to percentage
+  </button>
+</div>
+<div
+  class="col-md-1"
+  ng-if="$ctrl.unit == 'percent'">
+  <button
+    class="btn btn-info"
+    ng-click="$ctrl.unit = 'unit'">
+    Change to unit
+  </button>
+</div>

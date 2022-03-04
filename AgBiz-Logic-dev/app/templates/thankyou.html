@@ -1,0 +1,43 @@
+
+{% extends "wizard.html" %}
+
+{% load bootstrap %}
+
+{% block content %}
+
+<body>
+    <div class="container" style="margin-top:5%;">
+        <h3><i>Thank you ! Your changes have been saved successfully.</i></h3>
+        <div class="wrapper">
+          <button class="btn btn-success" onclick="dashboardfunc()">Back to Dashboard</button>
+          <button class="btn btn-success button_class" onclick="profilefunc()">Profile Settings </button>
+          <button class="btn btn-success button_class" onclick="businesssprofilefunc()">Business Profile Settings</button>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+  function dashboardfunc(){
+    window.location.href = '/dashboard/';
+  }
+
+  function profilefunc(){
+    window.location.href = '/profile_setting/';
+  }
+
+  function businesssprofilefunc(){
+    window.location.href = '/business_profile/';
+  }
+
+</script>
+<style>
+  .wrapper{
+    margin-top:2%;
+  }
+
+  .button_class{
+    margin-left: 1%
+  }
+</style>
+{% endblock %}

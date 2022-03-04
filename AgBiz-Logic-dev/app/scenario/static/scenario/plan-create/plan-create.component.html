@@ -1,0 +1,121 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h3 class="content-padding">New Plan</h3>
+
+<div>
+  To create a new Plan, give it a name, add descriptive notes, then add Budgets
+  from your existing list of Budgets and/or the <i>AgBiz Logic</i> library of university
+  and industry Budgets.
+</div>
+
+<form name="$ctrl.form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        Please fill out the following information about this Plan
+      </h4>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <label>Name of Plan:</label>
+        <input
+          name="name" class="form-control" type="text"
+          ng-model="$ctrl.plan.title"
+          ng-change="$ctrl.validatePlanTitle()"
+          ng-blur="$ctrl.updatePlan($ctrl.plan)"
+          maxlength="91"
+          placeholder="Name of Plan"
+          required>
+          <span class="error" ng-show="$ctrl.form.name.$touched && $ctrl.form.name.$error.notempty" style="color:red;">Required</span>
+          <span class="error" ng-show="$ctrl.form.name.$touched && $ctrl.form.name.$error.unique" style="color:red;">Duplicated Name</span>
+        </input>
+      </div>
+
+      <div class="row">
+        <label>Notes for this Plan:</label>
+        <textarea
+          class="form-control"
+          ng-model="$ctrl.plan.notes"
+          ng-blur="$ctrl.updatePlan($ctrl.plan)"
+          maxlength="1000"
+          placeholder="Notes on Plan">
+        </textarea>
+      </div>
+    </div>
+  </div>
+
+  <uib-tabset ng-style="{'opacity': $ctrl.progress < 100 ? '0.5' : '1'}">
+    <uib-tab heading="Enterprise Budgets">
+      <budget-select
+        item-list="$ctrl.plan.plan_budgets"
+        option-list="$ctrl.user_budgets"
+        item-limit="$ctrl.max_budgets"
+        editable="true"
+        on-delete="$ctrl.removePlanBudget(item)"
+        on-edit="$ctrl.editBudget(item)"
+        on-add="$ctrl.addPlanBudget(item)"
+        ordered="true"
+        from-plan="true"
+        on-order-change="$ctrl.updatePlanBudgets(items)">
+      </budget-select>
+    </uib-tab>
+
+    <!--Change Plan Scenario tab from "University Budgets" to "ABL Library Budgets"-->
+    <uib-tab>
+      <uib-tab-heading><i>ABL</i> Library Budgets</uib-tab-heading>
+      <budget-select
+        item-list="$ctrl.plan.plan_budgets"
+        option-list="$ctrl.university_budget_list"
+        item-limit="$ctrl.max_budgets"
+        editable="true"
+        on-delete="$ctrl.removePlanBudget(item)"
+        on-edit="$ctrl.editBudget(item)"
+        on-add="$ctrl.addUniversityBudget(item.id)"
+        ordered="true"
+        from-plan="true"
+        on-order-change="$ctrl.updatePlanBudgets(items)">
+      </budget-select>
+    </uib-tab>
+  </uib-tabset>
+
+  <br>
+
+  <div class="row">
+    <confirm-button
+      label="'Delete'"
+      message="'This will delete the current plan and all edited budgets'"
+      on-confirm="$ctrl.cancel()">
+    </confirm-button>
+    <div class="col-md-1 pull-right">
+      <button
+        class="btn btn-success"
+        ng-disabled="$ctrl.form.$invalid || $ctrl.budgets_needed"
+        ng-click="$ctrl.proceed()">
+        Continue
+      </button>
+    </div>
+    <div class="col-md-1 pull-right">
+      <button
+        class="btn btn-primary"
+        ng-disabled="$ctrl.form.$invalid || $ctrl.budgets_needed"
+        ng-if="$ctrl.is_new ==false"
+        ng-click="$ctrl.save()">
+        save
+      </button>
+    </div>
+
+
+
+  </div>
+
+
+</form>
+<br

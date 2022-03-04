@@ -1,0 +1,584 @@
+<h3 class="text-center">Build Your <i>AgBizFinance</i> Analysis</h3>
+
+  <finance-step-indicator
+    step="7"
+    steps="$ctrl.steps">
+  </finance-step-indicator>
+
+  <h4>
+    <i>AgBizFinance</i> Summary - <span ng-bind="$ctrl.scenario.title"></span>
+  </h4>
+
+  <p>Here you can review all current data entered for this <i>AgBizFinance</i> scenario.
+    If you need to make any adjustments, you can return to a previous step using the navigation bar above.</p>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h5 class="panel-title">Notes</h5>
+      </div>
+      <div class="panel-body">
+        <span ng-bind="$ctrl.scenario.notes"></span>
+      </div>
+    </div>
+
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+    <h5 class="mb-0">
+      <button ng-onInit="$ctrl.collapse_list[1] = 'false'" ng-click="$ctrl.collapse_list[1] = $ctrl.toggleCollapse($ctrl.collapse_list[1])"id="card-header modal-form-btn" style="width: 100%" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+       <h7>Budget Adjustments</h7>
+       <i ng-Show="$ctrl.collapse_list[1] === 'false'" class="fas fa-caret-down float-left" ></i>
+       <i ng-Show="$ctrl.collapse_list[1] === 'true'" class="fas fa-caret-up float-left" ></i>
+      </button>
+      </h5>
+  </div>
+
+
+  <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" >
+    <div class="card-block">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+          <table class="table table-hover table-bordered">
+            <thead style="background-color: #428bc9; color: white ;border: none;">
+              <tr  style=" border-spacing: 100px;">
+                <th>Year</th>
+                <th style="text-align: right;">Wages</th>
+                <th style="text-align: right;">Salaries</th>
+                <th style="text-align: right;">Family Withdrawals</th>
+                <th style="text-align: right;">Contributions</th>
+                <th style="text-align: right;">Income Tax Rate</th>
+
+                <!--th style="text-align: right;">Family Withdrawals</th-->
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="x in $ctrl.distributions track by $index">
+                <td>{{x.year| number:0}}</td>
+
+
+
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{x.wages|currency}}</div>
+                  </form>
+                </td>
+
+                <td>
+                  <form class="form-inline">
+                      <div style="text-align: right;">{{x.salaries|currency}}</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                      <div style="text-align: right;">{{x.family_withdrawls|currency}}</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                      <div style="text-align: right;">{{x.contributions|currency}}</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{x.tax_rate}}%</div>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header" role="tab" id="heading_2">
+    <h5 class="mb-0">
+      <button ng-onInit="$ctrl.collapse_list[2] = 'false'" ng-click="$ctrl.collapse_list[2] = $ctrl.toggleCollapse($ctrl.collapse_list[2])" id="card-header modal-form-btn" style="width: 100%" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapse_2" aria-expanded="true" aria-controls="collapseOne">
+       <h7>Depreciation</h7>
+       <i ng-Show="$ctrl.collapse_list[2] === 'false'" class="fas fa-caret-down float-left" ></i>
+       <i ng-Show="$ctrl.collapse_list[2] === 'true'" class="fas fa-caret-up float-left" ></i>
+      </button>
+    </h5>
+  </div>
+
+  <div id="collapse_2" class="collapse" role="tabpanel" aria-labelledby="heading_2">
+    <div class="card-block">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <table class="table table-hover table-bordered">
+            <thead style="background-color: #428bc9; color: white">
+              <tr>
+                <th>Year</th>
+                <!-- <th style="text-align: right;">Total Acres</th> -->
+                <th style="text-align: right;">Depreciation</th>
+                <th style="text-align: right;">% of Depreciation Allocated to Intermediate Assets</th>
+                <th style="text-align: right;">Capital Expenditures from Cash</th>
+                <th style="text-align: right;">% of Capital Expenditures Allocated to Intermediate Assets</th>
+                <th style="text-align: right;">Replacement Costs from Cash</th>
+                <th style="text-align: right;">% of Replacement Costs Allocated to Intermediate Assets</th>
+                <!--th style="text-align: right;">Family Withdrawals</th-->
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="x in $ctrl.depreciation track by $index">
+                <td>{{x.year| number:0}}</td>
+                <!-- <td> {{x.total_acres}}</td> -->
+                <td align="right">{{x.depreciation|currency}}</td>
+                <td>
+                  <form class="form-inline">
+
+                    <div class="input-group">
+                      <div style="text-align: right;">{{x.depreciation_allocated_to_intermediate_assets|number}}%</div>
+                    </div>
+                  </form>
+                </td>
+
+                <td>
+                  <form class="form-inline">
+                      <div style="text-align: right;">{{x.capital_expenditures|currency}}</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+
+
+                      <div style="text-align: right;">{{x.capital_expenditures_to_intermediate_assets|number}}%</div>
+
+
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{x.replacement_costs|currency}}</div>
+                  </form>
+                </td>
+
+
+                <td>
+                  <form class="form-inline">
+                      <div style="text-align: right;">{{x.replacement_costs_for_intermediate_assets|number}}%</div>
+                  </form>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+    <h5 class="mb-0">
+      <button ng-onInit="$ctrl.collapse_list[3] = 'false'" ng-click="$ctrl.collapse_list[3] = $ctrl.toggleCollapse($ctrl.collapse_list[3])" id="card-header modal-form-btn" style="width: 100%" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapse_3" aria-expanded="true" aria-controls="collapseOne">
+       <h7>Future Transactions</h7>
+       <i ng-Show="$ctrl.collapse_list[3] === 'false'" class="fas fa-caret-down float-left" ></i>
+       <i ng-Show="$ctrl.collapse_list[3] === 'true'" class="fas fa-caret-up float-left" ></i>
+      </button>
+    </h5>
+  </div>
+
+  <div id="collapse_3" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div class="card-block">
+      <div ng-if="$ctrl.operating_loans.length!=0">
+      <div class="row">
+        <div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+          <div class="panel panel-default" >
+            <div>
+              <div class="panel-heading" style="background-color: #428bca;">
+                  <a data-toggle="collapse" data-parent="#accordion" ng-attr-href="#{{$index}}" style="color: white;">Operating Loans</a>
+              </div>
+              <div ng-attr-id="{{$index}}" class="panel-collapse collapse in">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Financed Through</th>
+                      <!--<th style="text-align: right;">Loan Amount</th>-->
+                      <th style="text-align: right;">Year</th>
+                      <th style="text-align: right;">Loan Amount</th>
+                      <th style="text-align: right;">Interest Rate</th>
+                      <th style="text-align: right;">Number of Months to Borrow</th>
+                      <!--<th style="text-align: right;">Years before Loan Matures</th>
+                      <th style="text-align: right;">Type of Assets</th>
+                      <th style="text-align: right;">Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in $ctrl.operating_loans">
+                      <td>{{item.financed_through}}</td>
+                    <!--  <td style="text-align: right;">${{item.loan_amount}}</td>-->
+                      <td style="text-align: right;">{{item.select_year}}</td>
+                      <td style="text-align: right;">{{item.loan_amount}}</td>
+                      <td style="text-align: right;">{{item.interest_rate}}</td>
+                      <td style="text-align: right;">{{item.number_month}}</td>
+
+
+                      <td style="text-align: right;">
+                        <div>
+                          <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="$ctrl.edit(item,1)"></span>
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="$ctrl.remove(item.id,1)"></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div ng-if="$ctrl.capital_purchase.length!=0">
+      <div class="row">
+        <div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+          <div class="panel panel-default" >
+            <div>
+              <div class="panel-heading" style="background-color: #428bca;">
+                  <a data-toggle="collapse" data-parent="#accordion" ng-attr-href="#{{$index}}" style="color: white;">Capital Purchase</a>
+              </div>
+              <div ng-attr-id="{{$index}}" class="panel-collapse collapse in">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Financed Through</th>
+                      <th style="text-align: right;">Financed from</th>
+                      <th style="text-align: right;">Beginning Year</th>
+                      <th style="text-align: right;">Purchase Price</th>
+                      <th style="text-align: right;">Annual Payment</th>
+                      <th style="text-align: right;">Years of Loan</th>
+
+                      <!--<th style="text-align: right;">Years before Loan Matures</th>
+                      <th style="text-align: right;">Type of Assets</th>
+                      <th style="text-align: right;">Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in $ctrl.capital_purchase">
+                      <td>{{item.financed_through}}</td>
+                      <td style="text-align: right;">{{item.financed_from}}</td>
+                      <td style="text-align: right;">{{item.select_beginning_year}}</td>
+                      <td style="text-align: right;">{{item.purchase_price}}</td>
+                      <td style="text-align: right;">${{item.annual_payment}}</td>
+                      <td style="text-align: right;">{{item.years_of_loan}}</td>
+
+
+
+                      <td style="text-align: right;">
+                        <div>
+                          <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="$ctrl.edit(item,2)"></span>
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="$ctrl.remove(item.id,2)"></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div ng-if="$ctrl.capital_sales.length!=0">
+      <div class="row">
+        <div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+          <div class="panel panel-default" >
+            <div>
+              <div class="panel-heading" style="background-color: #428bca;">
+                  <a data-toggle="collapse" data-parent="#accordion" ng-attr-href="#{{$index}}" style="color: white;">Capital Sales</a>
+              </div>
+              <div ng-attr-id="{{$index}}" class="panel-collapse collapse in">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Financed Through</th>
+                      <!--<th style="text-align: right;">Loan Amount</th>-->
+
+                      <th style="text-align: right;">year</th>
+                      <th style="text-align: right;">Sale Price</th>
+                      <th style="text-align: right;">Asset Type</th>
+                      <!--<th style="text-align: right;">Years before Loan Matures</th>
+                      <th style="text-align: right;">Type of Assets</th>
+                      <th style="text-align: right;">Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in $ctrl.capital_sales">
+
+                    <!--  <td style="text-align: right;">${{item.loan_amount}}</td>-->
+                      <td>{{item.sold_through}}</td>
+                      <td style="text-align: right;">{{item.select_year}}</td>
+                      <td style="text-align: right;">{{item.sale_price}}</td>
+                        <td style="text-align: right;">{{item.asset_class}}</td>
+
+
+
+                      <td style="text-align: right;">
+                        <div>
+                          <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="$ctrl.edit(item,3)"></span>
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="$ctrl.remove(item.id,3)"></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div ng-if="$ctrl.capital_leases.length!=0">
+      <div class="row">
+        <div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+          <div class="panel panel-default" >
+            <div>
+              <div class="panel-heading" style="background-color: #428bca;">
+                  <a data-toggle="collapse" data-parent="#accordion" ng-attr-href="#{{$index}}" style="color: white;">Captal Lease</a>
+              </div>
+              <div ng-attr-id="{{$index}}" class="panel-collapse collapse in">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Financed Through</th>
+                      <!--<th style="text-align: right;">Loan Amount</th>-->
+
+                      <th style="text-align: right;">Year</th>
+                      <th style="text-align: right;">Down Payment</th>
+                      <th style="text-align: right;">Annual Payment</th>
+                      <th style="text-align: right;">Years of Lease</th>
+                      <!--<th style="text-align: right;">Years before Loan Matures</th>
+                      <th style="text-align: right;">Type of Assets</th>
+                      <th style="text-align: right;">Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in $ctrl.capital_leases">
+                      <td>{{item.financed_through}}</td>
+                    <!--  <td style="text-align: right;">${{item.loan_amount}}</td>-->
+
+                      <td style="text-align: right;">{{item.select_year}}</td>
+                      <td style="text-align: right;">{{item.down_payment}}</td>
+                        <td style="text-align: right;">{{item.annual_payment}}</td>
+                      <td style="text-align: right;">{{item.year_of_lease}}</td>
+
+
+                      <td style="text-align: right;">
+                        <div>
+                          <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="$ctrl.edit(item,4)"></span>
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="$ctrl.remove(item.id,4)"></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div ng-if="$ctrl.cash_from_asset_loan.length!=0">
+      <div class="row">
+        <div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+          <div class="panel panel-default" >
+            <div>
+              <div class="panel-heading" style="background-color: #428bca;">
+                  <a data-toggle="collapse" data-parent="#accordion" ng-attr-href="#{{$index}}" style="color: white;">Cash from Asset Loan</a>
+              </div>
+              <div ng-attr-id="{{$index}}" class="panel-collapse collapse in">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Financed Through</th>
+                      <!--<th style="text-align: right;">Loan Amount</th>-->
+
+                      <th style="text-align: right;">Year</th>
+                      <th style="text-align: right;">Loan Amount</th>
+                      <th style="text-align: right;">Interest Rate</th>
+                      <th style="text-align: right;">Loan Repayment Term</th>
+                      <!--<th style="text-align: right;">Years before Loan Matures</th>
+                      <th style="text-align: right;">Type of Assets</th>
+                      <th style="text-align: right;">Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in $ctrl.cash_from_asset_loan">
+                      <td>{{item.financed_through}}</td>
+                    <!--  <td style="text-align: right;">${{item.loan_amount}}</td>-->
+
+                      <td style="text-align: right;">{{item.select_year}}</td>
+                      <td style="text-align: right;">{{item.loan_amount}}</td>
+                      <td style="text-align: right;">{{item.interest_rate}}</td>
+                      <td style="text-align: right;">{{item.years_of_loan}}</td>
+
+                      <td style="text-align: right;">
+                        <div>
+                          <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="$ctrl.edit(item,5)"></span>
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="$ctrl.remove(item.id,5)"></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+    <h5 class="mb-0">
+      <button ng-onInit="$ctrl.collapse_list[5] = 'false'" ng-click="$ctrl.collapse_list[5] = $ctrl.toggleCollapse($ctrl.collapse_list[5])" id="card-header modal-form-btn" style="width: 100%" class="btn btn-info" data-toggle="collapse" data-parent="#accordion" href="#collapse_5" aria-expanded="true" aria-controls="collapseOne">
+       <h7>Inflation</h7>
+       <i ng-Show="$ctrl.collapse_list[5] === 'false'" class="fas fa-caret-down float-left" ></i>
+       <i ng-Show="$ctrl.collapse_list[5] === 'true'" class="fas fa-caret-up float-left" ></i>
+      </button>
+    </h5>
+  </div>
+
+  <div id="collapse_5" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div class="card-block">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <table class="table table-hover table-bordered">
+            <thead style="background-color: #428bc9; color: white">
+              <tr>
+                <th></th>
+                <th style="text-align: right;">Wages</th>
+                <th style="text-align: right;">Salaries</th>
+                <th style="text-align: right;">Family Withdrawals</th>
+                <th style="text-align: right;">Contributions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rate of Inflation: </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.wages_inflation|number:2}}%</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.salaries_inflation|number:2}}%</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.family_withdrawls_inflation|number:2}}%</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.contributions_inflation|number:2}}%</div>
+                  </form>
+                </td>
+                              </tr>
+            </tbody>
+
+            <thead style="background-color: #428bc9; color: white ;border: none;">
+              <tr  style=" border-spacing: 100px;">
+                <!-- <th>Year</th>
+                <th>Inflated Wages</th>
+                <th>Inflated Bonuses</th>
+                <th>Inflated Salaries</th>
+                <th>Inflated Family Withdraws</th>
+                <th>Inflated Contributions</th>
+
+                <!--th style="text-align: right;">Family Withdrawals</th-->
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <table class="table table-hover table-bordered">
+            <thead style="background-color: #428bc9; color: white">
+              <tr>
+                <th></th>
+                <th style="text-align: right;">Operating Loans</th>
+                <th style="text-align: right;">Current Assets and Liabilities</th>
+                <th style="text-align: right;">Intermediate Assets</th>
+                <th style="text-align: right;">Value of Facilities and Other Improvements</th>
+                <th style="text-align: right;">Value of Real Estate</th>
+                <th style="text-align: right;">Value of Capital Expenditures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rate of Inflation: </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.operating_loans_inflation|number:2}}%</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.current_assets_and_liabilities_inflation|number:2}}%</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.intermediate_assets_inflation|number:2}}%</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.value_of_facilities_and_other_improvements_inflation|number:2}}%</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.value_of_real_estate|number:2}}%</div>
+                  </form>
+                </td>
+                <td>
+                  <form class="form-inline">
+                    <div style="text-align: right;">{{$ctrl.inflation.value_of_capital_expenditures|number:2}}%</div>
+                  </form>
+                </td>
+              </tr>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-primary"
+      ng-click="$ctrl.back()">
+      Previous
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.proceed()">
+      Next
+    </button>
+  </div>
+</div>

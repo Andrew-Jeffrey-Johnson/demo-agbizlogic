@@ -1,0 +1,100 @@
+<h4><i>AgBizFinance</i> Scenario: <span ng-bind="$ctrl.finance_scenario.title"></span></h4>
+<br />
+<!-- <form name="$ctrl.form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        Please fill out the following information about this <i>AgBizFinance</i> Scenario
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <label><i>AgBizFinance</i> Scenario Title:</label>
+          <input
+            name="name" class="form-control" type="text"
+            ng-model="$ctrl.finance_scenario.title"
+            ng-blur="$ctrl.updateFinanceScenario()"
+            maxlength="91"
+            placeholder="Name of AgBizFinance Scenario"
+            required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <label>Notes for this <i>AgBizFinance</i> Scenario:</label>
+          <textarea
+            class="form-control"
+            ng-model="$ctrl.finance_scenario.notes"
+            maxlength="1000"
+            placeholder="Notes on Scenario">
+          </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</form> -->
+
+<br />
+
+<!-- <plan-select
+  module="finance"
+  option-list="$ctrl.plan_list"
+  plan-list="$ctrl.plans"
+  item-limit="$ctrl.max_plans"
+  editable="false"
+  on-add="$ctrl.addPlan(plan)"
+  on-delete="$ctrl.removePlan(item)"
+  on-new="$ctrl.newPlan()">
+</plan-select> -->
+
+<div class="row">
+  <label class="col-md-2">
+    From Scenarios:
+  </label>
+  <div class="col-md-6">
+    <select
+      name="scenario"
+      class="form-control"
+      ng-options="scenario.title for scenario in $ctrl.scenario_list"
+      ng-model="$ctrl.selected_scenario">
+      <option value="">Select</option>
+    </select>
+  </div>
+
+  <!-- <div class="col-md-2">
+    <button
+      class="btn btn-success"
+      ng-click="$ctrl.add()">
+      Add Scenario
+    </button>
+  </div> -->
+  <!-- <div class="col-md-2">
+    <button
+      class="btn btn-primary"
+      ng-click="">
+      Create New
+    </button>
+  </div> -->
+</div>
+
+<br />
+<br />
+
+<div class="row">
+  <div class="col-md-1 pull-left">
+    <button
+      class="btn btn-primary"
+      ng-click="$ctrl.cancel()">
+      Cancel
+    </button>
+  </div>
+  <div class="col-md-2 pull-right">
+    <button
+      class="btn btn-success"
+      ng-disabled="$ctrl.finance_scenario.plans.length == 0"
+      ng-click="$ctrl.add()">
+      Add Scenario
+    </button>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.item-divider {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.horizontal-list {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.list-inline {
+  white-space: nowrap;
+}
+
+.inflation-input {
+  width: 120px;
+}
+
+.inflation-item-name {
+  width: 300px;
+}
+
+/* Hide number input arrows */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

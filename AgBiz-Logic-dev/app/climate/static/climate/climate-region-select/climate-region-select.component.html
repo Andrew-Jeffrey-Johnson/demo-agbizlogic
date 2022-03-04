@@ -1,0 +1,102 @@
+<div style="height: 10px;">
+  <uib-progressbar
+    value="$ctrl.progress"
+    class="progress-striped active"
+    max="50"
+    ng-if="$ctrl.progress < 100">
+  </uib-progressbar>
+</div>
+
+<h3>Region and Climate Scenario Selection</h3>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Select the state (and county) where your enterprises are located in order to
+    get climate information tailored to your county. <br>
+  </div>
+
+  <div class="panel-body">
+      <div class="form-group col-md-12">
+          <div class="col-md-6">
+            <div ng-show="$ctrl.climate_scenario.projection_type==='short'||!$ctrl.climate_scenario.climate_budgets[0].climate_factors.length==0">
+
+              <p style="color: #fc5050">To change the following values please create a new Climate Scenario.<p>
+            </div>
+            <label for="region">Climate Scenario Type</label>
+
+            <select
+              id="region" class="form-control"
+              ng-disabled="$ctrl.climate_scenario.projection_type==='short'||!$ctrl.climate_scenario.climate_budgets[0].climate_factors.length==0"
+              ng-model="$ctrl.type"
+              ng-options="type as type for type in $ctrl.type_data"
+              required>
+              <option value="">Select</option>
+              <option value="long">Long Term Scenario</option>
+              <option value="short">Short Term Scenario</option>
+            </select>
+          <span style="color: red;"
+                ng-show="!$ctrl.type_valid">
+                Please Select a Type of Weather Projection
+          </span>
+          </div>
+        </div>
+    <div class="form-group col-md-12">
+      <div class="col-md-6">
+        <label for="state">State</label>
+        <select
+          id="state" class="form-control"
+          ng-disabled="$ctrl.climate_scenario.projection_type==='short'||!$ctrl.climate_scenario.climate_budgets[0].climate_factors.length==0"
+          ng-model="$ctrl.state"
+          ng-options="region.state as region.state for region in $ctrl.region_data"
+          required>
+          <option value="">Select</option>
+          <option value="{{$ctrl.state}}">{{$ctrl.state}}</option>
+        </select>
+        <span style="color: red;"
+              ng-show="!$ctrl.state_valid">
+              Please Select a State
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <div class="col-md-6">
+        <label for="region">County</label>
+        <select
+          id="region" class="form-control"
+          ng-disabled="$ctrl.climate_scenario.projection_type==='short'||!$ctrl.climate_scenario.climate_budgets[0].climate_factors.length==0"
+
+          ng-model="$ctrl.region"
+          ng-options="county as county for county in $ctrl.setCountyOptions($ctrl.state)"
+          required>
+          <option value="">Select</option>
+        </select>
+        <span style="color: red;"
+              ng-show="!$ctrl.region_valid">
+              Please Select a Region
+        </span>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+    <button
+      class="btn btn-default"
+      ng-click="$ctrl.back()">
+      Back
+    </button>
+  </div>
+
+  <div class="pull-right" style="margin-right: 10px">
+    <button
+      class="btn btn-success"
+      ng-disabled="$ctrl.region === 'Select' || $ctrl.region === undefined || $ctrl.region === null"
+      ng-click="$ctrl.proceed()">
+      Continue
+    </button>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3
+      class="panel-title"
+      ng-bind="$ctrl.modal_title">
+    </h3>
+  </div>
+  <div class="panel-body">
+
+    <scenario-search
+      scenario-list="$ctrl.scenario_list"
+      on-select="$ctrl.selectScenario(budget)">
+    </scenario-search>
+
+    <form name="newScenarioForm">
+      <div class="row">
+        <label
+          class="col-md-3">
+          Rename Scenario:
+        </label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            type="text"
+            name="scenarioTitle"
+            placeholder="Enter Name..."
+            ng-model="$ctrl.new_name"
+            ng-change="$ctrl.Validate()"
+            required>
+          </input>
+          <span class="error" ng-show="newScenarioForm.scenarioTitle.$touched && !$ctrl.new_name.length" style="color:red;">Required</span>
+          <span class="error" ng-show="$ctrl.new_name.length && $ctrl.duplicateScenarioTitle" style="color:red;">Duplicated Name</span>
+        </div>
+      </div>
+    </form>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6">
+        <button
+          class="btn btn-warning"
+          ng-click="$ctrl.cancel()">
+          Cancel
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button
+          style="width: auto;"
+          class="btn btn-success pull-right"
+          ng-disabled="!$ctrl.new_name.length || $ctrl.duplicateScenarioTitle"
+          ng-click="$ctrl.addNewScenario()">
+          Copy
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

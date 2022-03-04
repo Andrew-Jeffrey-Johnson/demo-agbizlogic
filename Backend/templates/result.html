@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>confirmation</title>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Agbiz<i>Logic</i></a>
+    </div>
+</nav>
+
+
+<body>
+    <div class="container mt-5">
+        <div class="h1">Spreadsheet precheck</div>
+        <div class="h4 mt-4">short description of manually sorting the uncategorized</div>
+        <div class="row mt-5">
+            <div class="col-md-5">
+              <div class="h3 md-3">Unsorted Values</div>
+              <div class="bs-example" data-example-id="hoverable-table">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Attributes</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+            </div>
+            <div class="col-md-5 offset-md-2">
+              <div class="h3 md-3">Categories</div>
+                <div class="bs-example" data-example-id="hoverable-table">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Attributes</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <button type="button" class="btn btn-dark btn-lg mb-4">Submit</button>
+    </div>
+</body>
+</html>

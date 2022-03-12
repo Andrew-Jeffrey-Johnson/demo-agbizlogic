@@ -2,6 +2,7 @@ import pandas as pd
 from parser import Parser
 from categorizer import Categorizer
 
+file0 = 'test_csv_files/Capstone 2022 data.xlsx'
 file1 = 'test_csv_files/sample.csv'
 file2 = 'test_csv_files/(alternate_values)farm_with_a_little_of_everything.xlsx'
 file3 = 'test_csv_files/(extra_space)farm_with_a_little_of_everything.csv'

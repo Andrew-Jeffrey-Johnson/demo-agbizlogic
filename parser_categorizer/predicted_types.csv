@@ -1,0 +1,38 @@
+,Category,Type
+0,"Sales of livestock, produce, grains & other products",Income
+1,Cooperative distributions received,Income
+2,Agricultural program payments,Income
+3,Commodity Credit Corporation,Income
+4,Crop insurance proceeds & federal crop disaster payments,Income
+5,Specified custom hire (machine work),Income
+6,Other income,Income
+7,Cost of goods sold,Expense
+8,Car and truck expenses,Expense
+9,Chemicals,Expense
+10,Conservation expenses,Expense
+11,Custom hire (machine work),Expense
+12,L-T asset replacement & section 179,Expense
+13,Employee benefit programs,Expense
+14,Feed,Expense
+15,Fertilizers and lime,Expense
+16,Freight and trucking,Expense
+17,"Gasoline, fuel and oil",Expense
+18,Insurance (other than health),Expense
+19,Interest on loans and mortgages,Expense
+20,Labor hired (less employment credits),Expense
+21,Pension and profit-sharing plans,Expense
+22,"Rent and leases: Machinery, equipment and vehicles",Expense
+23,Rent and leases: Land and animals,Expense
+24,Repairs and maintenance,Expense
+25,Seeds and plants,Expense
+26,Storage and warehousing,Expense
+27,Supplies,Expense
+28,Property taxes,Expense
+29,Utilities,Expense
+30,"Veterinary, breeding, and medicine",Expense
+31,Other expenses: Advertising,Expense
+32,"Other expenses: Payroll, state, federal taxes & payroll insurance",Expense
+33,"Other expenses: Refunds, interest, donations, misc.",Expense
+34,Other expenses: Postage,Expense
+35,"Other expenses: Licenses, permits, fees, dues, etc.",Expense
+36,"Other expenses: Tradeshow, assoc meeting, seminars, etc.",Expense

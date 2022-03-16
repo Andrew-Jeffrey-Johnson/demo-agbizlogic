@@ -4,8 +4,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import svm
 
 file0 = 'test_csv_files/Capstone 2022 data.xlsx'
-file1 = 'test_csv_files/Capstone 2022 data_extra_space.xlsx'
-file2 = 'test_csv_files/sample.csv'
+file1 = 'test_csv_files/Capstone 2022 data_income.xlsx'
+file2 = 'test_csv_files/Capstone 2022 data_expense.xlsx'
 
 
 class Parser:
@@ -43,7 +43,7 @@ class Parser:
         # print(header)
         df = df[1:]
         df.rename(columns=header, inplace=True)
-        # Converts the types of the objects like object->string or object->int
+        # Converts the types of the objects like object->string or object->int(or float)
         df = df.convert_dtypes()
         # print(df)
         # print(df.dtypes)
@@ -70,9 +70,9 @@ class Parser:
     # Convert the raw input into a pandas DataFrame object. 
     # Also clean it up by removing extra rows and columns
     # cat_dict = {
-    #  1: {'column1': 'category name', 'column2': (int)value},
-    #  2: {'column1': 'category name', 'column2': (int)value},
-    #  3: {'column1': 'category name', 'column2': (int)value},
+    #  1: {'column1': 'category name', 'column2': (int or float)value},
+    #  2: {'column1': 'category name', 'column2': (int or float)value},
+    #  3: {'column1': 'category name', 'column2': (int or float)value},
     #   ...
     # }
     def build_df(self):
@@ -91,7 +91,7 @@ class Parser:
         # self.build_cat_dict(df)
         # print(df)
         print()
-        # print("\ncat_dict:\n", self.cat_dict)
+        print("\ncat_dict in Parser:\n", self.cat_dict)
         # self.print_cat_dict()
 
 
@@ -116,7 +116,8 @@ class Categorizer:
                 categorized.append(data)
             else:
                 uncategorized.append(data)
-            
+        
+        print("\ncat_dict in Categorizer:\n", self.cat_dict)
         # print("\n-----uncategorized:\n", uncategorized)
         # print("\n-----categorized:\n", categorized)
         print("\n-----income_data:\n", income_data)
@@ -143,9 +144,9 @@ class Categorizer:
         # print("\npredicted:\n", predicted)
         
         # cat_dict = {
-        #  1: {'column1': 'category name', 'column2': value, 'column3': 'type'},
-        #  2: {'column1': 'category name', 'column2': value, 'column3': 'type'},
-        #  3: {'column1': 'category name', 'column2': value, 'column3': 'type'},
+        #  1: {'column1': 'category name', 'column2': (int or float)value, 'column3': 'type'},
+        #  2: {'column1': 'category name', 'column2': (int or float)value, 'column3': 'type'},
+        #  3: {'column1': 'category name', 'column2': (int or float)value, 'column3': 'type'},
         #   ...
         # }
         # Appends types as the 3rd data to cat_dict
@@ -194,8 +195,8 @@ class Categorizer:
         print("Running Categorizer..")
         self.extract_cat_name()
          
-p = Parser(file0)
+p = Parser(file2)
 p.run()
 
-c = Categorizer(p.cat_dict)
-c.run()
+# c = Categorizer(p.cat_dict)
+# c.run()

@@ -198,5 +198,5 @@ class Categorizer:
 p = Parser(file2)
 p.run()
 
-# c = Categorizer(p.cat_dict)
-# c.run()
+c = Categorizer(p.cat_dict)
+c.run()

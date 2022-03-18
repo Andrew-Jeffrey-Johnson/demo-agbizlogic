@@ -3,9 +3,10 @@ import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import svm
 
-file0 = 'test_csv_files/Capstone 2022 data.xlsx'
-file1 = 'test_csv_files/Capstone 2022 data_income.xlsx'
-file2 = 'test_csv_files/Capstone 2022 data_expense.xlsx'
+file0 = 'import_csv/Capstone 2022 data.xlsx'
+file1 = 'import_csv/Capstone 2022 data_income.xlsx'
+file2 = 'import_csv/Capstone 2022 data_expense.xlsx'
+
 
 
 class Parser:
@@ -34,15 +35,10 @@ class Parser:
         df = self.remove_empty_columns(df)
         # print(df)
         df = df.iloc[:,[0,1]]
-        # df = pd.DataFrame(df)
         df = df.dropna(how='any')
         df.insert(0, 'ID', range(0, len(df)))   # create new id column for index
         df.set_index('ID', inplace=True)    # assign new index to the dataframe
-        df.iloc[0] = df.iloc[0].str.lower().str.title()
-        header = df.iloc[0].str.lower().str.title()
-        # print(header)
-        df = df[1:]
-        df.rename(columns=header, inplace=True)
+        df = df.set_axis(['Category', 'Amount'], axis=1)
         # Converts the types of the objects like object->string or object->int(or float)
         df = df.convert_dtypes()
         # print(df)
@@ -90,7 +86,6 @@ class Parser:
         df = self.build_df()
         # self.build_cat_dict(df)
         # print(df)
-        print()
         print("\ncat_dict in Parser:\n", self.cat_dict)
         # self.print_cat_dict()
 
@@ -101,7 +96,7 @@ class Categorizer:
         self.results = { "done": [], "todo": [] }      
 
     # Classifies 'Income' or 'Expense' by 'Type' and stores each in a list
-    def classified(self, predicted):
+    def classified(self):
         uncategorized = []
         categorized = []
         income_data = []
@@ -118,30 +113,40 @@ class Categorizer:
                 uncategorized.append(data)
         
         print("\ncat_dict in Categorizer:\n", self.cat_dict)
-        # print("\n-----uncategorized:\n", uncategorized)
-        # print("\n-----categorized:\n", categorized)
+        print("\n-----uncategorized:\n", uncategorized)
+        print("\n-----categorized:\n", categorized)
         print("\n-----income_data:\n", income_data)
         print("\n-----expense_data:\n", expense_data)
-        # print("\nShape of uncategorized:", np.shape(uncategorized))
-        # print("Shape of categorized:", np.shape(categorized))
+        print("\nShape of uncategorized:", np.shape(uncategorized))
+        print("Shape of categorized:", np.shape(categorized))
         
         self.results["done"] = categorized
         self.results["todo"] = uncategorized
         
         print("Classified data into income and expense..")
         # return { "done": categorized, "todo": uncategorized }
-    
-    # Identifies whether a category is 'Income' or 'Expense'
-    def train(self, test_data, df):
-        train_x = df['Category'].tolist()
-        train_y = df['Type'].tolist()
+        
+        
+    def predicted(self, test_data, train_x, train_y):
         vectorizer = CountVectorizer(binary=True)
-        train_x_vectors = vectorizer.fit_transform(train_x)        
-        clf = svm.SVC(kernel='linear')
-        clf.fit(train_x_vectors, train_y)        
-        predicted = [list(clf.predict(vectorizer.transform([data]))) for data in test_data]
+        train_x_vectors = vectorizer.fit_transform(train_x)
+        clf1 = svm.SVC(kernel='linear')
+        clf1.fit(train_x_vectors, train_y)
+        predicted = [list(clf1.predict(vectorizer.transform([data]))) for data in test_data]
         predicted = np.array(predicted).flatten()
-        # print("\npredicted:\n", predicted)
+        return predicted
+    
+        
+    def train(self, extracted_tags, df1, df2):
+        # Identifies whether a tag matches a category.
+        train_x1, train_y1 = df1['Tags'].tolist(), df1['Category'].tolist()
+        predicted_cat = self.predicted(extracted_tags, train_x1, train_y1)
+        print("\npredicted_cat:\n", predicted_cat)
+        
+        # Identifies whether a category is 'Income' or 'Expense'
+        train_x2, train_y2 = df2['Category'].tolist(), df2['Type'].tolist()
+        predicted_type = self.predicted(predicted_cat, train_x2, train_y2)
+        print("\npredicted_type:\n", predicted_type)
         
         # cat_dict = {
         #  1: {'column1': 'category name', 'column2': (int or float)value, 'column3': 'type'},
@@ -151,49 +156,40 @@ class Categorizer:
         # }
         # Appends types as the 3rd data to cat_dict
         for index, data in self.cat_dict.items():
-            data['Type'] = predicted[index - 1]
+            data['Type'] = predicted_type[index]
         # print(self.cat_dict)
-        predicted_data = pd.DataFrame(list(zip(test_data, predicted)), columns=['Category','Type'])
-        # print("\nPredicted data:\n",predicted_data)
-        # df.to_csv('import_csv/predicted_typeegories.csv')
-        predicted_data.to_csv('predicted_types.csv')
+        predicted_data = pd.DataFrame(list(zip(extracted_tags, predicted_cat, predicted_type)), columns=['Tag','Category', 'Type'])
+        print("\nPredicted data:\n",predicted_data)
+        predicted_data.to_csv('import_csv/predicted_data.csv')
         print("Trained Categories..")
-        self.classified(predicted)
-    
-    # Load training data with categories and types.
-    def load_train_data(self, test_data):
-        # df = pd.read_csv('import_csv/Income_Expense_Categories.csv', header=None)
-        df = pd.read_csv('Income_Expense_Categories.csv', header=None)
-        df = pd.DataFrame(df).dropna(how='all')
-        header = df.iloc[0].str.lower().str.title()
-        df = df[1:]
-        df.rename(columns=header, inplace=True)
-        df = df[['Category','Type']].drop_duplicates().dropna()
-        # print("Train data:\n", df)
-        # print('='*100)
-        df.reset_index(inplace=True, drop=True)
-        print("Loaded train data..")
-        self.train(test_data, df)
-        
-    
-    # extracted = [
-    #  'Sales of livestock, produce, grains & other products',
-    #  'Cooperative distributions received',
-    #  'Agricultural program payments',
-    #   ...
-    # ]
-    # Extracts the categories as test_data to train
-    def extract_cat_name(self):
-        extracted = []
+        self.classified()
+
+
+    # Load data to train categories and types.
+    def load_train_data(self):
+        # extracted_tags = [
+        #  'General Tree Sales',
+        #  'True Fir',
+        #  'Noble Fir',
+        #   ...
+        # ]
+        # Extracts the tags as test_data to train
+        extracted_tags = []
         for index, data in self.cat_dict.items():
-            extracted.append(list(data.values())[0])
-        # print(extracted)
-        print("Extrated Categories..")
-        self.load_train_data(extracted)
+            extracted_tags.append(list(data.values())[0])
+        print("\nExtracted Tags:\n", extracted_tags)
+        
+        df = pd.read_csv('import_csv/Income_Expense_Categories.csv', header=None)
+        df1, df2 = df.iloc[1:,[0,1]], df.iloc[1:,[1,2]]
+        df1 = df1.set_axis(['Tags', 'Category'], axis=1)
+        df2 = df2.set_axis(['Category', 'Type'], axis=1)
+        print("\nTrain data with Tags/Category:\n", df1)
+        print("\nTrain data with Category/Type:\n", df2)
+        self.train(extracted_tags, df1, df2)
 
     def run(self):
         print("Running Categorizer..")
-        self.extract_cat_name()
+        self.load_train_data()
          
 p = Parser(file2)
 p.run()
